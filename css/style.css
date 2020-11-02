@@ -1688,8 +1688,8 @@ body {
 }
 
 .good-card__grid-main-photo-pic {
-  width: 18vw;
-  height: 18vw;
+  width: 15vw;
+  height: 15vw;
 }
 
 .good-card__grid-change-photo {
@@ -1729,6 +1729,10 @@ body {
 .good-card__grid-category {
   font-size: 1.5vw;
   margin-top: 1.1vw;
+}
+
+.good-card__grid-code {
+  margin-top: 1vw;
 }
 
 .good-card__grid-price {
@@ -1771,7 +1775,7 @@ body {
   font-size: 1.2vw;
 }
 
-.good-card__grid-count div + div {
+.good-card__grid-count * + * {
   margin-left: 1vw;
 }
 
@@ -1793,18 +1797,44 @@ body {
   padding: 2px 5px;
   width: 30px;
   text-align: center;
+  -moz-appearance: textfield;
+}
+
+.good-card__grid-num::-webkit-inner-spin-button {
+  display: none;
 }
 
 .good-card__grid-basketbtn {
   margin: 0;
+  display: none;
 }
 
-.good-card__grid-price, .good-card__grid-favourite, .good-card__grid-count, .good-card__grid-basketbtn {
-  margin-top: 3.5vw;
+.good-card__grid-basketbtn_action {
+  height: 35px;
+  width: 95px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #16531896;
+  border-radius: 5px;
+  text-transform: uppercase;
+  margin: 0;
+  display: none;
+}
+
+.good-card__grid-price, .good-card__grid-favourite, .good-card__grid-count, .good-card__grid-basketbtn, .good-card__grid-basketbtn_action {
+  margin-top: 3vw;
 }
 
 .good-card__buying-back {
   width: 15vw;
+}
+
+.good-card__buying-buy {
+  display: none;
 }
 
 .good-card__about {
@@ -1815,7 +1845,6 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  padding: 0.5vw;
 }
 
 .good-card__about-descr, .good-card__about-garant-paying {

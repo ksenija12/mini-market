@@ -28,12 +28,14 @@
                 </div>
                 <div class="entranse__login">
                     <div class="entranse__login-title">Введите логин</div>
-                    <input type="text" class="entranse__login-name" name="entranse__login-name" id="entranse__login-name" placeholder="admin">
+                    <!-- <input type="text" class="entranse__login-name" name="entranse__login-name" id="entranse__login-name" placeholder="Name"> -->
+                    <input type="text" class="entranse__login-name" name="entranse__login-name" id="entranse__login-name" value="admin">
                     <label for="entranse__login-name"></label>
                 </div>
                 <div class="entranse__password">
                     <div class="entranse__password-title">Введите пароль</div>
-                    <input type="password" class="entranse__password-pass" name="entranse__password-pass" id="entranse__password-pass" placeholder="123">
+                    <!-- <input type="password" class="entranse__password-pass" name="entranse__password-pass" id="entranse__password-pass" placeholder="Password"> -->
+                    <input type="password" class="entranse__password-pass" name="entranse__password-pass" id="entranse__password-pass" value="123">
                     <label for="entranse__password-pass"></label>
                     <div class="entranse__password-show-hide"><i class="far fa-eye"></i></div>
                 </div>                
@@ -147,15 +149,15 @@
                     <div class="entranse__login-title level__title">Выберите уровень сложности</div>
                     <div class="level__difficulty-radio">
                         <div class="level__difficulty-radio-btn">
-                            <input type="radio" class="level__difficulty-radio-btn-input entranse__login-name" name="level__difficulty-radio" data-count="0" id="level__difficulty-radio-btn-01" checked>
+                            <input type="radio" class="level__difficulty-radio-btn-input entranse__login-name" name="level__difficulty-radio" data-count="1" id="level__difficulty-radio-btn-01" checked>
                             <label for="level__difficulty-radio-btn-01">Начальный</label>
                         </div>
                         <div class="level__difficulty-radio-btn">
-                            <input type="radio" class="level__difficulty-radio-btn-input entranse__login-name" name="level__difficulty-radio" data-count="1" id="level__difficulty-radio-btn-02">
+                            <input type="radio" class="level__difficulty-radio-btn-input entranse__login-name" name="level__difficulty-radio" data-count="2" id="level__difficulty-radio-btn-02">
                             <label for="level__difficulty-radio-btn-02">Средний</label>
                         </div>
                         <div class="level__difficulty-radio-btn">
-                            <input type="radio" class="level__difficulty-radio-btn-input entranse__login-name" name="level__difficulty-radio" data-count="2" id="level__difficulty-radio-btn-03">
+                            <input type="radio" class="level__difficulty-radio-btn-input entranse__login-name" name="level__difficulty-radio" data-count="3" id="level__difficulty-radio-btn-03">
                             <label for="level__difficulty-radio-btn-03">Продвинутый</label>
                         </div>
                     </div>
@@ -165,7 +167,8 @@
                     <div class="entranse__login-title level__title">Выберите операцию</div>
                     <div class="level__operation-check">
                         <div class="level__operation-check-btn dispFlex">
-                            <input type="checkbox" class="level__operation-check-btn-input entranse__login-name" name="level__operation-check-01" data-count="0" id="level__operation-check-btn-01" value="+">
+                            <!-- <input type="checkbox" class="level__operation-check-btn-input entranse__login-name" name="level__operation-check-01" data-count="0" id="level__operation-check-btn-01" value="+"> -->
+                            <input type="checkbox" class="level__operation-check-btn-input entranse__login-name" name="level__operation-check-01" data-count="0" id="level__operation-check-btn-01" value="+" checked>
                             <label for="level__operation-check-btn-01"><i class="fas fa-plus"></i></label>
                         </div>
                         <div class="level__operation-check-btn">
@@ -388,19 +391,21 @@
                             <div class="button good-card__grid-back hint--top" aria-label="Вернуться в магазин">Назад</div>
                             <div class="good-card__grid-title"><span class="hint--right" aria-label="Название товара"></span></div>
                             <div class="good-card__grid-category"><span class="hint--right" aria-label="Категория"></span></div>
+                            <div class="good-card__grid-code"><span class="hint--right" aria-label="Код товара"></span></div>
                             <div class="good-card__grid-price-favourite">
                                 <div class="good-card__grid-price"><span class="hint--right" aria-label="Цена товара"></span></div>
                                 <div class="good-card__grid-favourite hint--top">
-                                    <span class="favourite__text"></span><span class="favourite-heart hint--top" aria-label="Добавить в избранное"><i class="far fa-heart"></i></span>
+                                    <span class="favourite-heart hint--top" aria-label="Добавить в избранное"><i class="fa-heart"></i></span>
                                 </div>
                             </div>
                             <div class="good-card__grid-count-basketbtn">
                                 <div class="good-card__grid-count">
-                                    <div class="good-card__grid-less hint--left" aria-label="Отнять"><i class="fas fa-minus"></i></div>
-                                    <div class="good-card__grid-num hint--top" aria-label="Количество">1</div>
-                                    <div class="good-card__grid-more hint--right" aria-label="Добавить"><i class="fas fa-plus"></i></div>
+                                    <div class="good-card__grid-less hint--left" aria-label="Отнять"  onclick="this.nextElementSibling.stepDown()"><i class="fas fa-minus"></i></div>
+                                    <input type="number" value="1" min="1" max="99" step="1" readonly class="good-card__grid-num">
+                                    <div class="good-card__grid-more hint--right" aria-label="Добавить" onclick="this.previousElementSibling.stepUp()"><i class="fas fa-plus"></i></div>
                                 </div>
                                 <div class="button good-card__grid-basketbtn hint--top" aria-label="Добавить в корзину">В корзину</div>
+                                <div class="good-card__grid-basketbtn_action hint--top" aria-label="В корзинe">В корзинe</div>
                             </div>
                         </div>
                     </div>

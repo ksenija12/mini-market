@@ -460,7 +460,7 @@ $("#goods-count").on("input", function () {
         for (let i = (5 * numPage - 5); i < maxItem; i++) {
             $(".goods__list-grid").append(`<div class="goods__list-col col-${i}"></div>`);
                 
-            $(`.goods__list-col.col-${i}`).append(`<div class="goods__list-item item-${i}" data-item='${sorted[i].id}></div>`)
+            $(`.goods__list-col.col-${i}`).append(`<div class="goods__list-item item-${i}" data-item='${sorted[i].id}'></div>`)
                 
             $(`.goods__list-item.item-${i}`).css("backgroundImage", `url('${sorted[i].pic[0]}')`);
             $(`.goods__list-item.item-${i}`).addClass("hint--left");
@@ -502,7 +502,7 @@ function changePic() {
 
 //---------------добавляем картинки---------------//
 
-function goddsCardAdd(good) {
+function goodsCardAdd(good) {
     $(".good-card__grid-main-photo").append(`<img  class="good-card__grid-main-photo-pic" src="${good.pic[0]}" alt="${good.title}">`);
     $(".good-card__grid-change-photo").append(`<li class="good-card__grid-change-li"><img  class="good-card__grid-change-photo-pic" src="${good.pic[0]}" alt="${good.title}"></li>`);
     $(".good-card__grid-change-photo").append(`<li class="good-card__grid-change-li"><img  class="good-card__grid-change-photo-pic" src="${good.pic[1]}" alt="${good.title}"></li>`);
@@ -510,11 +510,27 @@ function goddsCardAdd(good) {
 
     $(".good-card__grid-title span").html(`${good.title}`);
     $(".good-card__grid-category span").html(`${good.category}`);
+    $(".good-card__grid-code span").html(`${good.id}`);
 
     let val = (good.count == 1) ? "" : "/ " + good.count + " " + good.val
     $(".good-card__grid-price span").html(`${good.price} UAH ${val}`);
     
-    $(".good-card__about-descr .good-card__about-text").html(`${good.descr}`)
+    $(".good-card__about-descr .good-card__about-text").html(`${good.descr}`);
+
+    const checkFavourite = miniMarketGame.favouriteGood.find(function (el) {
+        return el.id == String(good.id);
+    });
+
+    if (checkFavourite) {
+        $(".favourite-heart").find("i").addClass("fas");
+    } else {
+        $(".favourite-heart").find("i").addClass("far");
+    };
+
+    if (!($(".good-card__grid-basketbtn, .good-card__buying-buy").hasClass("dispFlex"))) {
+        $(".good-card__grid-basketbtn, .good-card__buying-buy").addClass("dispFlex");
+        $(".good-card__grid-basketbtn_action").removeClass("dispFlex");
+    }
 };
 
 //---------------переход к товару---------------//
@@ -524,8 +540,9 @@ function goToGood(good) {
 
     window.scrollTo(0, 0);
     
-    goddsCardAdd(good);
+    goodsCardAdd(good);
     changePic();
+
 };
 
 $('.good-card__about-garant-paying .good-card__about-title').each(function() {

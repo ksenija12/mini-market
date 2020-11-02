@@ -163,7 +163,7 @@ $('.button_entranse').on('click', function() {
         catHint('Пароль не верный', '.entranse__hint');
     } else {
         
-        $(".level__operation-check-btn-input:checked").prop("checked", false);
+        
         buyCat(".level");
         potterCat();
     };
@@ -281,12 +281,12 @@ $('.level__difficulty-radio-btn-input').on('input', function() {
 
     $('.level__difficulty-radio-btn-input').each(function(i, el) {
         if ($(el).prop('checked')) {
-            if ($(el).attr('data-count') == 0) {
+            if ($(el).attr('data-count') == 1) {
                 $('#level__operation-check-btn-01').parent('.level__operation-check-btn').addClass('dispFlex');
-            } else if ($(el).attr('data-count') == 1) {
+            } else if ($(el).attr('data-count') == 2) {
                 $('#level__operation-check-btn-01').parent('.level__operation-check-btn').addClass('dispFlex');
                 $('#level__operation-check-btn-02').parent('.level__operation-check-btn').addClass('dispFlex');
-            } else if ($(el).attr('data-count') == 2) {
+            } else if ($(el).attr('data-count') == 3) {
                 $('#level__operation-check-btn-01').parent('.level__operation-check-btn').addClass('dispFlex');
                 $('#level__operation-check-btn-02').parent('.level__operation-check-btn').addClass('dispFlex');
                 $('#level__operation-check-btn-03').parent('.level__operation-check-btn').addClass('dispFlex');
@@ -340,13 +340,16 @@ $(".button_level").on("click", function() {
             $(`.sale__grid-col.col-${i}`).append('<div class="sale__grid-item"></div>');
 
             $(`.sale__grid-col.col-${i} .sale__grid-item`).append(`<div class="sale__grid-item_back" data-item="${gameMainSale[i].good.id}">
+            <img src="${gameMainSale[i].good.pic[0]}" alt="">
             <div class="item_back-discaunt">- ${gameMainSale[i].discaunt} %</div>
             <div class="item_back-good">${gameMainSale[i].good.title}</div></div><div class="sale__grid-item_face">
+            <img src="${gameMainSale[i].good.categpic}" alt="">
             <div class="item_back-discaunt">- ${gameMainSale[i].discaunt} %</div>
             <div class="item_face-category">${gameMainSale[i].good.category}</div></div>`);
-            
-            $(`.sale__grid-col.col-${i} .sale__grid-item_face`).css("backgroundImage", `url('${gameMainSale[i].good.categpic}')`);
-            $(`.sale__grid-col.col-${i} .sale__grid-item_back`).css("backgroundImage", `url('${gameMainSale[i].good.pic[0]}')`);
+
+            ($(`.sale__grid-col.col-${i}`).find("img")).css("objectFit", "fill");
+            ($(`.sale__grid-col.col-${i}`).find("img")).css("width", "100%");
+            ($(`.sale__grid-col.col-${i}`).find("img")).css("height", "100%");
           
         };
 
@@ -367,11 +370,13 @@ $(".button_level").on("click", function() {
 
             $(".goods__grid").append(`<div class='goods__grid-col col-${i}'></div>`);
             $(`.goods__grid-col.col-${i}`).append(`<div class='goods__grid-item item-${i}'></div>`);
-            $(`.goods__grid-item.item-${i}`).append("<div class='goods__grid-item-title'></div><div class='goods__grid-item-pict'></div>");
+            $(`.goods__grid-item.item-${i}`).append(`<div class='goods__grid-item-title'></div><div class='goods__grid-item-pict'><img src="${miniMarketGame.category[i].pic}" alt=""></div>`);
 
 
-            $(`.goods__grid-item.item-${i} .goods__grid-item-pict`).css("backgroundImage", `url('${miniMarketGame.category[i].pic}')`);
-            $(`.goods__grid-item.item-${i} .goods__grid-item-pict`).attr("data-text", `${miniMarketGame.category[i].cat}`);
+            ($(`.goods__grid-item.item-${i} .goods__grid-item-pict`).find("img")).css("objectFit", "fill");
+            ($(`.goods__grid-item.item-${i} .goods__grid-item-pict`).find("img")).css("width", "100%");
+            ($(`.goods__grid-item.item-${i} .goods__grid-item-pict`).find("img")).css("height", "100%");
+            ($(`.goods__grid-item.item-${i} .goods__grid-item-pict`).find("img")).attr("data-text", `${miniMarketGame.category[i].cat}`);
             $(`.goods__grid-item.item-${i} .goods__grid-item-title`).text(`${miniMarketGame.category[i].cat}`);
             $(`.goods__grid-item.item-${i} .goods__grid-item-title`).attr("data-text", `${miniMarketGame.category[i].cat}`);
 
@@ -406,5 +411,7 @@ $(".button_level-back").on("click", function() {
     $(".level").toggleClass('dispFlex');
     $(".entranse").toggleClass('dispFlex');
     $(".entranse__password-pass").val("")
+
+    $(".level__operation-check-btn-input:checked").prop("checked", false);
     helloCat();
 });

@@ -10,6 +10,8 @@ let miniMarketGame = {
     findGood: [],
     category: [],
     clickedCategory: [],
+    favouriteGood: [],
+    cart: [],
     start: function () {
         this.rndDiscaunt = this.randomDiscaunt();
         this.saleGoods = this.mainSale();
@@ -74,6 +76,58 @@ let miniMarketGame = {
         return this.miniMarket.find(function (el) {
             return el.id == code
         });
+    },
+    favouriteGoodAdd: function (code) {
+        const elem = this.miniMarket.find(function (el) {
+            return el.id == String(code);
+        });
+
+        this.favouriteGood.push(elem);
+
+        return this.favouriteGood;
+    },
+    favouriteGoodRemove: function (code) {
+        let index = this.favouriteGood.indexOf(this.favouriteGood.find(function (el) {
+            return el.id == String(code);
+        }));
+
+        if (index > -1) this.favouriteGood.splice(index, 1);
+
+        return this.favouriteGood
+    },
+    cartAdd: function (code) {
+        const elem = this.miniMarket.find(function (el) {
+            return el.id == String(code);
+        });
+
+        // const elemInCart = this.cart.find(function (elem) {
+        //     return elem.el.id == String(code);
+        // });
+
+        // if (elemInCart) {
+        //     elemInCart.count = elemInCart.count + 1
+        // } else {
+        //     this.cart.push({
+        //         el: elem,
+        //         count: 1
+        //         });
+        // };
+
+        this.cart.push({
+                el: elem,
+                count: Number($(".good-card__grid-num").val())
+                });
+
+        return this.cart;
+    },
+    cartRemove: function (code) {
+        let index = this.cart.indexOf(this.cart.find(function (elem) {
+            return elem.el.id == String(code);
+        }));
+
+        if (index > -1) this.cart.splice(index, 1);
+
+        return this.cart
     }
 };
 
