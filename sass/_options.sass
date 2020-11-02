@@ -1,0 +1,56 @@
+$mainColor: #268329
+$MainColorTransp: #16531896
+$mainRed: rgba(255, 0, 0, .5)
+
+$mediaBp: (1400px, 1350px, 1200px, 980px, 767px, 640px, 480px, 330px, 300px)
+
+@mixin grid($name, $p, $m, $wrap, $col, $pad)
+    .#{$name}__grid
+        display: flex
+        flex-wrap: $wrap
+        margin: -$p + px
+        margin-top: $m + px
+        &-col
+            width: calc(100% / #{$col})
+            padding: $pad + px
+
+@mixin listGrid($name, $p, $m, $wrap, $col, $pad)
+    .#{$name}__list
+        &-grid
+            display: flex
+            flex-wrap: $wrap
+            margin: -$p + px
+            margin-top: $m + px
+        &-col
+            width: calc(100% / #{$col})
+            padding: $pad + px
+
+@mixin fon($f, $w, $s, $c)
+    font-family: $f
+    font-weight: $w
+    font-size: $s
+    color: $c
+
+@mixin elemCentr($t, $w, $color)
+    content: ""
+    position: absolute
+    width: 0
+    height: 0
+    border-style: solid
+    top: -$t + px
+    left: calc(50% - #{$w}px/2)
+    border-width: 2px $w + px 0 0
+    border-color: $color
+    
+@mixin elemLeft($t, $w, $color)
+    content: ""
+    position: absolute
+    width: 0
+    height: 0
+    border-style: solid
+    top: -$t + px
+    left: 0
+    border-width: 2px $w + px 0 0
+    border-color: $color
+        
+     

@@ -1,0 +1,10 @@
+@import '_options'
+
+@for $i from 1 to length($mediaBp)
+    @media ( max-width: nth($mediaBp, $i) )
+        .container
+            max-width: nth($mediaBp, $i + 1)
+
+                
+        @if nth($mediaBp, $i) == 1350px
+            

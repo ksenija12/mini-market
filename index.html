@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MINI-маркет</title>
+
+    <link rel="stylesheet" href="./css/libs/slick.css">
+    <link rel="stylesheet" href="./css/libs/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="./css/libs/hint.min.css">
+    <link rel="stylesheet" href="./fonts/fontawesome-free-5.15.1-web/css/all.css">
+
+    <link rel="stylesheet" href="./css/style.css">
+
+    <link rel="icon" href="./img/logo-ico.png">
+    
+</head>
+<body>
+    <div class="entranse" id="anchor8">
+        <div class="container container_entranse">
+            <div class="entranse__form">
+                <img src="./img/pusheen/013.gif" class="entranse__cat" alt="cat">
+                <div class="entranse__hint"></div>
+            <div class="entranse__form-item">
+                <div class="entranse__title">
+                    <h2 class="entranse__title-text">Добро пожаловать в</h2>
+                    <img src="./img/logo-mini.png" class="entranse__title-img" alt="MINI-маркет">
+                </div>
+                <div class="entranse__login">
+                    <div class="entranse__login-title">Введите логин</div>
+                    <input type="text" class="entranse__login-name" name="entranse__login-name" id="entranse__login-name" placeholder="admin">
+                    <label for="entranse__login-name"></label>
+                </div>
+                <div class="entranse__password">
+                    <div class="entranse__password-title">Введите пароль</div>
+                    <input type="password" class="entranse__password-pass" name="entranse__password-pass" id="entranse__password-pass" placeholder="123">
+                    <label for="entranse__password-pass"></label>
+                    <div class="entranse__password-show-hide"><i class="far fa-eye"></i></div>
+                </div>                
+                <div class="entranse__problem">
+                    <div class="entranse__problem-forgot">Забыли пароль?</div>
+                    <div class="entranse__problem-reg">Регистация</div>
+                </div>
+                <div class="button button_entranse">войти</div>
+            </div>
+            </div>
+        </div>
+    </div>
+    
+
+
+
+
+
+    <div class="forgot">
+        <div class="container container_forgot">
+            <div class="forgot__form">
+                <img src="./img/pusheen/009.gif" class="forgot__cat" alt="cat-baloon">
+                <div class="forgot__hint entranse__hint"></div>
+                <h2 class="forgot__title entranse__title-text">Вспомним пароль)</h2>
+                <div class="forgot__question dispFlex">
+                    <div class="forgot__login entranse__login">
+                        <div class="entranse__login-title">Введите логин</div>
+                        <input type="text" class="forgot__login-name entranse__login-name" name="entranse__login-name" id="forgot__login-name" placeholder="Name">
+                        <label for="forgot__login-name"></label>
+                    </div>
+                    <div class="forgot__question-btn">
+                        <div class="button button_forgot-next-back">назад</div>
+                        <div class="button button_forgot-next">продолжить</div>
+                    </div>                    
+                </div>
+                <div class="forgot__answer">
+                    <div class="forgot__question-text"></div>
+                    <div class="forgot__login entranse__login">
+                        <div class="entranse__login-title">Введите ответ</div>
+                        <input type="text" class="forgot__login-answer entranse__login-name" name="entranse__login-name" id="forgot__login-answer" placeholder="Answer">
+                        <label for="forgot__login-answer"></label>
+                    </div>
+                    <div class="forgot__answer-btn">
+                        <div class="button button_forgot-enter-back">назад</div>
+                        <div class="button button_forgot-enter">войти</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+
+
+
+
+    <div class="registration">
+        <div class="container container_registration">
+            <div class="registration__form">
+                <img src="./img/pusheen/008-1.gif" class="registration__cat1" alt="cat-detective">
+                <img src="./img/pusheen/008-2.gif" class="registration__cat2" alt="cat-detective">
+                <div class="registration__hint entranse__hint"></div>
+                <h2 class="registration__title entranse__title-text">Регистрация</h2>
+                <div class="registration__login entranse__login">
+                    <div class="entranse__login-title">Введите логин</div>
+                    <input type="text" class="registration__login-name entranse__login-name" name="entranse__login-name" id="registration__login-name" placeholder="Name">
+                    <label for="registration__login-name"></label>
+                </div>
+                <div class="registration__passw-first entranse__login">
+                    <div class="entranse__login-title">Введите пароль</div>
+                    <input type="password" class="registration__password-first entranse__login-name" name="entranse__login-name" id="registration__password-first" placeholder="Password">
+                    <label for="registration__password-first"></label>
+                    <div class="registration__passw-show-hide1"><i class="far fa-eye"></i></div>
+                </div>
+                <div class="registration__passw-second entranse__login">
+                    <div class="entranse__login-title">Повторите пароль</div>
+                    <input type="password" class="registration__password-second entranse__login-name" name="entranse__login-name" id="registration__password-second" placeholder="Password">
+                    <label for="registration__password-second"></label>
+                    <div class="registration__passw-show-hide2"><i class="far fa-eye"></i></div>
+                </div>
+                <div class="registration__qwest entranse__login">
+                    <div class="entranse__login-title">Введите секретный вопрос</div>
+                    <input type="text" class="registration__qwestion entranse__login-name" name="entranse__login-name" id="registration__qwestion" placeholder="Qwestion">
+                    <label for="registration__qwestion"></label>
+                </div>
+                <div class="registration__answ entranse__login">
+                    <div class="entranse__login-title">Введите ответ</div>
+                    <input type="text" class="registration__answer entranse__login-name" name="entranse__login-name" id="registration__answer" placeholder="Answer">
+                    <label for="registration__answer"></label>
+                </div>
+                <div class="registration__form-btn">
+                    <div class="button button_registration-back">назад</div>
+                    <div class="button button_registration">Регистрация</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <div class="level dispFlex">
+        <div class="container container_level">
+            <div class="level__form">
+                <img src="./img/pusheen/003.gif" class="level__cat1" alt="cat-potter">
+                <img src="./img/pusheen/004.gif" class="level__cat2" alt="cat-potter">
+                <h2 class="level__title entranse__title-text">Настройки игры</h2>
+                <div class="level__difficulty">
+                    <div class="entranse__login-title level__title">Выберите уровень сложности</div>
+                    <div class="level__difficulty-radio">
+                        <div class="level__difficulty-radio-btn">
+                            <input type="radio" class="level__difficulty-radio-btn-input entranse__login-name" name="level__difficulty-radio" data-count="0" id="level__difficulty-radio-btn-01" checked>
+                            <label for="level__difficulty-radio-btn-01">Начальный</label>
+                        </div>
+                        <div class="level__difficulty-radio-btn">
+                            <input type="radio" class="level__difficulty-radio-btn-input entranse__login-name" name="level__difficulty-radio" data-count="1" id="level__difficulty-radio-btn-02">
+                            <label for="level__difficulty-radio-btn-02">Средний</label>
+                        </div>
+                        <div class="level__difficulty-radio-btn">
+                            <input type="radio" class="level__difficulty-radio-btn-input entranse__login-name" name="level__difficulty-radio" data-count="2" id="level__difficulty-radio-btn-03">
+                            <label for="level__difficulty-radio-btn-03">Продвинутый</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="level__operation">
+                    <div class="level__hint entranse__hint"></div>
+                    <div class="entranse__login-title level__title">Выберите операцию</div>
+                    <div class="level__operation-check">
+                        <div class="level__operation-check-btn dispFlex">
+                            <input type="checkbox" class="level__operation-check-btn-input entranse__login-name" name="level__operation-check-01" data-count="0" id="level__operation-check-btn-01" value="+">
+                            <label for="level__operation-check-btn-01"><i class="fas fa-plus"></i></label>
+                        </div>
+                        <div class="level__operation-check-btn">
+                            <input type="checkbox" class="level__operation-check-btn-input entranse__login-name" name="level__operation-check-02" data-count="1" id="level__operation-check-btn-02" value="-">
+                            <label for="level__operation-check-btn-02"><i class="fas fa-minus"></i></label>
+                        </div>
+                        <div class="level__operation-check-btn">
+                            <input type="checkbox" class="level__operation-check-btn-input entranse__login-name" name="level__operation-check-03" data-count="2" id="level__operation-check-btn-03" value="*">
+                            <label for="level__operation-check-btn-03"><i class="fas fa-times"></i></label>
+                        </div>
+                        <div class="level__operation-check-btn">
+                            <input type="checkbox" class="level__operation-check-btn-input entranse__login-name" name="level__operation-check-04" data-count="3" id="level__operation-check-btn-04" value="/">
+                            <label for="level__operation-check-btn-04"><i class="fas fa-divide"></i></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="level__form-btn">
+                    <div class="button button_level-back">Сменить пользователя</div>
+                    <div class="button button_level">Начать</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <div class="market-page">
+        <header class="header">
+            <div class="container">            
+                <div class="header-grid">
+                    <div class="header-grid__col">
+                        <div class="backform"><i class="fas fa-arrow-left"></i></div>
+                        <a href="#" class="logo-link"><img src="./img/logo-mini.png" class="market-page__title-img" alt="logo"></a>
+                    </div>
+                    <div class="nav-grid__col">
+                        <div class="nav-toggle button"><i class="fas fa-bars"></i></div>
+                        
+                        <div class="nav">
+                            <ul class="nav-list">
+                                <li class="nav-list__link_main">
+                                    <div class="nav-list__link nav-list__link_title">Разделы</div>
+                                    <ul class="nav-list__link_list">
+                                        <li>
+                                            <div data-index="0" class="nav-list__link nav-list__link_sec" data-text="#anchor1">Каталог</div>
+                                        </li><li>
+                                            <div data-index="1" class="nav-list__link nav-list__link_sec" data-text="#anchor2">Акции</div>
+                                        </li><li>
+                                            <div data-index="2" class="nav-list__link nav-list__link_sec" data-text="#anchor5">Информация</div>
+                                        </li>
+                                    </ul>
+                                </li>                                
+                                <li>
+                                    <div class="nav-list__link" data-text="#anchor3">Любимое</div>
+                                </li>
+                                <li>
+                                    <div class="nav-list__link" data-text="#anchor4">Корзина</div>
+                                </li>
+                                <li>
+                                    <div class="nav-list__link" data-text="#anchor6">Редактор</div>
+                                </li>
+                                <li>
+                                    <div class="nav-list__link" data-text="#anchor7">Выход</div>
+                                </li>
+                                <li>
+                                    <img src="./img/pusheen/016.gif" alt="cat-sleeping" class="market-page__cat">
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>            
+            </div>
+        </header>
+        <main class="main">
+            <div class="main-block">
+                <div class="container main-block__grid">
+                    <div class="main-block__grid-col">
+                        <img src="./img/logo-big.png" class="logo-big" alt="logo">
+                        <div class="main-block__text">Игрушки, фрукты, овощи, сладости, и, даже, мебель и инструменты - 
+                            все это есть в нашем MINI-маркете. Все товары мы отбираем особенно внимательно, чтоб убедиться,
+                            что продаем Вам и вашим детям только самое лучшее.
+                        </div>
+                    </div>
+                    <div class="main-block__grid-col">
+                        <div class="main-block__findarea">
+                            <div class="main-block__findarea-block">
+                                <input type="text" class="main-block__findarea-input"  name="main-block__findarea-input" placeholder="Find">
+                                <label for="main-block__findarea-input"></label>
+                                <div class="main-block__findarea-results"></div>
+                            </div>
+                            <select name="main-block__findarea-select" class="main-block__findarea-select" id="main-block__findarea-select">
+                                <option value="title">по названию</option>
+                                <option value="id">по коду</option>
+                                <option value="category">по категории</option>
+                            </select>
+                            <div class="main-block__findarea-icon"><a href="#modal" class="main-block__findarea-icon-link hint--top" aria-label="Искать" data-text="try"><i class="fas fa-search"></i></a></div>
+                            <img src="./img/pusheen/028.gif" class="main-block__cat-find" alt="cat-find">
+                        </div>
+                        <div class="main-block__main-categories">
+                            <div class="nav-list__link nav-list__link_heart hint--top" aria-label="Любимое" data-text="#anchor3"><i class="far fa-heart"></i></div>
+                            <div class="nav-list__link nav-list__link_basket hint--top" aria-label="Корзина" data-text="#anchor4"><i class="fas fa-shopping-basket"></i></div>
+                            <img src="./img/pusheen/022.gif" class="main-block__cat-heart" alt="cat-heart">
+                            <img src="./img/pusheen/025.gif" class="main-block__cat-basket" alt="cat-basket">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sale" id="anchor2">
+                <div class="container sale_container">
+                    <h2 class="entranse__title-text sale__title">Акции</h2>
+                    <div class="sale__grid">
+                    </div>
+                </div>
+            </div>
+            <div class="goods" id="anchor1">
+                <div class="container goods_container">
+                    <h2 class="entranse__title-text goods__title">Товары</h2>
+                    <div class="goods__grid-block dispFlex"></div>
+                    <div class="goods__dots dispFlex"></div>
+                    <div class="goods__list">
+                        <div class="goods__list-choose">
+                            <div class="goods__list-category">Категории</div>
+                            <div class="goods__list-choose-count">
+                                <div class="goods__list-choose-count_text">Товаров на странице</div>
+                                <div class="goods__list-choose-count_select">
+                                    <select name="goods__count" id="goods-count">
+                                        <option value="5">5</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="goods__list-choose-sort">
+                                <div class="goods__list-choose-sort_text">Сортировать</div>
+                                <div class="goods__list-choose-sort_select">
+                                    <select name="goods__sort" id="goods-sort"></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="goods__list-goods">
+                            <div class='goods__list-grid'></div>
+                        </div>
+                        <div class="goods__list-pages">
+                            <div>Страницы:</div>
+                            <div class="goods__list-pages-numbers">
+                                <div data-count="1" data-text="goods__list-pages" class="goods__list-pages-num-main">1</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer class="footer">
+            <div class="container footer_container">
+                <div class="information" id="anchor5">
+                    <div class="footer__grid">
+                        <div class="footer__grid-col">
+                            <div class="footer__grid-item">
+                                <div class="entranse__title-text footer__title footer__title_info">Информация</div>
+                                <div class="footer__info">
+                                    <ul>
+                                        <li><div class="footer__info-pay">Оплата и доставка</div></li>
+                                        <li><div class="footer__info-garant">Гарантия</div></li>
+                                        <li><div class="footer__info-contact">Контакты</div></li>
+                                    </ul>
+                                </div>                                
+                            </div>
+                        </div>
+                        <div class="footer__grid-col">
+                            <div class="footer__grid-item">
+                                <img src="./img/pusheen/018.gif" alt="witch-cat" class="witch-cat">                                
+                            </div>
+                        </div>
+                        <div class="footer__grid-col">
+                            <div class="footer__grid-item">
+                                <div class="entranse__title-text footer__title footer__title_buyer">Покупателю</div>
+                                <div class="footer__buyer">
+                                    <ul>
+                                        <li><div data-index="1" class="nav-list__link nav-list__link_sec footer__buyer-action" data-text="#anchor2">Акции</div></li>
+                                        <li><div class="footer__buyer-favourite">Избранное</div></li>
+                                        <li><div class="footer__buyer-basket">Корзина</div></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="copyright">&#169; 2020 Ксения Филатова</div>
+                <div data-index="3" class="backtostart" data-text="#anchor8"><i class="fas fa-arrow-up"></i></div>
+            </div>
+        </footer>
+    </div>
+
+
+    
+
+
+    <div class="modal-block" id="modal">
+        <div class="container modal_container">
+            <div class="modal__grid"></div>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="good-card">
+        <div class="container good-card_container">
+            <div class="good-card__main">
+                <div class="good-card__grid">
+                    <div class="good-card__grid-col">
+                        <div class="good-card__grid-item">
+                            <div class="good-card__grid-main-photo"></div>
+                            <ul class="good-card__grid-change-photo"></ul>
+                        </div>
+                    </div>
+                    <div class="good-card__grid-col">
+                        <div class="good-card__grid-item">
+                            <div class="button good-card__grid-back hint--top" aria-label="Вернуться в магазин">Назад</div>
+                            <div class="good-card__grid-title"><span class="hint--right" aria-label="Название товара"></span></div>
+                            <div class="good-card__grid-category"><span class="hint--right" aria-label="Категория"></span></div>
+                            <div class="good-card__grid-price-favourite">
+                                <div class="good-card__grid-price"><span class="hint--right" aria-label="Цена товара"></span></div>
+                                <div class="good-card__grid-favourite hint--top">
+                                    <span class="favourite__text"></span><span class="favourite-heart hint--top" aria-label="Добавить в избранное"><i class="far fa-heart"></i></span>
+                                </div>
+                            </div>
+                            <div class="good-card__grid-count-basketbtn">
+                                <div class="good-card__grid-count">
+                                    <div class="good-card__grid-less hint--left" aria-label="Отнять"><i class="fas fa-minus"></i></div>
+                                    <div class="good-card__grid-num hint--top" aria-label="Количество">1</div>
+                                    <div class="good-card__grid-more hint--right" aria-label="Добавить"><i class="fas fa-plus"></i></div>
+                                </div>
+                                <div class="button good-card__grid-basketbtn hint--top" aria-label="Добавить в корзину">В корзину</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="good-card__about">
+                <div class="good-card__about-descr">
+                    <div class="good-card__about-title good-card__about-title_active">Описание</div>
+                    <div class="good-card__about-text good-card__about-text_active"></div>
+                </div>
+                <div class="good-card__about-garant-paying">
+                    <div class="good-card__about-title-block">
+                        <div data-ind="1" class="good-card__about-title good-card__about-title_active">Гарантия</div>
+                        <div data-ind="2" class="good-card__about-title">Оплата</div>
+                        <div data-ind="3" class="good-card__about-title">Доставка</div>
+                    </div>
+                    <div data-tab="1" class="good-card__about-text good-card__about-text_active">
+                        <p>На все товары, купленные в нашем магазине, распространяется действие Закона Украины «О защите прав потребителей», который вступил в силу 13 января 2006 года.</p>
+                        <p>Замена товара на аналогичный в соответствии со ст. 9 ЗУ "О защите прав потребителей" возможна только при соблюдении таких условий:</p>
+                        <ul>
+                            <li>Cо дня приобретения прошло не более 14 дней, не считая дня покупки;</li>
+                            <li>товар не был в использовании, т.е. является новым (товар в идеальном состоянии, товар не употреблялся);</li>
+                            <li>сохранены товарный вид, потребительские качества товара;</li>
+                            <li>есть пломбы, ярлыки, упаковка, товарный чек.</li>
+                        </ul>
+                        <p>Согласно постановлению Кабинета Министров Украины от 23 сентября 1991 р. N 216 это правило не распространяется на предметы личной гигиены, белье, чулочно-носочные изделия, перопуховые изделия, постельные принадлежности, косметику, детские мягкие, надувные и резиновые игрушки, товары для новорожденных, карнавальные костюмы и т.д.</p>
+                    </div>
+                    <div data-tab="2" class="good-card__about-text">
+                        <p>Наличный расчет</p>
+                        <ul>
+                            <li>курьеру магазина (только для города Днепр)</li>
+                            <li>при самовывозе</li>
+                            <li>наложенный платеж в отделении почты</li>
+                        </ul>
+                            
+                        <p>Безналичный расчет</p>
+                        <ul>
+                            <li>на карту ПриватБанка</li>
+                            <li>В терминале ПриватБанка</li>
+                        </ul>                            
+                    </div>
+                    <div data-tab="3" class="good-card__about-text">
+                        <p>Обычно отправка заказа осуществляется на следующий день после оплаты (как исключение, допускается отправка товара не позднее, чем через три рабочих дня после оплаты).</p>
+                        <ul>
+                            <li>Самовывоз</li>
+                            <p>Вы можете самостоятельно забрать товар из пункта выдачи заказов интернет-магазина</p>
+                            <li>Доставка курьером по Днепру</li>
+                            <p>Курьерская доставка предусматривает доставку заказа до дверей в пределах выбранного временного окна. Доставка до дверей возможна только при наличии рабочего лифта в Вашем доме. В случае его отсутствия либо поломки к стоимости доставки включается доплата за подъем. Размер доплаты рассчитывается в зависимости от веса Вашего заказа и этажа. Стоимость Вы можете уточнить у оператора контакт-центра.</p>
+                            <li>Доставка Укрпочтой</li>
+                            <p>Сервис «Укрпочты» рассчитан как на клиентов из Украины, так и на клиентов из-за границы. Свои заказы следует забирать в почтовом отделении.</p>
+                            <li>Доставка Новой Почтой</li>
+                            <p>Доставка заказов «Новой Почтой» осуществляется по всей территории Украины, кроме оккупированных территорий. Свои заказы следует забирать в пункте самовывоза. Перечень отделений, адреса и телефоны просим узнавать на сайте «Новой Почты».</p>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="good-card__buying">
+                <div class="button good-card__buying-buy">Купить</div>
+                <div class="button good-card__buying-back">Вернуться в магазин</div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <div class="favourite">
+        <div class="container"></div>
+    </div>
+    
+
+
+
+
+
+    <div class="basket">
+        <div class="container"></div>
+    </div>
+
+
+
+
+
+
+    <div class="last-step">
+        <div class="container"></div>
+    </div>
+
+
+
+
+
+
+    <div class="prise">
+        <div class="container"></div>
+    </div>
+    
+    <script src="./js/libs/jquery-3.5.1.min.js"></script>
+    <script src="./js/libs/jquery.fancybox.min.js"></script>
+    <script src="./js/libs/slick.min.js"></script>
+    <script src="./js/minimarket.js"></script>
+    <script src="./js/market.js"></script>
+    <script src="./js/begin.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="./js/good.js"></script>
+</body>
+</html>
