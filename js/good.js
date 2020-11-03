@@ -11,6 +11,8 @@ $(".good-card__grid-back, .good-card__buying-back").on('click', function () {
         $(".favourite-heart").find("i").removeClass("fas");
     };
 
+    $(".good-card__grid-num").val("1");
+
 
     window.scrollTo(0, 0);
 });

@@ -191,16 +191,15 @@ $(".main-block__findarea-icon").on('click', function () {
     if (miniMarketGame.findGood.length) {
         for (let i = 0; i < miniMarketGame.findGood.length; i++) {
             $(".modal__grid").append(`<div class='modal__grid-col col-${i}'></div>`);
-            $(`.modal__grid-col.col-${i}`).append(`<div class='modal__grid-item' data-item='${miniMarketGame.findGood[i].id}'></div>`);
+            $(`.modal__grid-col.col-${i}`).append(`<div class='modal__grid-item'><img src="${miniMarketGame.findGood[i].pic[0]}" alt="" data-item='${miniMarketGame.findGood[i].id}'></div>`);
             
-            $(`.modal__grid-col.col-${i} .modal__grid-item`).css("backgroundImage", `url('${miniMarketGame.findGood[i].pic[0]}')`);
             $(`.modal__grid-col.col-${i} .modal__grid-item`).addClass("hint--left");
             $(`.modal__grid-col.col-${i} .modal__grid-item`).attr("aria-label", `${miniMarketGame.findGood[i].title}`);
         }
     };
 
     $(".modal__grid-item").on("click", function() {
-        const good = miniMarketGame.selectedGood($(this).attr("data-item"));
+        const good = miniMarketGame.selectedGood(($(this).find("img")).attr("data-item"));
                     
         goToGood(good);
 
@@ -253,17 +252,16 @@ function showGood(begin, end) {
     for (let i = ($("#goods-count").val() * begin - $("#goods-count").val()); i < end; i++) {
         $(".goods__list-grid").append(`<div class="goods__list-col col-${i}"></div>`);
         
-        $(`.goods__list-col.col-${i}`).append(`<div class="goods__list-item item-${i}" data-item='${miniMarketGame.clickedCategory[i].id}'></div>`)
+        $(`.goods__list-col.col-${i}`).append(`<div class="goods__list-item item-${i}"></div>`)
+        $(`.goods__list-item.item-${i}`).append(`<img src="${miniMarketGame.clickedCategory[i].pic[0]}" alt="" data-item='${miniMarketGame.clickedCategory[i].id}'><div class="item_back-discaunt goods__list-price">${miniMarketGame.clickedCategory[i].price.toFixed(2)} UAH</div>`)
         
-        $(`.goods__list-item.item-${i}`).css("backgroundImage", `url('${miniMarketGame.clickedCategory[i].pic[0]}')`);
         $(`.goods__list-item.item-${i}`).addClass("hint--left");
         $(`.goods__list-item.item-${i}`).attr("aria-label", `${miniMarketGame.clickedCategory[i].title}`);
         
-        $(`.goods__list-item.item-${i}`).append(`<div class="item_back-discaunt goods__list-price">${miniMarketGame.clickedCategory[i].price.toFixed(2)} UAH</div>`);
     };
 
     $(".goods__list-item").on("click", function() {
-        const good = miniMarketGame.selectedGood($(this).attr("data-item"));
+        const good = miniMarketGame.selectedGood(($(this).find("img")).attr("data-item"));
 
                 
         goToGood(good);
@@ -349,9 +347,8 @@ $(".goods__grid-block").on('click', function(event) {
             for (let i = (5 * numPage - 5); i < maxItem; i++) {
                 $(".goods__list-grid").append(`<div class="goods__list-col col-${i}"></div>`);
                 
-                $(`.goods__list-col.col-${i}`).append(`<div class="goods__list-item item-${i}" data-item="${sorted[i].id}"></div>`)
+                $(`.goods__list-col.col-${i}`).append(`<div class="goods__list-item item-${i}"><img src="${sorted[i].pic[0]}" data-item="${sorted[i].id}"></div>`)
                 
-                $(`.goods__list-item.item-${i}`).css("backgroundImage", `url('${sorted[i].pic[0]}')`);
                 $(`.goods__list-item.item-${i}`).addClass("hint--left");
                 $(`.goods__list-item.item-${i}`).attr("aria-label", `${sorted[i].title}`);
                 
@@ -360,7 +357,7 @@ $(".goods__grid-block").on('click', function(event) {
         
                     
             $(".goods__list-item").on("click", function() {
-                const good = miniMarketGame.selectedGood($(this).attr("data-item"));
+                const good = miniMarketGame.selectedGood(($(this).find("img")).attr("data-item"));
             
                             
                 goToGood(good);
@@ -460,9 +457,9 @@ $("#goods-count").on("input", function () {
         for (let i = (5 * numPage - 5); i < maxItem; i++) {
             $(".goods__list-grid").append(`<div class="goods__list-col col-${i}"></div>`);
                 
-            $(`.goods__list-col.col-${i}`).append(`<div class="goods__list-item item-${i}" data-item='${sorted[i].id}'></div>`)
+            $(`.goods__list-col.col-${i}`).append(`<div class="goods__list-item item-${i}"><img src="${sorted[i].pic[0]}" data-item="${sorted[i].id}"></div>`)
                 
-            $(`.goods__list-item.item-${i}`).css("backgroundImage", `url('${sorted[i].pic[0]}')`);
+            // $(`.goods__list-item.item-${i}`).css("backgroundImage", `url('${sorted[i].pic[0]}')`);
             $(`.goods__list-item.item-${i}`).addClass("hint--left");
             $(`.goods__list-item.item-${i}`).attr("aria-label", `${sorted[i].title}`);
                 
@@ -470,7 +467,7 @@ $("#goods-count").on("input", function () {
         };
         
         $(".goods__list-item").on("click", function() {
-            const good = miniMarketGame.selectedGood($(this).attr("data-item"));
+            const good = miniMarketGame.selectedGood(($(this).find("img")).attr("data-item"));
         
                         
             goToGood(good);
@@ -527,10 +524,15 @@ function goodsCardAdd(good) {
         $(".favourite-heart").find("i").addClass("far");
     };
 
-    if (!($(".good-card__grid-basketbtn, .good-card__buying-buy").hasClass("dispFlex"))) {
+    const checkCart = miniMarketGame.cart.find(function (elem) {
+        return elem.el.id == String(good.id);
+    });
+
+    if (!checkCart && (!($(".good-card__grid-basketbtn, .good-card__buying-buy").hasClass("dispFlex")))) {
         $(".good-card__grid-basketbtn, .good-card__buying-buy").addClass("dispFlex");
         $(".good-card__grid-basketbtn_action").removeClass("dispFlex");
-    }
+    };
+   
 };
 
 //---------------переход к товару---------------//
@@ -561,5 +563,5 @@ $('.good-card__about-garant-paying .good-card__about-title').each(function() {
 
         $targetBtn.addClass('good-card__about-title_active');
 
-    })
-})
+    });
+});
