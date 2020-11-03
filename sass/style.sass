@@ -937,6 +937,8 @@ body
             -moz-appearance: textfield
             &::-webkit-inner-spin-button
                display: none 
+            &_basketbtn-task
+                width: 40px
         &-basketbtn
             margin: 0
             display: none
@@ -950,6 +952,10 @@ body
                 text-transform: uppercase
                 margin: 0
                 display: none
+            &_task
+                display: none
+                & * + *
+                    margin-left: 1.5vw
         &-price, &-favourite, &-count, &-basketbtn, &-basketbtn_action
             margin-top: 3vw
     &__buying
@@ -1010,6 +1016,9 @@ body
     font-size: 30px
     color: $mainColor
     margin-right: 2.5vw
+
+.basketbtn_task-check
+    width: 40px
 
 .visible
     visibility: visible

@@ -300,6 +300,7 @@ $('.level__difficulty-radio-btn-input').on('input', function() {
 
 let symbol = [];
 let level;
+let taskArr;
 
 $(".button_level").on("click", function() {  
     if (!$(".level__operation-check-btn-input:checked").length) {
@@ -324,10 +325,12 @@ $(".button_level").on("click", function() {
 
         $(".main-block__findarea-input").val("");      
 
+
+
         ////////////////////////////Акции////////////////////////////  
           
-        // console.log(symbol);
-        // console.log(level);
+        miniMarketGame.operations = symbol;
+        miniMarketGame.gameMode = level;
 
         miniMarketGame.start();
         const gameMainSale = miniMarketGame.saleGoods;
@@ -399,7 +402,7 @@ $(".button_level").on("click", function() {
         );
 
         $("#goods-count").val("5");
-                
+                        
     };
             
 });

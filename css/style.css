@@ -1822,6 +1822,10 @@ body {
   display: none;
 }
 
+.good-card__grid-num_basketbtn-task {
+  width: 40px;
+}
+
 .good-card__grid-basketbtn {
   margin: 0;
   display: none;
@@ -1841,6 +1845,14 @@ body {
   text-transform: uppercase;
   margin: 0;
   display: none;
+}
+
+.good-card__grid-basketbtn_task {
+  display: none;
+}
+
+.good-card__grid-basketbtn_task * + * {
+  margin-left: 1.5vw;
 }
 
 .good-card__grid-price, .good-card__grid-favourite, .good-card__grid-count, .good-card__grid-basketbtn, .good-card__grid-basketbtn_action {
@@ -1943,6 +1955,10 @@ body {
   font-size: 30px;
   color: #268329;
   margin-right: 2.5vw;
+}
+
+.basketbtn_task-check {
+  width: 40px;
 }
 
 .visible {

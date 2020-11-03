@@ -8,6 +8,11 @@ $(".backform").on("click", function() {
     $(".level").toggleClass('dispFlex');
     $("#level__difficulty-radio-btn-01").prop("checked", true);
     $(".level__operation-check-btn-input").prop("checked", false);
+
+    for (let i = 2; i < 5; i++) {
+        let check = $(`#level__operation-check-btn-0${i}`).parent('.level__operation-check-btn');
+        if (check.hasClass("dispFlex")) {check.removeClass("dispFlex")}
+    };
     
     potterCat();
 
@@ -528,11 +533,19 @@ function goodsCardAdd(good) {
         return elem.el.id == String(good.id);
     });
 
-    if (!checkCart && (!($(".good-card__grid-basketbtn, .good-card__buying-buy").hasClass("dispFlex")))) {
+    if (!checkCart) {
         $(".good-card__grid-basketbtn, .good-card__buying-buy").addClass("dispFlex");
+        $(".good-card__grid-basketbtn_task").removeClass("dispFlex");
         $(".good-card__grid-basketbtn_action").removeClass("dispFlex");
+    } else {
+        $(".good-card__grid-basketbtn, .good-card__buying-buy").removeClass("dispFlex");
+        $(".good-card__grid-basketbtn_task").removeClass("dispFlex");
+        $(".good-card__grid-basketbtn_action").addClass("dispFlex");
     };
-   
+
+    $(".basketbtn_task-first").html(`${taskArr[0]}`);
+    $(".basketbtn_task-operation").html(`${taskArr[1]}`);
+    $(".basketbtn_task-second").html(`${taskArr[2]}`);
 };
 
 //---------------переход к товару---------------//
@@ -542,6 +555,7 @@ function goToGood(good) {
 
     window.scrollTo(0, 0);
     
+    taskArr = miniMarketGame.createTask();
     goodsCardAdd(good);
     changePic();
 

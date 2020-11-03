@@ -12,13 +12,15 @@ let miniMarketGame = {
     clickedCategory: [],
     favouriteGood: [],
     cart: [],
+    operations: [],
+    gameMode: "",
     start: function () {
         this.rndDiscaunt = this.randomDiscaunt();
         this.saleGoods = this.mainSale();
     },
     randomDiscaunt: function () {
         for (let i = 0; i < this.goodsInSale; i++) {
-            this.rndDiscaunt.push(this.discaunt[getRandom(this.discaunt.length)]);
+            this.rndDiscaunt.push(this.discaunt[getRandom(1, this.discaunt.length)-1]);
         };
         return this.rndDiscaunt;
     },
@@ -26,7 +28,7 @@ let miniMarketGame = {
         let miniMarketPart = [];
         let notSale = this.miniMarket;
         for (let i = 0; i < this.goodsInSale; i++) {
-            let randomGood = notSale[getRandom(notSale.length)];
+            let randomGood = notSale[getRandom(1, notSale.length)-1];
             this.saleGoods[i] = {
                     good: randomGood,
                     discaunt: this.rndDiscaunt[i]
@@ -128,12 +130,78 @@ let miniMarketGame = {
         if (index > -1) this.cart.splice(index, 1);
 
         return this.cart
+    },
+    createTask: function () {
+        let max;
+        let rnd = getRandom(1, this.operations.length)
+        let symbol = this.operations[rnd-1];
+
+        let a, b, c, first, second, answer;
+
+        if (this.gameMode == 1) {
+            max = 10;
+            first = getRandom(1, max);
+            second = getRandom(1, max);
+            answer = first + second;
+        } else if (this.gameMode == 2) {
+            max = 100;
+            if (symbol == "+") {
+                first = getRandom(1, max);
+                second = getRandom(1, max);
+                answer = first + second;
+            } else if (symbol == "-") {
+                a = getRandom(1, max);
+                b = getRandom(1, max);
+                if (a > b) {
+                    first = a;
+                    second = b;
+                } else if (a < b) {
+                    first = b;
+                    second = a;
+                };
+                answer = first - second;
+            };
+        } else if (this.gameMode == 3) {
+            if (symbol == "+") {
+                max = 100;
+                first = getRandom(1, max);
+                second = getRandom(1, max);
+                answer = first + second;
+            } else if (symbol == "-") {
+                max = 100;
+                a = getRandom(1, max);
+                b = getRandom(1, max);
+                if (a > b) {
+                    first = a;
+                    second = b;
+                } else if (a < b) {
+                    first = b;
+                    second = a;
+                };
+                answer = first - second;
+            } else if (symbol == "*") {
+                max = 10;
+                first = getRandom(1, max);
+                second = getRandom(1, max);
+                answer = first * second;
+            } else if (symbol == "/") {
+                max = 10;
+                a = getRandom(1, max);
+                b = getRandom(1, max);
+                c = a * b;
+                first = c;
+                second = a;
+                answer = b;
+            };
+        };
+    
+        return [first, symbol, second, answer];
     }
 };
 
 
 ////////////////////////////Случайный выбор////////////////////////////
 
-function getRandom(max) {
-    return Math.floor(Math.random() * ((max - 1) + 1));
+function getRandom(min, max) {
+    return Math.floor(min + Math.random() * ((max - min) + 1));
 };
