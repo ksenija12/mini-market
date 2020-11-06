@@ -41,11 +41,18 @@ $(".favourite-heart").on('click', function () {
         miniMarketGame.favouriteGoodAdd($(".good-card__grid-code span").html());
     };
 
-    console.log(miniMarketGame.favouriteGood);
+    // console.log(miniMarketGame.favouriteGood);
 });
 
 $(".good-card__grid-basketbtn, .good-card__buying-buy").on("click", function () {
-   
+    taskArr = miniMarketGame.createTask();
+
+    $(".basketbtn_task-first").html(`${taskArr[0]}`);
+    $(".basketbtn_task-operation").html(`${taskArr[1]}`);
+    $(".basketbtn_task-second").html(`${taskArr[2]}`);
+
+    $(".basketbtn_task-answer").val("");
+    $(".basketbtn_task-answer-alt").val("");
 
     $(".good-card__grid-basketbtn, .good-card__buying-buy").toggleClass("dispFlex");
     ($(this).siblings(".good-card__grid-basketbtn_task")).toggleClass("dispFlex");
@@ -53,7 +60,10 @@ $(".good-card__grid-basketbtn, .good-card__buying-buy").on("click", function () 
 });
 
 $(".basketbtn_task-check").on("click", function () {
-    if ($(".basketbtn_task-answer").val() == taskArr[3]) {
+    const answerCheck = $(".basketbtn_task-answer").val() == taskArr[3];
+    const answerCheckAlt = $(".basketbtn_task-answer-alt").val() == taskArr[3];
+        
+    if (answerCheck || answerCheckAlt) {
         miniMarketGame.cartAdd($(".good-card__grid-code span").html());
     
         if ($(".good-card__grid-basketbtn").siblings(".good-card__grid-basketbtn_task").hasClass("dispFlex")) {
@@ -64,11 +74,13 @@ $(".basketbtn_task-check").on("click", function () {
             $(".good-card__buying-buy").siblings(".good-card__grid-basketbtn_task").toggleClass("dispFlex");
         };
 
-        $(".good-card__grid-basketbtn_action").toggleClass("dispFlex");    
+        $(".good-card__grid-basketbtn, .good-card__buying-buy").toggleClass("dispFlex");
+
+        if (!($(".good-card__grid-basketbtn_action").hasClass("dispFlex"))) {$(".good-card__grid-basketbtn_action").addClass("dispFlex")};    
     
         console.log(miniMarketGame.cart);
     } else {
-        alert("wrong");
+        alert("Ответ не верный! Попробуй еще)");
         $(".good-card__grid-basketbtn, .good-card__buying-buy").toggleClass("dispFlex");
 
         if ($(".good-card__grid-basketbtn").siblings(".good-card__grid-basketbtn_task").hasClass("dispFlex")) {

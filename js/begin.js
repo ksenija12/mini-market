@@ -14,18 +14,13 @@ const ident = [
     }
 ];
 
-
-function hint(selector) {
-    return $(selector);
-}
-
 function catHint(text, sel) {
-    hint(sel).html(text);
+    $(sel).html(text);
 
-    hint(sel).animate({
+    $(sel).animate({
         opacity: 1
     }, 600, function() {
-        hint(sel).delay(1000).animate({
+        $(sel).delay(1000).animate({
             opacity: 0
         }, 600)
     })
@@ -344,10 +339,10 @@ $(".button_level").on("click", function() {
 
             $(`.sale__grid-col.col-${i} .sale__grid-item`).append(`<div class="sale__grid-item_back" data-item="${gameMainSale[i].good.id}">
             <img src="${gameMainSale[i].good.pic[0]}" alt="">
-            <div class="item_back-discaunt">- ${gameMainSale[i].discaunt} %</div>
+            <div class="item_back-discount">- ${gameMainSale[i].discount} %</div>
             <div class="item_back-good">${gameMainSale[i].good.title}</div></div><div class="sale__grid-item_face">
             <img src="${gameMainSale[i].good.categpic}" alt="">
-            <div class="item_back-discaunt">- ${gameMainSale[i].discaunt} %</div>
+            <div class="item_back-discount">- ${gameMainSale[i].discount} %</div>
             <div class="item_face-category">${gameMainSale[i].good.category}</div></div>`);
 
             ($(`.sale__grid-col.col-${i}`).find("img")).css("objectFit", "fill");

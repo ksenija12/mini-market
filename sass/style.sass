@@ -391,14 +391,40 @@ body
             text-decoration: underline
             cursor: pointer
         &_main
-            position: relative            
-            & ul
+            position: relative
+            padding-right: 12px
+            &::before
                 position: absolute
-                display: flex
+                content: ""
+                top: 50%
+                right: 0
+                border: 5px solid transparent
+                border-bottom: none
+                border-top: 5px solid #ffffff
+                transform: translate(50%, -50%)
+            & ul
+                padding-top: 5px
+                position: absolute
+                display: none
                 align-items: center
+                background-color: transparent
+                & li
+                    padding: 5px 10px
+                    border: 1px solid $mainColor
+                    margin-left: 0
+                    background-color: $MainColorTransp
+                    & *
+                        display: block
+                    &:hover
+                        background-color: $mainColor
+            &:hover ul
+                display: block
+            &:hover::before
+                border-top: none
+                border-bottom: 5px solid #ffffff
 
-.nav-list__link_list
-    visibility: hidden
+// .nav-list__link_list
+//     visibility: hidden
 
 .nav-toggle
     display: none
@@ -570,7 +596,7 @@ body
             &_back
                 transform: rotateY(180deg)
 
-.item_face-category, .item_back-good, .item_back-discaunt
+.item_face-category, .item_back-good, .item_back-discount
     height: 20px
     position: absolute
     color: #ffffff
@@ -586,7 +612,7 @@ body
     background-color: $MainColorTransp
     transform: translateY(-100%)
 
-.item_back-discaunt
+.item_back-discount
     top: 0
     right: 0
     width: 30%
@@ -684,16 +710,31 @@ body
             margin-top: 20px
             display: none
             justify-content: flex-end
+            font-size: 16px
+            align-items: center
             & div + div
                 margin-left: 10px
             &-num, &-num-main
+                background-color: #16531849
+                border-radius: 2px
+                padding: 3px 6px
                 cursor: pointer
+            &-num-main
+                background-color: $MainColorTransp
             &-numbers
                 display: flex
                 & div + div
-                    margin-left: 10px
+                    margin-left: 5px
         &-category
             cursor: pointer
+            margin: 0
+            width: 200px
+            text-transform: none
+            & > i
+                color: $mainColor
+                margin-right: 10px
+            &:hover > i
+                color: #ffffff
         &-col
             display: flex
             justify-content: center
@@ -715,6 +756,7 @@ body
         width: 100%
         display: flex
         justify-content: space-between
+        align-items: center
         &-count, &-sort
             display: flex
             & select
@@ -776,7 +818,6 @@ body
     padding-bottom: 10px
     text-align: center
     &__info, &__buyer
-        display: none
         margin-top: 20px
         & li
             list-style-type: none
@@ -793,17 +834,6 @@ body
         width: auto
         cursor: pointer
         position: relative
-        &::before
-            position: absolute
-            content: ""
-            top: 40%
-            left: 100%
-            border: 6px solid transparent
-            border-top: 6px solid #ffffff 
-        &_active
-            &::before
-                border-top: none 
-                border-bottom: 6px solid #ffffff 
     &_container
         flex-direction: column
     &__grid
@@ -895,6 +925,8 @@ body
                 border-radius: 5px
                 width: 95%
                 cursor: pointer
+                // &:hover
+                    // border-color: $mainRed
         &-title
             font-size: 2.7vw
             font-weight: 600
@@ -929,7 +961,7 @@ body
                 justify-content: space-between
                 align-items: flex-end
         &-num
-            border: 1px solid $mainColor
+            border: none
             border-radius: 2px
             padding: 2px 5px
             width: 30px
@@ -943,6 +975,10 @@ body
             margin: 0
             display: none
             &_action
+                position: absolute
+                right: 0
+                top: 0
+                margin-top: 0
                 height: 35px
                 width: 95px
                 justify-content: center
@@ -952,6 +988,7 @@ body
                 text-transform: uppercase
                 margin: 0
                 display: none
+                transform: translateY(100%)
             &_task
                 display: none
                 & * + *
@@ -993,7 +1030,6 @@ body
                 overflow-y: scroll
                 & > * + *
                     margin-top: 1vw
-                & ul
                 & ul li
                     position: relative
                     padding-left: 4vw
@@ -1019,6 +1055,9 @@ body
 
 .basketbtn_task-check
     width: 40px
+
+.basketbtn_task-answer, .basketbtn_task-answer-alt
+    border: 1px solid $mainColor
 
 .visible
     visibility: visible

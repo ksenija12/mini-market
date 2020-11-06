@@ -92,19 +92,6 @@ $('[data-index]').on("click", function(event) {
 });
 
 
-//---------------меню 2---------------//
-
-
-$(".nav-list__link_title").on('mouseover', function(){
-    $(".nav-list__link_list").addClass( "visible" );
-});
-
-$(".nav-list__link_main").on('mouseout', function(){
-    $(".nav-list__link_list").toggleClass( "visible" );
-});
-
-
-
 //---------------Коты на главной---------------//
 
 $('.nav-list__link_heart').hover(function() {
@@ -236,19 +223,6 @@ $('[data-text="try"]').fancybox({
 });
         
 
-////////////////////////////Раскрывающиеся списки footer////////////////////////////
-
-$(".footer__title_info").on("click", function () {
-    $(".footer__info").toggleClass("dispFlex");
-    $(".footer__title_info").toggleClass("footer__title_active");
-});
-
-$(".footer__title_buyer").on("click", function () {
-    $(".footer__buyer").toggleClass("dispFlex");
-    $(".footer__title_buyer").toggleClass("footer__title_active");
-});
-
-
 ////////////////////////////Выбор категории////////////////////////////
 
 //---------------показываем товары---------------//
@@ -258,7 +232,7 @@ function showGood(begin, end) {
         $(".goods__list-grid").append(`<div class="goods__list-col col-${i}"></div>`);
         
         $(`.goods__list-col.col-${i}`).append(`<div class="goods__list-item item-${i}"></div>`)
-        $(`.goods__list-item.item-${i}`).append(`<img src="${miniMarketGame.clickedCategory[i].pic[0]}" alt="" data-item='${miniMarketGame.clickedCategory[i].id}'><div class="item_back-discaunt goods__list-price">${miniMarketGame.clickedCategory[i].price.toFixed(2)} UAH</div>`)
+        $(`.goods__list-item.item-${i}`).append(`<img src="${miniMarketGame.clickedCategory[i].pic[0]}" alt="" data-item='${miniMarketGame.clickedCategory[i].id}'><div class="item_back-discount goods__list-price">${miniMarketGame.clickedCategory[i].price.toFixed(2)} UAH</div>`)
         
         $(`.goods__list-item.item-${i}`).addClass("hint--left");
         $(`.goods__list-item.item-${i}`).attr("aria-label", `${miniMarketGame.clickedCategory[i].title}`);
@@ -313,6 +287,9 @@ $(".goods__grid-block").on('click', function(event) {
         $("[data-text='goods__list-pages']").on('click', function () {
             numPage = $(this).attr("data-count");
             
+            $("[data-text='goods__list-pages']").css("backgroundColor", "#16531849");
+            $(this).css("backgroundColor", "#16531896");
+            
             $(".goods__list-col").remove();
 
             maxItem = 5 * numPage < miniMarketGame.clickedCategory.length ? 5 * numPage : miniMarketGame.clickedCategory.length;
@@ -327,7 +304,10 @@ $(".goods__grid-block").on('click', function(event) {
         $("#goods-sort").change( function () {
             
             numPage = $("[data-text='goods__list-pages']").attr("data-count");
-            
+
+            $("[data-text='goods__list-pages']").css("backgroundColor", "#16531849");
+            $(".goods__list-pages-num-main").css("backgroundColor", "#16531896");
+
             $(".goods__list-col").remove();
 
             let sorted;
@@ -357,7 +337,7 @@ $(".goods__grid-block").on('click', function(event) {
                 $(`.goods__list-item.item-${i}`).addClass("hint--left");
                 $(`.goods__list-item.item-${i}`).attr("aria-label", `${sorted[i].title}`);
                 
-                $(`.goods__list-item.item-${i}`).append(`<div class="item_back-discaunt goods__list-price">${sorted[i].price.toFixed(2)} UAH</div>`);
+                $(`.goods__list-item.item-${i}`).append(`<div class="item_back-discount goods__list-price">${sorted[i].price.toFixed(2)} UAH</div>`);
             };
         
                     
@@ -406,6 +386,8 @@ $("#goods-count").on("input", function () {
     $(".goods__list-pages-num").remove();
     $(".goods__list-grid").remove();
 
+    $("[data-text='goods__list-pages']").css("backgroundColor", "#16531849");
+    $(".goods__list-pages-num-main").css("backgroundColor", "#16531896");
     //---------------Показываем первые товары выбранное количество---------------//
     $(".goods__list-goods").append("<div class='goods__list-grid'></div>");
 
@@ -425,6 +407,9 @@ $("#goods-count").on("input", function () {
     $("[data-text='goods__list-pages']").on('click', function () {
 
         numPage = $(this).attr("data-count");
+
+        $("[data-text='goods__list-pages']").css("backgroundColor", "#16531849");
+        $(this).css("backgroundColor", "#16531896");
         
         $(".goods__list-col").remove();
 
@@ -453,6 +438,9 @@ $("#goods-count").on("input", function () {
         };
 
         numPage = $("[data-text='goods__list-pages']").attr("data-count");
+
+        $("[data-text='goods__list-pages']").css("backgroundColor", "#16531849");
+        $(".goods__list-pages-num-main").css("backgroundColor", "#16531896");
         
         $(".goods__list-col").remove();
                 
@@ -468,7 +456,7 @@ $("#goods-count").on("input", function () {
             $(`.goods__list-item.item-${i}`).addClass("hint--left");
             $(`.goods__list-item.item-${i}`).attr("aria-label", `${sorted[i].title}`);
                 
-            $(`.goods__list-item.item-${i}`).append(`<div class="item_back-discaunt goods__list-price">${sorted[i].price.toFixed(2)} UAH</div>`);
+            $(`.goods__list-item.item-${i}`).append(`<div class="item_back-discount goods__list-price">${sorted[i].price.toFixed(2)} UAH</div>`);
         };
         
         $(".goods__list-item").on("click", function() {
@@ -489,18 +477,21 @@ $("#goods-count").on("input", function () {
 //---------------меняем картинку и текст---------------//
 
 function changePic() {
-    $(".good-card__grid-change-photo img").on("click", function () { 
+    $(".good-card__grid-change-photo img").on("mouseover", function () { 
         const elem = $(this);
 
         const pic = $(".good-card__grid-main-photo-pic");
         pic.attr("src", `${elem.attr("src")}`);
         pic.css("backgroundColor", "rgba(0,0,0,.1)");
 
-        const container = $(".good-card__grid-main-photo");
-        container.css("backgroundColor", `url(${pic.attr("src")})`);
+        $(".good-card__grid-change-photo img").css("borderColor", "#268329");
+        elem.css("borderColor", "rgba(255, 0, 0, .5)");
+        
     
     });
+    
 };
+
 
 //---------------добавляем картинки---------------//
 
@@ -529,23 +520,21 @@ function goodsCardAdd(good) {
         $(".favourite-heart").find("i").addClass("far");
     };
 
+    $(".good-card__grid-basketbtn, .good-card__buying-buy").addClass("dispFlex");
+
     const checkCart = miniMarketGame.cart.find(function (elem) {
         return elem.el.id == String(good.id);
     });
 
     if (!checkCart) {
-        $(".good-card__grid-basketbtn, .good-card__buying-buy").addClass("dispFlex");
         $(".good-card__grid-basketbtn_task").removeClass("dispFlex");
         $(".good-card__grid-basketbtn_action").removeClass("dispFlex");
     } else {
-        $(".good-card__grid-basketbtn, .good-card__buying-buy").removeClass("dispFlex");
         $(".good-card__grid-basketbtn_task").removeClass("dispFlex");
         $(".good-card__grid-basketbtn_action").addClass("dispFlex");
     };
 
-    $(".basketbtn_task-first").html(`${taskArr[0]}`);
-    $(".basketbtn_task-operation").html(`${taskArr[1]}`);
-    $(".basketbtn_task-second").html(`${taskArr[2]}`);
+    
 };
 
 //---------------переход к товару---------------//

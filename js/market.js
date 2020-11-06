@@ -2,9 +2,9 @@
 
 let miniMarketGame = {
     miniMarket: MOCK,
-    discaunt: [10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60],
+    discount: [10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60],
     goodsInSale: 8,
-    rndDiscaunt: [],
+    rndDiscount: [],
     saleGoods: [],
     notSale: [],
     findGood: [],
@@ -15,14 +15,14 @@ let miniMarketGame = {
     operations: [],
     gameMode: "",
     start: function () {
-        this.rndDiscaunt = this.randomDiscaunt();
+        this.rndDiscount = this.randomDiscount();
         this.saleGoods = this.mainSale();
     },
-    randomDiscaunt: function () {
+    randomDiscount: function () {
         for (let i = 0; i < this.goodsInSale; i++) {
-            this.rndDiscaunt.push(this.discaunt[getRandom(1, this.discaunt.length)-1]);
+            this.rndDiscount.push(this.discount[getRandom(1, this.discount.length)-1]);
         };
-        return this.rndDiscaunt;
+        return this.rndDiscount;
     },
     mainSale: function() {
         let miniMarketPart = [];
@@ -31,7 +31,7 @@ let miniMarketGame = {
             let randomGood = notSale[getRandom(1, notSale.length)-1];
             this.saleGoods[i] = {
                     good: randomGood,
-                    discaunt: this.rndDiscaunt[i]
+                    discount: this.rndDiscount[i]
                 };
 
             let findItem = $.inArray(randomGood, notSale);
@@ -102,23 +102,23 @@ let miniMarketGame = {
             return el.id == String(code);
         });
 
-        // const elemInCart = this.cart.find(function (elem) {
-        //     return elem.el.id == String(code);
-        // });
+        const elemInCart = this.cart.find(function (elem) {
+            return elem.el.id == String(code);
+        });
 
-        // if (elemInCart) {
-        //     elemInCart.count = elemInCart.count + 1
-        // } else {
-        //     this.cart.push({
-        //         el: elem,
-        //         count: 1
-        //         });
-        // };
-
-        this.cart.push({
+        if (elemInCart) {
+            elemInCart.count = elemInCart.count + Number($(".good-card__grid-num").val())
+        } else {
+            this.cart.push({
                 el: elem,
                 count: Number($(".good-card__grid-num").val())
                 });
+        };
+
+        // this.cart.push({
+        //         el: elem,
+        //         count: Number($(".good-card__grid-num").val())
+        //         });
 
         return this.cart;
     },
