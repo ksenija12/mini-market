@@ -78,7 +78,28 @@ $(".basketbtn_task-check").on("click", function () {
 
         if (!($(".good-card__grid-basketbtn_action").hasClass("dispFlex"))) {$(".good-card__grid-basketbtn_action").addClass("dispFlex")};    
     
-        console.log(miniMarketGame.cart);
+        // console.log(miniMarketGame.cart);
+
+        // модалка
+
+        $('[data-text="goToCart"]').fancybox({
+            "padding": 20,
+            "width": 600,
+            "height": 180,
+            "overlayOpacity": 0.9,
+            "overlayColor": '#f7f8fa',
+            showCloseButton: true,
+            
+        });
+
+        $(".modal-block_toCart-buyBtn").on("click", function() {
+            $.fancybox.close();
+        });
+
+        $(".modal-block_toCart-cartBtn").on("click", function() {
+            
+        });
+             
     } else {
         alert("Ответ не верный! Попробуй еще)");
         $(".good-card__grid-basketbtn, .good-card__buying-buy").toggleClass("dispFlex");
@@ -93,4 +114,4 @@ $(".basketbtn_task-check").on("click", function () {
     }
 
 
-});
+});  

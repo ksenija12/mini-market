@@ -225,6 +225,7 @@ $('[data-text="try"]').fancybox({
 
 ////////////////////////////Выбор категории////////////////////////////
 
+
 //---------------показываем товары---------------//
 
 function showGood(begin, end) {
@@ -284,7 +285,7 @@ $(".goods__grid-block").on('click', function(event) {
         $(".goods__list-pages").toggleClass("dispFlex");
 
         //---------------Выводим товары соответствующие странице---------------//
-        $("[data-text='goods__list-pages']").on('click', function () {
+        $("[data-text='goods__list-pages']").on('click', function (event) {
             numPage = $(this).attr("data-count");
             
             $("[data-text='goods__list-pages']").css("backgroundColor", "#16531849");
@@ -383,6 +384,9 @@ $(".goods__list-category").on("click", function () {
 ////////////////////////////Смена количества товаров на странице////////////////////////////
 
 $("#goods-count").on("input", function () {
+    
+    const $goodsHeight = $(".goods").outerHeight();
+
     $(".goods__list-pages-num").remove();
     $(".goods__list-grid").remove();
 
@@ -415,6 +419,18 @@ $("#goods-count").on("input", function () {
 
         maxItem = $("#goods-count").val() * numPage < miniMarketGame.clickedCategory.length ? $("#goods-count").val() * numPage : miniMarketGame.clickedCategory.length;
 
+        
+        const selector = "#anchor1";
+
+        const $target = $(selector);
+        const height = $('header').outerHeight() - 40;
+
+        const offset = $target.offset().top - height;
+
+        $('html, body').animate({scrollTop: offset}, 500);
+
+        const $body = $('body');
+
         showGood(numPage, maxItem)
     });
 
@@ -446,19 +462,19 @@ $("#goods-count").on("input", function () {
                 
         maxItem = $("#goods-count").val() * numPage < sorted.length ? $("#goods-count").val() * numPage : sorted.length;
 
-        // showSortedGood(numPage, maxItem);
+        
         for (let i = (5 * numPage - 5); i < maxItem; i++) {
             $(".goods__list-grid").append(`<div class="goods__list-col col-${i}"></div>`);
                 
             $(`.goods__list-col.col-${i}`).append(`<div class="goods__list-item item-${i}"><img src="${sorted[i].pic[0]}" data-item="${sorted[i].id}"></div>`)
                 
-            // $(`.goods__list-item.item-${i}`).css("backgroundImage", `url('${sorted[i].pic[0]}')`);
+
             $(`.goods__list-item.item-${i}`).addClass("hint--left");
             $(`.goods__list-item.item-${i}`).attr("aria-label", `${sorted[i].title}`);
                 
             $(`.goods__list-item.item-${i}`).append(`<div class="item_back-discount goods__list-price">${sorted[i].price.toFixed(2)} UAH</div>`);
         };
-        
+
         $(".goods__list-item").on("click", function() {
             const good = miniMarketGame.selectedGood(($(this).find("img")).attr("data-item"));
         
@@ -498,6 +514,7 @@ function changePic() {
 function goodsCardAdd(good) {
     $(".good-card__grid-main-photo").append(`<img  class="good-card__grid-main-photo-pic" src="${good.pic[0]}" alt="${good.title}">`);
     $(".good-card__grid-change-photo").append(`<li class="good-card__grid-change-li"><img  class="good-card__grid-change-photo-pic" src="${good.pic[0]}" alt="${good.title}"></li>`);
+    $(".good-card__grid-change-photo img").css("borderColor", "rgba(255, 0, 0, .5)");
     $(".good-card__grid-change-photo").append(`<li class="good-card__grid-change-li"><img  class="good-card__grid-change-photo-pic" src="${good.pic[1]}" alt="${good.title}"></li>`);
     $(".good-card__grid-change-photo").append(`<li class="good-card__grid-change-li"><img  class="good-card__grid-change-photo-pic" src="${good.pic[2]}" alt="${good.title}"></li>`);
 
