@@ -1140,11 +1140,6 @@ body {
           justify-content: center;
 }
 
-.sale__grid-col:hover .sale__grid-item {
-  -webkit-transform: perspective(1000px) rotateY(180deg);
-          transform: perspective(1000px) rotateY(180deg);
-}
-
 .sale__grid-item {
   position: relative;
   -webkit-transform: perspective(1000px);
@@ -1159,6 +1154,11 @@ body {
           backface-visibility: hidden;
   height: 100%;
   width: 18vw;
+}
+
+.sale__grid-item-container:hover .sale__grid-item {
+  -webkit-transform: perspective(1000px) rotateY(180deg);
+          transform: perspective(1000px) rotateY(180deg);
 }
 
 .sale__grid-item_face, .sale__grid-item_back {
@@ -2044,12 +2044,104 @@ body {
   margin-right: 2.5vw;
 }
 
+.favourite-heart:hover {
+  cursor: pointer;
+}
+
 .basketbtn_task-check {
   width: 40px;
 }
 
 .basketbtn_task-answer, .basketbtn_task-answer-alt {
   border: 1px solid #268329;
+}
+
+.favourite__grid {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 0px;
+  margin-top: 30px;
+}
+
+.favourite__grid-col {
+  width: calc(100% / 4);
+  padding: 10px;
+}
+
+.favourite__block {
+  position: relative;
+  margin-top: 40px;
+  width: 80%;
+  border: 2px solid #268329;
+  border-radius: 10px;
+  padding: 30px 40px;
+  background-color: #ffffff;
+}
+
+.favourite__list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 20px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+}
+
+.favourite__cat {
+  height: 80px;
+  position: absolute;
+  left: 175px;
+  top: -25px;
+}
+
+.favourite__header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.favourite__grid {
+  width: 100%;
+}
+
+.favourite__grid-item {
+  cursor: pointer;
+  border: 1px solid #268329;
+  border-radius: 3px;
+}
+
+.favourite__grid-item img {
+  -o-object-fit: fill;
+     object-fit: fill;
+  width: 100%;
+  height: 100%;
+}
+
+.favourite__choose {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.favourite__choose-ico {
+  margin-left: 10px;
+}
+
+.favourite__choose i {
+  font-size: 20px;
+  cursor: pointer;
 }
 
 .visible {

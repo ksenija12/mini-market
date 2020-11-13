@@ -335,7 +335,7 @@ $(".button_level").on("click", function() {
 
             $(".sale__grid").append(`<div class="sale__grid-col col-${i}">`);
 
-            $(`.sale__grid-col.col-${i}`).append('<div class="sale__grid-item"></div>');
+            $(`.sale__grid-col.col-${i}`).append('<div class="sale__grid-item-container"><div class="sale__grid-item"></div></div>');
 
             $(`.sale__grid-col.col-${i} .sale__grid-item`).append(`<div class="sale__grid-item_back" data-item="${gameMainSale[i].good.id}">
             <img src="${gameMainSale[i].good.pic[0]}" alt="">

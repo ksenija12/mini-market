@@ -423,9 +423,10 @@ $("#goods-count").on("input", function () {
         const selector = "#anchor1";
 
         const $target = $(selector);
-        const height = $('header').outerHeight() - 40;
+        // const height = $('header').outerHeight() - 40;
 
-        const offset = $target.offset().top - height;
+        // const offset = $target.offset().top - height;
+        const offset = $target.offset().top ;
 
         $('html, body').animate({scrollTop: offset}, 500);
 
@@ -484,6 +485,66 @@ $("#goods-count").on("input", function () {
     
     })
     
+});
+
+
+
+////////////////////////////Переход в избранное////////////////////////////
+
+
+$(".nav-list__favourite, .nav-list__link_heart, .footer__buyer-favourite").on("click", function() {
+    $(".favourite").toggleClass("dispFlex");
+    $(".market-page").toggleClass("dispFlex");
+
+    window.scrollTo(0, 0);
+
+    if (miniMarketGame.favouriteGood.length == 0) {
+        $(".favourite__list").append("<h3>Здесь будут находиться избранные Вами товары. Не пора ли добавить несколько?</h3>")
+    } else {
+        for (let i = 0; i < miniMarketGame.favouriteGood.length; i++) {
+            $(".favourite__grid").append(`<div class="favourite__grid-col col-${i}"></div>`);
+                
+            $(`.favourite__grid-col.col-${i}`).append(`<div class="favourite__grid-item item-${i}"><img src="${miniMarketGame.favouriteGood[i].pic[0]}" data-item="${miniMarketGame.favouriteGood[i].id}"></div>`);
+            
+            $(`.favourite__grid-item.item-${i}`).addClass("hint--left");
+            $(`.favourite__grid-item.item-${i}`).attr("aria-label", `${miniMarketGame.favouriteGood[i].title}`);
+        
+        };
+
+    }
+});
+
+
+$(".favourite__choose-ico").on("click", function() {
+    $(".favourite__grid-col").remove();
+    $(this).find("i").toggleClass("fa-grip-horizontal").toggleClass("fa-grip-lines");
+
+    if (($(this).find("i")).hasClass("fa-grip-horizontal")) {
+        $(this).attr("aria-label", "Сетка");
+        for (let i = 0; i < miniMarketGame.favouriteGood.length; i++) {
+            $(".favourite__grid").append(`<div class="favourite__grid-col col-${i}"></div>`);
+                
+            $(`.favourite__grid-col.col-${i}`).append(`<div class="favourite__grid-item item-${i}"><img src="${miniMarketGame.favouriteGood[i].pic[0]}" data-item="${miniMarketGame.favouriteGood[i].id}"></div>`);
+            
+            $(`.favourite__grid-item.item-${i}`).addClass("hint--left");
+            $(`.favourite__grid-item.item-${i}`).attr("aria-label", `${miniMarketGame.favouriteGood[i].title}`);
+       };
+    } else if (($(this).find("i")).hasClass("fa-grip-lines")) {
+        $(this).attr("aria-label", "Список");
+        for (let i = 0; i < miniMarketGame.favouriteGood.length; i++) {
+            $(".favourite__grid").append(`<div class="favourite__grid-col col-${i}"></div>`);
+                
+            $(`.favourite__grid-col.col-${i}`).append(`<div class="favourite__grid-item item-${i}"><img src="${miniMarketGame.favouriteGood[i].pic[0]}" data-item="${miniMarketGame.favouriteGood[i].id}"></div>`);
+            
+            $(`.favourite__grid-item.item-${i}`).addClass("hint--left");
+            $(`.favourite__grid-item.item-${i}`).attr("aria-label", `${miniMarketGame.favouriteGood[i].title}`);
+            
+            $(".favourite__grid").append(`<div class="favourite__grid-col col-description-${i}"></div>`);
+            $(`.favourite__grid-col.col-description-${i}`).append(`<div class="favourite__grid-item"><div class='favourite__grid-title'>${miniMarketGame.favouriteGood[i].title}</div></div>`)
+            $(`.favourite__grid-col.col-description-${i}`).css('width', "75%");
+            $(`.favourite__grid-col.col-description-${i} .favourite__grid-item`).css('border', "none");
+        };
+    }
 });
 
 
