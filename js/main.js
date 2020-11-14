@@ -495,23 +495,46 @@ $("#goods-count").on("input", function () {
 $(".nav-list__favourite, .nav-list__link_heart, .footer__buyer-favourite").on("click", function() {
     $(".favourite").toggleClass("dispFlex");
     $(".market-page").toggleClass("dispFlex");
+    if (($(".favourite__choose-ico").find("i")).hasClass("fa-grip-lines")) {($(".favourite__choose-ico").find("i")).toggleClass("fa-grip-horizontal").toggleClass("fa-grip-lines");}
+
+    $("h3").remove();
 
     window.scrollTo(0, 0);
 
     if (miniMarketGame.favouriteGood.length == 0) {
-        $(".favourite__list").append("<h3>Здесь будут находиться избранные Вами товары. Не пора ли добавить несколько?</h3>")
+        $(".favourite__list").append("<h3>Здесь будут находиться избранные Вами товары. Не пора ли добавить несколько?</h3>");
     } else {
         for (let i = 0; i < miniMarketGame.favouriteGood.length; i++) {
             $(".favourite__grid").append(`<div class="favourite__grid-col col-${i}"></div>`);
                 
-            $(`.favourite__grid-col.col-${i}`).append(`<div class="favourite__grid-item item-${i}"><img src="${miniMarketGame.favouriteGood[i].pic[0]}" data-item="${miniMarketGame.favouriteGood[i].id}"></div>`);
+            $(`.favourite__grid-col.col-${i}`).append(`<div class="favourite__grid-item item-${i}"><img src="${miniMarketGame.favouriteGood[i].pic[0]}" data-item="${miniMarketGame.favouriteGood[i].id}"></div>
+            <div class="favourite__grid-item-remove hint--right" aria-label="Удалить" data-item="${miniMarketGame.favouriteGood[i].id}"><i class="far fa-trash-alt"></i></div>
+            <div class="favourite__grid-item-cart hint--right" aria-label="Добавить в корзину" data-item="${miniMarketGame.favouriteGood[i].id}"><i class="fas fa-shopping-basket"></i></div>`);
             
             $(`.favourite__grid-item.item-${i}`).addClass("hint--left");
             $(`.favourite__grid-item.item-${i}`).attr("aria-label", `${miniMarketGame.favouriteGood[i].title}`);
-        
+            
         };
 
-    }
+        $(".favourite__grid-item").on("click", function() {
+            $(".favourite__grid-col").remove();
+
+            const good = miniMarketGame.selectedGood(($(this).find("img")).attr("data-item"));
+            
+            goToFavouriteGood(good);
+        });
+
+        $(".favourite__grid-item-remove").on("click", function () {
+            miniMarketGame.favouriteGoodRemove($(this).attr("data-item"));
+            $(this).parent().remove();
+
+            if (miniMarketGame.favouriteGood.length == 0) {
+                $(".favourite__list").append("<h3>Здесь будут находиться избранные Вами товары. Не пора ли добавить несколько?</h3>");
+            };
+        });
+
+    };
+
 });
 
 
@@ -524,27 +547,87 @@ $(".favourite__choose-ico").on("click", function() {
         for (let i = 0; i < miniMarketGame.favouriteGood.length; i++) {
             $(".favourite__grid").append(`<div class="favourite__grid-col col-${i}"></div>`);
                 
-            $(`.favourite__grid-col.col-${i}`).append(`<div class="favourite__grid-item item-${i}"><img src="${miniMarketGame.favouriteGood[i].pic[0]}" data-item="${miniMarketGame.favouriteGood[i].id}"></div>`);
+            $(`.favourite__grid-col.col-${i}`).append(`<div class="favourite__grid-item item-${i}"><img src="${miniMarketGame.favouriteGood[i].pic[0]}" data-item="${miniMarketGame.favouriteGood[i].id}"></div>
+            <div class="favourite__grid-item-remove hint--right" aria-label="Удалить" data-item="${miniMarketGame.favouriteGood[i].id}"><i class="far fa-trash-alt"></i></div>
+            <div class="favourite__grid-item-cart hint--right" aria-label="Добавить в корзину" data-item="${miniMarketGame.favouriteGood[i].id}"><i class="fas fa-shopping-basket"></i></div>`);
             
             $(`.favourite__grid-item.item-${i}`).addClass("hint--left");
             $(`.favourite__grid-item.item-${i}`).attr("aria-label", `${miniMarketGame.favouriteGood[i].title}`);
-       };
+        };
+
+        $(".favourite__grid-item").on("click", function() {
+            $(".favourite__grid-col").remove();
+
+            const good = miniMarketGame.selectedGood(($(this).find("img")).attr("data-item"));
+            
+            goToFavouriteGood(good);
+        });
+
+        $(".favourite__grid-item-remove").on("click", function () {
+            miniMarketGame.favouriteGoodRemove($(this).attr("data-item"));
+            $(this).parent().remove();
+
+            if (miniMarketGame.favouriteGood.length == 0) {
+                $(".favourite__list").append("<h3>Здесь будут находиться избранные Вами товары. Не пора ли добавить несколько?</h3>");
+            };
+        });
     } else if (($(this).find("i")).hasClass("fa-grip-lines")) {
         $(this).attr("aria-label", "Список");
         for (let i = 0; i < miniMarketGame.favouriteGood.length; i++) {
             $(".favourite__grid").append(`<div class="favourite__grid-col col-${i}"></div>`);
                 
-            $(`.favourite__grid-col.col-${i}`).append(`<div class="favourite__grid-item item-${i}"><img src="${miniMarketGame.favouriteGood[i].pic[0]}" data-item="${miniMarketGame.favouriteGood[i].id}"></div>`);
+            $(`.favourite__grid-col.col-${i}`).append(`<div class="favourite__grid-item item-${i}"><img src="${miniMarketGame.favouriteGood[i].pic[0]}" data-item="${miniMarketGame.favouriteGood[i].id}"></div>
+            <div class="button favourite__grid-item-remove-list hint--right" aria-label="Удалить" data-item="${miniMarketGame.favouriteGood[i].id}"><i class="far fa-trash-alt"></i></div>
+            <div class="button favourite__grid-item-cart-list hint--right" aria-label="Добавить в корзину" data-item="${miniMarketGame.favouriteGood[i].id}"><i class="fas fa-shopping-basket"></i></div>`);
             
             $(`.favourite__grid-item.item-${i}`).addClass("hint--left");
             $(`.favourite__grid-item.item-${i}`).attr("aria-label", `${miniMarketGame.favouriteGood[i].title}`);
+
+            let val = (miniMarketGame.favouriteGood[i].count == 1) ? "" : "/ " + miniMarketGame.favouriteGood[i].count + " " + miniMarketGame.favouriteGood[i].val;
             
-            $(".favourite__grid").append(`<div class="favourite__grid-col col-description-${i}"></div>`);
-            $(`.favourite__grid-col.col-description-${i}`).append(`<div class="favourite__grid-item"><div class='favourite__grid-title'>${miniMarketGame.favouriteGood[i].title}</div></div>`)
-            $(`.favourite__grid-col.col-description-${i}`).css('width', "75%");
-            $(`.favourite__grid-col.col-description-${i} .favourite__grid-item`).css('border', "none");
+            $(`.favourite__grid-col.col-${i}`).append(`<div class="favourite__grid-item-description"><div class='favourite__grid-title'>${miniMarketGame.favouriteGood[i].title}</div>
+            <div class='favourite__grid-category'>Категория: ${miniMarketGame.favouriteGood[i].category}</div>
+            <div class='favourite__grid-code'>Код: ${miniMarketGame.favouriteGood[i].id}</div>
+            <div class='favourite__grid-price'>Цена: ${miniMarketGame.favouriteGood[i].price} UAH ${val}</div>
+            </div>`)
+            $(`.favourite__grid-col`).css('width', "100%");
+            $(`.favourite__grid-item-description`).css('width', "75%");
+            $(`.favourite__grid-item-description`).css('marginLeft', "20px");
+            $(`.favourite__grid-item`).css('width', "25%");
+
         };
+
+        $(".favourite__grid-item").on("click", function() {
+            $(".favourite__grid-col").remove();
+
+            const good = miniMarketGame.selectedGood(($(this).find("img")).attr("data-item"));
+            
+            goToFavouriteGood(good);
+        });
+
+        $(".favourite__grid-item-remove-list").on("click", function () {
+            miniMarketGame.favouriteGoodRemove($(this).attr("data-item"));
+            $(this).parent().remove();
+
+            if (miniMarketGame.favouriteGood.length == 0) {
+                $(".favourite__list").append("<h3>Здесь будут находиться избранные Вами товары. Не пора ли добавить несколько?</h3>");
+            };
+        });
     }
+
+});
+
+$(".favourite__back").on("click", function() {
+    $(".favourite").toggleClass("dispFlex");
+    $(".market-page").toggleClass("dispFlex");
+    $(".favourite__grid-col").remove();
+});
+
+
+$(".favourite__remove").on("click", function() {
+    $(".favourite__grid-col").remove();
+    miniMarketGame.favouriteGood = [];
+    $(".favourite__list").append("<h3>Здесь будут находиться избранные Вами товары. Не пора ли добавить несколько?</h3>");
 });
 
 
@@ -594,8 +677,10 @@ function goodsCardAdd(good) {
 
     if (checkFavourite) {
         $(".favourite-heart").find("i").addClass("fas");
+        $(".favourite-heart").attr("aria-label", "Убрать из избранного");
     } else {
         $(".favourite-heart").find("i").addClass("far");
+        $(".favourite-heart").attr("aria-label", "Добавить в избранное");
     };
 
     $(".good-card__grid-basketbtn, .good-card__buying-buy").addClass("dispFlex");
@@ -627,6 +712,18 @@ function goToGood(good) {
     changePic();
 
 };
+
+function goToFavouriteGood(good) {
+    $(".favourite").toggleClass("dispFlex");
+    $(".good-card").toggleClass("dispFlex");
+
+    window.scrollTo(0, 0);
+    
+    taskArr = miniMarketGame.createTask();
+    goodsCardAdd(good);
+    changePic();
+};
+
 
 $('.good-card__about-garant-paying .good-card__about-title').each(function() {
     const $target = $(this);
