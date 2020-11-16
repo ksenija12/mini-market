@@ -2,6 +2,7 @@
 
 let miniMarketGame = {
     miniMarket: MOCK,
+    onAccount: 5000,
     discount: [10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60],
     goodsInSale: 8,
     rndDiscount: [],

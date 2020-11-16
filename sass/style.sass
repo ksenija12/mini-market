@@ -581,12 +581,12 @@ body
             transition: .3s
             transform-style: preserve-3d
             transform-origin: 50% 50%
-            backface-visibility: hidden
             height: 100%
             width: 18vw
             &-container:hover .sale__grid-item
                 transform: perspective(1000px) rotateY(180deg)
             &_face, &_back
+                backface-visibility: hidden
                 position: absolute
                 height: 18vw
                 width: 18vw
@@ -595,6 +595,8 @@ body
                 background-size: cover
             &_back
                 transform: rotateY(180deg)
+            &_face
+                transform: rotate(0)
 
 .item_face-category, .item_back-good, .item_back-discount
     height: 20px
@@ -1174,6 +1176,89 @@ body
         & i
             font-size: 20px
             cursor: pointer    
+
+.modal_container-clearFavourite
+    display: flex
+    flex-direction: column
+    align-items: center
+    & .button
+        width: 125px
+    & h4
+        text-align: center
+
+@include grid(basket, 0, 30, wrap, 4, 10)
+
+.basket
+    &_container
+        min-height: 100vh
+        align-items: center
+    &__block
+        position: relative
+        margin-top: 40px
+        width: 80%
+        border: 2px solid $mainColor
+        border-radius: 10px
+        padding: 30px 40px
+        background-color: #ffffff
+        & .button
+            width: 200px
+            margin: 0
+            &:hover
+                cursor: pointer
+                background-color: $mainColor
+    &__buttons
+        margin-top: 40px
+        display: flex
+        justify-content: space-around
+    &__onAccount
+        display: flex
+        justify-content: flex-end
+        margin-top: 40px
+        &-summa
+            color: $mainColor
+            margin-left: 20px
+    &__result
+        display: flex
+        justify-content: flex-end
+        align-items: center
+        margin-top: 40px
+        &-summa
+            margin-left: 20px
+            & input
+                padding: 2px 5px
+                width: 85px
+    &__enough
+        display: flex
+        justify-content: flex-end
+        align-items: center
+        margin-top: 40px
+        &-choose
+            margin-left: 20px
+    &__head
+        display: flex
+        justify-content: space-between
+    &__grid
+        width: 100%
+        &-title
+            font-size: 20px
+            margin-top: 15px
+        &-category, &-code
+            margin-top: 10px
+        &-price
+            margin-top: 15px
+            font-size: 16px
+        &-col
+            position: relative
+            display: flex
+        &-item
+            cursor: pointer
+            border: 1px solid $mainColor
+            border-radius: 3px
+            & img
+                object-fit: fill
+                width: 100%
+                height: 100%    
+
 
 .visible
     visibility: visible

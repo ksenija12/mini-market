@@ -227,7 +227,7 @@
                                     <div class="nav-list__link nav-list__favourite" data-text="#anchor3">Любимое</div>
                                 </li>
                                 <li>
-                                    <div class="nav-list__link" data-text="#anchor4">Корзина</div>
+                                    <div class="nav-list__link nav-list__basket" data-text="#anchor4">Корзина</div>
                                 </li>
                                 <li>
                                     <div class="nav-list__link" data-text="#anchor6">Редактор</div>
@@ -512,7 +512,7 @@
                 </div>
                 <div class="favourite__change">
                     <div class="favourite__choose"><span class="favourite__choose-text">Вид:</span><span class="favourite__choose-ico hint--top" aria-label="Сетка"><i class="fas fa-grip-horizontal"></i></span></div>
-                    <div class="button favourite__remove">Очистить список</div>
+                    <a href="#modal-clearFavourite" class="main-block__findarea-icon-link" data-text="clearFavourite"><div class="button favourite__remove">Очистить список</div></a>
                     <div class="button favourite__back">Назад</div>
                 </div>
                 <div class="favourite__list">                        
@@ -523,6 +523,20 @@
             </div>
         </div>
     </div>
+
+
+
+
+
+    <div class="modal-block modal-block_clearFavourite" id="modal-clearFavourite">
+        <div class="container modal_container modal_container-clearFavourite">
+            <h4>Вы действительно хотите полностью очистить список избранных товаров? Все тобары будут удалены.</h4>
+            <div class="modal_buttons">
+                <div class="button modal-block_clearFavourite-no hint--top" aria-label="Нет, не удалять">Отменить</div>
+                <div class="button modal-block_clearFavourite-yes hint--top" aria-label="Да, удалить">Подтвердить</div>
+            </div>
+        </div>
+    </div>
     
 
 
@@ -530,7 +544,37 @@
 
 
     <div class="basket">
-        <div class="container"></div>
+        <div class="container basket_container">
+            <div class="basket__block">
+                <div class="basket__head">
+                    <div class="basket__head-title"><h2>Корзина</h2></div>
+                    <div class="button basket__back">Назад в магазин</div>
+                </div>
+                <div class="basket__onAccount">
+                    <div class="basket__onAccount-text">На счету:</div>
+                    <div class="basket__onAccount-summa hint--top" aria-label="Столько есть безналичных средств"></div>
+                </div>
+                <div class="basket__grid"></div>
+                <div class="basket__result">
+                    <div class="basket__result-text">Итого:</div>
+                    <div class="basket__result-summa hint--top" aria-label="Введите сумму всех покупок"><input type="text" maxlength="9"> UAH</div>
+                </div>
+                <div class="basket__enough">
+                    <div class="basket__enough-text">Достаточно ли средств на счету?</div>
+                    <div class="basket__enough-choose hint--top" aria-label="Выберите верное">
+                        <select name="basket__enough-choose-list" id="basket__enough-choose-list">
+                            <option value="" hidden>введите</option>
+                            <option value="0">Да</option>
+                            <option value="1">Нет</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="basket__buttons">
+                    <div class="button basket__buttons-return hint--top" aria-label="Вернуться в магазин">Продолжить покупки</div>
+                    <div class="button basket__buttons-continue hint--top" aria-label="Перейти к оформлению заказа">Оформить заказ</div>
+                </div>
+            </div>
+        </div>
     </div>
 
 

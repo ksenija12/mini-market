@@ -96,9 +96,6 @@ $(".basketbtn_task-check").on("click", function () {
             $.fancybox.close();
         });
 
-        $(".modal-block_toCart-cartBtn").on("click", function() {
-            
-        });
              
     } else {
         alert("Ответ не верный! Попробуй еще)");
