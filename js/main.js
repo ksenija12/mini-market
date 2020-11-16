@@ -533,6 +533,11 @@ $(".nav-list__favourite, .nav-list__link_heart, .footer__buyer-favourite").on("c
             };
         });
 
+        $(".favourite__grid-item-cart").on("click", function () {
+            miniMarketGame.cartAdd($(this).attr("data-item"));
+            // console.log(miniMarketGame.cart);
+        });
+
     };
 
 });
@@ -570,6 +575,11 @@ $(".favourite__choose-ico").on("click", function() {
             if (miniMarketGame.favouriteGood.length == 0) {
                 $(".favourite__list").append("<h3>Здесь будут находиться избранные Вами товары. Не пора ли добавить несколько?</h3>");
             };
+        });
+
+        $(".favourite__grid-item-cart").on("click", function () {
+            miniMarketGame.cartAdd($(this).attr("data-item"));
+            console.log(miniMarketGame.cart);
         });
     } else if (($(this).find("i")).hasClass("fa-grip-lines")) {
         $(this).attr("aria-label", "Список");
@@ -612,6 +622,11 @@ $(".favourite__choose-ico").on("click", function() {
             if (miniMarketGame.favouriteGood.length == 0) {
                 $(".favourite__list").append("<h3>Здесь будут находиться избранные Вами товары. Не пора ли добавить несколько?</h3>");
             };
+        });
+
+        $(".favourite__grid-item-cart-list").on("click", function () {
+            miniMarketGame.cartAdd($(this).attr("data-item"));
+            console.log(miniMarketGame.cart);
         });
     }
 
