@@ -1186,7 +1186,7 @@ body
     & h4
         text-align: center
 
-@include grid(basket, 0, 30, wrap, 4, 10)
+@include grid(basket, 0, 30, wrap, 4, 30)
 
 .basket
     &_container
@@ -1200,16 +1200,28 @@ body
         border-radius: 10px
         padding: 30px 40px
         background-color: #ffffff
+        & h3
+            text-align: center
+            margin-top: 20px
         & .button
             width: 200px
             margin: 0
+            margin-left: 20px
             &:hover
                 cursor: pointer
                 background-color: $mainColor
+    &__cat
+        height: 80px
+    &__catHint
+        transform: translate(75%, -100%)
+        &::after    
+            right: calc( 100% - 1px )
     &__buttons
         margin-top: 40px
         display: flex
         justify-content: space-around
+        align-items: flex-end
+        position: relative
     &__onAccount
         display: flex
         justify-content: flex-end
@@ -1236,9 +1248,11 @@ body
             margin-left: 20px
     &__head
         display: flex
-        justify-content: space-between
+        justify-content: flex-end
     &__grid
         width: 100%
+        // margin-top: 0
+        border-top: 1px solid $mainColor
         &-title
             font-size: 20px
             margin-top: 15px
@@ -1250,15 +1264,51 @@ body
         &-col
             position: relative
             display: flex
+            padding-left: 0
+            padding-right: 0
+            border-bottom: 1px solid $mainColor
         &-item
             cursor: pointer
             border: 1px solid $mainColor
             border-radius: 3px
+            position: relative
             & img
                 object-fit: fill
                 width: 100%
-                height: 100%    
+                height: 100%
+            &-remove
+                position: absolute
+                top: 45px
+                right: 10px
+                background-color: $mainRed
+                width: 25px
+                height: 25px
+                display: flex
+                justify-content: center
+                align-items: center
+                text-decoration: none
+                &:hover
+                    cursor: pointer
+                & i
+                    padding: 5px
+    &__count
+        display: flex
+        justify-content: space-between
+        align-items: flex-end
+    &__hint, &__hint-total
+        margin-left: 15px
 
+.basket__result, .basket__enough, .basket__buttons
+    display: none
+
+.modal_container-clearCart
+    display: flex
+    flex-direction: column
+    align-items: center
+    & .button
+        width: 125px
+    & h4
+        text-align: center
 
 .visible
     visibility: visible
@@ -1268,6 +1318,12 @@ body
 
 .dispFlex
     display: flex
+
+.inputRed
+    background-color: $mainRed
+
+.inputRedLight
+    background-color: pink
 
 .backtostart, .backform
     color: $mainColor

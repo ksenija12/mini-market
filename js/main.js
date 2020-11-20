@@ -233,7 +233,9 @@ function showGood(begin, end) {
         $(".goods__list-grid").append(`<div class="goods__list-col col-${i}"></div>`);
         
         $(`.goods__list-col.col-${i}`).append(`<div class="goods__list-item item-${i}"></div>`)
-        $(`.goods__list-item.item-${i}`).append(`<img src="${miniMarketGame.clickedCategory[i].pic[0]}" alt="" data-item='${miniMarketGame.clickedCategory[i].id}'><div class="item_back-discount goods__list-price">${miniMarketGame.clickedCategory[i].price.toFixed(2)} UAH</div>`)
+        let price;
+        miniMarketGame.gameMode == 1 ? price = miniMarketGame.clickedCategory[i].price.toFixed(0) : price = miniMarketGame.clickedCategory[i].price.toFixed(2);
+        $(`.goods__list-item.item-${i}`).append(`<img src="${miniMarketGame.clickedCategory[i].pic[0]}" alt="" data-item='${miniMarketGame.clickedCategory[i].id}'><div class="item_back-discount goods__list-price">${price} UAH</div>`)
         
         $(`.goods__list-item.item-${i}`).addClass("hint--left");
         $(`.goods__list-item.item-${i}`).attr("aria-label", `${miniMarketGame.clickedCategory[i].title}`);
@@ -337,8 +339,10 @@ $(".goods__grid-block").on('click', function(event) {
                 
                 $(`.goods__list-item.item-${i}`).addClass("hint--left");
                 $(`.goods__list-item.item-${i}`).attr("aria-label", `${sorted[i].title}`);
-                
-                $(`.goods__list-item.item-${i}`).append(`<div class="item_back-discount goods__list-price">${sorted[i].price.toFixed(2)} UAH</div>`);
+
+                let price;
+                miniMarketGame.gameMode == 1 ? price = sorted[i].price.toFixed(0) : price = sorted[i].price.toFixed(2);
+                $(`.goods__list-item.item-${i}`).append(`<div class="item_back-discount goods__list-price">${price} UAH</div>`);
             };
         
                     
@@ -472,8 +476,10 @@ $("#goods-count").on("input", function () {
 
             $(`.goods__list-item.item-${i}`).addClass("hint--left");
             $(`.goods__list-item.item-${i}`).attr("aria-label", `${sorted[i].title}`);
-                
-            $(`.goods__list-item.item-${i}`).append(`<div class="item_back-discount goods__list-price">${sorted[i].price.toFixed(2)} UAH</div>`);
+
+            let price;
+            miniMarketGame.gameMode == 1 ? price = sorted[i].price.toFixed(0) : price = sorted[i].price.toFixed(2);    
+            $(`.goods__list-item.item-${i}`).append(`<div class="item_back-discount goods__list-price">${price} UAH</div>`);
         };
 
         $(".goods__list-item").on("click", function() {
@@ -596,11 +602,13 @@ $(".favourite__choose-ico").on("click", function() {
             $(`.favourite__grid-item.item-${i}`).attr("aria-label", `${miniMarketGame.favouriteGood[i].title}`);
 
             let val = (miniMarketGame.favouriteGood[i].count == 1) ? "" : "/ " + miniMarketGame.favouriteGood[i].count + " " + miniMarketGame.favouriteGood[i].val;
+            let price;
+            miniMarketGame.gameMode == 1 ? price = miniMarketGame.favouriteGood[i].price.toFixed(0) : price = miniMarketGame.favouriteGood[i].price.toFixed(2);
             
             $(`.favourite__grid-col.col-${i}`).append(`<div class="favourite__grid-item-description"><div class='favourite__grid-title'>${miniMarketGame.favouriteGood[i].title}</div>
             <div class='favourite__grid-category'>Категория: ${miniMarketGame.favouriteGood[i].category}</div>
             <div class='favourite__grid-code'>Код: ${miniMarketGame.favouriteGood[i].id}</div>
-            <div class='favourite__grid-price'>Цена: ${miniMarketGame.favouriteGood[i].price} UAH ${val}</div>
+            <div class='favourite__grid-price'>Цена: ${price} UAH ${val}</div>
             </div>`)
             $(`.favourite__grid-col`).css('width', "100%");
             $(`.favourite__grid-item-description`).css('width', "75%");
@@ -707,7 +715,10 @@ function goodsCardAdd(good) {
     $(".good-card__grid-code span").html(`${good.id}`);
 
     let val = (good.count == 1) ? "" : "/ " + good.count + " " + good.val
-    $(".good-card__grid-price span").html(`${good.price} UAH ${val}`);
+
+    let price;
+    miniMarketGame.gameMode == 1 ? price = good.price.toFixed(0) : price = good.price.toFixed(2);
+    $(".good-card__grid-price span").html(`${price} UAH ${val}`);
     
     $(".good-card__about-descr .good-card__about-text").html(`${good.descr}`);
 
@@ -790,24 +801,59 @@ $(".nav-list__basket, .nav-list__link_basket, .footer__buyer-basket").on("click"
     $(".basket").toggleClass("dispFlex");
     $(".market-page").toggleClass("dispFlex");
     $(".basket__onAccount-summa").html(`${miniMarketGame.onAccount.toFixed(2)} UAH`);
-    buildCartGrid ();
+    $(".basket__result-summa-input").val("");
+    $("#basket__enough-choose-list").val("");
+
+    if (miniMarketGame.cart.length == 0) {
+        $(".basket__block").append("<h3>Здесь будут находиться товары, которые Вы сможете приобрести. Не пора ли добавить несколько?</h3>");
+        $(".basket__result, .basket__enough, .basket__buttons").removeClass("dispFlex");
+    } else {
+        buildCartGrid ();
+        $(".basket__result, .basket__enough, .basket__buttons").addClass("dispFlex");
+        $(".basket__block h3").remove();
+        createOrder();
+        delCartItem();
+    };
 });
 
-$(".basket__back").on("click", function() {
-    $(".basket").toggleClass("dispFlex");
-    $(".market-page").toggleClass("dispFlex");
-});
 
 $(".modal-block_toCart-cartBtn").on("click", function() {
     $(".basket").toggleClass("dispFlex");
     $(".good-card").toggleClass("dispFlex");
     $(".basket__onAccount-summa").html(`${miniMarketGame.onAccount.toFixed(2)} UAH`);
+    $(".basket__result-summa-input").val("");
+    $("#basket__enough-choose-list").val("");
+
     $.fancybox.close();
-    buildCartGrid ();
+    if (miniMarketGame.cart.length == 0) {
+        $(".basket__result, .basket__enough, .basket__buttons").removeClass("dispFlex");
+        $(".basket__block").append("<h3>Здесь будут находиться товары, которые Вы сможете приобрести. Не пора ли добавить несколько?</h3>");
+    } else {
+        buildCartGrid ();
+        $(".basket__result, .basket__enough, .basket__buttons").addClass("dispFlex");
+        $(".basket__block h3").remove();
+        createOrder();
+        delCartItem();
+    };
 });
+
+
+$(".basket__back, .basket__buttons-return").on("click", function() {
+    $(".basket").toggleClass("dispFlex");
+    $(".market-page").toggleClass("dispFlex");
+    $(".basket__grid-col").remove();
+    $(".good-card__grid-num").val("");
+    $(".good-card__grid-count .good-card__grid-num").val("1");
+    $(".basket__block h3").remove();
+
+    window.scrollTo(0, 0);
+});
+
 
 function buildCartGrid () {
     $(".basket__grid-col").remove();
+    $(".basket__hint-total").remove();
+    let totalSumm = 0;
     for (let i = 0; i < miniMarketGame.cart.length; i++) {
         $(".basket__grid").append(`<div class="basket__grid-col col-${i}"></div>`);
             
@@ -817,21 +863,150 @@ function buildCartGrid () {
         $(`.basket__grid-item.item-${i}`).attr("aria-label", `${miniMarketGame.cart[i].el.title}`);
         
         let val = (miniMarketGame.cart[i].el.count == 1) ? "" : "/ " + miniMarketGame.cart[i].count + " " + miniMarketGame.cart[i].el.val;
+        
+        let price;
+        miniMarketGame.gameMode == 1 ? price = miniMarketGame.cart[i].el.price.toFixed(0) : price = miniMarketGame.cart[i].el.price.toFixed(2);
             
-        $(`.basket__grid-col.col-${i}`).append(`<div class="basket__grid-item-description"><div class='basket__grid-title'>${miniMarketGame.cart[i].el.title}</div>
+        $(`.basket__grid-col.col-${i}`).append(`<div class="basket__grid-item-description"><div class="basket__grid-item-remove hint--top" aria-label="Удалить из корзины" data-item="${miniMarketGame.cart[i].el.id}"><i class="far fa-trash-alt"></i></div><div class='basket__grid-title'>${miniMarketGame.cart[i].el.title}</div>
         <div class='basket__grid-category'>Категория: ${miniMarketGame.cart[i].el.category}</div>
         <div class='basket__grid-code'>Код: ${miniMarketGame.cart[i].el.id}</div>
-        <div class='basket__grid-price'>Цена: ${miniMarketGame.cart[i].el.price} UAH ${val}</div>        
-        <div class="good-card__grid-count">
+        <div class='basket__grid-price'>Цена: ${price} UAH ${val}</div>        
+        <div class='basket__count'><div class="good-card__grid-count">
                                     <div class="good-card__grid-less hint--left" aria-label="Отнять"  onclick="this.nextElementSibling.stepDown()"><i class="fas fa-minus"></i></div>
-                                    <input type="number" value="${miniMarketGame.cart[i].count}" min="1" max="99" step="1" readonly class="good-card__grid-num">
+                                    <input type="number" value="${miniMarketGame.cart[i].count}" min="1" max="99" step="1" readonly class="good-card__grid-num basket__count-num-${i}">
                                     <div class="good-card__grid-more hint--right" aria-label="Добавить" onclick="this.previousElementSibling.stepUp()"><i class="fas fa-plus"></i></div>
-                                </div>
+                                </div><div class='basket__count-x'>x</div><div class='basket__count-price'>${price} UAH</div><div class='basket__count-summ'>
+                                <input type="number" value="" min="1" max="100000000" step="1" class="basket__count-input-${i}"> UAH</div></div>
         </div>`)
+        
         $(`.basket__grid-col`).css('width', "100%");
         $(`.basket__grid-item-description`).css('width', "75%");
         $(`.basket__grid-item-description`).css('marginLeft', "20px");
         $(`.basket__grid-item`).css('width', "25%");
-    };
 
+        if (miniMarketGame.gameMode == 1) {
+            $(`.basket__grid-col.col-${i} .basket__count-summ`).append(`<div class="basket__hint basket__hint-${i} hint--top" aria-label="Ответ: ${Number(price * ($(`.basket__count-num-${i}`).val()))}"><i class="far fa-question-circle"></i></div>`);
+            $(".fas.fa-plus").on("click", function() {
+                $(`.basket__hint-${i}`).attr("aria-label", `Ответ: ${(Number(price * ($(`.basket__count-num-${i}`).val()))) + Number(price)}`);  
+            });
+            $(".fas.fa-minus").on("click", function() {
+                if ($(`.basket__count-num-${i}`).val() > 1) {
+                    $(`.basket__hint-${i}`).attr("aria-label", `Ответ: ${(Number(price * ($(`.basket__count-num-${i}`).val()))) - Number(price)}`);
+                };            
+            });
+        
+        };  
+    };
+    if (miniMarketGame.gameMode == 1) {$(".basket__result").append(`<div class="basket__hint-total hint--top" aria-label=""><i class="far fa-question-circle"></i></div>`)};
+
+};
+
+
+function createOrder() {
+    $(".basket__buttons-continue").on("click", function() {
+        let count = 0;
+        let result = 0;
+        let totalSumm = 0;
+        
+        for (let i = 0; i < miniMarketGame.cart.length; i++) {
+            let price;
+            miniMarketGame.gameMode == 1 ? price = miniMarketGame.cart[i].el.price.toFixed(0) : price = miniMarketGame.cart[i].el.price.toFixed(2);
+            let fullPrice = (price * ($(`.basket__count-num-${i}`).val())) == Number($(`.basket__count-input-${i}`).val())
+            
+            if ($(`.basket__count-input-${i}`).val() == "") {
+                $(`.basket__count-input-${i}`).addClass("inputRed");
+                $(`.basket__count-input-${i}`).removeClass("inputRedLight");
+                count++; 
+            } else if (fullPrice == false) {
+                $(`.basket__count-input-${i}`).addClass("inputRedLight");
+                result++;
+            } else if (fullPrice == true) {
+                $(`.basket__count-input-${i}`).removeClass("inputRedLight");
+                if ($(`.basket__count-input-${i}`).val() != "") {
+                    $(`.basket__count-input-${i}`).removeClass("inputRed");
+                };
+            }
+
+            totalSumm = Number(totalSumm) + (Number(price * ($(`.basket__count-num-${i}`).val())));
+        };
+
+        $(".basket__hint-total").attr("aria-label", `Ответ: ${Number(totalSumm)}`);
+        
+        if (count != 0) {
+            catHint("Есть не заполненные поля", ".basket__catHint");
+            // alert(`Есть не заполненные поля: ${count}`);
+        } else if (result != 0) {
+            catHint("Есть результат с ошибкой", ".basket__catHint");
+            // alert(`Есть результат с ошибкой: ${result}`);
+        } else if ($(`.basket__result-summa-input`).val() == "") {
+            $(`.basket__result-summa-input`).addClass("inputRed");
+            catHint("Не введена итоговая сумма", ".basket__catHint");
+            // alert(`Не введена итоговая сумма`);
+        } else if ($(`.basket__result-summa-input`).val() != totalSumm) {
+            $(`.basket__result-summa-input`).removeClass("inputRed");
+            $(`.basket__result-summa-input`).addClass("inputRedLight");
+            catHint("Не верная итоговая сумма", ".basket__catHint");
+            // alert(`Не верная итоговая сумма`);
+        } else if (($(`.basket__result-summa-input`).val() == totalSumm) || ($("#basket__enough-choose-list").val() == "")) {
+            if ($(`.basket__result-summa-input`).val() == totalSumm) {$(`.basket__result-summa-input`).removeClass("inputRedLight")};
+            if ($(`.basket__result-summa-input`).val() == totalSumm) {$(`.basket__result-summa-input`).removeClass("inputRed")};
+            if ($("#basket__enough-choose-list").val() == "") {
+                catHint("Укажите достаточно ли средств на счету", ".basket__catHint");
+                // alert(`Укажите достаточно ли средств на счету`)
+            } else if (parseFloat($(".basket__onAccount-summa").html()) - totalSumm >= 0) {
+                if ($("#basket__enough-choose-list").val() == "1") {
+                    catHint("Вы не верно указали достаточно ли средств", ".basket__catHint");
+                    // alert("Вы не верно указали достаточно ли средств на счету")
+                };            
+            } else if ((parseFloat($(".basket__onAccount-summa").html()) - totalSumm < 0) && ($("#basket__enough-choose-list").val() == "0")) {
+                catHint("Вы не верно указали достаточно ли средств", ".basket__catHint");
+                // alert("Вы не верно указали достаточно ли средств на счету")
+            };
+
+        };
+        
+    });    
+};
+
+
+$(".basket__remove").on("click", function () {
+    
+    if (miniMarketGame.cart.length > 0) {
+        $("[data-text='clearCart']").fancybox({
+            "padding": 20,
+            "width": 600,
+            "height": 180,
+            "overlayOpacity": 0.9,
+            "overlayColor": '#f7f8fa',
+            showCloseButton: true,
+            
+        });
+
+
+        $(".modal-block_clearCart-yes").on("click", function() {
+            $(".basket__grid-col").remove();
+            $(".basket__hint-total").remove();
+            $(".basket__block h3").remove();
+            miniMarketGame.cart = [];
+            $(".basket__result, .basket__enough, .basket__buttons").removeClass("dispFlex");
+            $(".basket__block").append("<h3>Здесь будут находиться товары, которые Вы сможете приобрести. Не пора ли добавить несколько?</h3>");
+            $.fancybox.close();
+        });
+
+
+        $(".modal-block_clearCart-no").on("click", function() {
+            $.fancybox.close();
+        });
+    };
+});
+
+function delCartItem() {
+    $(".basket__grid-item-remove").on("click", function () {
+        miniMarketGame.cartRemove($(this).attr("data-item"));
+        $(this).parent().parent().remove();
+
+        if (miniMarketGame.cart.length == 0) {
+            $(".basket__block").append("<h3>Здесь будут находиться товары, которые Вы сможете приобрести. Не пора ли добавить несколько?</h3>");
+        };
+    });
 };

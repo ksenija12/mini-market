@@ -478,7 +478,7 @@
                     <div class="basketbtn_task-second"></div>
                     <div class="basketbtn_task-is">=</div>
                     <input type="number" value="" min="0" max="200" class="good-card__grid-num good-card__grid-num_basketbtn-task basketbtn_task-answer-alt">
-                    <div class="button basketbtn_task-check">Ok</div>
+                    <a href="#modal-toCart" class="main-block__findarea-icon-link" data-text="goToCart"><div class="button basketbtn_task-check">Ok</div></a>
                 </div>
                 <div class="button good-card__buying-back">Вернуться в магазин</div>
             </div>
@@ -546,9 +546,10 @@
     <div class="basket">
         <div class="container basket_container">
             <div class="basket__block">
+                <div class="basket__head-title"><h2>Корзина</h2></div>
                 <div class="basket__head">
-                    <div class="basket__head-title"><h2>Корзина</h2></div>
-                    <div class="button basket__back">Назад в магазин</div>
+                    <a href="#modal-clearCart" class="main-block__findarea-icon-link" data-text="clearCart"><div class="button basket__remove hint--top" aria-label="Удалить все из корзины">Очистить корзину</div></a>
+                    <div class="button basket__back hint--top" aria-label="Вернуться в магазин">Назад в магазин</div>
                 </div>
                 <div class="basket__onAccount">
                     <div class="basket__onAccount-text">На счету:</div>
@@ -557,7 +558,7 @@
                 <div class="basket__grid"></div>
                 <div class="basket__result">
                     <div class="basket__result-text">Итого:</div>
-                    <div class="basket__result-summa hint--top" aria-label="Введите сумму всех покупок"><input type="text" maxlength="9"> UAH</div>
+                    <div class="basket__result-summa hint--top" aria-label="Введите сумму всех покупок"><input type="number" min="1" max="100000000" class="basket__result-summa-input"> UAH</div>
                 </div>
                 <div class="basket__enough">
                     <div class="basket__enough-text">Достаточно ли средств на счету?</div>
@@ -570,9 +571,25 @@
                     </div>
                 </div>
                 <div class="basket__buttons">
+                    <img src="./img/pusheen/005.gif" alt="cat_basket" class="basket__cat">
+                    <div class="entranse__hint basket__catHint"></div>
                     <div class="button basket__buttons-return hint--top" aria-label="Вернуться в магазин">Продолжить покупки</div>
                     <div class="button basket__buttons-continue hint--top" aria-label="Перейти к оформлению заказа">Оформить заказ</div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="modal-block modal-block_clearCart" id="modal-clearCart">
+        <div class="container modal_container modal_container-clearCart">
+            <h4>Вы действительно хотите полностью очистить корзину? Все тобары будут удалены.</h4>
+            <div class="modal_buttons">
+                <div class="button modal-block_clearCart-no hint--top" aria-label="Нет, не удалять">Отменить</div>
+                <div class="button modal-block_clearCart-yes hint--top" aria-label="Да, удалить">Подтвердить</div>
             </div>
         </div>
     </div>
