@@ -2326,8 +2326,8 @@ body {
 }
 
 .basket__catHint {
-  -webkit-transform: translate(75%, -100%);
-          transform: translate(75%, -100%);
+  -webkit-transform: translate(100%, -100%);
+          transform: translate(100%, -100%);
 }
 
 .basket__catHint::after {
@@ -2519,6 +2519,168 @@ body {
 
 .modal_container-clearCart h4 {
   text-align: center;
+}
+
+.last-step__grid {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 0px;
+  margin-top: 30px;
+}
+
+.last-step__grid-col {
+  width: calc(100% / 3);
+  padding: 10px;
+}
+
+.last-step_container {
+  min-height: 100vh;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.last-step__block {
+  margin-top: 40px;
+  width: 80%;
+  border: 2px solid #268329;
+  border-radius: 10px;
+  padding: 30px 40px;
+  background-color: #ffffff;
+}
+
+.last-step__buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  position: relative;
+  margin-top: 60px;
+}
+
+.last-step__buttons .button {
+  width: 200px;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.last-step__grid {
+  width: 100%;
+}
+
+.last-step__grid-item {
+  padding-left: 20px;
+}
+
+.last-step__form-commit {
+  padding: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding-left: 20px;
+  margin-top: 20px;
+}
+
+.last-step__form-commit-area {
+  margin-top: 15px;
+  width: 95%;
+  height: 100px;
+  padding: 10px;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  resize: none;
+}
+
+.last-step__form-head {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 20px;
+}
+
+.last-step__form-num {
+  color: #268329;
+}
+
+.last-step__form-title {
+  margin-left: 15px;
+}
+
+.last-step__form-firstName-text, .last-step__form-lastName-text, .last-step__form-payForm-text, .last-step__form-postService-text {
+  margin: 15px 0 0 20px;
+}
+
+.last-step__form-firstName-input, .last-step__form-lastName-input, .last-step__form-payForm-list, .last-step__form-postService-list {
+  border: none;
+  border-bottom: 1px solid #268329;
+  width: 75%;
+  margin: 10px 0 0 40px;
+  padding: 5px 2px;
+}
+
+.last-step__form-firstName-input::-webkit-input-placeholder, .last-step__form-lastName-input::-webkit-input-placeholder {
+  color: #16531896;
+}
+
+.last-step__form-firstName-input:-ms-input-placeholder, .last-step__form-lastName-input:-ms-input-placeholder {
+  color: #16531896;
+}
+
+.last-step__form-firstName-input::-ms-input-placeholder, .last-step__form-lastName-input::-ms-input-placeholder {
+  color: #16531896;
+}
+
+.last-step__form-firstName-input::placeholder, .last-step__form-lastName-input::placeholder {
+  color: #16531896;
+}
+
+.last-step__form-payForm-list, .last-step__form-postService-list {
+  color: #16531896;
+}
+
+.last-step__form-payForm-list > option:nth-child(2), .last-step__form-payForm-list > option:nth-child(3), .last-step__form-postService-list > option:nth-child(2), .last-step__form-postService-list > option:nth-child(3) {
+  color: #000000;
+}
+
+.last-step__form-payForm-list > option:nth-child(2):hover, .last-step__form-payForm-list > option:nth-child(3):hover, .last-step__form-postService-list > option:nth-child(2):hover, .last-step__form-postService-list > option:nth-child(3):hover {
+  background-color: #16531896;
+}
+
+.modal_container-lastStep {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.modal_container-lastStep .button {
+  width: 220px;
+}
+
+.modal_container-lastStep h4 {
+  text-align: center;
+}
+
+.modal_container-lastStep h4 + h4 {
+  margin-top: 15px;
 }
 
 .visible {

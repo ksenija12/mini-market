@@ -811,7 +811,7 @@ $(".nav-list__basket, .nav-list__link_basket, .footer__buyer-basket").on("click"
         buildCartGrid ();
         $(".basket__result, .basket__enough, .basket__buttons").addClass("dispFlex");
         $(".basket__block h3").remove();
-        createOrder();
+        
         delCartItem();
     };
 });
@@ -832,7 +832,7 @@ $(".modal-block_toCart-cartBtn").on("click", function() {
         buildCartGrid ();
         $(".basket__result, .basket__enough, .basket__buttons").addClass("dispFlex");
         $(".basket__block h3").remove();
-        createOrder();
+        
         delCartItem();
     };
 });
@@ -901,72 +901,74 @@ function buildCartGrid () {
 
 };
 
+let differance = 0;
 
-function createOrder() {
-    $(".basket__buttons-continue").on("click", function() {
-        let count = 0;
-        let result = 0;
-        let totalSumm = 0;
+$(".basket__buttons-continue").on("click", function() {
+    let count = 0;
+    let result = 0;
+    let totalSumm = 0;
         
-        for (let i = 0; i < miniMarketGame.cart.length; i++) {
-            let price;
-            miniMarketGame.gameMode == 1 ? price = miniMarketGame.cart[i].el.price.toFixed(0) : price = miniMarketGame.cart[i].el.price.toFixed(2);
-            let fullPrice = (price * ($(`.basket__count-num-${i}`).val())) == Number($(`.basket__count-input-${i}`).val())
+    for (let i = 0; i < miniMarketGame.cart.length; i++) {
+        let price;
+        miniMarketGame.gameMode == 1 ? price = miniMarketGame.cart[i].el.price.toFixed(0) : price = miniMarketGame.cart[i].el.price.toFixed(2);
+        let fullPrice = (price * ($(`.basket__count-num-${i}`).val())) == Number($(`.basket__count-input-${i}`).val())
             
-            if ($(`.basket__count-input-${i}`).val() == "") {
-                $(`.basket__count-input-${i}`).addClass("inputRed");
-                $(`.basket__count-input-${i}`).removeClass("inputRedLight");
-                count++; 
-            } else if (fullPrice == false) {
-                $(`.basket__count-input-${i}`).addClass("inputRedLight");
-                result++;
-            } else if (fullPrice == true) {
-                $(`.basket__count-input-${i}`).removeClass("inputRedLight");
-                if ($(`.basket__count-input-${i}`).val() != "") {
-                    $(`.basket__count-input-${i}`).removeClass("inputRed");
-                };
-            }
-
-            totalSumm = Number(totalSumm) + (Number(price * ($(`.basket__count-num-${i}`).val())));
-        };
-
-        $(".basket__hint-total").attr("aria-label", `Ответ: ${Number(totalSumm)}`);
-        
-        if (count != 0) {
-            catHint("Есть не заполненные поля", ".basket__catHint");
-            // alert(`Есть не заполненные поля: ${count}`);
-        } else if (result != 0) {
-            catHint("Есть результат с ошибкой", ".basket__catHint");
-            // alert(`Есть результат с ошибкой: ${result}`);
-        } else if ($(`.basket__result-summa-input`).val() == "") {
-            $(`.basket__result-summa-input`).addClass("inputRed");
-            catHint("Не введена итоговая сумма", ".basket__catHint");
-            // alert(`Не введена итоговая сумма`);
-        } else if ($(`.basket__result-summa-input`).val() != totalSumm) {
-            $(`.basket__result-summa-input`).removeClass("inputRed");
-            $(`.basket__result-summa-input`).addClass("inputRedLight");
-            catHint("Не верная итоговая сумма", ".basket__catHint");
-            // alert(`Не верная итоговая сумма`);
-        } else if (($(`.basket__result-summa-input`).val() == totalSumm) || ($("#basket__enough-choose-list").val() == "")) {
-            if ($(`.basket__result-summa-input`).val() == totalSumm) {$(`.basket__result-summa-input`).removeClass("inputRedLight")};
-            if ($(`.basket__result-summa-input`).val() == totalSumm) {$(`.basket__result-summa-input`).removeClass("inputRed")};
-            if ($("#basket__enough-choose-list").val() == "") {
-                catHint("Укажите достаточно ли средств на счету", ".basket__catHint");
-                // alert(`Укажите достаточно ли средств на счету`)
-            } else if (parseFloat($(".basket__onAccount-summa").html()) - totalSumm >= 0) {
-                if ($("#basket__enough-choose-list").val() == "1") {
-                    catHint("Вы не верно указали достаточно ли средств", ".basket__catHint");
-                    // alert("Вы не верно указали достаточно ли средств на счету")
-                };            
-            } else if ((parseFloat($(".basket__onAccount-summa").html()) - totalSumm < 0) && ($("#basket__enough-choose-list").val() == "0")) {
-                catHint("Вы не верно указали достаточно ли средств", ".basket__catHint");
-                // alert("Вы не верно указали достаточно ли средств на счету")
+        if ($(`.basket__count-input-${i}`).val() == "") {
+            $(`.basket__count-input-${i}`).addClass("inputRed");
+            $(`.basket__count-input-${i}`).removeClass("inputRedLight");
+            count++; 
+        } else if (fullPrice == false) {
+            $(`.basket__count-input-${i}`).addClass("inputRedLight");
+            result++;
+        } else if (fullPrice == true) {
+            $(`.basket__count-input-${i}`).removeClass("inputRedLight");
+            if ($(`.basket__count-input-${i}`).val() != "") {
+                $(`.basket__count-input-${i}`).removeClass("inputRed");
             };
+        }
 
-        };
+        totalSumm = Number(totalSumm) + (Number(price * ($(`.basket__count-num-${i}`).val())));
+    };
+
+    $(".basket__hint-total").attr("aria-label", `Ответ: ${Number(totalSumm)}`);
         
-    });    
-};
+    if (count != 0) {
+        catHint("Есть не заполненные поля", ".basket__catHint");
+        // alert(`Есть не заполненные поля: ${count}`);
+    } else if (result != 0) {
+        catHint("Есть результат с ошибкой", ".basket__catHint");
+        // alert(`Есть результат с ошибкой: ${result}`);
+    } else if ($(`.basket__result-summa-input`).val() == "") {
+        $(`.basket__result-summa-input`).addClass("inputRed");
+        catHint("Не введена итоговая сумма", ".basket__catHint");
+        // alert(`Не введена итоговая сумма`);
+    } else if ($(`.basket__result-summa-input`).val() != totalSumm) {
+        $(`.basket__result-summa-input`).removeClass("inputRed");
+        $(`.basket__result-summa-input`).addClass("inputRedLight");
+        catHint("Не верная итоговая сумма", ".basket__catHint");
+        // alert(`Не верная итоговая сумма`);
+    } else if (($(`.basket__result-summa-input`).val() == totalSumm) && ($("#basket__enough-choose-list").val() == "")) {            
+        $(`.basket__result-summa-input`).removeClass("inputRedLight")
+        $(`.basket__result-summa-input`).removeClass("inputRed")
+            
+        catHint("Укажите достаточно ли средств на счету", ".basket__catHint");
+        // alert(`Укажите достаточно ли средств на счету`)
+
+    } else if ((parseFloat($(".basket__onAccount-summa").html()) - totalSumm >= 0) && ($("#basket__enough-choose-list").val() == "1")) {                
+        catHint("Вы не верно указали достаточно ли средств", ".basket__catHint");
+        // alert("Вы не верно указали достаточно ли средств на счету")
+                            
+    } else if ((parseFloat($(".basket__onAccount-summa").html()) - totalSumm < 0) && ($("#basket__enough-choose-list").val() == "0")) {
+        catHint("Вы не верно указали достаточно ли средств", ".basket__catHint");
+        // alert("Вы не верно указали достаточно ли средств на счету")
+    } else {
+        $(".basket").toggleClass("dispFlex");
+        $(".last-step").toggleClass("dispFlex");
+    };
+
+    differance = parseFloat($(".basket__onAccount-summa").html()) - totalSumm;
+        
+});    
 
 
 $(".basket__remove").on("click", function () {
@@ -1000,6 +1002,7 @@ $(".basket__remove").on("click", function () {
     };
 });
 
+
 function delCartItem() {
     $(".basket__grid-item-remove").on("click", function () {
         miniMarketGame.cartRemove($(this).attr("data-item"));
@@ -1010,3 +1013,90 @@ function delCartItem() {
         };
     });
 };
+
+
+$(".last-step__buttons-return").on('click', function () {
+    $(".market-page").toggleClass("dispFlex");
+    $(".last-step").toggleClass("dispFlex");
+});
+
+
+$(".last-step__form-payForm-list").on("input",function () {
+    if (($(".last-step__form-payForm-list").val() == "1") && (differance < 0)) {
+        catHint("На счету не достаточно средств", ".basket__catHint");
+        $(".last-step__form-payForm-list").val("0");
+    };
+});
+
+$(".last-step__buttons-continue").on('click', function () {
+    if ($(".last-step__form-firstName-input").val() == "") {
+        catHint("Введите имя", ".basket__catHint");
+    } else if ($(".last-step__form-lastName-input").val() == "") {
+        catHint("Введите фамилию", ".basket__catHint");
+    } else if ($(".last-step__form-payForm-list").val() == "") {
+        catHint("Выберите форму оплаты", ".basket__catHint");
+    } else if ($(".last-step__form-postService-list").val() == "") {
+        catHint("Выберите службу доставки", ".basket__catHint");
+    } else if ($(".last-step__form-commit-area").val() == "") {
+        catHint("Введите комментарии", ".basket__catHint");
+    } else {
+        if ($(".last-step__form-payForm-list").val() == "1") {
+            miniMarketGame.onAccount = differance;
+        };
+        $(".last-step").toggleClass("dispFlex");
+
+        let cash = '';
+        if ($(".last-step__form-payForm-list").val() == 0) {
+            cash = "наличные";
+        } else if ($(".last-step__form-payForm-list").val() == 1) {
+            cash = "безналичные";
+        }
+        
+        $(".modal_container-lastStep-congrats").html(`Поздравляем!! Вы совершили покупку за ${cash} средства. На Вашем счету: ${miniMarketGame.onAccount.toFixed(2)} UAH`);
+
+        $("[data-text='lastStep']").fancybox({
+            "padding": 20,
+            "width": 600,
+            "height": 225,
+            "overlayOpacity": 0.9,
+            "overlayColor": '#f7f8fa',
+            showCloseButton: true,
+            
+        });
+    };
+});
+
+
+$(".modal-block_lastStep-buy").on('click', function () {
+    $.fancybox.close();
+    $(".level").toggleClass("dispFlex");
+    symbol = [];
+    miniMarketGame.cart = [];
+    $("#level__difficulty-radio-btn-01").prop("checked", true);
+    $(".level__operation-check-btn-input").prop("checked", false);
+
+    for (let i = 2; i < 5; i++) {
+        let check = $(`#level__operation-check-btn-0${i}`).parent('.level__operation-check-btn');
+        if (check.hasClass("dispFlex")) {check.removeClass("dispFlex")}
+    };
+    
+    potterCat();
+
+    $(".sale__grid-col").remove();
+    $(".goods__grid").remove();
+    $(".slick-dots").remove();
+
+    $(".last-step__form-firstName-input").val("");
+    $(".last-step__form-lastName-input").val("");
+    $(".last-step__form-payForm-list").val("");
+    $(".last-step__form-postService-list").val("");
+    $(".last-step__form-commit-area").val("");
+    $(".basket__result-summa-input").css('backgroundColor', "#ffffff");
+
+});
+
+
+$(".modal-block_lastStep-play").on('click', function () {
+    $.fancybox.close();
+    $(".prise").toggleClass("dispFlex");
+});

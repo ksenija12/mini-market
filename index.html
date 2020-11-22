@@ -574,7 +574,7 @@
                     <img src="./img/pusheen/005.gif" alt="cat_basket" class="basket__cat">
                     <div class="entranse__hint basket__catHint"></div>
                     <div class="button basket__buttons-return hint--top" aria-label="Вернуться в магазин">Продолжить покупки</div>
-                    <div class="button basket__buttons-continue hint--top" aria-label="Перейти к оформлению заказа">Оформить заказ</div>
+                    <div class="button basket__buttons-continue hint--top" aria-label="Перейти к оформлению заказа">Следующий шаг</div>
                 </div>
             </div>
         </div>
@@ -600,10 +600,83 @@
 
 
     <div class="last-step">
-        <div class="container"></div>
+        <div class="container last-step_container">
+            <div class="last-step__block">
+                <div class="last-step__form last-step__grid">
+                    <div class="last-step__form-person last-step__grid-col">
+                        <div class="last-step__grid-item">
+                            <div class="last-step__form-head">
+                                <div class="last-step__form-num">1.</div><div class="last-step__form-title">Личные данные</div>
+                            </div>
+                            <div class="last-step__form-firstName">
+                                <div class="last-step__form-firstName-text">Имя</div>
+                                <input type="text" class="last-step__form-firstName-input" placeholder="введите имя">
+                            </div>
+                            <div class="last-step__form-lastName">
+                                <div class="last-step__form-lastName-text">Фамилия</div>
+                                <input type="text" class="last-step__form-lastName-input" placeholder="введите фамилию">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="last-step__form-pay last-step__grid-col">
+                        <div class="last-step__grid-item">
+                            <div class="last-step__form-head">
+                                <div class="last-step__form-num">2.</div><div class="last-step__form-title">Оплата</div>
+                            </div>                            
+                            <div class="last-step__form-payForm">
+                                <div class="last-step__form-payForm-text">Выберите форму оплаты</div>
+                                <select name="last-step__form-payForm-list" class="last-step__form-payForm-list" id="last-step__form-payForm-list">
+                                    <option class="last-step__list-title" value="" hidden>выберите</option>
+                                    <option value="0">Наличный расчет</option>
+                                    <option value="1">Безналичный расчет</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="last-step__form-delivery last-step__grid-col">
+                        <div class="last-step__grid-item">
+                            <div class="last-step__form-head">
+                                <div class="last-step__form-num">3.</div><div class="last-step__form-title">Доставка</div>
+                            </div>                            
+                            <div class="last-step__form-postService">
+                                <div class="last-step__form-postService-text">Почтовая служба</div>
+                                <select name="last-step__form-postService-list" class="last-step__form-postService-list" id="last-step__form-postService-list">
+                                    <option class="last-step__list-title" value="" hidden>выберите</option>
+                                    <option value="0">Укрпочта</option>
+                                    <option value="1">Новая Почта</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="last-step__form-commit">
+                    <div class="last-step__form-head">Комментарии:</div>
+                    <textarea class="last-step__form-commit-area" placeholder="введите адрес для Укрпочты или отделение Новой Почты, а также любые комментарии по заказу"></textarea>
+                </div>
+                <div class="last-step__buttons">
+                    <img src="./img/pusheen/005.gif" alt="cat_basket" class="basket__cat">
+                    <div class="entranse__hint basket__catHint"></div>
+                    <div class="button last-step__buttons-return hint--top" aria-label="Вернуться в магазин">Продолжить покупки</div>
+                    <a href="#modal-lastStep" class="main-block__findarea-icon-link" data-text="lastStep"><div class="button last-step__buttons-continue hint--top" aria-label="Завершить оформлениe заказа">Оформить заказ</div></a>
+                </div>
+            </div>
+        </div>
     </div>
 
 
+
+
+
+    <div class="modal-block modal-block_lastStep" id="modal-lastStep">
+        <div class="container modal_container modal_container-lastStep">
+            <h4 class="modal_container-lastStep-congrats"></h4>
+            <h4>Вы можете совершить еще покупку или перейти к играм. Что выберите?</h4>
+            <div class="modal_buttons">
+                <div class="button modal-block_lastStep-buy hint--top" aria-label="Вернуться в магазин">Совершить еще покупку</div>
+                <div class="button modal-block_lastStep-play hint--top" aria-label="Поиграть">Перейти к играм</div>
+            </div>
+        </div>
+    </div>
 
 
 

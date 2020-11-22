@@ -1213,7 +1213,7 @@ body
     &__cat
         height: 80px
     &__catHint
-        transform: translate(75%, -100%)
+        transform: translate(100%, -100%)
         &::after    
             right: calc( 100% - 1px )
     &__buttons
@@ -1309,6 +1309,83 @@ body
         width: 125px
     & h4
         text-align: center
+
+@include grid(last-step, 0, 30, wrap, 3, 10)
+
+.last-step
+    &_container
+        min-height: 100vh
+        align-items: center
+    &__block
+        margin-top: 40px
+        width: 80%
+        border: 2px solid $mainColor
+        border-radius: 10px
+        padding: 30px 40px
+        background-color: #ffffff
+    &__buttons
+        display: flex
+        align-items: flex-end
+        justify-content: space-around
+        position: relative
+        margin-top: 60px
+        & .button
+            width: 200px
+            margin-left: 0
+            margin-right: 0
+    &__grid
+        width: 100%
+        &-item
+            padding-left: 20px
+    &__form
+        &-commit
+            padding: 10px
+            display: flex
+            flex-direction: column
+            padding-left: 20px
+            margin-top: 20px
+        &-commit-area
+            margin-top: 15px
+            width: 95%
+            height: 100px
+            padding: 10px
+            align-self: center
+            resize: none
+        &-head
+            display: flex
+            font-size: 20px
+        &-num
+            color: $mainColor
+        &-title
+            margin-left: 15px
+        &-firstName-text, &-lastName-text, &-payForm-text, &-postService-text
+            margin: 15px 0 0 20px
+        &-firstName-input, &-lastName-input, &-payForm-list, &-postService-list
+            border: none
+            border-bottom: 1px solid $mainColor
+            width: 75%
+            margin: 10px 0 0 40px
+            padding: 5px 2px
+        &-firstName-input, &-lastName-input
+            &::placeholder
+                color: $MainColorTransp
+        &-payForm-list, &-postService-list
+            color: $MainColorTransp
+            & > option:nth-child(2), & > option:nth-child(3)
+                color: #000000    
+            & > option:nth-child(2):hover, & > option:nth-child(3):hover
+                background-color: $MainColorTransp
+
+.modal_container-lastStep
+    display: flex
+    flex-direction: column
+    align-items: center
+    & .button
+        width: 220px
+    & h4
+        text-align: center
+    & h4 + h4
+        margin-top: 15px
 
 .visible
     visibility: visible
