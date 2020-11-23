@@ -113,6 +113,7 @@ function fancyRight () {
         "overlayOpacity": 0.9,
         "overlayColor": '#f7f8fa',
         showCloseButton: true,
+        modal: true,
         
     });
 
