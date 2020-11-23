@@ -101,6 +101,11 @@ function potterCat() {
     });
 };
 
+$(".modal_button").on("click", function () {
+    $.fancybox.close();
+    $(".modal-block").css("display", "none");
+})
+
 
 /////////////////////////////entranse/////////////////////////////
 
@@ -162,6 +167,11 @@ $('.button_entranse').on('click', function() {
         buyCat(".level");
         potterCat();
     };
+
+    
+    $("#level__operation-check-btn-02").parent('.level__operation-check-btn').removeClass("dispFlex");
+    $("#level__operation-check-btn-03").parent('.level__operation-check-btn').removeClass("dispFlex");
+    $("#level__operation-check-btn-04").parent('.level__operation-check-btn').removeClass("dispFlex");
         
 });
 
@@ -298,9 +308,16 @@ let level;
 let taskArr;
 
 $(".button_level").on("click", function() {  
+    
+    
     if (!$(".level__operation-check-btn-input:checked").length) {
         catHint('Выберите операцию для примеров ( +, -, *, / )', '.level__hint');
     } else {
+        symbol = [];
+        $("#level__operation-check-btn-01").val("+");
+        $("#level__operation-check-btn-02").val("-");
+        $("#level__operation-check-btn-03").val("*");
+        $("#level__operation-check-btn-04").val("/");
         
         $(".level__operation-check-btn-input:checked").each(function(i, el) {
             symbol.push($(el).val());
@@ -408,8 +425,16 @@ $(".button_level").on("click", function() {
 $(".button_level-back").on("click", function() {
     $(".level").toggleClass('dispFlex');
     $(".entranse").toggleClass('dispFlex');
-    $(".entranse__password-pass").val("")
+    $(".entranse__password-pass").val("");
+    $(".entranse__login-name").val("");
 
-    $(".level__operation-check-btn-input:checked").prop("checked", false);
+    symbol = [];
+    miniMarketGame.cart = [];
+    miniMarketGame.favouriteGood = [];
+    miniMarketGame.onAccount = 5000;
+
+    $(".level__operation-check-btn-input:checked").prop("checked", false);      
+    $(".level__difficulty-radio-btn-input:checked").prop("checked", false);
+    
     helloCat();
 });

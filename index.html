@@ -149,7 +149,7 @@
                     <div class="entranse__login-title level__title">Выберите уровень сложности</div>
                     <div class="level__difficulty-radio">
                         <div class="level__difficulty-radio-btn">
-                            <input type="radio" class="level__difficulty-radio-btn-input entranse__login-name" name="level__difficulty-radio" data-count="1" id="level__difficulty-radio-btn-01" checked>
+                            <input type="radio" class="level__difficulty-radio-btn-input entranse__login-name" name="level__difficulty-radio" data-count="1" id="level__difficulty-radio-btn-01">
                             <label for="level__difficulty-radio-btn-01">Начальный</label>
                         </div>
                         <div class="level__difficulty-radio-btn">
@@ -167,8 +167,8 @@
                     <div class="entranse__login-title level__title">Выберите операцию</div>
                     <div class="level__operation-check">
                         <div class="level__operation-check-btn dispFlex">
-                            <!-- <input type="checkbox" class="level__operation-check-btn-input entranse__login-name" name="level__operation-check-01" data-count="0" id="level__operation-check-btn-01" value="+"> -->
-                            <input type="checkbox" class="level__operation-check-btn-input entranse__login-name" name="level__operation-check-01" data-count="0" id="level__operation-check-btn-01" value="+" checked>
+                            <input type="checkbox" class="level__operation-check-btn-input entranse__login-name" name="level__operation-check-01" data-count="0" id="level__operation-check-btn-01" value="+">
+                            <!-- <input type="checkbox" class="level__operation-check-btn-input entranse__login-name" name="level__operation-check-01" data-count="0" id="level__operation-check-btn-01" value="+" checked> -->
                             <label for="level__operation-check-btn-01"><i class="fas fa-plus"></i></label>
                         </div>
                         <div class="level__operation-check-btn">
@@ -330,9 +330,9 @@
                                 <div class="entranse__title-text footer__title footer__title_info">Информация</div>
                                 <div class="footer__info">
                                     <ul>
-                                        <li><div class="footer__info-pay">Оплата и доставка</div></li>
-                                        <li><div class="footer__info-garant">Гарантия</div></li>
-                                        <li><div class="footer__info-contact">Контакты</div></li>
+                                        <li><a href="#modal-payAndDelivery" class="main-block__findarea-icon-link" data-text="payAndDelivery"><div class="footer__info-pay">Оплата и доставка</div></a></li>
+                                        <li><a href="#modal-garanty" class="main-block__findarea-icon-link" data-text="garanty"><div class="footer__info-garant">Гарантия</div></a></li>
+                                        <li><a href="#modal-contact" class="main-block__findarea-icon-link" data-text="contact"><div class="footer__info-contact">Контакты</div></a></li>
                                     </ul>
                                 </div>                                
                             </div>
@@ -368,7 +368,82 @@
 
     <div class="modal-block" id="modal">
         <div class="container modal_container">
+            <div  class="modal_button" data-fancybox-close>Сlose <i class="far fa-times-circle"></i></div>
             <div class="modal__grid"></div>
+        </div>
+    </div>
+
+
+
+
+    <div class="modal-block" id="modal-payAndDelivery">
+        <div class="container payAndDeliveryGaranty_container">
+            <div  class="modal_button" data-fancybox-close>Сlose <i class="far fa-times-circle"></i></div>
+            <h2>Оплата и доставка</h2>
+            <h3>Оплата</h3>
+            <div class="payAndDeliveryGaranty__text">
+                <p>Наличный расчет</p>
+                <ul>
+                    <li>курьеру магазина (только для города Днепр)</li>
+                    <li>при самовывозе</li>
+                    <li>наложенный платеж в отделении почты</li>
+                </ul>
+                                
+                <p>Безналичный расчет</p>
+                <ul>
+                    <li>на карту ПриватБанка</li>
+                    <li>В терминале ПриватБанка</li>
+                </ul>
+            </div>
+            <h3>Доставка</h3>
+            <div class="payAndDeliveryGaranty__text">
+                <p>Обычно отправка заказа осуществляется на следующий день после оплаты (как исключение, допускается отправка товара не позднее, чем через три рабочих дня после оплаты).</p>
+                <ul>
+                    <li>Самовывоз</li>
+                    <p>Вы можете самостоятельно забрать товар из пункта выдачи заказов интернет-магазина</p>
+                    <li>Доставка курьером по Днепру</li>
+                    <p>Курьерская доставка предусматривает доставку заказа до дверей в пределах выбранного временного окна. Доставка до дверей возможна только при наличии рабочего лифта в Вашем доме. В случае его отсутствия либо поломки к стоимости доставки включается доплата за подъем. Размер доплаты рассчитывается в зависимости от веса Вашего заказа и этажа. Стоимость Вы можете уточнить у оператора контакт-центра.</p>
+                    <li>Доставка Укрпочтой</li>
+                    <p>Сервис «Укрпочты» рассчитан как на клиентов из Украины, так и на клиентов из-за границы. Свои заказы следует забирать в почтовом отделении.</p>
+                    <li>Доставка Новой Почтой</li>
+                    <p>Доставка заказов «Новой Почтой» осуществляется по всей территории Украины, кроме оккупированных территорий. Свои заказы следует забирать в пункте самовывоза. Перечень отделений, адреса и телефоны просим узнавать на сайте «Новой Почты».</p>
+                </ul>
+            </div>   
+        </div>
+    </div>
+
+
+
+
+    <div class="modal-block" id="modal-garanty">
+        <div class="container payAndDeliveryGaranty_container">
+            <div  class="modal_button" data-fancybox-close>Сlose <i class="far fa-times-circle"></i></div>
+            <h2>Гарантия</h2>
+            <div class="payAndDeliveryGaranty__text">
+                <p>На все товары, купленные в нашем магазине, распространяется действие Закона Украины «О защите прав потребителей», который вступил в силу 13 января 2006 года.</p>
+                <p>Замена товара на аналогичный в соответствии со ст. 9 ЗУ "О защите прав потребителей" возможна только при соблюдении таких условий:</p>
+                <ul>
+                    <li>Cо дня приобретения прошло не более 14 дней, не считая дня покупки;</li>
+                    <li>товар не был в использовании, т.е. является новым (товар в идеальном состоянии, товар не употреблялся);</li>
+                    <li>сохранены товарный вид, потребительские качества товара;</li>
+                    <li>есть пломбы, ярлыки, упаковка, товарный чек.</li>
+                </ul>
+                <p>Согласно постановлению Кабинета Министров Украины от 23 сентября 1991 р. N 216 это правило не распространяется на предметы личной гигиены, белье, чулочно-носочные изделия, перопуховые изделия, постельные принадлежности, косметику, детские мягкие, надувные и резиновые игрушки, товары для новорожденных, карнавальные костюмы и т.д.</p>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="modal-block" id="modal-contact">
+        <div class="container payAndDeliveryGaranty_container">
+            <div  class="modal_button" data-fancybox-close>Сlose <i class="far fa-times-circle"></i></div>
+            <h2>Контакты</h2>
+            <div class="contact__text">
+                <p>Написать разработчику:</p>
+                <p><a href="mailto:filkaksenija@gmail.com">filkaksenija@gmail.com</a></p>
+            </div>
         </div>
     </div>
 
@@ -491,6 +566,7 @@
 
     <div class="modal-block modal-block_toCart" id="modal-toCart">
         <div class="container modal_container modal_container-toCart">
+            <div  class="modal_button" data-fancybox-close>Сlose <i class="far fa-times-circle"></i></div>
             <h4>Товар добавлен в корзину. Продолжить покупки или перейти в корзину для оформления заказа?</h4>
             <div class="modal_buttons">
                 <div class="button modal-block_toCart-buyBtn hint--top" aria-label="Продолжить покупки">Продолжить покупки</div>
@@ -530,6 +606,7 @@
 
     <div class="modal-block modal-block_clearFavourite" id="modal-clearFavourite">
         <div class="container modal_container modal_container-clearFavourite">
+            <div  class="modal_button" data-fancybox-close>Сlose <i class="far fa-times-circle"></i></div>
             <h4>Вы действительно хотите полностью очистить список избранных товаров? Все тобары будут удалены.</h4>
             <div class="modal_buttons">
                 <div class="button modal-block_clearFavourite-no hint--top" aria-label="Нет, не удалять">Отменить</div>
@@ -586,6 +663,7 @@
 
     <div class="modal-block modal-block_clearCart" id="modal-clearCart">
         <div class="container modal_container modal_container-clearCart">
+            <div  class="modal_button" data-fancybox-close>Сlose <i class="far fa-times-circle"></i></div>
             <h4>Вы действительно хотите полностью очистить корзину? Все тобары будут удалены.</h4>
             <div class="modal_buttons">
                 <div class="button modal-block_clearCart-no hint--top" aria-label="Нет, не удалять">Отменить</div>
@@ -669,6 +747,7 @@
 
     <div class="modal-block modal-block_lastStep" id="modal-lastStep">
         <div class="container modal_container modal_container-lastStep">
+            <div  class="modal_button modal-lastStep-button" data-fancybox-close>Сlose <i class="far fa-times-circle"></i></div>
             <h4 class="modal_container-lastStep-congrats"></h4>
             <h4>Вы можете совершить еще покупку или перейти к играм. Что выберите?</h4>
             <div class="modal_buttons">
@@ -682,7 +761,52 @@
 
 
     <div class="prise">
-        <div class="container"></div>
+        <div class="container prise_container">
+            <div class="prise__block">
+                <h4 class="prise__block-title">Поздравляем с успешным совершением покупки. Ваш приз - игра на выбор)</h4>
+                <div class="prise__grid">
+                    <div class="prise__grid-col col__level-1">
+                        <div class="prise__grid-item">
+                            <a href="./games/tic-tac-toe/index.html" target="_blank"><img src="./games/pic/tic-tac-toe.png" class="prise__grid-item-pic" alt="game1_tic-tac-toe"></a>
+                        </div>
+                    </div>
+                    <!-- <div class="prise__grid-col col__level-1">
+                        <div class="prise__grid-item">
+                            <img src="./games/pic/tic-tac-toe.png" class="prise__grid-item-pic" alt="game1_tic-tac-toe">
+                        </div>
+                    </div>
+                    <div class="prise__grid-col col__level-2">
+                        <div class="prise__grid-item">
+                            <img src="./games/pic/tic-tac-toe.png" class="prise__grid-item-pic" alt="game1_tic-tac-toe">
+                        </div>
+                    </div>
+                    <div class="prise__grid-col col__level-3">
+                        <div class="prise__grid-item">
+                            <img src="./games/pic/tic-tac-toe.png" class="prise__grid-item-pic" alt="game1_tic-tac-toe">
+                        </div>
+                    </div>
+                    <div class="prise__grid-col col__level-3">
+                        <div class="prise__grid-item">
+                            <img src="./games/pic/tic-tac-toe.png" class="prise__grid-item-pic" alt="game1_tic-tac-toe">
+                        </div>
+                    </div>
+                    <div class="prise__grid-col col__level-3">
+                        <div class="prise__grid-item">
+                            <img src="./games/pic/tic-tac-toe.png" class="prise__grid-item-pic" alt="game1_tic-tac-toe">
+                        </div>
+                    </div>
+                    <div class="prise__grid-col col__level-3">
+                        <div class="prise__grid-item">
+                            <img src="./games/pic/tic-tac-toe.png" class="prise__grid-item-pic" alt="game1_tic-tac-toe">
+                        </div>
+                    </div> -->
+                </div>
+                <div class="prise__block-btn">
+                    <div class="button prise__block-entranse">Сменить пользователя</div>
+                    <div class="button prise__block-level">Сыграть еще</div>
+                </div>
+            </div>
+        </div>
     </div>
     
     <script src="./js/libs/jquery-3.5.1.min.js"></script>

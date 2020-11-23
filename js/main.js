@@ -6,7 +6,7 @@ $(".backform").on("click", function() {
     symbol = [];
     $(".market-page").toggleClass('dispFlex');
     $(".level").toggleClass('dispFlex');
-    $("#level__difficulty-radio-btn-01").prop("checked", true);
+    $(".level__difficulty-radio-btn-input").prop("checked", false);
     $(".level__operation-check-btn-input").prop("checked", false);
 
     for (let i = 2; i < 5; i++) {
@@ -212,6 +212,7 @@ $('[data-text="try"]').fancybox({
     "overlayOpacity": 0.9,
     "overlayColor": '#f7f8fa',
     showCloseButton: true,
+    modal: true,
     
     // чтоб модалка не закрывалась пока пустой input
     
@@ -658,6 +659,7 @@ $(".favourite__remove").on("click", function () {
             "overlayOpacity": 0.9,
             "overlayColor": '#f7f8fa',
             showCloseButton: true,
+            modal: true,
             
         });
 
@@ -862,7 +864,7 @@ function buildCartGrid () {
         $(`.basket__grid-item.item-${i}`).addClass("hint--left");
         $(`.basket__grid-item.item-${i}`).attr("aria-label", `${miniMarketGame.cart[i].el.title}`);
         
-        let val = (miniMarketGame.cart[i].el.count == 1) ? "" : "/ " + miniMarketGame.cart[i].count + " " + miniMarketGame.cart[i].el.val;
+        let val = (miniMarketGame.cart[i].el.count == 1) ? "" : "/ " + miniMarketGame.cart[i].el.count + " " + miniMarketGame.cart[i].el.val;
         
         let price;
         miniMarketGame.gameMode == 1 ? price = miniMarketGame.cart[i].el.price.toFixed(0) : price = miniMarketGame.cart[i].el.price.toFixed(2);
@@ -904,6 +906,14 @@ function buildCartGrid () {
 let differance = 0;
 
 $(".basket__buttons-continue").on("click", function() {
+    $(".last-step__form-firstName-input").val("");
+    $(".last-step__form-lastName-input").val("");
+    $(".last-step__form-payForm-list").val("");
+    $(".last-step__form-postService-list").val("");
+    $(".last-step__form-commit-area").val("");
+    $(".last-step__form-payForm-list").css("color", "#16531896");
+    $(".last-step__form-postService-list").css("color", "#16531896");
+
     let count = 0;
     let result = 0;
     let totalSumm = 0;
@@ -981,6 +991,7 @@ $(".basket__remove").on("click", function () {
             "overlayOpacity": 0.9,
             "overlayColor": '#f7f8fa',
             showCloseButton: true,
+            modal: true,
             
         });
 
@@ -1026,6 +1037,11 @@ $(".last-step__form-payForm-list").on("input",function () {
         catHint("На счету не достаточно средств", ".basket__catHint");
         $(".last-step__form-payForm-list").val("0");
     };
+    $(".last-step__form-payForm-list").css("color", "#000000");
+});
+
+$(".last-step__form-postService-list").on("input",function () {
+    $(".last-step__form-postService-list").css("color", "#000000");
 });
 
 $(".last-step__buttons-continue").on('click', function () {
@@ -1061,6 +1077,7 @@ $(".last-step__buttons-continue").on('click', function () {
             "overlayOpacity": 0.9,
             "overlayColor": '#f7f8fa',
             showCloseButton: true,
+            modal: true,
             
         });
     };
@@ -1070,9 +1087,9 @@ $(".last-step__buttons-continue").on('click', function () {
 $(".modal-block_lastStep-buy").on('click', function () {
     $.fancybox.close();
     $(".level").toggleClass("dispFlex");
-    symbol = [];
+    miniMarketGame.operations = [];
     miniMarketGame.cart = [];
-    $("#level__difficulty-radio-btn-01").prop("checked", true);
+    $(".level__difficulty-radio-btn-input").prop("checked", false);
     $(".level__operation-check-btn-input").prop("checked", false);
 
     for (let i = 2; i < 5; i++) {
@@ -1096,7 +1113,106 @@ $(".modal-block_lastStep-buy").on('click', function () {
 });
 
 
-$(".modal-block_lastStep-play").on('click', function () {
+$(".modal-block_lastStep-play, .modal-lastStep-button").on('click', function () {
     $.fancybox.close();
     $(".prise").toggleClass("dispFlex");
+
+    if (miniMarketGame.gameMode == 1) {
+        $(".col__level-1").addClass("dispFlex");
+    } else if (miniMarketGame.gameMode == 2) {
+        $(".col__level-1").addClass("dispFlex");
+        $(".col__level-2").addClass("dispFlex");
+        
+    } else if (miniMarketGame.gameMode == 3) {
+        $(".col__level-1").addClass("dispFlex");
+        $(".col__level-2").addClass("dispFlex");
+        $(".col__level-3").addClass("dispFlex");
+    };
+    console.log($(".prise__grid-col.dispFlex"))
+    if ($(".prise__grid-col.dispFlex").length < 6) {
+        $(".prise__grid-col.dispFlex").css("width", `calc(100% / ${$(".prise__grid-col.dispFlex").length})`);
+    } else {
+        $(".prise__grid-col.dispFlex").css("width", `calc(100% / 6)`);
+    };
+});
+
+
+$(".prise__block-entranse").on('click', function () {
+    $(".prise").toggleClass('dispFlex');
+    $(".entranse").toggleClass('dispFlex');
+    $(".entranse__password-pass").val("");
+    $(".entranse__login-name").val("");
+    $(".level__difficulty-radio-btn-input").prop("checked", false);
+    $(".level__operation-check-btn-input").prop("checked", false);
+
+    miniMarketGame.operations = [];
+    miniMarketGame.cart = [];
+    miniMarketGame.favouriteGood = [];
+    miniMarketGame.onAccount = 5000;
+
+    helloCat();
+
+    $(".sale__grid-col").remove();
+    $(".goods__grid").remove();
+    $(".slick-dots").remove();
+});
+
+$(".prise__block-level").on('click', function () {
+    $(".prise").toggleClass('dispFlex');
+    $(".level").toggleClass("dispFlex");
+    miniMarketGame.operations = [];
+    miniMarketGame.cart = [];
+    $(".level__difficulty-radio-btn-input").prop("checked", false);
+    $(".level__operation-check-btn-input").prop("checked", false);
+
+    for (let i = 2; i < 5; i++) {
+        let check = $(`#level__operation-check-btn-0${i}`).parent('.level__operation-check-btn');
+        if (check.hasClass("dispFlex")) {check.removeClass("dispFlex")}
+    };
+    
+    potterCat();
+
+    $(".sale__grid-col").remove();
+    $(".goods__grid").remove();
+    $(".slick-dots").remove();
+});
+
+
+$(".footer__info-pay").on("click", function () {
+    $("[data-text='payAndDelivery']").fancybox({
+        "padding": 20,
+        "width": 600,
+        "height": 750,
+        "overlayOpacity": 0.9,
+        "overlayColor": '#f7f8fa',
+        showCloseButton: true,
+        modal: true,
+        
+    });
+});
+
+$(".footer__info-garant").on("click", function () {
+    $("[data-text='garanty']").fancybox({
+        "padding": 20,
+        "width": 600,
+        "height": 500,
+        "overlayOpacity": 0.9,
+        "overlayColor": '#f7f8fa',
+        showCloseButton: true,
+        modal: true,
+        
+    });
+});
+
+$(".footer__info-contact").on("click", function () {
+    $("[data-text='contact']").fancybox({
+        "padding": 20,
+        "width": 600,
+        "height": 125,
+        "overlayOpacity": 0.9,
+        "overlayColor": '#f7f8fa',
+        showCloseButton: true,
+        modal: true,
+        
+    });
 });

@@ -5,8 +5,6 @@
 @import '_fonts'
 
 
-@import '_media'
-
 body
     font-family: sans-serif
     font-size: 14px
@@ -151,6 +149,7 @@ body
             text-decoration: underline
         &-forgot:active, &-reg:active
             color: darken($mainColor, 10)
+            
 .forgot
     position: relative
     &__cat
@@ -838,7 +837,7 @@ body
             &:hover
                 cursor: pointer
                 text-decoration: underline
-        & li + li > div
+        & li + li
             margin-top: 10px
     &__title
         font-weight: 600
@@ -1387,6 +1386,41 @@ body
     & h4 + h4
         margin-top: 15px
 
+@include grid(prise, 0, 30, wrap, 6, 10)
+
+.prise
+    &_container
+        min-height: 100vh
+        align-items: center
+    &__block
+        margin-top: 40px
+        width: 80%
+        border: 2px solid $mainColor
+        border-radius: 10px
+        padding: 30px 40px
+        background-color: #ffffff
+        & h4
+            text-align: center
+        &-btn
+            display: flex
+            justify-content: space-around
+            & .button
+                margin-left: 0
+                margin-right: 0
+                width: 200px
+    &__grid
+        width: 100%
+        &-col
+            display: none
+            justify-content: center
+        &-item
+            height: 150px
+            width: 150px
+            & img
+                object-fit: fill
+                width: 100%
+                height: 100%
+
 .visible
     visibility: visible
 
@@ -1420,6 +1454,60 @@ body
         cursor: pointer
         font-size: 20px
 
+.modal-block > .container
+    position: relative
+    // flex-direction: column
+    // align-items: flex-end
+
+.modal_button
+    position: absolute
+    bottom: 100%
+    left: 100%
+    display: flex
+    flex-wrap: nowrap
+    width: 55px
+    justify-content: space-between
+    &:hover
+        color: $mainRed
+        cursor: pointer
+
+.payAndDeliveryGaranty
+    &_container
+        flex-direction: column
+        width: 90%
+        & h3
+            margin-top: 20px
+            & + *
+                margin-top: 15px
+        & h2 + *
+            margin-top: 15px
+    &__text
+        & > * + *
+            margin-top: 1vw
+        & ul li
+            position: relative
+            padding-left: 4vw
+            &::before
+                content: ""
+                position: absolute
+                top: 50%
+                left: 2vw
+                width: 8px
+                height: 8px
+                border: 2px solid $mainColor
+                border-radius: 50%
+                transform: translateY(-50%)
+            & + p
+                padding-left: 6vw
+        & ul li + li, & ul p + li, & ul li + p
+            margin-top: .8vw
+
+.contact__text
+    display: flex
+    justify-content: space-around
+    & a:hover
+        color: $mainColor
+
 .backtostart
     visibility: hidden
 
@@ -1442,3 +1530,5 @@ body
 .hint--left:after
     right: 50%
     bottom: 80%
+
+@import '_media'
