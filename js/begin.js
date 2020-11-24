@@ -82,28 +82,28 @@ function detectiveCat() {
 };
 
 function potterCat() {
-    // $('.level__cat1').css('left', '100vw');
-    // $('.level__cat2').css('visibility', 'hidden');
-    $('.level__cat1').animate({
-        left: '-360px',
-    }, 10000, function() {
-            // $('.level__cat1').css('visibility', 'hidden');
-            // $('.level__cat2').css('visibility', 'visible');
-            $('.level__cat1').css('left', '100vw');
-            // $('.level__cat2').css('right', `${document.documentElement.clientWidth}`);
-            $('.level__cat2').css('right', `100%`);
-            $('.level__cat2').animate({
-                right: '-360px',
-            }, 10000, function(){
-                // $('.level__cat2').css('visibility', 'hidden');
-                // $('.level__cat1').css('visibility', 'visible');
-                $('.level__cat2').css('right', '100vw');
-                // $('.level__cat1').css('left', `${document.documentElement.clientWidth}`);
-                $('.level__cat1').css('left', `100%`);
-                potterCat();
-            });
-
-    });
+        
+    // $('.level__cat1').css("left", "calc( 100% - 160px )");
+    $('.level__cat1').addClass("scale");
+        $('.level__cat1').delay(1000).animate({
+                left: '0',
+            }, 10000, function () {
+                $('.level__cat1').removeClass("scale");
+                $('.level__cat1').addClass("scale0");
+                
+                $('.level__cat2').css("right", "calc( 100% - 180px )");
+                $('.level__cat2').removeClass("scale0");
+                $('.level__cat2').addClass("scale");
+                    $('.level__cat2').delay(1000).animate({
+                        right: "0"
+                    }, 10000, function(){
+                            $('.level__cat2').removeClass("scale");
+                            $('.level__cat2').addClass("scale0");
+                            $('.level__cat1').css("left", "calc( 100% - 180px )");
+                            $('.level__cat1').removeClass("scale0");
+                            potterCat();
+                    });
+        });
 };
 
 $(".modal_button").on("click", function () {

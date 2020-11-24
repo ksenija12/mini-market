@@ -103,6 +103,11 @@ html {
   font-weight: normal;
 }
 
+html {
+  width: 100vw;
+  overflow: hidden;
+}
+
 body {
   font-family: sans-serif;
   font-size: 14px;
@@ -564,16 +569,17 @@ body {
 
 .level__cat1, .level__cat2 {
   position: absolute;
-  height: 140px;
+  -webkit-transform: scale(0, 0);
+          transform: scale(0, 0);
 }
 
 .level__cat1 {
-  left: 100vw;
+  left: calc( 100% - 180px);
   top: 15%;
 }
 
 .level__cat2 {
-  right: 100vw;
+  right: calc( 100% - 180px);
   bottom: 15%;
 }
 
@@ -653,6 +659,24 @@ body {
 
 .level__operation-check-btn-input + label {
   margin-left: 10px;
+}
+
+.scale {
+  -webkit-transition: -webkit-transform 1.5s;
+  transition: -webkit-transform 1.5s;
+  transition: transform 1.5s;
+  transition: transform 1.5s, -webkit-transform 1.5s;
+  -webkit-transform: scale(0.8, 0.8);
+          transform: scale(0.8, 0.8);
+}
+
+.scale0 {
+  -webkit-transition: -webkit-transform 1.5s;
+  transition: -webkit-transform 1.5s;
+  transition: transform 1.5s;
+  transition: transform 1.5s, -webkit-transform 1.5s;
+  -webkit-transform: scale(0, 0);
+          transform: scale(0, 0);
 }
 
 .level__difficulty-radio-btn-input, .level__operation-check-btn-input {
