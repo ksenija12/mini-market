@@ -9,7 +9,15 @@
         @if nth($mediaBp, $i) == 1400px
             .entranse
                 &__form
-                    width: 35%
+                    width: 30%
+
+            .forgot
+                &__form
+                    width: 30%
+
+            .registration
+                &__form
+                    width: 30%
 
 
 
@@ -18,7 +26,15 @@
         @if nth($mediaBp, $i) == 1350px
             .entranse
                 &__form
-                    width: 40%
+                    width: 35%
+
+            .forgot
+                &__form
+                    width: 35%
+
+            .registration
+                &__form
+                    width: 35%
 
 
 
@@ -28,7 +44,15 @@
         @if nth($mediaBp, $i) == 1200px
             .entranse
                 &__form
-                    width: 45%
+                    width: 40%
+
+            .forgot
+                &__form
+                    width: 40%
+
+            .registration
+                &__form
+                    width: 40%
 
 
 
@@ -40,6 +64,14 @@
                 &__form
                     width: 50%
 
+            .forgot
+                &__form
+                    width: 50%
+
+            .registration
+                &__form
+                    width: 50%
+
 
 
 
@@ -47,7 +79,15 @@
         @if nth($mediaBp, $i) == 767px
             .entranse
                 &__form
-                    width: 70%
+                    width: 60%
+
+            .forgot
+                &__form
+                    width: 60%
+
+            .registration
+                &__form
+                    width: 60%
 
 
 
@@ -63,6 +103,22 @@
                 &__hint
                     transform: translate(90%, -175%)
 
+            .forgot
+                &__form
+                    width: 80%
+                &__cat
+                    height: 175px
+                &__hint
+                    transform: translate(-35%, -300%)
+
+            .registration
+                &__form
+                    width: 80%
+                &__cat1, &__cat2
+                    height: 70px
+                &__hint
+                    transform: translate(-50%, 240%)
+
 
 
 
@@ -70,12 +126,51 @@
         @if nth($mediaBp, $i) == 480px
             .entranse
                 &__form
-                    width: 100%
+                    width: 90%
                 &__cat
                     height: 60px
                     transform: translateY(20px)
                 &__hint
                     transform: translate(80%, -175%)
+
+            .forgot
+                &__form
+                    width: 90%
+                & .button 
+                    font-size: 12px
+                &__cat
+                    height: 150px
+                &__hint
+                    transform: translate(-35%, -275%)
+                    width: 125px
+
+            .registration
+                & .button 
+                    font-size: 12px
+                &__form
+                    width: 90%
+                &__cat1, &__cat2
+                    height: 60px
+                &__hint
+                    transform: translate(-50%, 240%)
+            
+            .button_forgot-next-back
+                width: 75px
+            
+            .button_forgot-next
+                width: 100px
+
+            .button_forgot-enter-back
+                width: 60px
+            
+            .button_forgot-enter
+                width: 75px
+
+            .button_registration-back
+                width: 60px
+
+            .button_registration
+                width: 100px
 
 
 
@@ -83,6 +178,10 @@
 
         @if nth($mediaBp, $i) == 380px
             .entranse
+                &__form
+                    width: 100%
+                    &-item
+                        padding: 20px 30px
                 &__title-text
                     font-size: 20px
                 &__problem
@@ -91,15 +190,49 @@
                     height: 50px
                     transform: translateY(30px)
                 &__hint
-                    transform: translate(60%, -160%)                   
+                    transform: translate(60%, -160%)   
+                & .button
+                    margin-top: 20px
+                &__login, &__password
+                    margin-top: 15px                
             
             .container
                 &_entranse
                     width: 100%
+
+            .forgot
+                &__form
+                    width: 100%
+                    padding: 20px 30px
+                &__cat
+                    height: 125px
+                &__hint
+                    transform: translate(-25%, -275%)
+                    width: 100px
+                    font-size: 12px
+
+            .registration
+                &__form
+                    width: 100%
+                    padding: 20px
+                &__cat1, &__cat2
+                    height: 50px
+                &__hint1, &__hint2, &__hint3, &__hint4, &__hint5
+                    transform: translate(-40%, 0)
+                    font-size: 12px
+                &__login, &__passw-first, &__passw-second, &__qwest, &__answ
+                    margin-top: 15px
+                    font-size: 12px
+                & .button
+                    margin-top: 20px
 
 
 
 
 
         @if nth($mediaBp, $i) == 330px
-            .entranse
+            .forgot
+                &__hint
+                    width: 90px
+
+            

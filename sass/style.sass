@@ -28,6 +28,14 @@ body
     &_entranse, &_forgot, &_registration, &_level
         height: 100vh
         align-items: center
+    &_entranse
+        transform: translateY(25px)
+    &_forgot
+        transform: translateY(75px)
+    &_registration
+        transform: translateY(25px)
+    // &_level
+    //     transform: translateY(75px)
 
 .entranse, .registration, .forgot, .level,
 .market-page, .good-card, .favourite,
@@ -184,7 +192,7 @@ body
             display: flex
             justify-content: space-around
     &__hint
-        transform: translate(0, -200%)
+        transform: translate(-35%, -350%)
         &::before, &::after
             left: 100%
         &::before
@@ -217,7 +225,9 @@ body
     &__cat2
         visibility: hidden
         left: 80%
-    &__hint
+    &__login, &__passw-first, &__passw-second, &__qwest, &__answ
+        position: relative
+    &__hint1, &__hint2, &__hint3, &__hint4, &__hint5
         position: absolute
         left: 70%
         top: 0
@@ -229,12 +239,9 @@ body
         border-radius: 5px
         background-color: white
         border: 1px solid $mainColor
-        transform: translateY(240%)
+        transform: translateX(-40%)
         opacity: 0
         z-index: 50
-    &__passw
-        &-first, &-second
-            position: relative
     &__passw-show
         &-hide1, &-hide2
             position: absolute
@@ -248,8 +255,8 @@ body
             border-radius: 50%
 
 .level
+    overflow: hidden
     &__form
-        // position: relative
         width: 40%
         padding: 40px
         display: flex
@@ -264,11 +271,11 @@ body
         position: absolute
         height: 140px
     &__cat1
-        left: 100%
-        top: 20%
+        left: 100vw
+        top: 15%
     &__cat2 
-        right: 100%
-        bottom: 20% 
+        right: 100vw
+        bottom: 15% 
     &__title
         font-weight: 600
         text-align: center
@@ -310,6 +317,7 @@ body
                 display: none
             &-btn-input + label
                 margin-left: 10px
+
 
 .level__difficulty-radio-btn-input, .level__operation-check-btn-input
     display: none

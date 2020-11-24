@@ -82,19 +82,24 @@ function detectiveCat() {
 };
 
 function potterCat() {
-    $('.level__cat1').css('left', '100vw');
+    // $('.level__cat1').css('left', '100vw');
+    // $('.level__cat2').css('visibility', 'hidden');
     $('.level__cat1').animate({
-        left: '-180px',
-    }, 15000, function() {
-            $('.level__cat1').css('visibility', 'hidden');
-            $('.level__cat2').css('visibility', 'visible');
-            $('.level__cat2').css('right', '100%');
+        left: '-360px',
+    }, 10000, function() {
+            // $('.level__cat1').css('visibility', 'hidden');
+            // $('.level__cat2').css('visibility', 'visible');
+            $('.level__cat1').css('left', '100vw');
+            // $('.level__cat2').css('right', `${document.documentElement.clientWidth}`);
+            $('.level__cat2').css('right', `100%`);
             $('.level__cat2').animate({
-                right: '-180px',
-            }, 15000, function(){
-                $('.level__cat2').css('visibility', 'hidden');
-                $('.level__cat1').css('visibility', 'visible');
-                $('.level__cat1').css('left', '100%');
+                right: '-360px',
+            }, 10000, function(){
+                // $('.level__cat2').css('visibility', 'hidden');
+                // $('.level__cat1').css('visibility', 'visible');
+                $('.level__cat2').css('right', '100vw');
+                // $('.level__cat1').css('left', `${document.documentElement.clientWidth}`);
+                $('.level__cat1').css('left', `100%`);
                 potterCat();
             });
 
@@ -151,7 +156,7 @@ $('.registration__passw-show-hide2').on('click', function(event) {
 $('.button_entranse').on('click', function() {
     const login = $('.entranse__login-name').val();
     const password = $('.entranse__password-pass').val();
-    
+   
     
     if (!login) {
         catHint('Введите логин', '.entranse__hint');        
@@ -178,7 +183,12 @@ $('.button_entranse').on('click', function() {
 
 /////////////////////////////forgot/////////////////////////////
 
-$(".entranse__problem-forgot").on('click', function() {buyCat(".forgot")});
+$(".entranse__problem-forgot").on('click', function() {
+    buyCat(".forgot");
+    $(".forgot__login-name").val("");
+});
+
+
 
 $('.button_forgot-next').on('click', function() {
     const login = $('.forgot__login-name').val();
@@ -235,23 +245,19 @@ $('.button_registration').on('click', function() {
     const answer = $('.registration__answer').val();
 
     if (!login) {
-        catHint('Введите логин', '.registration__hint');
+        catHint('Введите логин', '.registration__hint1');
     } else if (ident.find(el => el.log === login)) {
-        catHint('Логин занят', '.registration__hint');
+        catHint('Логин занят', '.registration__hint1');
     } else if (!passwordFirst) {
-        catHint('Введите пароль', '.registration__hint');
-        $('.registration__hint').css("transform", "translateY(430%)");
+        catHint('Введите пароль', '.registration__hint2');
     } else if (!passwordSecond) {
-        catHint('Повторите пароль', '.registration__hint');
-        $('.registration__hint').css("transform", "translateY(625%)");
+        catHint('Повторите пароль', '.registration__hint3');
     } else if (passwordFirst !== passwordSecond) {
-        catHint('Пароли не совпадают', '.registration__hint');
+        catHint('Пароли не совпадают', '.registration__hint3');
     } else if (!question) {
-        catHint('Введите секретный вопрос', '.registration__hint');
-        $('.registration__hint').css("transform", "translateY(820%)");
+        catHint('Введите секретный вопрос', '.registration__hint4');
     } else if (!answer) {
-        catHint('Введите ответ', '.registration__hint');
-        $('.registration__hint').css("transform", "translateY(1015%)");
+        catHint('Введите ответ', '.registration__hint5');
     } else {
         ident.push({
             log: login,

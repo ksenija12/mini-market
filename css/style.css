@@ -138,6 +138,21 @@ body {
           align-items: center;
 }
 
+.container_entranse {
+  -webkit-transform: translateY(25px);
+          transform: translateY(25px);
+}
+
+.container_forgot {
+  -webkit-transform: translateY(75px);
+          transform: translateY(75px);
+}
+
+.container_registration {
+  -webkit-transform: translateY(25px);
+          transform: translateY(25px);
+}
+
 .entranse, .registration, .forgot, .level,
 .market-page, .good-card, .favourite,
 .basket, .last-step, .prise, .modal-block {
@@ -418,8 +433,8 @@ body {
 }
 
 .forgot__hint {
-  -webkit-transform: translate(0, -200%);
-          transform: translate(0, -200%);
+  -webkit-transform: translate(-35%, -350%);
+          transform: translate(-35%, -350%);
 }
 
 .forgot__hint::before, .forgot__hint::after {
@@ -474,7 +489,11 @@ body {
   left: 80%;
 }
 
-.registration__hint {
+.registration__login, .registration__passw-first, .registration__passw-second, .registration__qwest, .registration__answ {
+  position: relative;
+}
+
+.registration__hint1, .registration__hint2, .registration__hint3, .registration__hint4, .registration__hint5 {
   position: absolute;
   left: 70%;
   top: 0;
@@ -492,14 +511,10 @@ body {
   border-radius: 5px;
   background-color: white;
   border: 1px solid #268329;
-  -webkit-transform: translateY(240%);
-          transform: translateY(240%);
+  -webkit-transform: translateX(-40%);
+          transform: translateX(-40%);
   opacity: 0;
   z-index: 50;
-}
-
-.registration__passw-first, .registration__passw-second {
-  position: relative;
 }
 
 .registration__passw-show-hide1, .registration__passw-show-hide2 {
@@ -518,6 +533,10 @@ body {
       -ms-flex-align: center;
           align-items: center;
   border-radius: 50%;
+}
+
+.level {
+  overflow: hidden;
 }
 
 .level__form {
@@ -549,13 +568,13 @@ body {
 }
 
 .level__cat1 {
-  left: 100%;
-  top: 20%;
+  left: 100vw;
+  top: 15%;
 }
 
 .level__cat2 {
-  right: 100%;
-  bottom: 20%;
+  right: 100vw;
+  bottom: 15%;
 }
 
 .level__title {
@@ -2879,7 +2898,13 @@ body {
     max-width: 1350px;
   }
   .entranse__form {
-    width: 35%;
+    width: 30%;
+  }
+  .forgot__form {
+    width: 30%;
+  }
+  .registration__form {
+    width: 30%;
   }
 }
 
@@ -2888,7 +2913,13 @@ body {
     max-width: 1200px;
   }
   .entranse__form {
-    width: 40%;
+    width: 35%;
+  }
+  .forgot__form {
+    width: 35%;
+  }
+  .registration__form {
+    width: 35%;
   }
 }
 
@@ -2897,7 +2928,13 @@ body {
     max-width: 980px;
   }
   .entranse__form {
-    width: 45%;
+    width: 40%;
+  }
+  .forgot__form {
+    width: 40%;
+  }
+  .registration__form {
+    width: 40%;
   }
 }
 
@@ -2908,6 +2945,12 @@ body {
   .entranse__form {
     width: 50%;
   }
+  .forgot__form {
+    width: 50%;
+  }
+  .registration__form {
+    width: 50%;
+  }
 }
 
 @media (max-width: 767px) {
@@ -2915,7 +2958,13 @@ body {
     max-width: 640px;
   }
   .entranse__form {
-    width: 70%;
+    width: 60%;
+  }
+  .forgot__form {
+    width: 60%;
+  }
+  .registration__form {
+    width: 60%;
   }
 }
 
@@ -2935,6 +2984,26 @@ body {
     -webkit-transform: translate(90%, -175%);
             transform: translate(90%, -175%);
   }
+  .forgot__form {
+    width: 80%;
+  }
+  .forgot__cat {
+    height: 175px;
+  }
+  .forgot__hint {
+    -webkit-transform: translate(-35%, -300%);
+            transform: translate(-35%, -300%);
+  }
+  .registration__form {
+    width: 80%;
+  }
+  .registration__cat1, .registration__cat2 {
+    height: 70px;
+  }
+  .registration__hint {
+    -webkit-transform: translate(-50%, 240%);
+            transform: translate(-50%, 240%);
+  }
 }
 
 @media (max-width: 480px) {
@@ -2942,7 +3011,7 @@ body {
     max-width: 380px;
   }
   .entranse__form {
-    width: 100%;
+    width: 90%;
   }
   .entranse__cat {
     height: 60px;
@@ -2953,11 +3022,62 @@ body {
     -webkit-transform: translate(80%, -175%);
             transform: translate(80%, -175%);
   }
+  .forgot__form {
+    width: 90%;
+  }
+  .forgot .button {
+    font-size: 12px;
+  }
+  .forgot__cat {
+    height: 150px;
+  }
+  .forgot__hint {
+    -webkit-transform: translate(-35%, -275%);
+            transform: translate(-35%, -275%);
+    width: 125px;
+  }
+  .registration .button {
+    font-size: 12px;
+  }
+  .registration__form {
+    width: 90%;
+  }
+  .registration__cat1, .registration__cat2 {
+    height: 60px;
+  }
+  .registration__hint {
+    -webkit-transform: translate(-50%, 240%);
+            transform: translate(-50%, 240%);
+  }
+  .button_forgot-next-back {
+    width: 75px;
+  }
+  .button_forgot-next {
+    width: 100px;
+  }
+  .button_forgot-enter-back {
+    width: 60px;
+  }
+  .button_forgot-enter {
+    width: 75px;
+  }
+  .button_registration-back {
+    width: 60px;
+  }
+  .button_registration {
+    width: 100px;
+  }
 }
 
 @media (max-width: 380px) {
   .container {
     max-width: 300px;
+  }
+  .entranse__form {
+    width: 100%;
+  }
+  .entranse__form-item {
+    padding: 20px 30px;
   }
   .entranse__title-text {
     font-size: 20px;
@@ -2974,8 +3094,46 @@ body {
     -webkit-transform: translate(60%, -160%);
             transform: translate(60%, -160%);
   }
+  .entranse .button {
+    margin-top: 20px;
+  }
+  .entranse__login, .entranse__password {
+    margin-top: 15px;
+  }
   .container_entranse {
     width: 100%;
+  }
+  .forgot__form {
+    width: 100%;
+    padding: 20px 30px;
+  }
+  .forgot__cat {
+    height: 125px;
+  }
+  .forgot__hint {
+    -webkit-transform: translate(-25%, -275%);
+            transform: translate(-25%, -275%);
+    width: 100px;
+    font-size: 12px;
+  }
+  .registration__form {
+    width: 100%;
+    padding: 20px;
+  }
+  .registration__cat1, .registration__cat2 {
+    height: 50px;
+  }
+  .registration__hint1, .registration__hint2, .registration__hint3, .registration__hint4, .registration__hint5 {
+    -webkit-transform: translate(-40%, 0);
+            transform: translate(-40%, 0);
+    font-size: 12px;
+  }
+  .registration__login, .registration__passw-first, .registration__passw-second, .registration__qwest, .registration__answ {
+    margin-top: 15px;
+    font-size: 12px;
+  }
+  .registration .button {
+    margin-top: 20px;
   }
 }
 /*# sourceMappingURL=style.css.map */
