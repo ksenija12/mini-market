@@ -28,12 +28,21 @@ $('[data-text="#anchor7"]').on("click", function() {
     $(".market-page").toggleClass('dispFlex');
     $(".entranse").toggleClass('dispFlex');
 
-    $("input").prop("checked", false);
-    $("#level__difficulty-radio-btn-01").prop("checked", true);
-    
-    $(".entranse__login-name").val("");
     $(".entranse__password-pass").val("");
+    $(".entranse__login-name").val("");
+    $(".level__difficulty-radio-btn-input").prop("checked", false);
+    $(".level__operation-check-btn-input").prop("checked", false);
+
+    miniMarketGame.operations = [];
+    miniMarketGame.cart = [];
+    miniMarketGame.favouriteGood = [];
+    miniMarketGame.onAccount = 5000;
+
     helloCat();
+
+    $(".sale__grid-col").remove();
+    $(".goods__grid").remove();
+    $(".slick-dots").remove();
 });
 
 //---------------слик-меню---------------//
@@ -254,6 +263,7 @@ function showGood(begin, end) {
 let numPage, maxItem;
 
 $(".goods__grid-block").on('click', function(event) {
+
     
     //---------------Товары из выбранной категории---------------//
 
@@ -271,16 +281,20 @@ $(".goods__grid-block").on('click', function(event) {
         $(".goods__list").toggleClass("dispFlex"); 
         
         //---------------Показываем первые 5 товаров---------------//
+
+        let count = document.documentElement.clientWidth > 980 ? 5 : 4
+
+        $("#goods-count").append(`<option class="option-change" value="${count}">${count}</option>`)
         
-        showGood(1, 5);
+        showGood(1, count);
 
         //---------------Номера страниц---------------//        
         let goodsCountList;
         
-        goodsCountList = miniMarketGame.clickedCategory.length % 5 == 0 ? miniMarketGame.clickedCategory.length / 5 - 1 : Math.floor(miniMarketGame.clickedCategory.length / 5)
+        goodsCountList = miniMarketGame.clickedCategory.length % count == 0 ? miniMarketGame.clickedCategory.length / count - 1 : Math.floor(miniMarketGame.clickedCategory.length / count)
         
         for (let i = 0; i < goodsCountList; i++) {
-            $("#goods-count").append(`<option class="option-change" value="${5*i+10}">${5*i+10}</option>`)
+            $("#goods-count").append(`<option class="option-change" value="${count*i+count*2}">${count*i+count*2}</option>`)
             
             $(".goods__list-pages-numbers").append(`<div data-count="${i+2}" data-text="goods__list-pages" class="goods__list-pages-num">${i+2}</div>`)
         };
@@ -296,7 +310,7 @@ $(".goods__grid-block").on('click', function(event) {
             
             $(".goods__list-col").remove();
 
-            maxItem = 5 * numPage < miniMarketGame.clickedCategory.length ? 5 * numPage : miniMarketGame.clickedCategory.length;
+            maxItem = count * numPage < miniMarketGame.clickedCategory.length ? count * numPage : miniMarketGame.clickedCategory.length;
 
             showGood(numPage, maxItem);
         });
@@ -331,9 +345,9 @@ $(".goods__grid-block").on('click', function(event) {
                 });
             };
             
-            maxItem = 5 * numPage < sorted.length ? 5 * numPage : sorted.length;
+            maxItem = count * numPage < sorted.length ? count * numPage : sorted.length;
 
-            for (let i = (5 * numPage - 5); i < maxItem; i++) {
+            for (let i = (count * numPage - count); i < maxItem; i++) {
                 $(".goods__list-grid").append(`<div class="goods__list-col col-${i}"></div>`);
                 
                 $(`.goods__list-col.col-${i}`).append(`<div class="goods__list-item item-${i}"><img src="${sorted[i].pic[0]}" data-item="${sorted[i].id}"></div>`)
@@ -372,7 +386,11 @@ $(".goods__list-category").on("click", function () {
     $(".goods__dots").toggleClass("dispFlex");
     $(".goods__list").toggleClass("dispFlex");
 
-    $("#goods-count").val("5");
+    let count = document.documentElement.clientWidth > 980 ? 5 : 4
+
+    $("#goods-count").val(`${count}`);
+
+    // $("#goods-count").val("5");
 
     $(".option-change").remove();
 

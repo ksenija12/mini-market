@@ -83,11 +83,12 @@ function detectiveCat() {
 
 function potterCat() {
         
+    let time = document.documentElement.clientWidth / 300 * 1000;
     // $('.level__cat1').css("left", "calc( 100% - 160px )");
     $('.level__cat1').addClass("scale");
         $('.level__cat1').delay(1000).animate({
                 left: '0',
-            }, 10000, function () {
+            }, time, function () {
                 $('.level__cat1').removeClass("scale");
                 $('.level__cat1').addClass("scale0");
                 
@@ -96,7 +97,7 @@ function potterCat() {
                 $('.level__cat2').addClass("scale");
                     $('.level__cat2').delay(1000).animate({
                         right: "0"
-                    }, 10000, function(){
+                    }, time, function(){
                             $('.level__cat2').removeClass("scale");
                             $('.level__cat2').addClass("scale0");
                             $('.level__cat1').css("left", "calc( 100% - 180px )");

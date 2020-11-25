@@ -4,9 +4,6 @@
 @import '_defaults'
 @import '_fonts'
 
-html
-    width: 100vw
-    overflow: hidden
 
 body
     font-family: sans-serif
@@ -1093,6 +1090,9 @@ body
 
 .basketbtn_task-check
     width: 40px
+    margin-top: calc( 3vw - 15px )
+
+
 
 .basketbtn_task-answer, .basketbtn_task-answer-alt
     border: 1px solid $mainColor
@@ -1103,6 +1103,8 @@ body
     &_container
         min-height: 100vh
         align-items: center
+    &__icon-link
+        margin-top: 0
     & h3
         text-align: center
     &__block
@@ -1137,6 +1139,7 @@ body
         width: 175px
     &__remove, &__back
         text-transform: none
+        margin-top: 0
     &__grid
         width: 100%
         &-title
@@ -1479,7 +1482,7 @@ body
 .modal_button
     position: absolute
     bottom: 100%
-    left: 100%
+    left: calc( 100% - 55px )
     display: flex
     flex-wrap: nowrap
     width: 55px

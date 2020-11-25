@@ -168,7 +168,7 @@
                     </div>
                 </div>
                 <div class="level__operation">
-                    <div class="level__hint entranse__hint"></div>
+                    <div class="entranse__hint level__hint"></div>
                     <div class="entranse__login-title level__title">Выберите операцию</div>
                     <div class="level__operation-check">
                         <div class="level__operation-check-btn dispFlex">
@@ -205,7 +205,7 @@
 
     <div class="market-page">
         <header class="header">
-            <div class="container">            
+            <div class="container market-page_container">            
                 <div class="header-grid">
                     <div class="header-grid__col">
                         <div class="backform"><i class="fas fa-arrow-left"></i></div>
@@ -250,7 +250,7 @@
             </div>
         </header>
         <main class="main">
-            <div class="main-block">
+            <div class="main-block  market-page_container">
                 <div class="container main-block__grid">
                     <div class="main-block__grid-col">
                         <img src="./img/logo-big.png" class="logo-big" alt="logo">
@@ -284,14 +284,14 @@
                 </div>
             </div>
             <div class="sale" id="anchor2">
-                <div class="container sale_container">
+                <div class="container  market-page_container sale_container">
                     <h2 class="entranse__title-text sale__title">Акции</h2>
                     <div class="sale__grid">
                     </div>
                 </div>
             </div>
             <div class="goods" id="anchor1">
-                <div class="container goods_container">
+                <div class="container market-page_container goods_container">
                     <h2 class="entranse__title-text goods__title">Товары</h2>
                     <div class="goods__grid-block dispFlex"></div>
                     <div class="goods__dots dispFlex"></div>
@@ -302,7 +302,7 @@
                                 <div class="goods__list-choose-count_text">Товаров на странице</div>
                                 <div class="goods__list-choose-count_select">
                                     <select name="goods__count" id="goods-count">
-                                        <option value="5">5</option>
+                                        <!-- <option value="5">5</option> -->
                                     </select>
                                 </div>
                             </div>
@@ -327,7 +327,7 @@
             </div>
         </main>
         <footer class="footer">
-            <div class="container footer_container">
+            <div class="container market-page_container footer_container">
                 <div class="information" id="anchor5">
                     <div class="footer__grid">
                         <div class="footer__grid-col">
@@ -593,7 +593,7 @@
                 </div>
                 <div class="favourite__change">
                     <div class="favourite__choose"><span class="favourite__choose-text">Вид:</span><span class="favourite__choose-ico hint--top" aria-label="Сетка"><i class="fas fa-grip-horizontal"></i></span></div>
-                    <a href="#modal-clearFavourite" class="main-block__findarea-icon-link" data-text="clearFavourite"><div class="button favourite__remove">Очистить список</div></a>
+                    <a href="#modal-clearFavourite" class="main-block__findarea-icon-link favourite__icon-link" data-text="clearFavourite"><div class="button favourite__remove">Очистить список</div></a>
                     <div class="button favourite__back">Назад</div>
                 </div>
                 <div class="favourite__list">                        
@@ -707,7 +707,7 @@
                                 <div class="last-step__form-num">2.</div><div class="last-step__form-title">Оплата</div>
                             </div>                            
                             <div class="last-step__form-payForm">
-                                <div class="last-step__form-payForm-text">Выберите форму оплаты</div>
+                                <div class="last-step__form-payForm-text">Форма оплаты</div>
                                 <select name="last-step__form-payForm-list" class="last-step__form-payForm-list" id="last-step__form-payForm-list">
                                     <option class="last-step__list-title" value="" hidden>выберите</option>
                                     <option value="0">Наличный расчет</option>
