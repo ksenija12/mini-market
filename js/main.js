@@ -16,6 +16,8 @@ $(".backform").on("click", function() {
     $(".level").toggleClass('dispFlex');
     $(".level__difficulty-radio-btn-input").prop("checked", false);
     $(".level__operation-check-btn-input").prop("checked", false);
+    $(".level__difficulty-radio-btn-01").prop("checked", true);
+    
 
     for (let i = 2; i < 5; i++) {
         let check = $(`#level__operation-check-btn-0${i}`).parent('.level__operation-check-btn');
@@ -65,6 +67,7 @@ $('[data-text="#anchor7"]').on("click", function() {
     $(".entranse__login-name").val("");
     $(".level__difficulty-radio-btn-input").prop("checked", false);
     $(".level__operation-check-btn-input").prop("checked", false);
+    $(".level__difficulty-radio-btn-01").prop("checked", true);
 
     miniMarketGame.operations = [];
     miniMarketGame.cart = [];
@@ -1159,6 +1162,7 @@ $(".modal-block_lastStep-buy").on('click', function () {
     miniMarketGame.cart = [];
     $(".level__difficulty-radio-btn-input").prop("checked", false);
     $(".level__operation-check-btn-input").prop("checked", false);
+    $(".level__difficulty-radio-btn-01").prop("checked", true);
 
     for (let i = 2; i < 5; i++) {
         let check = $(`#level__operation-check-btn-0${i}`).parent('.level__operation-check-btn');
@@ -1226,6 +1230,7 @@ $(".prise__block-entranse").on('click', function () {
     $(".entranse__login-name").val("");
     $(".level__difficulty-radio-btn-input").prop("checked", false);
     $(".level__operation-check-btn-input").prop("checked", false);
+    $(".level__difficulty-radio-btn-01").prop("checked", true);
 
     miniMarketGame.operations = [];
     miniMarketGame.cart = [];
@@ -1246,6 +1251,7 @@ $(".prise__block-level").on('click', function () {
     miniMarketGame.cart = [];
     $(".level__difficulty-radio-btn-input").prop("checked", false);
     $(".level__operation-check-btn-input").prop("checked", false);
+    $(".level__difficulty-radio-btn-01").prop("checked", true);
 
     for (let i = 2; i < 5; i++) {
         let check = $(`#level__operation-check-btn-0${i}`).parent('.level__operation-check-btn');
