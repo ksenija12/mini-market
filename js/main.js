@@ -1,5 +1,13 @@
 /////////////////////////////market-page/////////////////////////////
 
+$(".nav-list__favourite, .nav-list__basket").on("click", function () {
+    
+    $('.nav').removeClass('nav_active');
+    $("body").css("overflowY", "visible");
+})
+
+
+
 //---------------назад к уровню---------------//
 
 $(".backform").on("click", function() {
@@ -19,8 +27,33 @@ $(".backform").on("click", function() {
     $(".sale__grid-col").remove();
     $(".goods__grid").remove();
     $(".slick-dots").remove();
+    $('.nav').removeClass('nav_active');
+    $("body").css("overflowY", "visible");
 
 });
+
+
+//---------------navigation---------------//
+
+$('.nav-toggle').on('click', function(){
+    const $nav = $('.nav');
+    const height = $('.header').outerHeight();
+
+    $nav.toggleClass('nav_active');
+    const $body = $('body');
+
+    if ($nav.hasClass('nav_active')) {
+        
+        $nav.css("top", height);
+        $body.css("overflow", "hidden");
+    } else {
+        $body.css("overflow", "");
+    }
+
+
+
+})
+
 
 //---------------выход---------------//
 
@@ -43,6 +76,9 @@ $('[data-text="#anchor7"]').on("click", function() {
     $(".sale__grid-col").remove();
     $(".goods__grid").remove();
     $(".slick-dots").remove();
+
+    $('.nav').removeClass('nav_active');
+    $("body").css("overflowY", "visible");
 });
 
 //---------------слик-меню---------------//
@@ -65,7 +101,7 @@ $(window).on('scroll', function() {
 
         $(".backtostart").css("visibility","visible");
         $(".backform").css("top","5px");
-        $(".nav-list__link_sec").css("paddingTop","2px");
+        if (document.documentElement.clientWidth > 767) {$(".nav-list__link_sec").css("paddingTop","2px")};
 
     } else if (scrollTop < 30) {
         $header.removeClass('header_sticky');
@@ -73,7 +109,7 @@ $(window).on('scroll', function() {
         $(".market-page__cat").css("display", "block");
         $(".market-page__title-img").css("height", "");
         $(".backform").css("top","20px");
-        $(".nav-list__link_sec").css("paddingTop","7px");
+        if (document.documentElement.clientWidth > 767) {$(".nav-list__link_sec").css("paddingTop","7px")};
         
     };
 });
@@ -94,10 +130,9 @@ $('[data-index]').on("click", function(event) {
 
     $('html, body').animate({scrollTop: offset}, 500);
 
-    const $body = $('body');
 
-    // $('.nav').removeClass('nav_active');
-    // $body.css("overflow", "");
+    $('.nav').removeClass('nav_active');
+    $("body").css("overflowY", "visible");
 });
 
 
@@ -129,6 +164,9 @@ $('.main-block__findarea-select').focusin(function() {
 }).focusout(function() {
     $(".main-block__cat-find").removeClass('dispFlex');
 });
+
+
+
 
 
 ////////////////////////////Поиск с задержкой////////////////////////////
@@ -284,7 +322,7 @@ $(".goods__grid-block").on('click', function(event) {
 
         let count = document.documentElement.clientWidth > 980 ? 5 : 4
 
-        $("#goods-count").append(`<option class="option-change" value="${count}">${count}</option>`)
+        $("#goods-count").append(`<option class="option-change" value="${count}">${count}</option>`);
         
         showGood(1, count);
 
@@ -630,10 +668,18 @@ $(".favourite__choose-ico").on("click", function() {
             <div class='favourite__grid-price'>Цена: ${price} UAH ${val}</div>
             </div>`)
             $(`.favourite__grid-col`).css('width', "100%");
-            $(`.favourite__grid-item-description`).css('width', "75%");
+            if (document.documentElement.clientWidth >= 980) {
+                $(`.favourite__grid-item-description`).css('width', "75%")
+                $(`.favourite__grid-item`).css('width', "25%");
+            } else if ((document.documentElement.clientWidth < 980) && (document.documentElement.clientWidth >= 767)) {
+                $(`.favourite__grid-item-description`).css('width', "70%")
+                $(`.favourite__grid-item`).css('width', "30%");
+            } else {
+                $(`.favourite__grid-item-description`).css('width', "50%")
+                $(`.favourite__grid-item`).css('width', "50%");
+            };
             $(`.favourite__grid-item-description`).css('marginLeft', "20px");
-            $(`.favourite__grid-item`).css('width', "25%");
-
+           
         };
 
         $(".favourite__grid-item").on("click", function() {
@@ -1135,6 +1181,18 @@ $(".modal-block_lastStep-play, .modal-lastStep-button").on('click', function () 
     $.fancybox.close();
     $(".prise").toggleClass("dispFlex");
 
+    let colCount;
+    if (document.documentElement.clientWidth > 980) {
+        colCount = 6;
+    } else if ((document.documentElement.clientWidth <= 980) && (document.documentElement.clientWidth > 767)) {
+        colCount = 5;
+    }  else if ((document.documentElement.clientWidth <= 767) && (document.documentElement.clientWidth > 640)) {
+        colCount = 4;
+    } else {
+        colCount = 3;
+    }
+
+
     if (miniMarketGame.gameMode == 1) {
         $(".col__level-1").addClass("dispFlex");
     } else if (miniMarketGame.gameMode == 2) {
@@ -1146,11 +1204,13 @@ $(".modal-block_lastStep-play, .modal-lastStep-button").on('click', function () 
         $(".col__level-2").addClass("dispFlex");
         $(".col__level-3").addClass("dispFlex");
     };
-    console.log($(".prise__grid-col.dispFlex"))
-    if ($(".prise__grid-col.dispFlex").length < 6) {
+    // console.log($(".prise__grid-col.dispFlex"))
+    if ($(".prise__grid-col.dispFlex").length < colCount) {
         $(".prise__grid-col.dispFlex").css("width", `calc(100% / ${$(".prise__grid-col.dispFlex").length})`);
+        $(".prise__grid-col.dispFlex").css("height", `calc(100% / ${$(".prise__grid-col.dispFlex").length})`);
     } else {
-        $(".prise__grid-col.dispFlex").css("width", `calc(100% / 6)`);
+        $(".prise__grid-col.dispFlex").css("width", `calc(100% / ${colCount})`);
+        $(".prise__grid-col.dispFlex").css("height", `calc(100% / ${colCount})`);
     };
 });
 

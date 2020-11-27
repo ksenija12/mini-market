@@ -416,11 +416,23 @@ $(".button_level").on("click", function() {
                 dots: true,
                 autoplay: true,
                 autoplaySpeed: 1000,
-                appendDots: $(".goods__dots")
+                appendDots: $(".goods__dots"),
+                responsive: [
+                    {
+                      breakpoint: 768,
+                      settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 1
+                      }
+                    }
+                  ]
             }
         );
 
-        $("#goods-count").val("5");
+        let count = document.documentElement.clientWidth > 980 ? 5 : 4
+
+        $("#goods-count").val(`${count}`);
+        // $("#goods-count").val("5");
                         
     };
             
