@@ -378,7 +378,7 @@ body
             width: 220px
 
 .header
-    z-index: 75
+    z-index: 95
     background-color: $MainColorTransp
     padding: 10px 0
     color: #ffffff
@@ -757,7 +757,7 @@ body
         &-category
             cursor: pointer
             margin: 0
-            width: 200px
+            width: 100px
             text-transform: none
             & > i
                 color: $mainColor
@@ -788,6 +788,7 @@ body
         align-items: center
         &-count, &-sort
             display: flex
+            align-items: center
             & select
                 margin-left: 10px
                 font-size: 12px
@@ -1161,10 +1162,12 @@ body
             cursor: pointer
             border: 1px solid $mainColor
             border-radius: 3px
+            display: flex
+            align-items: center
             & img
                 object-fit: fill
                 width: 100%
-                height: 100%
+                // height: 100%
             &-remove, &-cart
                 position: absolute
                 right: 0
@@ -1320,6 +1323,9 @@ body
         display: flex
         justify-content: space-between
         align-items: flex-end
+        &-newString
+            height: 0
+            width: 0
         &-input-0
             padding: 2px 5px
     &__hint, &__hint-total
@@ -1327,6 +1333,7 @@ body
     &__remove, &__back
         margin-left: 20px
         width: 200px
+    
 
 .basket__result, .basket__enough, .basket__buttons
     display: none
@@ -1359,7 +1366,7 @@ body
         justify-content: space-around
         position: relative
         margin-top: 60px
-        & .button
+        &-return, &-continue
             width: 200px
             margin-left: 0
             margin-right: 0
@@ -1447,6 +1454,8 @@ body
             height: 150px
             width: 150px
         &-item
+            max-width: 150px
+            max-height: 150px
             display: flex
             align-items: center
             & img

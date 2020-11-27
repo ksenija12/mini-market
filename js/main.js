@@ -47,7 +47,7 @@ $('.nav-toggle').on('click', function(){
         $nav.css("top", height);
         $body.css("overflow", "hidden");
     } else {
-        $body.css("overflow", "");
+        $body.css("overflow-y", "visible");
     }
 
 
@@ -94,6 +94,8 @@ $(window).on('scroll', function() {
 
         $(".market-page__cat").css("display", "none");
         $(".market-page__title-img").css("height", "30");
+        $(".nav-toggle").css("height", "30");
+        $(".nav-toggle").css("wigth", "30");
         
         const height = $header.outerHeight();
         $header.css('top', -height);
@@ -108,6 +110,8 @@ $(window).on('scroll', function() {
         $(".backtostart").css("visibility","hidden");
         $(".market-page__cat").css("display", "block");
         $(".market-page__title-img").css("height", "");
+        $(".nav-toggle").css("height", "25");
+        $(".nav-toggle").css("width", "25");
         $(".backform").css("top","20px");
         if (document.documentElement.clientWidth > 767) {$(".nav-list__link_sec").css("paddingTop","7px")};
         
@@ -368,9 +372,9 @@ $(".goods__grid-block").on('click', function(event) {
 
             let sorted;
             if ($("#goods-sort").val() == 1) {
-                sorted =  miniMarketGame.clickedCategory.sort(function (a, b) { return a.price*a.count - b.price*b.count});
+                sorted =  miniMarketGame.clickedCategory.sort(function (a, b) { return a.price/a.count - b.price/b.count});
             } else if ($("#goods-sort").val() == 2) {
-                sorted =  miniMarketGame.clickedCategory.sort(function (a, b) { return b.price*b.count - a.price*a.count});
+                sorted =  miniMarketGame.clickedCategory.sort(function (a, b) { return b.price/b.count - a.price/a.count});
             } else if ($("#goods-sort").val() == 3) {
                 sorted =  miniMarketGame.clickedCategory.sort(function (a, b) {
                     if ( a.title < b.title ) return -1;
@@ -500,9 +504,9 @@ $("#goods-count").on("input", function () {
     $("#goods-sort").change( function () {
         let sorted;
         if ($("#goods-sort").val() == 1) {
-            sorted =  miniMarketGame.clickedCategory.sort(function (a, b) { return a.price*a.count - b.price*b.count});
+            sorted =  miniMarketGame.clickedCategory.sort(function (a, b) { return a.price/a.count - b.price/b.count});
         } else if ($("#goods-sort").val() == 2) {
-            sorted =  miniMarketGame.clickedCategory.sort(function (a, b) { return b.price*b.count - a.price*a.count});
+            sorted =  miniMarketGame.clickedCategory.sort(function (a, b) { return b.price/b.count - a.price/a.count});
         } else if ($("#goods-sort").val() == 3) {
             sorted =  miniMarketGame.clickedCategory.sort(function (a, b) {
                 if ( a.title < b.title ) return -1;
@@ -668,10 +672,10 @@ $(".favourite__choose-ico").on("click", function() {
             <div class='favourite__grid-price'>Цена: ${price} UAH ${val}</div>
             </div>`)
             $(`.favourite__grid-col`).css('width', "100%");
-            if (document.documentElement.clientWidth >= 980) {
+            if (document.documentElement.clientWidth > 980) {
                 $(`.favourite__grid-item-description`).css('width', "75%")
                 $(`.favourite__grid-item`).css('width', "25%");
-            } else if ((document.documentElement.clientWidth < 980) && (document.documentElement.clientWidth >= 767)) {
+            } else if ((document.documentElement.clientWidth <= 980) && (document.documentElement.clientWidth > 640)) {
                 $(`.favourite__grid-item-description`).css('width', "70%")
                 $(`.favourite__grid-item`).css('width', "30%");
             } else {
@@ -941,7 +945,7 @@ function buildCartGrid () {
                                     <div class="good-card__grid-less hint--left" aria-label="Отнять"  onclick="this.nextElementSibling.stepDown()"><i class="fas fa-minus"></i></div>
                                     <input type="number" value="${miniMarketGame.cart[i].count}" min="1" max="99" step="1" readonly class="good-card__grid-num basket__count-num-${i}">
                                     <div class="good-card__grid-more hint--right" aria-label="Добавить" onclick="this.previousElementSibling.stepUp()"><i class="fas fa-plus"></i></div>
-                                </div><div class='basket__count-x'>x</div><div class='basket__count-price'>${price} UAH</div><div class='basket__count-summ'>
+                                </div><div class='basket__count-x'>x</div><div class='basket__count-price'>${price} UAH</div><div class="basket__count-newString"></div><div class='basket__count-summ'>
                                 <input type="number" value="" min="1" max="100000000" step="1" class="basket__count-input-${i}"> UAH</div></div>
         </div>`)
         
@@ -1187,9 +1191,9 @@ $(".modal-block_lastStep-play, .modal-lastStep-button").on('click', function () 
     } else if ((document.documentElement.clientWidth <= 980) && (document.documentElement.clientWidth > 767)) {
         colCount = 5;
     }  else if ((document.documentElement.clientWidth <= 767) && (document.documentElement.clientWidth > 640)) {
-        colCount = 4;
-    } else {
         colCount = 3;
+    } else {
+        colCount = 2;
     }
 
 

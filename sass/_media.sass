@@ -104,7 +104,9 @@
                             transform: translate(500px, -50%)
                     &-title, &-price
                         margin-top: 10px
-            
+                &__change
+                    margin-top: 15px
+
             .basket
                 &__catHint
                     transform: translate(60%, -60%)
@@ -238,6 +240,8 @@
                         margin-top: 0
                     &-commit
                         margin-top: 0
+                    &-head
+                        font-size: 16px
                 &__buttons
                     margin-top: 30px
 
@@ -248,6 +252,9 @@
 
 
         @if nth($mediaBp, $i) == 767px
+            .logo-big
+                height: 150px
+
             .entranse
                 &__form
                     width: 60%
@@ -398,8 +405,107 @@
                 padding: 0
                 padding-top: 0
 
-            
+            .modal
+                &_container
+                    width: 90%
+                &__grid
+                    justify-content: space-between
+                    &-col
+                        width: calc(100% / 4)
 
+            .good-card
+                &__grid
+                    &-col:last-child
+                        padding-left: 20px
+                    &-price
+                        font-size: 20px
+                    &-code
+                        margin-top: 15px
+                    &-main-photo-pic
+                        height: 20vw
+                        width: 20vw
+                    &-back
+                        width: 75px
+                    &-basketbtn
+                        width: 175px
+                &__buying-buy
+                    width: 80px
+                &__buying-back   
+                    width: 175px        
+                &__grid-back, &__grid-basketbtn, &__buying-buy, &__buying-back
+                    font-size: 12px
+
+            .favourite
+                &__block
+                    padding-left: 15px
+                    padding-right: 15px
+                &__change * + *
+                    margin-left: 10px
+                &__back
+                    width: 75px
+                &__remove
+                    width: 150px
+                &__grid
+                    &-item
+                        &-remove-list
+                            transform: translate(350px, -125%)
+                        &-cart-list
+                            transform: translate(350px, 25%)
+                    &-category, &-code
+                        margin-top: 10px
+
+            .basket
+                &__onAccount, &__result, &__enough
+                    margin-top: 20px
+                &__count
+                    flex-wrap: wrap
+                    &-summ
+                        margin: 15px 0 0 130px
+                    &-newString
+                        width: 100%
+                &__remove
+                    width: 125px
+                &__back
+                    width: 115px
+                &__remove, &__back
+                    text-transform: none
+                &__buttons
+                    &-return, &-continue
+                        text-transform: none
+                    &-return
+                        width: 125px
+                    &-continue
+                        width: 105px
+                &__head
+                    justify-content: space-around
+                    margin-top: 15px
+            
+            .last-step
+                &__buttons
+                    &-return, &-continue
+                        text-transform: none
+                    &-return
+                        width: 145px
+                    &-continue
+                        width: 125px
+                &__grid
+                    &-item
+                        display: flex
+                        flex-wrap: wrap
+                &__form
+                    &-lastName
+                        margin-left: 128px
+                        margin-top: 20px
+
+            .prise
+                &__block
+                    padding: 20px 10px
+                    &-entranse, &-level
+                        text-transform: none
+                    &-entranse
+                        width: 150px
+                    &-level
+                        width: 130px
 
 
 

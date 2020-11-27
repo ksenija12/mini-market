@@ -315,7 +315,7 @@ let level;
 let taskArr;
 
 $(".button_level").on("click", function() {  
-    
+    window.scrollTo(0, 0);
     
     if (!$(".level__operation-check-btn-input:checked").length) {
         catHint('Выберите операцию для примеров ( +, -, *, / )', '.level__hint');
