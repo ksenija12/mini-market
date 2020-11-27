@@ -560,6 +560,12 @@
             .level
                 &__form
                     width: 80%
+                & .button
+                    font-size: 12px
+                    &_level
+                        width: 70px
+                    &_level-back
+                        width: 175px
 
             .nav
                 &-list
@@ -576,8 +582,49 @@
                     &-col:nth-child(1)
                         width: 100%
                     &-col:nth-child(2)
-                        margin-top: 40px
+                        margin-top: 20px
                         width: 70%
+                &__findarea
+                    &-input
+                        margin: 15px 0 0 15px
+                        & + label::before
+                            left: 15px
+                &__count
+                    &-newString
+                        width: 100%
+                &__cat-find
+                    top: 0
+                    left: 90%
+                &__cat-heart, &__cat-basket
+                    bottom: 0
+                &__cat-heart
+                    left: -10%
+                &__cat-basket
+                    left: 90%
+
+            .sale
+                &__grid
+                    &-col
+                        width: calc( 100% / 2 )
+                        height: 35vw
+                    &-item
+                        width: 35vw
+                        height: 35vw
+                    &-item_face, &-item_back
+                        width: 35vw
+                        height: 35vw
+
+            .goods
+                &__grid            
+                    &-item-pict, &-item-title
+                        width: 30vw
+                    &-item-pict
+                        height: 30vw
+
+            #modal-contact h2
+                font-size: 16px
+
+
 
 
 

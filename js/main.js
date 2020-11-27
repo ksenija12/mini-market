@@ -14,9 +14,9 @@ $(".backform").on("click", function() {
     symbol = [];
     $(".market-page").toggleClass('dispFlex');
     $(".level").toggleClass('dispFlex');
-    $(".level__difficulty-radio-btn-input").prop("checked", false);
+    
     $(".level__operation-check-btn-input").prop("checked", false);
-    $(".level__difficulty-radio-btn-01").prop("checked", true);
+    $("#level__difficulty-radio-btn-01").prop("checked", true);
     
 
     for (let i = 2; i < 5; i++) {
@@ -65,9 +65,9 @@ $('[data-text="#anchor7"]').on("click", function() {
 
     $(".entranse__password-pass").val("");
     $(".entranse__login-name").val("");
-    $(".level__difficulty-radio-btn-input").prop("checked", false);
+    
     $(".level__operation-check-btn-input").prop("checked", false);
-    $(".level__difficulty-radio-btn-01").prop("checked", true);
+    $("#level__difficulty-radio-btn-01").prop("checked", true);
 
     miniMarketGame.operations = [];
     miniMarketGame.cart = [];
@@ -1160,9 +1160,9 @@ $(".modal-block_lastStep-buy").on('click', function () {
     $(".level").toggleClass("dispFlex");
     miniMarketGame.operations = [];
     miniMarketGame.cart = [];
-    $(".level__difficulty-radio-btn-input").prop("checked", false);
+    // $(".level__difficulty-radio-btn-input").prop("checked", false);
     $(".level__operation-check-btn-input").prop("checked", false);
-    $(".level__difficulty-radio-btn-01").prop("checked", true);
+    $("#level__difficulty-radio-btn-01").prop("checked", true);
 
     for (let i = 2; i < 5; i++) {
         let check = $(`#level__operation-check-btn-0${i}`).parent('.level__operation-check-btn');
@@ -1228,9 +1228,9 @@ $(".prise__block-entranse").on('click', function () {
     $(".entranse").toggleClass('dispFlex');
     $(".entranse__password-pass").val("");
     $(".entranse__login-name").val("");
-    $(".level__difficulty-radio-btn-input").prop("checked", false);
+    
     $(".level__operation-check-btn-input").prop("checked", false);
-    $(".level__difficulty-radio-btn-01").prop("checked", true);
+    $("#level__difficulty-radio-btn-01").prop("checked", true);
 
     miniMarketGame.operations = [];
     miniMarketGame.cart = [];
@@ -1249,9 +1249,9 @@ $(".prise__block-level").on('click', function () {
     $(".level").toggleClass("dispFlex");
     miniMarketGame.operations = [];
     miniMarketGame.cart = [];
-    $(".level__difficulty-radio-btn-input").prop("checked", false);
+    
     $(".level__operation-check-btn-input").prop("checked", false);
-    $(".level__difficulty-radio-btn-01").prop("checked", true);
+    $("#level__difficulty-radio-btn-01").prop("checked", true);
 
     for (let i = 2; i < 5; i++) {
         let check = $(`#level__operation-check-btn-0${i}`).parent('.level__operation-check-btn');
@@ -1301,6 +1301,5 @@ $(".footer__info-contact").on("click", function () {
         "overlayColor": '#f7f8fa',
         showCloseButton: true,
         modal: true,
-        
     });
 });

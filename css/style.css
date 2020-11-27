@@ -1088,6 +1088,11 @@ body {
   left: 70%;
 }
 
+.main-block__count-newString {
+  height: 0;
+  width: 0;
+}
+
 .sale {
   border-bottom: 1px solid #268329;
   margin-top: 40px;
@@ -1470,6 +1475,7 @@ body {
 
 .goods__list-item {
   cursor: pointer;
+  position: relative;
   background-size: cover;
   height: 15vw;
   width: 15vw;
@@ -3618,6 +3624,15 @@ body {
   .level__form {
     width: 80%;
   }
+  .level .button {
+    font-size: 12px;
+  }
+  .level .button_level {
+    width: 70px;
+  }
+  .level .button_level-back {
+    width: 175px;
+  }
   .nav-list__link_main::before {
     right: 72%;
   }
@@ -3633,8 +3648,51 @@ body {
     width: 100%;
   }
   .main-block__grid-col:nth-child(2) {
-    margin-top: 40px;
+    margin-top: 20px;
     width: 70%;
+  }
+  .main-block__findarea-input {
+    margin: 15px 0 0 15px;
+  }
+  .main-block__findarea-input + label::before {
+    left: 15px;
+  }
+  .main-block__count-newString {
+    width: 100%;
+  }
+  .main-block__cat-find {
+    top: 0;
+    left: 90%;
+  }
+  .main-block__cat-heart, .main-block__cat-basket {
+    bottom: 0;
+  }
+  .main-block__cat-heart {
+    left: -10%;
+  }
+  .main-block__cat-basket {
+    left: 90%;
+  }
+  .sale__grid-col {
+    width: calc( 100% / 2);
+    height: 35vw;
+  }
+  .sale__grid-item {
+    width: 35vw;
+    height: 35vw;
+  }
+  .sale__grid-item_face, .sale__grid-item_back {
+    width: 35vw;
+    height: 35vw;
+  }
+  .goods__grid-item-pict, .goods__grid-item-title {
+    width: 30vw;
+  }
+  .goods__grid-item-pict {
+    height: 30vw;
+  }
+  #modal-contact h2 {
+    font-size: 16px;
   }
 }
 

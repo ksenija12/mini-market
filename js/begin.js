@@ -20,7 +20,7 @@ function catHint(text, sel) {
     $(sel).animate({
         opacity: 1
     }, 600, function() {
-        $(sel).delay(1000).animate({
+        $(sel).delay(3000).animate({
             opacity: 0
         }, 600)
     })
@@ -168,7 +168,7 @@ $('.button_entranse').on('click', function() {
     } else if (String(ident.find(el => el.log === login).pass) !== password) {
         catHint('Пароль не верный', '.entranse__hint');
     } else {
-        
+        $("#level__difficulty-radio-btn-01").prop("checked", true);
         
         buyCat(".level");
         potterCat();
@@ -216,6 +216,7 @@ $('.button_forgot-enter').on('click', function() {
         catHint('Ответ не верный', '.forgot__hint');
     } else {
         $(".level__operation-check-btn-input:checked").prop("checked", false);
+        $("#level__difficulty-radio-btn-01").prop("checked", true);
         buyBaloonCat();
 
         potterCat();
@@ -344,7 +345,9 @@ $(".button_level").on("click", function() {
 
         $(".main-block__findarea-input").val("");      
 
+        $(".level__difficulty-radio-btn-input").prop("checked", "false");
 
+        
 
         ////////////////////////////Акции////////////////////////////  
           
@@ -424,7 +427,14 @@ $(".button_level").on("click", function() {
                         slidesToShow: 3,
                         slidesToScroll: 1
                       }
-                    }
+                    },
+                    {
+                        breakpoint: 768,
+                        settings: {
+                          slidesToShow: 2,
+                          slidesToScroll: 1
+                        }
+                      }
                   ]
             }
         );
