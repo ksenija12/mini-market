@@ -35,8 +35,6 @@ body
         transform: translateY(75px)
     &_registration
         transform: translateY(25px)
-    // &_level
-    //     transform: translateY(75px)
 
 .entranse, .registration, .forgot, .level,
 .market-page, .good-card, .favourite,
@@ -415,7 +413,7 @@ body
                 position: absolute
                 content: ""
                 top: 50%
-                right: 0
+                left: calc( 100% - 10px )
                 border: 5px solid transparent
                 border-bottom: none
                 border-top: 5px solid #ffffff
@@ -650,6 +648,8 @@ body
         &-toCart
             flex-direction: column
             align-items: center
+            h4
+                text-align: center
     &__grid
         width: 100%
         &-item
@@ -696,6 +696,9 @@ body
             justify-content: center
         &-item
             cursor: pointer
+            display: flex
+            flex-direction: column
+            align-items: center
             & img
                 object-fit: fill
                 width: 100%
@@ -1333,8 +1336,16 @@ body
             width: 0
         &-input-0
             padding: 2px 5px
+        &-summ
+            display: flex
+            align-items: center
+            & span
+                margin-left: 5px
     &__hint, &__hint-total
         margin-left: 15px
+    &__hint
+        display: flex
+        width: min-content
     &__remove, &__back
         margin-left: 20px
         width: 200px

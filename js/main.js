@@ -327,7 +327,7 @@ $(".goods__grid-block").on('click', function(event) {
         
         //---------------Показываем первые 5 товаров---------------//
 
-        let count = document.documentElement.clientWidth > 980 ? 5 : 4
+        let count = document.documentElement.clientWidth > 980 ? 5 : document.documentElement.clientWidth > 640 ? 4 : 3
 
         $("#goods-count").append(`<option class="option-change" value="${count}">${count}</option>`);
         
@@ -431,7 +431,7 @@ $(".goods__list-category").on("click", function () {
     $(".goods__dots").toggleClass("dispFlex");
     $(".goods__list").toggleClass("dispFlex");
 
-    let count = document.documentElement.clientWidth > 980 ? 5 : 4
+    let count = document.documentElement.clientWidth > 980 ? 5 : document.documentElement.clientWidth > 640 ? 4 : 3
 
     $("#goods-count").val(`${count}`);
 
@@ -581,8 +581,13 @@ $(".nav-list__favourite, .nav-list__link_heart, .footer__buyer-favourite").on("c
             <div class="favourite__grid-item-remove hint--top" aria-label="Удалить из избранного" data-item="${miniMarketGame.favouriteGood[i].id}"><i class="far fa-trash-alt"></i></div>
             <div class="favourite__grid-item-cart hint--bottom" aria-label="Добавить в корзину" data-item="${miniMarketGame.favouriteGood[i].id}"><i class="fas fa-shopping-basket"></i></div>`);
             
-            $(`.favourite__grid-item.item-${i}`).addClass("hint--left");
-            $(`.favourite__grid-item.item-${i}`).attr("aria-label", `${miniMarketGame.favouriteGood[i].title}`);
+            if (document.documentElement.clientWidth <= 980) {
+                $(`.favourite__grid-col.col-${i}`).append(`<div class="favourite__grid-item-title">${miniMarketGame.favouriteGood[i].title}</div>`)
+            } else {
+                $(`.favourite__grid-item.item-${i}`).addClass("hint--left");
+                $(`.favourite__grid-item.item-${i}`).attr("aria-label", `${miniMarketGame.favouriteGood[i].title}`);
+            }
+
             
         };
 
@@ -608,6 +613,7 @@ $(".nav-list__favourite, .nav-list__link_heart, .footer__buyer-favourite").on("c
             // console.log(miniMarketGame.cart);
         });
 
+        $(".favourite__grid-col").css("flexDirection", "column");
     };
 
     
@@ -620,6 +626,7 @@ $(".favourite__choose-ico").on("click", function() {
     $(this).find("i").toggleClass("fa-grip-horizontal").toggleClass("fa-grip-lines");
 
     if (($(this).find("i")).hasClass("fa-grip-horizontal")) {
+        
         $(this).attr("aria-label", "Сетка");
         for (let i = 0; i < miniMarketGame.favouriteGood.length; i++) {
             $(".favourite__grid").append(`<div class="favourite__grid-col col-${i}"></div>`);
@@ -628,8 +635,12 @@ $(".favourite__choose-ico").on("click", function() {
             <div class="favourite__grid-item-remove hint--top" aria-label="Удалить из избранного" data-item="${miniMarketGame.favouriteGood[i].id}"><i class="far fa-trash-alt"></i></div>
             <div class="favourite__grid-item-cart hint--bottom" aria-label="Добавить в корзину" data-item="${miniMarketGame.favouriteGood[i].id}"><i class="fas fa-shopping-basket"></i></div>`);
             
-            $(`.favourite__grid-item.item-${i}`).addClass("hint--left");
-            $(`.favourite__grid-item.item-${i}`).attr("aria-label", `${miniMarketGame.favouriteGood[i].title}`);
+            if (document.documentElement.clientWidth <= 980) {
+                $(`.favourite__grid-col.col-${i}`).append(`<div class="favourite__grid-item-title">${miniMarketGame.favouriteGood[i].title}</div>`)
+            } else {
+                $(`.favourite__grid-item.item-${i}`).addClass("hint--left");
+                $(`.favourite__grid-item.item-${i}`).attr("aria-label", `${miniMarketGame.favouriteGood[i].title}`);
+            };
         };
 
         $(".favourite__grid-item").on("click", function() {
@@ -653,7 +664,12 @@ $(".favourite__choose-ico").on("click", function() {
             miniMarketGame.cartAdd($(this).attr("data-item"));
             // console.log(miniMarketGame.cart);
         });
+
+        $(".favourite__grid-col").css("flexDirection", "column");
+
     } else if (($(this).find("i")).hasClass("fa-grip-lines")) {
+        
+        $(".favourite__grid-col").css("flexDirection", "row");
         $(this).attr("aria-label", "Список");
         for (let i = 0; i < miniMarketGame.favouriteGood.length; i++) {
             $(".favourite__grid").append(`<div class="favourite__grid-col col-${i}"></div>`);
@@ -949,28 +965,56 @@ function buildCartGrid () {
                                     <input type="number" value="${miniMarketGame.cart[i].count}" min="1" max="99" step="1" readonly class="good-card__grid-num basket__count-num-${i}">
                                     <div class="good-card__grid-more hint--right" aria-label="Добавить" onclick="this.previousElementSibling.stepUp()"><i class="fas fa-plus"></i></div>
                                 </div><div class='basket__count-x'>x</div><div class='basket__count-price'>${price} UAH</div><div class="basket__count-newString"></div><div class='basket__count-summ'>
-                                <input type="number" value="" min="1" max="100000000" step="1" class="basket__count-input-${i}"> UAH</div></div>
+                                <input type="number" value="" min="1" max="100000000" step="1" class="basket__count-input-${i}"><span> UAH</span></div></div>
         </div>`)
         
         $(`.basket__grid-col`).css('width', "100%");
-        $(`.basket__grid-item-description`).css('width', "75%");
-        $(`.basket__grid-item-description`).css('marginLeft', "20px");
-        $(`.basket__grid-item`).css('width', "25%");
+        
+        if (document.documentElement.clientWidth > 767) {
+            $(`.basket__grid-item-description`).css('width', "75%");
+            $(`.basket__grid-item-description`).css('marginLeft', "20px");
+            $(`.basket__grid-item`).css('width', "25%");
+        } else if ((document.documentElement.clientWidth <= 766) && (document.documentElement.clientWidth > 480)) {
+            $(`.basket__grid-item-description`).css('width', "60%");
+            $(`.basket__grid-item-description`).css('marginLeft', "20px");
+            $(`.basket__grid-item`).css('width', "40%");
+        }
 
         if (miniMarketGame.gameMode == 1) {
-            $(`.basket__grid-col.col-${i} .basket__count-summ`).append(`<div class="basket__hint basket__hint-${i} hint--top" aria-label="Ответ: ${Number(price * ($(`.basket__count-num-${i}`).val()))}"><i class="far fa-question-circle"></i></div>`);
-            $(".fas.fa-plus").on("click", function() {
-                $(`.basket__hint-${i}`).attr("aria-label", `Ответ: ${(Number(price * ($(`.basket__count-num-${i}`).val()))) + Number(price)}`);  
-            });
-            $(".fas.fa-minus").on("click", function() {
-                if ($(`.basket__count-num-${i}`).val() > 1) {
-                    $(`.basket__hint-${i}`).attr("aria-label", `Ответ: ${(Number(price * ($(`.basket__count-num-${i}`).val()))) - Number(price)}`);
-                };            
-            });
+            if (document.documentElement.clientWidth > 980) {
+
+                $(`.basket__grid-col.col-${i} .basket__count-summ`).append(`<div class="basket__hint basket__hint-${i} hint--top" aria-label="Ответ: ${Number(price * ($(`.basket__count-num-${i}`).val()))}"><i class="far fa-question-circle"></i></div>`);
+                $(".fas.fa-plus").on("click", function() {
+                    $(`.basket__hint-${i}`).attr("aria-label", `Ответ: ${(Number(price * ($(`.basket__count-num-${i}`).val()))) + Number(price)}`);  
+                });
+                $(".fas.fa-minus").on("click", function() {
+                    if ($(`.basket__count-num-${i}`).val() > 1) {
+                        $(`.basket__hint-${i}`).attr("aria-label", `Ответ: ${(Number(price * ($(`.basket__count-num-${i}`).val()))) - Number(price)}`);
+                    };            
+                });
+            } else {
+                $(`.basket__grid-col.col-${i} .basket__count-summ`).append(`<div class="basket__hint basket__hint-${i}"><i class="far fa-question-circle"></i></div>`);
+                $(`.basket__hint-${i}`).on("click", function() {
+                    $(`.basket__count-input-${i}`).attr("placeholder", `${Number(price * ($(`.basket__count-num-${i}`).val()))}`);
+
+                    $(".fas.fa-plus").on("click", function() {
+                        $(`.basket__count-input-${i}`).attr("placeholder", `${(Number(price * ($(`.basket__count-num-${i}`).val()))) + Number(price)}`);
+                    });
+                    $(".fas.fa-minus").on("click", function() {
+                        if ($(`.basket__count-num-${i}`).val() > 1) {
+                            $(`.basket__count-input-${i}`).attr("placeholder", `${(Number(price * ($(`.basket__count-num-${i}`).val()))) - Number(price)}`);
+                        };            
+                    });
+                    $(`.basket__count-input-${i}:placeholder`).css("color", "#16531896");
+
+                });
+                
+            }
         
         };  
     };
     if (miniMarketGame.gameMode == 1) {$(".basket__result").append(`<div class="basket__hint-total hint--top" aria-label=""><i class="far fa-question-circle"></i></div>`)};
+
 
 };
 
@@ -1011,7 +1055,14 @@ $(".basket__buttons-continue").on("click", function() {
         totalSumm = Number(totalSumm) + (Number(price * ($(`.basket__count-num-${i}`).val())));
     };
 
-    $(".basket__hint-total").attr("aria-label", `Ответ: ${Number(totalSumm)}`);
+    if (document.documentElement.clientWidth > 980) {
+        $(".basket__hint-total").attr("aria-label", `Ответ: ${Number(totalSumm)}`);
+    } else {
+        $(".basket__hint-total").on("click", function () {
+            
+            $(".basket__result-summa-input").attr("placeholder", `${Number(totalSumm)}`)
+        });
+    };  
         
     if (count != 0) {
         catHint("Есть не заполненные поля", ".basket__catHint");
@@ -1296,7 +1347,7 @@ $(".footer__info-contact").on("click", function () {
     $("[data-text='contact']").fancybox({
         "padding": 20,
         "width": 600,
-        "height": 125,
+        "height": 150,
         "overlayOpacity": 0.9,
         "overlayColor": '#f7f8fa',
         showCloseButton: true,

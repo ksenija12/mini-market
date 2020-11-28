@@ -187,6 +187,7 @@ $('.button_entranse').on('click', function() {
 $(".entranse__problem-forgot").on('click', function() {
     buyCat(".forgot");
     $(".forgot__login-name").val("");
+    $("body").css("overflowY", "hidden");
 });
 
 
@@ -222,12 +223,14 @@ $('.button_forgot-enter').on('click', function() {
         potterCat();
 
     };
+    $("body").css("overflowY", "visible");
 });
 
 $(".button_forgot-next-back").on("click", function() {
     $(".forgot").toggleClass('dispFlex');
     $(".entranse").toggleClass('dispFlex');
     helloCat();
+    $("body").css("overflowY", "visible");
 });
 
 $(".button_forgot-enter-back").on("click", function() {
@@ -429,7 +432,7 @@ $(".button_level").on("click", function() {
                       }
                     },
                     {
-                        breakpoint: 768,
+                        breakpoint: 641,
                         settings: {
                           slidesToShow: 2,
                           slidesToScroll: 1
@@ -439,7 +442,7 @@ $(".button_level").on("click", function() {
             }
         );
 
-        let count = document.documentElement.clientWidth > 980 ? 5 : 4
+        let count = document.documentElement.clientWidth > 980 ? 5 : document.documentElement.clientWidth > 640 ? 4 : 3
 
         $("#goods-count").val(`${count}`);
         // $("#goods-count").val("5");

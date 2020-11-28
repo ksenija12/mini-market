@@ -220,10 +220,19 @@
                     width: calc( 100% / 3 )
                 &__grid
                     &-item
+                        &-remove, &-cart
+                            height: 35px
+                            width: 35px
                         &-remove-list
                             transform: translate(390px, -125%)
                         &-cart-list
                             transform: translate(390px, 25%)
+                        &-cart
+                            transform: translateY(-18px)
+                        &-title
+                            margin-top: 5px
+                            font-size: 16px
+                            color: $mainColor
             
             .last-step
                 &__block
@@ -351,8 +360,8 @@
                     font-size: 20px
                     li
                         padding-left: 100px
-                        padding-top: 20px
-                        padding-bottom: 20px
+                        padding-top: 15px
+                        padding-bottom: 15px
                     li + li
                         margin-left: 0
                         border-bottom: 1px dotted $mainColor
@@ -365,7 +374,7 @@
                     &__link
                         display: block
                         width: 100vw
-                        padding: 10px 0
+                        padding: 5px 0
                         &_heart, &_basket
                             display: flex
                             width: auto
@@ -377,13 +386,13 @@
                                 & ul li
                                     border: none
                             &:hover::before
-                                top: 30px
+                                top: 20px
                                 border: 5px solid transparent
                                 border-right: none
                                 border-left: 5px solid #ffffff
                             &::before
-                                right: 72%
-                                top: 35px
+                                left: 205px
+                                top: 25px
                                 transform: translate(50%, 100%)
                             & ul
                                 left: 350px
@@ -393,8 +402,8 @@
                                     background-color: transparent
                                     border: none
                                     text-align: left
-                                    padding-top: 30px
-                                    padding-bottom: 30px
+                                    padding-top: 20px
+                                    padding-bottom: 20px
                                     & div
                                         padding: 0
                                         padding-left: 25px
@@ -474,7 +483,7 @@
                 &__count
                     flex-wrap: wrap
                     &-summ
-                        margin: 15px 0 0 130px
+                        margin: 15px 0 0 55px
                     &-newString
                         width: 100%
                 &__remove
@@ -539,7 +548,7 @@
                     height: 70px
                     transform: translateY(10px)
                 &__hint
-                    transform: translate(90%, -175%)
+                    transform: translate(70%, -75%)
 
             .forgot
                 &__form
@@ -559,13 +568,19 @@
             
             .level
                 &__form
-                    width: 80%
+                    width: 90%
                 & .button
                     font-size: 12px
                     &_level
                         width: 70px
                     &_level-back
                         width: 175px
+                &__hint
+                    transform: translate(-40%, -50%)
+                &__title
+                    text-align: left
+                & h2
+                    text-align: center
 
             .nav
                 &-list
@@ -573,6 +588,8 @@
                         &_main
                             &::before
                                 right: 72%
+                            & ul
+                                left: 275px            
 
             .main-block
                 &__grid
@@ -617,12 +634,115 @@
             .goods
                 &__grid            
                     &-item-pict, &-item-title
-                        width: 30vw
+                        width: 25vw
                     &-item-pict
+                        height: 25vw
+                &__list
+                    &-col
+                        width: calc( 100% / 3)
+                        height: 25vw
+                    &-item
+                        height: 25vw
+                        width: 25vw
+                    &-choose
+                        &-count, &-sort
+                            display: flex
+                            flex-direction: column
+                            align-items: center
+                            &_select
+                                margin-top: 5px
+                    &-category
+                        width: 80px
+            
+            .good-card
+                &__grid
+                    flex-wrap: wrap
+                    &-col
+                        &:first-child
+                            order: 1
+                            width: 100%
+                            margin-top: 20px
+                            & .good-card__grid-item
+                                display: flex
+                                & .good-card__grid-change-photo
+                                    display: flex
+                                    align-items: center
+                                    margin-left: 10px
+                        &:last-child
+                            order: 0
+                            width: 100%
+                    &-main-photo-pic
                         height: 30vw
+                        width: 30vw
+                    &-title
+                        font-size: 20px
+
+            .favourite
+                &__block
+                    width: 90%
+                &__grid
+                    &-col
+                        width: calc( 100% / 2)
+                    &-item
+                        &-remove-list, &-cart-list
+                            top: calc( 100% - 45px )
+                        &-remove-list
+                            transform: translate(210px, 0)
+                        &-cart-list
+                            transform: translate(275px, 0)
+                    &-title
+                        font-size: 16px
+                        text-decoration: underline
+                    &-category, &-code
+                        font-size: 12px
+                    &-price
+                        font-size: 14px
+            
+            .basketbtn_task-check
+                margin-top: 15px
+
+            .modal
+                &_container
+                    &-toCart, &-lastStep 
+                        & .modal_buttons
+                            & .button
+                                width: 155px
+                                text-transform: none
+                                margin-top: 20px                       
 
             #modal-contact h2
                 font-size: 16px
+
+            .basket
+                &__block
+                    width: 90%
+                    padding-left: 15px
+                    padding-right: 15px
+            
+            .last-step
+                &__block
+                    width: 90%
+                &__grid
+                    &-item
+                        display: flex
+                        flex-direction: column
+                        width: 75%
+                    &-col
+                        display: flex
+                        justify-content: center
+                &__form
+                    &-lastName
+                        margin-left: 0
+                        margin-top: 0
+                    &-firstName-text, &-lastName-text, &-payForm-text, &-postService-text
+                        margin-top: 10px
+                    &-title
+                        width: 200px
+            
+            .prise
+                &__block
+                    width: 90%
+                
 
 
 
