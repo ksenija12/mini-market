@@ -2997,6 +2997,16 @@ body {
   bottom: 80%;
 }
 
+.alert {
+  display: none;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 @media (max-width: 1400px) {
   .container {
     max-width: 1350px;
@@ -4021,6 +4031,70 @@ body {
   }
   .registration .button {
     margin-top: 20px;
+  }
+}
+
+@media only screen and (max-width: 1400px) and (orientation: portrait) {
+  .alert {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+@media only screen and (max-width: 1350px) and (orientation: portrait) {
+  .alert {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+@media only screen and (max-width: 1200px) and (orientation: portrait) {
+  .alert {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+@media only screen and (max-width: 980px) and (orientation: portrait) {
+  .alert {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+@media only screen and (max-width: 767px) and (orientation: portrait) {
+  .alert {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+@media only screen and (max-width: 640px) and (orientation: portrait) {
+  .alert {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+@media only screen and (max-width: 480px) and (orientation: portrait) {
+  .alert {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+@media only screen and (max-width: 380px) and (orientation: portrait) {
+  .alert {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
   }
 }
 /*# sourceMappingURL=style.css.map */

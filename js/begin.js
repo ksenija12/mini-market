@@ -14,6 +14,12 @@ const ident = [
     }
 ];
 
+
+// if (window.innerWidth > window.innerHeight) {
+
+// }
+
+
 function catHint(text, sel) {
     $(sel).html(text);
 
