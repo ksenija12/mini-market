@@ -639,6 +639,9 @@ body
     width: 30%
     background-color: $mainRed
     transform: translateY(100%)
+    display: flex
+    justify-content: center
+    align-items: center
 
 @include grid(modal, 15, 0, wrap, 5, 10)
 
@@ -738,6 +741,12 @@ body
         margin-top: 20px
         flex-direction: column
         width: 100%
+        &-newString
+            display: none
+            width: 50%
+        &-newString-2
+            display: none
+            width: 100%
         &-price
             top: 60%
             width: 60%
@@ -748,8 +757,9 @@ body
             justify-content: flex-end
             font-size: 16px
             align-items: center
-            & div + div
+            & div
                 margin-left: 10px
+                margin-top: 5px
             &-num, &-num-main
                 background-color: #16531849
                 border-radius: 2px
@@ -759,12 +769,10 @@ body
                 background-color: $MainColorTransp
             &-numbers
                 display: flex
-                & div + div
-                    margin-left: 5px
         &-category
             cursor: pointer
             margin: 0
-            width: 100px
+            width: 175px
             text-transform: none
             & > i
                 color: $mainColor
@@ -794,12 +802,13 @@ body
         display: flex
         justify-content: space-between
         align-items: center
+        flex-wrap: wrap
         &-count, &-sort
             display: flex
             align-items: center
             & select
                 margin-left: 10px
-                font-size: 12px
+                font-size: 13px
     &__dots, &__list
         display: none
     &__dots ul
@@ -1343,6 +1352,7 @@ body
                 margin-left: 5px
     &__hint, &__hint-total
         margin-left: 15px
+        font-size: 16px
     &__hint
         display: flex
         width: min-content

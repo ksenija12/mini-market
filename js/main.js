@@ -106,7 +106,9 @@ $(window).on('scroll', function() {
 
         $(".backtostart").css("visibility","visible");
         $(".backform").css("top","5px");
-        if (document.documentElement.clientWidth > 767) {$(".nav-list__link_sec").css("paddingTop","2px")};
+        // if (document.documentElement.clientWidth > 767) {$(".nav-list__link_sec").css("paddingTop","2px")};
+        if (window.matchMedia("(min-width: 768px)").matches) {$(".nav-list__link_sec").css("paddingTop","2px")};
+        
 
     } else if (scrollTop < 30) {
         $header.removeClass('header_sticky');
@@ -116,7 +118,8 @@ $(window).on('scroll', function() {
         $(".nav-toggle").css("height", "25");
         $(".nav-toggle").css("width", "25");
         $(".backform").css("top","20px");
-        if (document.documentElement.clientWidth > 767) {$(".nav-list__link_sec").css("paddingTop","7px")};
+        // if (document.documentElement.clientWidth > 767) {$(".nav-list__link_sec").css("paddingTop","7px")};
+        if (window.matchMedia("(min-width: 768px)").matches) {$(".nav-list__link_sec").css("paddingTop","7px")};
         
     };
 });
@@ -268,13 +271,6 @@ $('[data-text="try"]').fancybox({
     showCloseButton: true,
     modal: true,
     
-    // чтоб модалка не закрывалась пока пустой input
-    
-    // beforeClose : function() {
-        //     if ( $('.modal-window .mail-pole').val() == '' ) {
-            //         return false;
-            //     }
-            // }
 });
         
 
@@ -327,7 +323,7 @@ $(".goods__grid-block").on('click', function(event) {
         
         //---------------Показываем первые 5 товаров---------------//
 
-        let count = document.documentElement.clientWidth > 980 ? 5 : document.documentElement.clientWidth > 640 ? 4 : 3
+        let count = screenW();
 
         $("#goods-count").append(`<option class="option-change" value="${count}">${count}</option>`);
         
@@ -431,7 +427,7 @@ $(".goods__list-category").on("click", function () {
     $(".goods__dots").toggleClass("dispFlex");
     $(".goods__list").toggleClass("dispFlex");
 
-    let count = document.documentElement.clientWidth > 980 ? 5 : document.documentElement.clientWidth > 640 ? 4 : 3
+    let count = screenW();
 
     $("#goods-count").val(`${count}`);
 
@@ -581,7 +577,8 @@ $(".nav-list__favourite, .nav-list__link_heart, .footer__buyer-favourite").on("c
             <div class="favourite__grid-item-remove hint--top" aria-label="Удалить из избранного" data-item="${miniMarketGame.favouriteGood[i].id}"><i class="far fa-trash-alt"></i></div>
             <div class="favourite__grid-item-cart hint--bottom" aria-label="Добавить в корзину" data-item="${miniMarketGame.favouriteGood[i].id}"><i class="fas fa-shopping-basket"></i></div>`);
             
-            if (document.documentElement.clientWidth <= 980) {
+            // if (document.documentElement.clientWidth <= 980) {
+            if (window.matchMedia("(max-width: 980px)").matches) {
                 $(`.favourite__grid-col.col-${i}`).append(`<div class="favourite__grid-item-title">${miniMarketGame.favouriteGood[i].title}</div>`)
             } else {
                 $(`.favourite__grid-item.item-${i}`).addClass("hint--left");
@@ -635,7 +632,8 @@ $(".favourite__choose-ico").on("click", function() {
             <div class="favourite__grid-item-remove hint--top" aria-label="Удалить из избранного" data-item="${miniMarketGame.favouriteGood[i].id}"><i class="far fa-trash-alt"></i></div>
             <div class="favourite__grid-item-cart hint--bottom" aria-label="Добавить в корзину" data-item="${miniMarketGame.favouriteGood[i].id}"><i class="fas fa-shopping-basket"></i></div>`);
             
-            if (document.documentElement.clientWidth <= 980) {
+            // if (document.documentElement.clientWidth <= 980) {
+            if (window.matchMedia("(max-width: 980px)").matches) {
                 $(`.favourite__grid-col.col-${i}`).append(`<div class="favourite__grid-item-title">${miniMarketGame.favouriteGood[i].title}</div>`)
             } else {
                 $(`.favourite__grid-item.item-${i}`).addClass("hint--left");
@@ -691,10 +689,13 @@ $(".favourite__choose-ico").on("click", function() {
             <div class='favourite__grid-price'>Цена: ${price} UAH ${val}</div>
             </div>`)
             $(`.favourite__grid-col`).css('width', "100%");
-            if (document.documentElement.clientWidth > 980) {
+            
+            if (window.matchMedia("(min-width: 981px)").matches) {
+                // if (document.documentElement.clientWidth > 980) {
                 $(`.favourite__grid-item-description`).css('width', "75%")
                 $(`.favourite__grid-item`).css('width', "25%");
-            } else if ((document.documentElement.clientWidth <= 980) && (document.documentElement.clientWidth > 640)) {
+            // } else if ((document.documentElement.clientWidth <= 980) && (document.documentElement.clientWidth > 640)) {
+            } else if ((window.matchMedia("(max-width: 980px)").matches) && (window.matchMedia("(min-width: 641px)").matches)) {
                 $(`.favourite__grid-item-description`).css('width', "70%")
                 $(`.favourite__grid-item`).css('width', "30%");
             } else {
@@ -970,18 +971,21 @@ function buildCartGrid () {
         
         $(`.basket__grid-col`).css('width', "100%");
         
-        if (document.documentElement.clientWidth > 767) {
+        if (window.matchMedia("(min-width: 768px)").matches) {
+            // if (document.documentElement.clientWidth > 767) {
             $(`.basket__grid-item-description`).css('width', "75%");
             $(`.basket__grid-item-description`).css('marginLeft', "20px");
             $(`.basket__grid-item`).css('width', "25%");
-        } else if ((document.documentElement.clientWidth <= 766) && (document.documentElement.clientWidth > 480)) {
+        // } else if ((document.documentElement.clientWidth <= 766) && (document.documentElement.clientWidth > 480)) {
+        } else if ((window.matchMedia("(max-width: 767px)").matches) && (window.matchMedia("(min-width: 481px)").matches)) {
             $(`.basket__grid-item-description`).css('width', "60%");
             $(`.basket__grid-item-description`).css('marginLeft', "20px");
             $(`.basket__grid-item`).css('width', "40%");
         }
 
         if (miniMarketGame.gameMode == 1) {
-            if (document.documentElement.clientWidth > 980) {
+            if (window.matchMedia("(min-width: 981px)").matches) {
+                // if (document.documentElement.clientWidth > 980) {
 
                 $(`.basket__grid-col.col-${i} .basket__count-summ`).append(`<div class="basket__hint basket__hint-${i} hint--top" aria-label="Ответ: ${Number(price * ($(`.basket__count-num-${i}`).val()))}"><i class="far fa-question-circle"></i></div>`);
                 $(".fas.fa-plus").on("click", function() {
@@ -1054,8 +1058,9 @@ $(".basket__buttons-continue").on("click", function() {
 
         totalSumm = Number(totalSumm) + (Number(price * ($(`.basket__count-num-${i}`).val())));
     };
-
-    if (document.documentElement.clientWidth > 980) {
+    
+    if (window.matchMedia("(min-width: 981px)").matches) {
+        // if (document.documentElement.clientWidth > 980) {
         $(".basket__hint-total").attr("aria-label", `Ответ: ${Number(totalSumm)}`);
     } else {
         $(".basket__hint-total").on("click", function () {
@@ -1239,13 +1244,16 @@ $(".modal-block_lastStep-buy").on('click', function () {
 $(".modal-block_lastStep-play, .modal-lastStep-button").on('click', function () {
     $.fancybox.close();
     $(".prise").toggleClass("dispFlex");
-
+    
     let colCount;
-    if (document.documentElement.clientWidth > 980) {
+    if (window.matchMedia("(min-width: 981px)").matches) {
+        // if (document.documentElement.clientWidth > 980) {
         colCount = 6;
-    } else if ((document.documentElement.clientWidth <= 980) && (document.documentElement.clientWidth > 767)) {
+    // } else if ((document.documentElement.clientWidth <= 980) && (document.documentElement.clientWidth > 767)) {
+    } else if ((window.matchMedia("(max-width: 980px)").matches) && (window.matchMedia("(min-width: 768px)").matches)) {
         colCount = 5;
-    }  else if ((document.documentElement.clientWidth <= 767) && (document.documentElement.clientWidth > 640)) {
+    // }  else if ((document.documentElement.clientWidth <= 767) && (document.documentElement.clientWidth > 640)) {
+    }  else if ((window.matchMedia("(max-width: 980px)").matches) && (window.matchMedia("(min-width: 641px)").matches)) {
         colCount = 3;
     } else {
         colCount = 2;

@@ -302,8 +302,8 @@
                 &__grid-col
                     width: calc( 100% / 3 )
                     height: 25vw
-                    &:nth-child(n+4)
-                        margin-top: 15px
+                    // &:nth-child(n+4)
+                    //     margin-top: 15px
                 &__grid-item   
                     width: 25vw
                     height: 25vw 
@@ -318,11 +318,17 @@
                 height: 20vw
             
             .goods__list
+                margin-top: 0
                 &-col
                     height: 20vw
                 &-item
                     height: 20vw
                     width: 20vw
+                &-newString
+                    display: block
+                &-choose
+                    &-sort, &-count
+                        margin-top: 25px
 
             .market-page_container
                 margin-left: auto
@@ -651,8 +657,8 @@
                             align-items: center
                             &_select
                                 margin-top: 5px
-                    &-category
-                        width: 80px
+                    &-newString-2
+                        display: block
             
             .good-card
                 &__grid
@@ -779,6 +785,16 @@
                 &__hint
                     transform: translate(-50%, 240%)
             
+            .level
+                &__hint
+                    transform: translate(-40%, -50%)
+                    width: 135px
+                    height: 60px
+                    &::after
+                        bottom: 17px
+                    &::before
+                        bottom: 16px    
+            
             .button_forgot-next-back
                 width: 75px
             
@@ -796,6 +812,50 @@
 
             .button_registration
                 width: 100px
+
+            .nav
+                &-list
+                    & li
+                        padding-left: 70px
+                    &__link
+                        &_main
+                            & ul
+                                left: 185px
+                            &::before
+                                left: 155px
+            
+            .sale
+                &__grid
+                    &-col
+                        height: 38vw
+                    &-item
+                        &, &_face, &_back
+                            height: 38vw
+                            width: 38vw
+
+            .goods
+                &__grid
+                    &-item
+                        &-pict, &-title
+                            width: 40vw
+                        &-pict
+                            height: 40vw
+                &__list
+                    &-pages
+                        font-size: 14px
+                        &-numbers
+                            display: flex
+                            flex-wrap: wrap
+                    &-col
+                        width: calc( 100% / 2 )
+                        height: 35vw
+                    &-item
+                        height: 35vw
+                        width: 35vw
+                    &-newString
+                        width: 25%
+
+
 
 
 
@@ -859,7 +919,6 @@
                     width: 90px
 
 
-// @for $i from 1 to length($mediaBp)
-//     @media only screen and ( max-width: nth($mediaBp, $i) ) and (orientation: portrait)
-//             .alert
-//                 display: flex     
+@media ( max-width: 980px ) and ( orientation: landscape )
+    .alert
+        display: flex 

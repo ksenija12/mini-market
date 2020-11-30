@@ -443,12 +443,19 @@ $(".button_level").on("click", function() {
                           slidesToShow: 2,
                           slidesToScroll: 1
                         }
-                      }
+                    },
+                    {
+                        breakpoint: 481,
+                        settings: {
+                          slidesToShow: 1,
+                          slidesToScroll: 1
+                        }
+                    }
                   ]
             }
         );
 
-        let count = document.documentElement.clientWidth > 980 ? 5 : document.documentElement.clientWidth > 640 ? 4 : 3
+        let count = screenW();
 
         $("#goods-count").val(`${count}`);
         // $("#goods-count").val("5");
@@ -476,3 +483,9 @@ $(".button_level-back").on("click", function() {
     
     helloCat();
 });
+
+function screenW () {
+    // let count = document.documentElement.clientWidth > 980 ? 5 : document.documentElement.clientWidth > 640 ? 4 : document.documentElement.clientWidth > 480 ? 3 : 2
+    let count = window.matchMedia("(min-width: 981px)").matches ? 5 : window.matchMedia("(min-width: 641px)").matches ? 4 : window.matchMedia("(min-width: 481px)").matches ? 3 : 2
+    return count;
+};
