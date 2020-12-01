@@ -122,6 +122,12 @@
 
 
 
+        @if (nth($mediaBp, $i) == 980px and ( orientation: landscape ))
+            .alert
+                display: flex
+
+
+
 
         @if nth($mediaBp, $i) == 980px
             .entranse
@@ -265,8 +271,18 @@
                 color: $mainRed
 
 
+        
 
 
+
+        @if (nth($mediaBp, $i) == 767px and ( orientation: landscape ))
+            .alert
+                display: flex
+
+
+
+
+                
         @if nth($mediaBp, $i) == 767px
             .logo-big
                 height: 150px
@@ -546,6 +562,14 @@
 
 
 
+        @if (nth($mediaBp, $i) == 640px and ( orientation: landscape ))
+            .alert
+                display: flex
+
+
+
+
+                
         @if nth($mediaBp, $i) == 640px
             .entranse
                 &__form
@@ -754,6 +778,14 @@
 
 
 
+        @if (nth($mediaBp, $i) == 480px and ( orientation: landscape ))
+            .alert
+                display: flex
+
+
+
+
+                
         @if nth($mediaBp, $i) == 480px
             .entranse
                 &__form
@@ -861,6 +893,14 @@
 
 
 
+        @if (nth($mediaBp, $i) == 380px and ( orientation: landscape ))
+            .alert
+                display: flex
+
+
+
+
+                
         @if nth($mediaBp, $i) == 380px
             .entranse
                 &__form
@@ -913,12 +953,18 @@
 
 
 
+        @if (nth($mediaBp, $i) == 330px and ( orientation: landscape ))
+            .alert
+                display: flex
+
+
+
+
+                
         @if nth($mediaBp, $i) == 330px
             .forgot
                 &__hint
                     width: 90px
 
 
-@media ( max-width: 980px ) and ( orientation: landscape )
-    .alert
-        display: flex 
+ 
