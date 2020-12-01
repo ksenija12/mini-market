@@ -195,7 +195,7 @@ $('.main-block__findarea-input').on('input', function () {clearTimeout(timer);
             
             $(".main-block__findarea-results").append("<ul class='main-block__findarea-results-list'></ul>");
             $(".main-block__findarea-results-list").css("display", "block");
-            const coef = 18;
+            const coef = 36;
             if (miniMarketGame.findGood.length > 6) {
                 $(".main-block__findarea-results-list").css("height", `${6*coef}px`);
                 $(".main-block__findarea-results-list").css("overflow-y", "scroll");
@@ -265,11 +265,11 @@ $(".main-block__findarea-icon").on('click', function () {
 $('[data-text="try"]').fancybox({
     "padding": 20,
     "width": 900,
-    "height": 700,
     "overlayOpacity": 0.9,
     "overlayColor": '#f7f8fa',
     showCloseButton: true,
     modal: true,
+    "height": "auto"
     
 });
         
@@ -743,11 +743,11 @@ $(".favourite__remove").on("click", function () {
         $("[data-text='clearFavourite']").fancybox({
             "padding": 20,
             "width": 600,
-            "height": 180,
             "overlayOpacity": 0.9,
             "overlayColor": '#f7f8fa',
             showCloseButton: true,
             modal: true,
+            "height": "auto"
             
         });
 
@@ -1114,11 +1114,11 @@ $(".basket__remove").on("click", function () {
         $("[data-text='clearCart']").fancybox({
             "padding": 20,
             "width": 600,
-            "height": 180,
             "overlayOpacity": 0.9,
             "overlayColor": '#f7f8fa',
             showCloseButton: true,
             modal: true,
+            "height": "auto"
             
         });
 
@@ -1200,11 +1200,11 @@ $(".last-step__buttons-continue").on('click', function () {
         $("[data-text='lastStep']").fancybox({
             "padding": 20,
             "width": 600,
-            "height": 225,
             "overlayOpacity": 0.9,
             "overlayColor": '#f7f8fa',
             showCloseButton: true,
             modal: true,
+            "height": "auto"
             
         });
     };
@@ -1329,11 +1329,11 @@ $(".footer__info-pay").on("click", function () {
     $("[data-text='payAndDelivery']").fancybox({
         "padding": 20,
         "width": 600,
-        "height": 750,
         "overlayOpacity": 0.9,
         "overlayColor": '#f7f8fa',
         showCloseButton: true,
         modal: true,
+        "height": "auto"
         
     });
 });
@@ -1342,11 +1342,11 @@ $(".footer__info-garant").on("click", function () {
     $("[data-text='garanty']").fancybox({
         "padding": 20,
         "width": 600,
-        "height": 500,
         "overlayOpacity": 0.9,
         "overlayColor": '#f7f8fa',
         showCloseButton: true,
         modal: true,
+        "height": "auto"
         
     });
 });
@@ -1355,10 +1355,10 @@ $(".footer__info-contact").on("click", function () {
     $("[data-text='contact']").fancybox({
         "padding": 20,
         "width": 600,
-        "height": 150,
         "overlayOpacity": 0.9,
         "overlayColor": '#f7f8fa',
         showCloseButton: true,
         modal: true,
+        "height": "auto"
     });
 });

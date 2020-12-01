@@ -1248,6 +1248,10 @@ body {
           align-items: center;
 }
 
+.modal_container-toCart .modal_buttons {
+  width: 110%;
+}
+
 .modal_container-toCart h4 {
   text-align: center;
 }
@@ -2274,11 +2278,11 @@ body {
 }
 
 .favourite__grid-item-remove {
-  top: 0;
+  bottom: 0;
 }
 
 .favourite__grid-item-cart {
-  bottom: 0;
+  top: 0;
 }
 
 .favourite__choose {
@@ -2945,19 +2949,19 @@ body {
 }
 
 .payAndDeliveryGaranty__text > * + * {
-  margin-top: 1vw;
+  margin-top: 10px;
 }
 
 .payAndDeliveryGaranty__text ul li {
   position: relative;
-  padding-left: 4vw;
+  padding-left: 55px;
 }
 
 .payAndDeliveryGaranty__text ul li::before {
   content: "";
   position: absolute;
   top: 50%;
-  left: 2vw;
+  left: 30px;
   width: 8px;
   height: 8px;
   border: 2px solid #268329;
@@ -2967,11 +2971,11 @@ body {
 }
 
 .payAndDeliveryGaranty__text ul li + p {
-  padding-left: 6vw;
+  padding-left: 75px;
 }
 
 .payAndDeliveryGaranty__text ul li + li, .payAndDeliveryGaranty__text ul p + li, .payAndDeliveryGaranty__text ul li + p {
-  margin-top: .8vw;
+  margin-top: 10px;
 }
 
 .contact__text {
@@ -3029,6 +3033,8 @@ body {
   position: fixed;
   top: 0;
   left: 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  font-size: 24px;
 }
 
 @media (max-width: 980px) and (orientation: landscape) {
@@ -3285,7 +3291,7 @@ body {
     -webkit-transform: translate(390px, 25%);
             transform: translate(390px, 25%);
   }
-  .favourite__grid-item-cart {
+  .favourite__grid-item-remove {
     -webkit-transform: translateY(-18px);
             transform: translateY(-18px);
   }
@@ -3900,6 +3906,9 @@ body {
     text-transform: none;
     margin-top: 20px;
   }
+  .modal__grid-col {
+    width: calc(100% / 3);
+  }
   #modal-contact h2 {
     font-size: 16px;
   }
@@ -3957,8 +3966,8 @@ body {
             transform: translateY(20px);
   }
   .entranse__hint {
-    -webkit-transform: translate(80%, -175%);
-            transform: translate(80%, -175%);
+    -webkit-transform: translate(55%, -50%);
+            transform: translate(55%, -50%);
   }
   .forgot__form {
     width: 90%;
@@ -4059,6 +4068,106 @@ body {
   }
   .goods__list-newString {
     width: 25%;
+  }
+  .contact__text {
+    margin-top: 10px;
+  }
+  .contact__text p:first-child {
+    font-size: 12px;
+  }
+  #modal-contact h2 {
+    font-size: 15px;
+  }
+  #modal-contact.fancybox-content {
+    padding: 20px 10px;
+  }
+  .modal__grid-col {
+    width: calc(100% / 2);
+  }
+  .modal-block_toCart .modal_buttons {
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .modal-block_toCart-cartBtn {
+    width: 135px;
+  }
+  .favourite__block {
+    width: 100%;
+  }
+  .favourite__grid-item-remove-list, .favourite__grid-item-cart-list {
+    width: 35px;
+    border: none;
+    border-radius: 0;
+    color: #ffffff;
+    background-color: rgba(255, 0, 0, 0.5);
+    left: 5px;
+    -webkit-transform: none;
+            transform: none;
+    -webkit-transform: translateY(5px);
+            transform: translateY(5px);
+  }
+  .favourite__grid-item-remove-list {
+    bottom: 0;
+  }
+  .favourite__grid-item-cart-list {
+    top: 0;
+  }
+  .good-card_container {
+    width: 90%;
+  }
+  .good-card__grid-back {
+    width: 55px;
+  }
+  .good-card__grid-basketbtn {
+    width: 155px;
+  }
+  .good-card__grid-basketbtn_action {
+    width: 180px;
+  }
+  .good-card__grid-price {
+    font-size: 16px;
+  }
+  .good-card__buying {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .good-card__buying-buy, .good-card__buying-back {
+    margin-top: 15px;
+  }
+  .favourite-heart {
+    font-size: 26px;
+  }
+  .payAndDeliveryGaranty__text ul li {
+    padding-left: 35px;
+  }
+  .payAndDeliveryGaranty__text ul li + p {
+    padding-left: 50px;
+  }
+  .payAndDeliveryGaranty__text ul li::before {
+    left: 15px;
+  }
+  .basket__block {
+    width: 100%;
+  }
+  .basket__grid-item-description {
+    margin-left: 10px;
+  }
+  .basket__buttons {
+    position: relative;
+  }
+  .basket__buttons .button {
+    margin-top: 80px;
+  }
+  .basket__cat {
+    position: absolute;
+    top: 0;
+    left: 0;
   }
 }
 

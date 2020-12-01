@@ -651,6 +651,8 @@ body
         &-toCart
             flex-direction: column
             align-items: center
+            & .modal_buttons
+                width: 110%
             h4
                 text-align: center
     &__grid
@@ -1208,9 +1210,9 @@ body
             &-cart-list  
                 transform: translate(800px, -50%)
             &-remove
-                top: 0
-            &-cart
                 bottom: 0
+            &-cart
+                top: 0
     &__choose
         display: flex
         align-items: center
@@ -1551,24 +1553,24 @@ body
             margin-top: 15px
     &__text
         & > * + *
-            margin-top: 1vw
+            margin-top: 10px
         & ul li
             position: relative
-            padding-left: 4vw
+            padding-left: 55px
             &::before
                 content: ""
                 position: absolute
                 top: 50%
-                left: 2vw
+                left: 30px
                 width: 8px
                 height: 8px
                 border: 2px solid $mainColor
                 border-radius: 50%
                 transform: translateY(-50%)
             & + p
-                padding-left: 6vw
+                padding-left: 75px
         & ul li + li, & ul p + li, & ul li + p
-            margin-top: .8vw
+            margin-top: 10px
 
 .contact__text
     display: flex
@@ -1608,5 +1610,7 @@ body
     position: fixed
     top: 0
     left: 0
+    background-color: rgba(255, 255, 255, .8)
+    font-size: 24px
 
 @import '_media'

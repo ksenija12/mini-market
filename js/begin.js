@@ -15,9 +15,6 @@ const ident = [
 ];
 
 
-if (window.innerWidth > window.innerHeight) {
-    $(".alert").css("display", "flex");
-}
 
 
 function catHint(text, sel) {

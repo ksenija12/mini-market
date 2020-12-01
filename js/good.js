@@ -109,11 +109,11 @@ function fancyRight () {
     $('[data-text="goToCart"]').fancybox({
         "padding": 20,
         "width": 600,
-        "height": 180,
         "overlayOpacity": 0.9,
         "overlayColor": '#f7f8fa',
         showCloseButton: true,
         modal: true,
+        "height": "auto"
         
     });
 
