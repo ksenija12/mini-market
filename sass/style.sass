@@ -41,6 +41,15 @@ body
 .basket, .last-step, .prise, .modal-block
     display: none
 
+.entranse, .forgot, .level
+    &__hint
+        pointer-events: none
+
+.level__cat1, .level__cat2, .main-block__cat-find,
+.main-block__cat-heart, .main-block__cat-basket, .witch-cat,
+.favourite__cat, .basket__cat
+        pointer-events: none
+
 .entranse
     &__cat
         z-index: 0
@@ -663,10 +672,21 @@ body
             width: 120px
             background-size: cover
             border: 1px solid $mainColor
+            position: relative
             & img
                 object-fit: fill
                 width: 100%
                 height: 100%
+            & div
+                position: absolute
+                bottom: 5%
+                width: 100%
+                text-align: center
+                color: #ffffff
+                background-color: $MainColorTransp
+        &-col
+            display: flex
+            justify-content: center
     &_buttons
         width: 100%
         display: flex

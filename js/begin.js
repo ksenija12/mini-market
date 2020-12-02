@@ -14,6 +14,11 @@ const ident = [
     }
 ];
 
+//---------------отменяем клики---------------//
+$(".alert").on("click", function () {
+    e.stopPropagation();
+    e.preventDefault();
+});
 
 
 
@@ -113,7 +118,8 @@ function potterCat() {
 $(".modal_button").on("click", function () {
     $.fancybox.close();
     $(".modal-block").css("display", "none");
-})
+    $(".fancybox-container").css("display", "none");
+});
 
 
 /////////////////////////////entranse/////////////////////////////

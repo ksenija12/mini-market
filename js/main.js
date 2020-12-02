@@ -240,10 +240,15 @@ $(".main-block__findarea-icon").on('click', function () {
     if (miniMarketGame.findGood.length) {
         for (let i = 0; i < miniMarketGame.findGood.length; i++) {
             $(".modal__grid").append(`<div class='modal__grid-col col-${i}'></div>`);
-            $(`.modal__grid-col.col-${i}`).append(`<div class='modal__grid-item'><img src="${miniMarketGame.findGood[i].pic[0]}" alt="" data-item='${miniMarketGame.findGood[i].id}'></div>`);
+            $(`.modal__grid-col.col-${i}`).append(`<div class='modal__grid-item item-${i}'><img src="${miniMarketGame.findGood[i].pic[0]}" alt="" data-item='${miniMarketGame.findGood[i].id}'></div>`);
             
-            $(`.modal__grid-col.col-${i} .modal__grid-item`).addClass("hint--left");
-            $(`.modal__grid-col.col-${i} .modal__grid-item`).attr("aria-label", `${miniMarketGame.findGood[i].title}`);
+            if (window.matchMedia("(min-width: 981px)").matches) {
+                $(`.modal__grid-col.col-${i} .modal__grid-item.item-${i}`).addClass("hint--left");
+                $(`.modal__grid-col.col-${i} .modal__grid-item.item-${i}`).attr("aria-label", `${miniMarketGame.findGood[i].title}`);
+            } else {
+                $(`.modal__grid-col.col-${i} .modal__grid-item.item-${i}`).append(`<div>${miniMarketGame.findGood[i].title}</div>`)
+            }
+            
         }
     };
 
