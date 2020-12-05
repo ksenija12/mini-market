@@ -603,19 +603,39 @@ $(".nav-list__favourite, .nav-list__link_heart, .footer__buyer-favourite").on("c
 
         $(".favourite__grid-item-remove").on("click", function () {
             miniMarketGame.favouriteGoodRemove($(this).attr("data-item"));
+
+            const that = this;
+            const elem = miniMarketGame.miniMarket.find(function (el) {
+                return el.id == String($(that).attr("data-item"));
+            });
+
+            const good = elem.title;
+            catHint(`Удалено из избранного: ${good}`, ".favourite__hint");
+
             $(this).parent().remove();
 
             if (miniMarketGame.favouriteGood.length == 0) {
                 $(".favourite__list").append("<h3>Здесь будут находиться избранные Вами товары. Не пора ли добавить несколько?</h3>");
             };
+
         });
 
         $(".favourite__grid-item-cart").on("click", function () {
             miniMarketGame.cartAdd($(this).attr("data-item"));
-            // console.log(miniMarketGame.cart);
+
+            const that = this;
+            const elem = miniMarketGame.miniMarket.find(function (el) {
+                return el.id == String($(that).attr("data-item"));
+            });
+
+            const good = elem.title;
+            catHint(`В корзину добавлено: ${good}`, ".favourite__hint");
         });
 
+
         $(".favourite__grid-col").css("flexDirection", "column");
+        $(".favourite__grid-col").css("border", "none");
+        $(".favourite__grid").css("border", "none");
     };
 
     
@@ -669,6 +689,8 @@ $(".favourite__choose-ico").on("click", function() {
         });
 
         $(".favourite__grid-col").css("flexDirection", "column");
+        $(".favourite__grid-col").css("border", "none");
+        $(".favourite__grid").css("border", "none");
 
     } else if (($(this).find("i")).hasClass("fa-grip-lines")) {
         
@@ -699,15 +721,22 @@ $(".favourite__choose-ico").on("click", function() {
                 // if (document.documentElement.clientWidth > 980) {
                 $(`.favourite__grid-item-description`).css('width', "75%")
                 $(`.favourite__grid-item`).css('width', "25%");
-            // } else if ((document.documentElement.clientWidth <= 980) && (document.documentElement.clientWidth > 640)) {
-            } else if ((window.matchMedia("(max-width: 980px)").matches) && (window.matchMedia("(min-width: 641px)").matches)) {
+                $(`.favourite__grid-item-description`).css('marginLeft', "20px");
+            // } else if ((document.documentElement.clientWidth <= 980) && (document.documentElement.clientWidth > 380)) {
+            } else if ((window.matchMedia("(max-width: 980px)").matches) && (window.matchMedia("(min-width: 381px)").matches)) {
                 $(`.favourite__grid-item-description`).css('width', "70%")
                 $(`.favourite__grid-item`).css('width', "30%");
+                $(`.favourite__grid-item-description`).css('marginLeft', "20px");
+            } else if ((window.matchMedia("(max-width: 380px)").matches) && (window.matchMedia("(min-width: 331px)").matches)) {
+                $(`.favourite__grid-item-description`).css('width', "60%")
+                $(`.favourite__grid-item`).css('width', "40%");
+                $(`.favourite__grid-item-description`).css('marginLeft', "10px");
             } else {
-                $(`.favourite__grid-item-description`).css('width', "50%")
-                $(`.favourite__grid-item`).css('width', "50%");
+                $(`.favourite__grid-item-description`).css('width', "100%")
+                $(`.favourite__grid-item`).css('width', "60%");
+                $(`.favourite__grid-item-description`).css('marginLeft', "0");
             };
-            $(`.favourite__grid-item-description`).css('marginLeft', "20px");
+            
            
         };
 
@@ -721,16 +750,34 @@ $(".favourite__choose-ico").on("click", function() {
 
         $(".favourite__grid-item-remove-list").on("click", function () {
             miniMarketGame.favouriteGoodRemove($(this).attr("data-item"));
+
+            const that = this;
+            const elem = miniMarketGame.miniMarket.find(function (el) {
+                return el.id == String($(that).attr("data-item"));
+            });
+
+            const good = elem.title;
+            catHint(`Удалено из избранного: ${good}`, ".favourite__hint");
+
             $(this).parent().remove();
 
             if (miniMarketGame.favouriteGood.length == 0) {
                 $(".favourite__list").append("<h3>Здесь будут находиться избранные Вами товары. Не пора ли добавить несколько?</h3>");
             };
+
+
         });
 
         $(".favourite__grid-item-cart-list").on("click", function () {
             miniMarketGame.cartAdd($(this).attr("data-item"));
-            // console.log(miniMarketGame.cart);
+
+            const that = this;
+            const elem = miniMarketGame.miniMarket.find(function (el) {
+                return el.id == String($(that).attr("data-item"));
+            });
+
+            const good = elem.title;
+            catHint(`В корзину добавлено: ${good}`, ".favourite__hint");
         });
     }
 
@@ -758,6 +805,8 @@ $(".favourite__remove").on("click", function () {
 
 
         $(".modal-block_clearFavourite-yes").on("click", function() {
+
+            catHint("Список избанного очищен", ".favourite__hint");
             $(".favourite__grid-col").remove();
             $(".favourite__list h3").remove();
             miniMarketGame.favouriteGood = [];
@@ -770,6 +819,7 @@ $(".favourite__remove").on("click", function () {
             $.fancybox.close();
         });
     };
+
 })
 
 ////////////////////////////Карта товара////////////////////////////
@@ -899,6 +949,8 @@ $(".nav-list__basket, .nav-list__link_basket, .footer__buyer-basket").on("click"
     $(".basket__result-summa-input").val("");
     $("#basket__enough-choose-list").val("");
 
+    window.scrollTo(0, 0);
+
     if (miniMarketGame.cart.length == 0) {
         $(".basket__block").append("<h3>Здесь будут находиться товары, которые Вы сможете приобрести. Не пора ли добавить несколько?</h3>");
         $(".basket__result, .basket__enough, .basket__buttons").removeClass("dispFlex");
@@ -982,11 +1034,15 @@ function buildCartGrid () {
             $(`.basket__grid-item-description`).css('marginLeft', "20px");
             $(`.basket__grid-item`).css('width', "25%");
         // } else if ((document.documentElement.clientWidth <= 766) && (document.documentElement.clientWidth > 480)) {
-        } else if ((window.matchMedia("(max-width: 767px)").matches) && (window.matchMedia("(min-width: 481px)").matches)) {
+        } else if ((window.matchMedia("(max-width: 767px)").matches) && (window.matchMedia("(min-width: 331px)").matches)) {
             $(`.basket__grid-item-description`).css('width', "60%");
             $(`.basket__grid-item-description`).css('marginLeft', "20px");
             $(`.basket__grid-item`).css('width', "40%");
-        }
+        } else {
+            $(`.basket__grid-item-description`).css('width', "100%");
+            $(`.basket__grid-item-description`).css('marginLeft', "0");
+            $(`.basket__grid-item`).css('width', "60%");
+        };
 
         if (miniMarketGame.gameMode == 1) {
             if (window.matchMedia("(min-width: 981px)").matches) {
@@ -1037,6 +1093,7 @@ $(".basket__buttons-continue").on("click", function() {
     $(".last-step__form-commit-area").val("");
     $(".last-step__form-payForm-list").css("color", "#16531896");
     $(".last-step__form-postService-list").css("color", "#16531896");
+
 
     let count = 0;
     let result = 0;
@@ -1106,6 +1163,7 @@ $(".basket__buttons-continue").on("click", function() {
     } else {
         $(".basket").toggleClass("dispFlex");
         $(".last-step").toggleClass("dispFlex");
+        window.scrollTo(0, 0);
     };
 
     differance = parseFloat($(".basket__onAccount-summa").html()) - totalSumm;
@@ -1161,6 +1219,7 @@ function delCartItem() {
 $(".last-step__buttons-return").on('click', function () {
     $(".market-page").toggleClass("dispFlex");
     $(".last-step").toggleClass("dispFlex");
+    window.scrollTo(0, 0);
 });
 
 
@@ -1177,6 +1236,7 @@ $(".last-step__form-postService-list").on("input",function () {
 });
 
 $(".last-step__buttons-continue").on('click', function () {
+
     if ($(".last-step__form-firstName-input").val() == "") {
         catHint("Введите имя", ".basket__catHint");
     } else if ($(".last-step__form-lastName-input").val() == "") {

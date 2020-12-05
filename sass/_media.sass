@@ -64,6 +64,17 @@
                         &-cart-list  
                             transform: translate(650px, -50%)
 
+            .basket
+                &__grid
+                    &-title
+                        font-size: 20px
+                        margin-top: 15px
+                    &-category, &-code
+                        margin-top: 10px
+                    &-price
+                        margin-top: 15px
+                        font-size: 16px
+
 
 
 
@@ -98,11 +109,20 @@
                 margin-left: 0.75%
                 margin-right: 0.75%
 
-            .basket__catHint
-                transform: translate(75%, -100%)
+            .basket
+                &__catHint
+                    transform: translate(75%, -100%)
+                &__head
+                    width: 85%
 
-            .good-card__buying-back
-                width: 185px
+            .good-card
+                &__buying-back
+                    width: 185px
+                &__grid
+                    &-price, &-favourite, &-count, &-basketbtn, &-basketbtn_action
+                        margin-top: 15px
+                    &-favourite
+                        margin-bottom: 15px
 
             .favourite
                 &__grid
@@ -117,10 +137,6 @@
                         margin-top: 10px
                 &__change
                     margin-top: 15px
-
-            .basket
-                &__catHint
-                    transform: translate(60%, -60%)
             
             .last-step
                 &__form
@@ -181,6 +197,8 @@
                         width: 50px
 
             .basket
+                &__block
+                    width: 80%
                 &__catHint
                     transform: translate(50%, -75%)
                 & .good-card__grid-count
@@ -206,6 +224,9 @@
                     font-size: 12px
                 &__head
                     justify-content: space-between
+                    width: 100%
+                    margin: 0
+                    margin-top: 20px
                 &__buttons
                     font-size: 12px
                     &-continue
@@ -508,7 +529,7 @@
                 &__count
                     flex-wrap: wrap
                     &-summ
-                        margin: 15px 0 0 55px
+                        margin: 15px 0 0 auto
                     &-newString
                         width: 100%
                 &__remove
@@ -846,14 +867,19 @@
             
             .sale
                 &__grid
+                    font-size: 13px
                     &-col
                         height: 38vw
                     &-item
                         &, &_face, &_back
                             height: 38vw
                             width: 38vw
+                & .item_back-discount
+                    width: 40%
 
             .goods
+                &_container
+                    width: 90%
                 &__grid
                     &-item
                         &-pict, &-title
@@ -866,6 +892,8 @@
                         &-numbers
                             display: flex
                             flex-wrap: wrap
+                    &-choose
+                        justify-content: center
                     &-col
                         width: calc( 100% / 2 )
                         height: 35vw
@@ -873,7 +901,7 @@
                         height: 35vw
                         width: 35vw
                     &-newString
-                        width: 25%
+                        width: 40%
 
             .contact__text
                 margin-top: 10px
@@ -920,6 +948,10 @@
                 &_container
                     width: 90%
                 &__grid
+                    &-col:last-child
+                        padding-left: 0
+                    &-title
+                        font-size: 16px
                     &-back
                         width: 55px
                     &-basketbtn
@@ -927,7 +959,7 @@
                         &_action
                             width: 180px
                     &-price
-                        font-size: 16px
+                        font-size: 14px
                 &__buying
                     flex-direction: column
                     align-items: center
@@ -983,6 +1015,17 @@
             
             .logo-big
                 height: 120px
+            
+            .nav
+                &-list
+                    & li
+                        padding-left: 25px
+                    &__link
+                        &_main
+                            & ul
+                                left: 145px
+                            &::before
+                                left: 115px
             
 
 
@@ -1052,22 +1095,227 @@
                     margin-top: 30px
                 &__hint
                     transform: translate(-40%, -45%)
+            
+            .favourite
+                &__change
+                    flex-wrap: wrap
+                &__choose
+                    margin-top: 20px
+                    order: 2
+                &__list
+                    margin-top: 0
+            
+            .modal-block_clearFavourite-no
+                width: 100px
 
-                .modal
-                    &_container
-                        margin-left: 0
-                        margin-right: 0
+            .basket
+                &__catHint
+                    transform: translate(50%, -80%)
+                &__count-summ
+                    margin-right: 0
+
+            .last-step
+                &__block
+                    width: 100%
+                &__grid
+                    &-item
                         width: 100%
+                &__buttons
+                    display: flex
+                    flex-direction: column
+                    & .button
+                        width: 100%
+                & .main-block__findarea-icon-link
+                    width: 100%
+                    & .button
+                        margin-top: 20px
+            
+            .modal-block_lastStep, .modal-block_toCart
+                .modal_buttons
+                    display: flex
+                    flex-direction: column
+                    align-items: center
+                    & .button
+                        width: 175px
+            
+            .prise__block
+                &-btn
+                    display: flex
+                    flex-direction: column
+                    align-items: center
+                    & .button
+                        width: 175px
+                        &:last-child
+                            margin-top: 20px
+
+            .goods
+                & .slick-next
+                    transform: translate(175%, -50%)
+                & .slick-prev
+                    transform: translate(-175%, -50%)
                 
-                
+            .footer
+                & .entranse__title-text
+                    font-size: 16px
+            
+            .good-card
+                &__grid
+                    position: relative
+                    &-col:first-child
+                        order: -1
+                        margin-top: 45px
+                    &-item
+                        flex-direction: column
+                    &-col:last-child
+                        position: static
+                        margin-top: 20px
+                    &-main-photo-pic
+                        height: 50vw
+                        width: 50vw
+                    &-basketbtn_action
+                        left: 0
+                        margin-top: 0
+                        width: 150px
+                        font-size: 12px
+                        transform: none
 
 
 
-                
         @if nth($mediaBp, $i) == 330px
             .forgot
                 &__hint
                     width: 90px
+            
+            .logo-big
+                height: 90px
+            
+            .nav
+                &-list
+                    & li
+                        padding-left: 15px
+                        padding-top: 5px
+                        padding-bottom: 5px
+                    &__cat
+                        display: none
+                    &__link
+                        &_main
+                            & ul
+                                left: 105px
+                                & li
+                                    padding-top: 10px
+                                    padding-bottom: 10px
+                            &::before
+                                top: 15px
+                                left: 105px
+                            &:hover::before
+                                top: 10px
+            
+            .sale
+                &__grid
+                    &-col
+                        width: 100%
+                        height: 60vw
+                    &-item, &-item_face, &-item_back
+                        height: 60vw
+                        width: 60vw
 
+            .main-block
+                &__grid
+                    &-col:nth-child(2)
+                        width: 90%
+                &__main-categories
+                    justify-content: space-evenly
+                &__cat
+                    &-basket
+                        left: 82%
+                    &-heart
+                        left: -5%
+                    &-find
+                        height: 60px
+                        top: 30px
+                        left: calc( -40px )
 
- 
+            .goods
+                &__grid
+                    &-item
+                        &-pict, &-title
+                            width: 60vw
+                        &-pict
+                            height: 60vw
+                & .slick-next
+                    transform: translate(165%, -50%)
+                & .slick-prev
+                    transform: translate(-165%, -50%)      
+
+            .good-card
+                & .newString, & .newString-2
+                    display: block
+                &__grid
+                    &-count-basketbtn
+                        flex-wrap: wrap
+
+            .footer
+                &__grid
+                    &-col:nth-child(even)
+                        width: 10%
+                    &-col:nth-child(odd)
+                        width: 45%
+
+            .favourite
+                &__remove
+                    width: 130px
+                &__back
+                    width: 60px
+                &__hint
+                    left: 90px
+                &__grid
+                    border-top: 1px solid $mainColor
+                    display: flex
+                    justify-content: center
+                    &-col
+                        border-bottom: 1px solid $mainColor
+                        flex-direction: column
+                        align-items: flex-start
+                        width:  70%
+                    &-item
+                        &-descripton
+                            margin-left: 0
+                        &-remove-list, &-cart-list
+                            left: 80%
+                            width: 35px
+                            border: 2px solid $mainColor
+                            color: $mainColor
+                            background-color: #ffffff
+                            border-radius: 5px
+                            text-transform: uppercase
+                            transform: none
+                            &:hover
+                                background-color:  $mainColor
+                                color: #ffffff
+                                cursor: pointer
+                            &:active
+                                background-color: darken($mainColor, 10)
+                                color: #ffffff
+                                cursor: pointer
+                        &-remove-list
+                            top: calc( 100% - 85px)
+                        &-cart-list
+                            top: 50px
+            
+            .basket
+                &__grid
+                    &-col
+                        flex-direction: column
+                &__count
+                    &-summ
+                        margin: 15px 0 0 auto
+
+            .last-step
+                &__form
+                    &-person, &-pay, &-delivery, &-commit
+                        padding-left: 0
+                        padding-right: 0
+                    &-firstName-text, &-lastName-text, &-payForm-text, &-postService-text
+                        margin-left: 10px
+                    &-firstName-input, &-lastName-input, &-payForm-list, &-postService-list
+                        margin-left: 25px
