@@ -263,6 +263,11 @@ body {
   width: 100%;
 }
 
+.entranse__title-text i {
+  font-size: .9em;
+  margin-left: 10px;
+}
+
 .entranse__title-img {
   margin-top: 20px;
 }
@@ -644,6 +649,38 @@ body {
   margin-left: 10px;
 }
 
+.level__difficulty-descr {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 20px;
+}
+
+.level__difficulty-descr-star {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+.level__difficulty-descript {
+  text-align: justify;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  min-height: 35px;
+  font-size: 13px;
+  display: none;
+}
+
 .level__operation {
   position: relative;
   margin-top: 40px;
@@ -879,6 +916,19 @@ body {
   height: 60px;
 }
 
+.market-page__descr {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-left: 10px;
+  margin-top: 10px;
+}
+
+.market-page__descript {
+  margin-left: 5px;
+}
+
 .nav-toggle {
   display: none;
   width: auto;
@@ -902,13 +952,18 @@ body {
   border-bottom: 1px solid #268329;
 }
 
+.main-block__descr {
+  margin-top: 100px;
+  line-height: 1.5;
+}
+
 .main-block__grid {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  margin-top: 135px;
+  margin-top: 35px;
   padding-bottom: 40px;
   display: flex;
   position: relative;
@@ -2981,6 +3036,23 @@ body {
   width: 100%;
 }
 
+.description_level-1, .description_level-2 {
+  display: none;
+}
+
+.sale h2, .goods h2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.music {
+  display: none;
+}
+
 .visible {
   visibility: visible;
 }
@@ -3912,7 +3984,6 @@ body {
     left: 275px;
   }
   .main-block__grid {
-    margin-top: 100px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;

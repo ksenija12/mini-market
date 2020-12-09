@@ -14,17 +14,10 @@ const ident = [
     }
 ];
 
-//---------------отменяем клики---------------//
-$(".alert").on("click", function () {
-    e.stopPropagation();
-    e.preventDefault();
-});
-
-
 
 function catHint(text, sel) {
     $(sel).html(text);
-
+    
     $(sel).animate({
         opacity: 1
     }, 600, function() {
@@ -66,7 +59,7 @@ function buyBaloonCat(form) {
     }, 1500, function() {
         $('.forgot').toggleClass('dispFlex');
         $('.level').toggleClass('dispFlex');
-
+        
     })
 };
 
@@ -74,52 +67,118 @@ function detectiveCat() {
     $('.registration__cat1').animate({
         left: '80%',
     }, 9000, function() {
-            $('.registration__cat1').css('visibility', 'hidden');
-            $('.registration__cat2').css('visibility', 'visible');
-            $('.registration__cat2').css('left', '80%');
-            $('.registration__cat2').animate({
-                left: '0',
-            }, 9000, function(){
-                $('.registration__cat2').css('visibility', 'hidden');
-                $('.registration__cat1').css('visibility', 'visible');
-                $('.registration__cat1').css('left', '0');
-                detectiveCat();
-            })
-
+        $('.registration__cat1').css('visibility', 'hidden');
+        $('.registration__cat2').css('visibility', 'visible');
+        $('.registration__cat2').css('left', '80%');
+        $('.registration__cat2').animate({
+            left: '0',
+        }, 9000, function(){
+            $('.registration__cat2').css('visibility', 'hidden');
+            $('.registration__cat1').css('visibility', 'visible');
+            $('.registration__cat1').css('left', '0');
+            detectiveCat();
+        })
+        
     })
 };
 
 function potterCat() {
-        
+    
     let time = document.documentElement.clientWidth / 300 * 1000;
     // $('.level__cat1').css("left", "calc( 100% - 160px )");
     $('.level__cat1').addClass("scale");
-        $('.level__cat1').delay(1000).animate({
-                left: '0',
-            }, time, function () {
-                $('.level__cat1').removeClass("scale");
-                $('.level__cat1').addClass("scale0");
-                
-                $('.level__cat2').css("right", "calc( 100% - 180px )");
-                $('.level__cat2').removeClass("scale0");
-                $('.level__cat2').addClass("scale");
-                    $('.level__cat2').delay(1000).animate({
-                        right: "0"
-                    }, time, function(){
-                            $('.level__cat2').removeClass("scale");
-                            $('.level__cat2').addClass("scale0");
-                            $('.level__cat1').css("left", "calc( 100% - 180px )");
-                            $('.level__cat1').removeClass("scale0");
-                            potterCat();
-                    });
+    $('.level__cat1').delay(1000).animate({
+        left: '0',
+    }, time, function () {
+        $('.level__cat1').removeClass("scale");
+        $('.level__cat1').addClass("scale0");
+        
+        $('.level__cat2').css("right", "calc( 100% - 180px )");
+        $('.level__cat2').removeClass("scale0");
+        $('.level__cat2').addClass("scale");
+        $('.level__cat2').delay(1000).animate({
+            right: "0"
+        }, time, function(){
+            $('.level__cat2').removeClass("scale");
+            $('.level__cat2').addClass("scale0");
+            $('.level__cat1').css("left", "calc( 100% - 180px )");
+            $('.level__cat1').removeClass("scale0");
+            potterCat();
         });
+    });
 };
+
+
+function screenW () {
+    // let count = document.documentElement.clientWidth > 980 ? 5 : document.documentElement.clientWidth > 640 ? 4 : document.documentElement.clientWidth > 480 ? 3 : 2
+    let count = window.matchMedia("(min-width: 981px)").matches ? 5 : window.matchMedia("(min-width: 641px)").matches ? 4 : window.matchMedia("(min-width: 481px)").matches ? 3 : window.matchMedia("(min-width: 331px)").matches ? 2 : 1
+    return count;
+    return count;
+};
+
+
+//---------------подсказки---------------//
+
+function levelHint() {
+    $(".description_level-1").removeClass("dispFlex");
+    $(".description_level-2").removeClass("dispFlex");
+    $(".main-block__descr").css("visibility", "hidden");
+    
+    
+    if (miniMarketGame.gameMode == "1") {
+        $(".description_level-1").addClass("dispFlex");
+        $(".main-block__descr").css("visibility", "visible");
+    } else if (miniMarketGame.gameMode == "2") {
+        $(".description_level-2").addClass("dispFlex");
+        $(".main-block__descr").css("visibility", "visible");
+    };
+};
+
+
+
+
+
+$(".description_level-2").on("click", function () {
+    $(this).parent().siblings(".description_level-1").toggleClass("dispFlex");
+    $(this).siblings(".description_level-1").toggleClass("dispFlex");
+    
+    // const audio = document.querySelector("#audio");
+    const audio = ($(this).parent()).next('.audio')[0];
+
+    ($(this).siblings(".music")).on("click", function () {
+        if (audio.paused) {
+            audio.play();
+        } else {
+            audio.pause();
+        };
+        $(this).toggleClass("fa-volume-up").toggleClass("fa-volume-mute")
+        // return audio.paused ? audio.play() : audio.pause();
+        return
+    });
+
+})
+
+
+
+
+ 
+
 
 $(".modal_button").on("click", function () {
     $.fancybox.close();
     $(".modal-block").css("display", "none");
     $(".fancybox-container").css("display", "none");
 });
+
+
+//---------------отменяем клики---------------//
+$(".alert").on("click", function () {
+    e.stopPropagation();
+    e.preventDefault();
+});
+
+
+
 
 
 /////////////////////////////entranse/////////////////////////////
@@ -317,10 +376,15 @@ $('.level__difficulty-radio-btn-input').on('input', function() {
                 $('#level__operation-check-btn-03').parent('.level__operation-check-btn').addClass('dispFlex');
                 $('#level__operation-check-btn-04').parent('.level__operation-check-btn').addClass('dispFlex');
             };
+        
+
+            $(".level__difficulty-descript").removeClass('dispFlex');
+            $(`.level__difficulty-descript[data-count="${$(el).attr("data-count")}"]`).addClass('dispFlex');
         };
     });
-    
+
 });
+
 
 
 let symbol = [];
@@ -469,9 +533,10 @@ $(".button_level").on("click", function() {
         // $("#goods-count").val("5");
                         
     };
+
+    levelHint();
             
-});
-        
+});     
         
 
 
@@ -491,10 +556,3 @@ $(".button_level-back").on("click", function() {
     
     helloCat();
 });
-
-function screenW () {
-    // let count = document.documentElement.clientWidth > 980 ? 5 : document.documentElement.clientWidth > 640 ? 4 : document.documentElement.clientWidth > 480 ? 3 : 2
-    let count = window.matchMedia("(min-width: 981px)").matches ? 5 : window.matchMedia("(min-width: 641px)").matches ? 4 : window.matchMedia("(min-width: 481px)").matches ? 3 : window.matchMedia("(min-width: 331px)").matches ? 2 : 1
-    return count;
-    return count;
-};

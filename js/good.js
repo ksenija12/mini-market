@@ -7,6 +7,7 @@ $(".nav-list__market-page").on("click", function () {
     } else if ($(".basket").hasClass("dispFlex")) {
         $(".basket").toggleClass("dispFlex")
     };
+
 })
 
 $(".good-card__grid-back, .good-card__buying-back").on('click', function () {
@@ -41,6 +42,7 @@ $(".good-card__grid-back, .good-card__buying-back").on('click', function () {
     $(".basketbtn_task-answer-alt").val("");
 
     window.scrollTo(0, 0);
+    levelHint();
 });
 
 $(".favourite-heart").on('click', function () {
