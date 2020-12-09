@@ -60,8 +60,16 @@ $('.nav-toggle').on('click', function(){
 //---------------выход---------------//
 
 $('[data-text="#anchor7"]').on("click", function() {
-    $(".market-page").toggleClass('dispFlex');
     $(".entranse").toggleClass('dispFlex');
+    if ($(".market-page").hasClass("dispFlex")) {
+        $(".market-page").toggleClass("dispFlex")
+    } else if ($(".good-card").hasClass("dispFlex")) {
+        $(".good-card").toggleClass("dispFlex")
+    } else if ($(".basket").hasClass("dispFlex")) {
+        $(".basket").toggleClass("dispFlex")
+    } else if ($(".favourite").hasClass("dispFlex")) {
+        $(".favourite").toggleClass("dispFlex")
+    };
 
     $(".entranse__password-pass").val("");
     $(".entranse__login-name").val("");
@@ -107,7 +115,7 @@ $(window).on('scroll', function() {
         $(".backtostart").css("visibility","visible");
         $(".backform").css("top","5px");
         // if (document.documentElement.clientWidth > 767) {$(".nav-list__link_sec").css("paddingTop","2px")};
-        if (window.matchMedia("(min-width: 768px)").matches) {$(".nav-list__link_sec").css("paddingTop","2px")};
+        if (window.matchMedia("(min-width: 768px)").matches) {$(".header .nav-list__link_sec").css("paddingTop","2px")};
         
 
     } else if (scrollTop < 30) {
@@ -119,7 +127,7 @@ $(window).on('scroll', function() {
         $(".nav-toggle").css("width", "25");
         $(".backform").css("top","20px");
         // if (document.documentElement.clientWidth > 767) {$(".nav-list__link_sec").css("paddingTop","7px")};
-        if (window.matchMedia("(min-width: 768px)").matches) {$(".nav-list__link_sec").css("paddingTop","7px")};
+        if (window.matchMedia("(min-width: 768px)").matches) {$(".header .nav-list__link_sec").css("paddingTop","7px")};
         
     };
 });
@@ -565,7 +573,14 @@ $("#goods-count").on("input", function () {
 
 $(".nav-list__favourite, .nav-list__link_heart, .footer__buyer-favourite").on("click", function() {
     $(".favourite").toggleClass("dispFlex");
-    $(".market-page").toggleClass("dispFlex");
+    if ($(".market-page").hasClass("dispFlex")) {
+        $(".market-page").toggleClass("dispFlex")
+    } else if ($(".good-card").hasClass("dispFlex")) {
+        $(".good-card").toggleClass("dispFlex")
+    } else if ($(".basket").hasClass("dispFlex")) {
+        $(".basket").toggleClass("dispFlex")
+    };
+
     if (($(".favourite__choose-ico").find("i")).hasClass("fa-grip-lines")) {($(".favourite__choose-ico").find("i")).toggleClass("fa-grip-horizontal").toggleClass("fa-grip-lines");}
 
     $("h3").remove();
@@ -944,7 +959,15 @@ $('.good-card__about-garant-paying .good-card__about-title').each(function() {
 
 $(".nav-list__basket, .nav-list__link_basket, .footer__buyer-basket").on("click", function() {
     $(".basket").toggleClass("dispFlex");
-    $(".market-page").toggleClass("dispFlex");
+    if ($(".market-page").hasClass("dispFlex")) {
+        $(".market-page").toggleClass("dispFlex")
+    } else if ($(".good-card").hasClass("dispFlex")) {
+        $(".good-card").toggleClass("dispFlex")
+    } else if ($(".basket").hasClass("dispFlex")) {
+        $(".basket").toggleClass("dispFlex")
+    };
+
+    // $(".market-page").toggleClass("dispFlex");
     $(".basket__onAccount-summa").html(`${miniMarketGame.onAccount.toFixed(2)} UAH`);
     $(".basket__result-summa-input").val("");
     $("#basket__enough-choose-list").val("");

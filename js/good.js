@@ -1,3 +1,14 @@
+$(".nav-list__market-page").on("click", function () {
+    $(".market-page").toggleClass("dispFlex")
+    if ($(".favourite").hasClass("dispFlex")) {
+        $(".favourite").toggleClass("dispFlex")
+    } else if ($(".good-card").hasClass("dispFlex")) {
+        $(".good-card").toggleClass("dispFlex")
+    } else if ($(".basket").hasClass("dispFlex")) {
+        $(".basket").toggleClass("dispFlex")
+    };
+})
+
 $(".good-card__grid-back, .good-card__buying-back").on('click', function () {
     $(".market-page").toggleClass("dispFlex");
     $(".good-card").toggleClass("dispFlex");
