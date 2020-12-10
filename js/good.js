@@ -7,7 +7,9 @@ $(".nav-list__market-page").on("click", function () {
     } else if ($(".basket").hasClass("dispFlex")) {
         $(".basket").toggleClass("dispFlex")
     };
-
+    
+    $('.nav').removeClass('nav_active');
+    $("body").css("overflowY", "visible")
 })
 
 $(".good-card__grid-back, .good-card__buying-back").on('click', function () {

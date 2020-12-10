@@ -424,6 +424,8 @@ body
 
 .good-card__header
     position: fixed
+    & .nav-list li:first-child
+        margin-left: 0
 
 .nav-list
     display: flex
@@ -504,6 +506,7 @@ body
     &__descr
         margin-top: 100px
         line-height: 1.5
+        text-align: justify
     &__grid
         display: flex
         justify-content: space-around
@@ -795,6 +798,17 @@ body
         margin-top: 20px
         flex-direction: column
         width: 100%
+        &-star, &-persent
+            display: none
+            color: $mainColor
+            font-size: 1.3em
+        &-persent
+            margin-left: 10px
+        &-symbol
+            display: flex
+            position: absolute
+            top: 5px
+            right: 5px 
         &-newString
             display: none
             width: 50%
@@ -857,6 +871,7 @@ body
         justify-content: space-between
         align-items: center
         flex-wrap: wrap
+        margin-top: 10px
         &-count, &-sort
             display: flex
             align-items: center
@@ -1012,6 +1027,7 @@ body
             display: flex
             flex-direction: column
         &-main-photo
+            position: relative
             display: flex
             justify-content: center
             border: 2px solid $mainColor
@@ -1020,6 +1036,14 @@ body
             &-pic
                 width: 15vw
                 height: 15vw
+            &-discount
+                position: absolute
+            &-discount
+                background-color: $mainRed
+                color: #ffffff
+                top: 10px
+                right: 10px
+                padding: 3px
         &-change-photo
             margin-top: 15px
             display: flex
@@ -1047,6 +1071,11 @@ body
             margin-top: 1vw
         &-price
             font-size: 2.1vw
+            & .new
+                margin-left: 10px
+            & .old
+                font-size: .85em
+                text-decoration: line-through
             &-favourite
                 display: flex
                 justify-content: space-between
@@ -1128,7 +1157,7 @@ body
         &-title
             display: inline-flex
             font-size: 18px
-            padding: 0.5vw
+            padding: 5px
             &-block
                 display: flex
                 & .good-card__about-title
@@ -1226,6 +1255,7 @@ body
         margin-top: 0
     & h3
         text-align: center
+        margin-top: 20px
     &__block
         position: relative
         margin-top: 80px
@@ -1339,7 +1369,7 @@ body
         overflow-x: hidden
     &__block
         position: relative
-        margin-top: 40px
+        margin-top: 80px
         width: 60%
         border: 2px solid $mainColor
         border-radius: 10px
@@ -1602,6 +1632,8 @@ body
 .description_level
     &-1, &-2
         display: none
+    &-1
+        text-align: justify
 
 .sale, .goods
     & h2
@@ -1646,8 +1678,6 @@ body
 
 .modal-block > .container
     position: relative
-    // flex-direction: column
-    // align-items: flex-end
 
 .modal_button
     position: absolute

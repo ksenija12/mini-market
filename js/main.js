@@ -41,15 +41,20 @@ $(".backform").on("click", function() {
 //---------------navigation---------------//
 
 $('.nav-toggle').on('click', function(){
-    const $nav = $('.nav');
+    const $nav = $(this).siblings('.nav');
     const height = $('.header').outerHeight();
+    const height2 = $('.good-card__header').outerHeight();
 
     $nav.toggleClass('nav_active');
     const $body = $('body');
 
     if ($nav.hasClass('nav_active')) {
         
-        $nav.css("top", height);
+        if ($(".market-page").hasClass("dispFlex")) {
+            $nav.css("top", height);
+        } else {
+            $nav.css("top", height2);
+        };
         $body.css("overflow", "hidden");
     } else {
         $body.css("overflow-y", "visible");
@@ -110,9 +115,9 @@ $(window).on('scroll', function() {
         $header.addClass('header_sticky');
 
         $(".market-page__cat").css("display", "none");
-        $(".market-page__title-img").css("height", "30");
-        $(".nav-toggle").css("height", "30");
-        $(".nav-toggle").css("wigth", "30");
+        $(".market-page__title-img").css("height", "30px");
+        $(".nav-toggle").css("height", "30px");
+        $(".nav-toggle").css("width", "30px");
         
         const height = $header.outerHeight();
         $header.css('top', -height);
@@ -129,8 +134,8 @@ $(window).on('scroll', function() {
         $(".backtostart").css("visibility","hidden");
         $(".market-page__cat").css("display", "block");
         $(".market-page__title-img").css("height", "");
-        $(".nav-toggle").css("height", "25");
-        $(".nav-toggle").css("width", "25");
+        $(".nav-toggle").css("height", "25px");
+        $(".nav-toggle").css("width", "25px");
         $(".backform").css("top","20px");
         // if (document.documentElement.clientWidth > 767) {$(".nav-list__link_sec").css("paddingTop","7px")};
         if (window.matchMedia("(min-width: 768px)").matches) {$(".header .nav-list__link_sec").css("paddingTop","7px")};
@@ -303,12 +308,42 @@ function showGood(begin, end) {
         $(".goods__list-grid").append(`<div class="goods__list-col col-${i}"></div>`);
         
         $(`.goods__list-col.col-${i}`).append(`<div class="goods__list-item item-${i}"></div>`)
-        let price;
-        miniMarketGame.gameMode == 1 ? price = miniMarketGame.clickedCategory[i].price.toFixed(0) : price = miniMarketGame.clickedCategory[i].price.toFixed(2);
-        $(`.goods__list-item.item-${i}`).append(`<img src="${miniMarketGame.clickedCategory[i].pic[0]}" alt="" data-item='${miniMarketGame.clickedCategory[i].id}'><div class="item_back-discount goods__list-price">${price} UAH</div>`)
         
+        let price;
+        
+        let checkSale = miniMarketGame.saleGoods.find(function (el) {
+            return  el.good.id == String(miniMarketGame.clickedCategory[i].id)
+        });
+    
+        if (checkSale) {
+            miniMarketGame.gameMode == 1 ? price = ((100 - checkSale.discount) * miniMarketGame.clickedCategory[i].price / 100).toFixed(0) : price = ((100 - checkSale.discount) * miniMarketGame.clickedCategory[i].price / 100).toFixed(2);
+        } else {
+            miniMarketGame.gameMode == 1 ? price = miniMarketGame.clickedCategory[i].price.toFixed(0) : price = miniMarketGame.clickedCategory[i].price.toFixed(2);
+        };        
+        
+        // miniMarketGame.gameMode == 1 ? price = miniMarketGame.clickedCategory[i].price.toFixed(0) : price = miniMarketGame.clickedCategory[i].price.toFixed(2);
+        $(`.goods__list-item.item-${i}`).append(`<img src="${miniMarketGame.clickedCategory[i].pic[0]}" alt="" data-item='${miniMarketGame.clickedCategory[i].id}'><div class="item_back-discount goods__list-price">${price} UAH</div><div class="goods__list-symbol"><i class="fas fa-star-half-alt goods__list-star"></i><i class="fas fa-percent goods__list-persent"></i></div>`)
+        
+        if (checkSale) {
+            $(`.goods__list-item.item-${i} .goods__list-persent`).addClass("dispFlex");
+        } else {
+            $(`.goods__list-item.item-${i} .goods__list-persent`).removeClass("dispFlex");
+        };   
+
         $(`.goods__list-item.item-${i}`).addClass("hint--left");
         $(`.goods__list-item.item-${i}`).attr("aria-label", `${miniMarketGame.clickedCategory[i].title}`);
+
+       
+        
+        const checkFavourite = miniMarketGame.favouriteGood.find(function (el) {
+            return el.id == String(miniMarketGame.clickedCategory[i].id);
+        });
+        
+        if (checkFavourite) {
+            $(`.goods__list-item.item-${i} .goods__list-star`).addClass("dispFlex");
+        } else {
+            $(`.goods__list-item.item-${i} .goods__list-star`).removeClass("dispFlex");
+        }; 
         
     };
 
@@ -589,7 +624,7 @@ $(".nav-list__favourite, .nav-list__link_heart, .footer__buyer-favourite").on("c
 
     if (($(".favourite__choose-ico").find("i")).hasClass("fa-grip-lines")) {($(".favourite__choose-ico").find("i")).toggleClass("fa-grip-horizontal").toggleClass("fa-grip-lines");}
 
-    $("h3").remove();
+    $(".favourite .h3").remove();
 
     window.scrollTo(0, 0);
 
@@ -868,9 +903,10 @@ function changePic() {
 
 function goodsCardAdd(good) {
     $(".good-card__grid-main-photo-pic").remove();
+    $(".good-card__grid-main-photo-discount").remove();
     $(".good-card__grid-change-li").remove();
 
-    $(".good-card__grid-main-photo").append(`<img  class="good-card__grid-main-photo-pic" src="${good.pic[0]}" alt="${good.title}">`);
+    $(".good-card__grid-main-photo").append(`<img  class="good-card__grid-main-photo-pic" src="${good.pic[0]}" alt="${good.title}"><div class="good-card__grid-main-photo-discount"></div>`);
     $(".good-card__grid-change-photo").append(`<li class="good-card__grid-change-li"><img  class="good-card__grid-change-photo-pic" src="${good.pic[0]}" alt="${good.title}"></li>`);
     $(".good-card__grid-change-photo img").css("borderColor", "rgba(255, 0, 0, .5)");
     $(".good-card__grid-change-photo").append(`<li class="good-card__grid-change-li"><img  class="good-card__grid-change-photo-pic" src="${good.pic[1]}" alt="${good.title}"></li>`);
@@ -883,23 +919,40 @@ function goodsCardAdd(good) {
     let val = (good.count == 1) ? "" : "/ " + good.count + " " + good.val
 
     let price;
-    miniMarketGame.gameMode == 1 ? price = good.price.toFixed(0) : price = good.price.toFixed(2);
-    $(".good-card__grid-price span").html(`${price} UAH ${val}`);
+
+    let checkSale = miniMarketGame.saleGoods.find(function (el) {
+        return  el.good.id == String(good.id)
+    });
+
+    if (checkSale) {
+        miniMarketGame.gameMode == 1 ? price = ((100 - checkSale.discount) * good.price / 100).toFixed(0) : price = ((100 - checkSale.discount) * good.price / 100).toFixed(2);
+        let oldPrice;
+        miniMarketGame.gameMode == 1 ? oldPrice = good.price.toFixed(0) : oldPrice = good.price.toFixed(2);
+        $(".good-card__grid-price span.old").html(`${oldPrice} UAH`);
+        $(".good-card__grid-price span.new").html(`${price} UAH ${val}`);
+        $(".good-card__grid-main-photo-discount").html(`- ${checkSale.discount} %`)
+    } else {
+        miniMarketGame.gameMode == 1 ? price = good.price.toFixed(0) : price = good.price.toFixed(2);
+        $(".good-card__grid-price span.old").html("");
+        $(".good-card__grid-price span.new").html(`${price} UAH ${val}`);
+        $(".good-card__grid-main-photo-discount").html("")
+    };
+
     
     $(".good-card__about-descr .good-card__about-text").html(`${good.descr}`);
 
     const checkFavourite = miniMarketGame.favouriteGood.find(function (el) {
         return el.id == String(good.id);
     });
-
+    
     if (checkFavourite) {
         $(".favourite-heart").find("i").addClass("fas");
         $(".favourite-heart").attr("aria-label", "Убрать из избранного");
     } else {
         $(".favourite-heart").find("i").addClass("far");
         $(".favourite-heart").attr("aria-label", "Добавить в избранное");
-    };
-
+    };    
+    
     $(".good-card__grid-basketbtn, .good-card__buying-buy").addClass("dispFlex");
 
     const checkCart = miniMarketGame.cart.find(function (elem) {
@@ -969,14 +1022,16 @@ $(".nav-list__basket, .nav-list__link_basket, .footer__buyer-basket").on("click"
         $(".market-page").toggleClass("dispFlex")
     } else if ($(".good-card").hasClass("dispFlex")) {
         $(".good-card").toggleClass("dispFlex")
-    } else if ($(".basket").hasClass("dispFlex")) {
-        $(".basket").toggleClass("dispFlex")
+    } else if ($(".favourite").hasClass("dispFlex")) {
+        $(".favourite").toggleClass("dispFlex")
     };
 
     // $(".market-page").toggleClass("dispFlex");
     $(".basket__onAccount-summa").html(`${miniMarketGame.onAccount.toFixed(2)} UAH`);
     $(".basket__result-summa-input").val("");
     $("#basket__enough-choose-list").val("");
+
+    $(".basket .h3").remove();
 
     window.scrollTo(0, 0);
 
@@ -1041,7 +1096,17 @@ function buildCartGrid () {
         let val = (miniMarketGame.cart[i].el.count == 1) ? "" : "/ " + miniMarketGame.cart[i].el.count + " " + miniMarketGame.cart[i].el.val;
         
         let price;
-        miniMarketGame.gameMode == 1 ? price = miniMarketGame.cart[i].el.price.toFixed(0) : price = miniMarketGame.cart[i].el.price.toFixed(2);
+
+        let checkSale = miniMarketGame.saleGoods.find(function (el) {
+            return  el.good.id == String(miniMarketGame.cart[i].el.id)
+        });
+
+        if (checkSale) {
+            miniMarketGame.gameMode == 1 ? price = ((100 - checkSale.discount) * miniMarketGame.cart[i].el.price / 100).toFixed(0) : price = ((100 - checkSale.discount) * miniMarketGame.cart[i].el.price / 100).toFixed(2);
+        } else {
+            miniMarketGame.gameMode == 1 ? price = miniMarketGame.cart[i].el.price.toFixed(0) : price = miniMarketGame.cart[i].el.price.toFixed(2);
+        };
+        // miniMarketGame.gameMode == 1 ? price = miniMarketGame.cart[i].el.price.toFixed(0) : price = miniMarketGame.cart[i].el.price.toFixed(2);
             
         $(`.basket__grid-col.col-${i}`).append(`<div class="basket__grid-item-description"><div class="basket__grid-item-remove hint--top" aria-label="Удалить из корзины" data-item="${miniMarketGame.cart[i].el.id}"><i class="far fa-trash-alt"></i></div><div class='basket__grid-title'>${miniMarketGame.cart[i].el.title}</div>
         <div class='basket__grid-category'>Категория: ${miniMarketGame.cart[i].el.category}</div>
@@ -1130,7 +1195,17 @@ $(".basket__buttons-continue").on("click", function() {
         
     for (let i = 0; i < miniMarketGame.cart.length; i++) {
         let price;
-        miniMarketGame.gameMode == 1 ? price = miniMarketGame.cart[i].el.price.toFixed(0) : price = miniMarketGame.cart[i].el.price.toFixed(2);
+
+        let checkSale = miniMarketGame.saleGoods.find(function (el) {
+            return  el.good.id == String(miniMarketGame.cart[i].el.id)
+        });
+
+        if (checkSale) {
+            miniMarketGame.gameMode == 1 ? price = ((100 - checkSale.discount) * miniMarketGame.cart[i].el.price / 100).toFixed(0) : price = ((100 - checkSale.discount) * miniMarketGame.cart[i].el.price / 100).toFixed(2);
+        } else {
+            miniMarketGame.gameMode == 1 ? price = miniMarketGame.cart[i].el.price.toFixed(0) : price = miniMarketGame.cart[i].el.price.toFixed(2);
+        };
+
         let fullPrice = (price * ($(`.basket__count-num-${i}`).val())) == Number($(`.basket__count-input-${i}`).val())
             
         if ($(`.basket__count-input-${i}`).val() == "") {
