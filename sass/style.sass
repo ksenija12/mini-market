@@ -692,6 +692,8 @@ body
 .modal
     &_container
         align-items: center
+        margin-top: 20px
+        flex-direction: column
         &-toCart
             flex-direction: column
             align-items: center
@@ -701,6 +703,7 @@ body
                 text-align: center
     &__grid
         width: 100%
+        margin-top: 20px
         &-item
             cursor: pointer
             height: 120px
@@ -729,6 +732,11 @@ body
     &-block_toCart
         &-buyBtn, &-cartBtn
             width: 205px
+    &-block
+        & > .container
+            position: relative
+        & h2
+            display: flex
 
 .fancybox-content
     padding: 30px
@@ -800,15 +808,19 @@ body
         width: 100%
         &-star, &-persent
             display: none
-            color: $mainColor
-            font-size: 1.3em
+            color: $MainColorTransp
+            text-shadow: 0 0 5px $mainColor
+            font-size: 1.7em
+            width: auto
         &-persent
-            margin-left: 10px
+            margin-left: 15px
         &-symbol
             display: flex
             position: absolute
-            top: 5px
-            right: 5px 
+            top: 10px
+            right: 10px
+            height: min-content
+            background-color: transparent
         &-newString
             display: none
             width: 50%
@@ -990,6 +1002,9 @@ body
         border: 1px solid #ffffff
 
 .good-card
+    & h2
+        display: flex
+        align-items: center
     & .newString, & .newString-2
         height: 0
         display: none
@@ -1013,6 +1028,7 @@ body
     &__grid
         width: 100%
         display: flex
+        margin-top: 20px
         &-col
             display: flex
             &:first-child
@@ -1221,6 +1237,9 @@ body
 @include grid(favourite, 0, 30, wrap, 4, 10)
 
 .favourite
+    & h2
+        display: flex
+        align-items: center
     &_container
         min-height: 100vh
         align-items: center
@@ -1272,11 +1291,12 @@ body
     &__cat
         height: 80px
         position: absolute
-        left: 175px
+        left: 225px
         top: -25px
     &__header
         display: flex
         justify-content: space-between
+        flex-direction: column
     &__change
         display: flex
         justify-content: flex-end
@@ -1362,6 +1382,9 @@ body
 @include grid(basket, 0, 30, wrap, 4, 30)
 
 .basket
+    & h2
+        display: flex
+        align-items: center
     &_container
         min-height: 100vh
         width: 100vw
@@ -1427,7 +1450,7 @@ body
         display: flex
         justify-content: space-between
         width: 70%
-        margin: 0 0 0 auto
+        margin: 20px 0 0 auto
     &__grid
         width: 100%
         // margin-top: 0
@@ -1516,6 +1539,9 @@ body
 @include grid(last-step, 0, 30, wrap, 3, 10)
 
 .last-step
+    & h2
+        display: flex
+        align-items: center
     &_container
         min-height: 100vh
         align-items: center
@@ -1632,6 +1658,8 @@ body
 .description_level
     &-1, &-2
         display: none
+        &:hover
+            cursor: pointer
     &-1
         text-align: justify
 
@@ -1676,8 +1704,6 @@ body
         cursor: pointer
         font-size: 20px
 
-.modal-block > .container
-    position: relative
 
 .modal_button
     position: absolute

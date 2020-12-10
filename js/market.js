@@ -116,11 +116,6 @@ let miniMarketGame = {
                 });
         };
 
-        // this.cart.push({
-        //         el: elem,
-        //         count: Number($(".good-card__grid-num").val())
-        //         });
-
         return this.cart;
     },
     cartRemove: function (code) {
@@ -148,7 +143,7 @@ let miniMarketGame = {
             max = 100;
             if (symbol == "+") {
                 first = getRandom(1, max);
-                second = getRandom(1, max);
+                second = getRandom(1, (max-first));
                 answer = first + second;
             } else if (symbol == "-") {
                 a = getRandom(1, max);

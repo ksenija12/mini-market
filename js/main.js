@@ -211,7 +211,7 @@ $('.main-block__findarea-input').on('input', function () {clearTimeout(timer);
             value = str;
             miniMarketGame.findGood = [];
             miniMarketGame.find();
-            
+
             $(".main-block__findarea-results").append("<ul class='main-block__findarea-results-list'></ul>");
             $(".main-block__findarea-results-list").css("display", "block");
             const coef = 36;
@@ -259,7 +259,7 @@ $(".main-block__findarea-icon").on('click', function () {
     if (miniMarketGame.findGood.length) {
         for (let i = 0; i < miniMarketGame.findGood.length; i++) {
             $(".modal__grid").append(`<div class='modal__grid-col col-${i}'></div>`);
-            $(`.modal__grid-col.col-${i}`).append(`<div class='modal__grid-item item-${i}'><img src="${miniMarketGame.findGood[i].pic[0]}" alt="" data-item='${miniMarketGame.findGood[i].id}'></div>`);
+            $(`.modal__grid-col.col-${i}`).append(`<div class='modal__grid-item item-${i}'><img src="${miniMarketGame.findGood[i].pic[0]}" alt="" data-item='${miniMarketGame.findGood[i].id}'><p class="goods__list-symbol"><i class="far fa-heart goods__list-star"></i><i class="fas fa-percent goods__list-persent"></i></p></div>`);
             
             if (window.matchMedia("(min-width: 981px)").matches) {
                 $(`.modal__grid-col.col-${i} .modal__grid-item.item-${i}`).addClass("hint--left");
@@ -267,7 +267,28 @@ $(".main-block__findarea-icon").on('click', function () {
             } else {
                 $(`.modal__grid-col.col-${i} .modal__grid-item.item-${i}`).append(`<div>${miniMarketGame.findGood[i].title}</div>`)
             }
+
             
+            let checkSale = miniMarketGame.saleGoods.find(function (el) {
+                return  el.good.id == String(miniMarketGame.findGood[i].id)
+            });
+
+            
+            if (checkSale) {
+                $(`.modal__grid-item.item-${i} .goods__list-persent`).addClass("dispFlex");
+            } else {
+                $(`.modal__grid-item.item-${i} .goods__list-persent`).removeClass("dispFlex");
+            }; 
+            
+            const checkFavourite = miniMarketGame.favouriteGood.find(function (el) {
+                return el.id == String(miniMarketGame.findGood[i].id);
+            });
+            
+            if (checkFavourite) {
+                $(`.modal__grid-item.item-${i} .goods__list-star`).addClass("dispFlex");
+            } else {
+                $(`.modal__grid-item.item-${i} .goods__list-star`).removeClass("dispFlex");
+            }; 
         }
     };
 
@@ -277,6 +298,8 @@ $(".main-block__findarea-icon").on('click', function () {
         goToGood(good);
 
         $.fancybox.close();
+        $(".modal-block").css("display", "none");
+        $(".fancybox-container").css("display", "none");
     });
         
             
@@ -322,7 +345,7 @@ function showGood(begin, end) {
         };        
         
         // miniMarketGame.gameMode == 1 ? price = miniMarketGame.clickedCategory[i].price.toFixed(0) : price = miniMarketGame.clickedCategory[i].price.toFixed(2);
-        $(`.goods__list-item.item-${i}`).append(`<img src="${miniMarketGame.clickedCategory[i].pic[0]}" alt="" data-item='${miniMarketGame.clickedCategory[i].id}'><div class="item_back-discount goods__list-price">${price} UAH</div><div class="goods__list-symbol"><i class="fas fa-star-half-alt goods__list-star"></i><i class="fas fa-percent goods__list-persent"></i></div>`)
+        $(`.goods__list-item.item-${i}`).append(`<img src="${miniMarketGame.clickedCategory[i].pic[0]}" alt="" data-item='${miniMarketGame.clickedCategory[i].id}'><div class="item_back-discount goods__list-price">${price} UAH</div><div class="goods__list-symbol"><i class="far fa-heart goods__list-star"></i><i class="fas fa-percent goods__list-persent"></i></div>`)
         
         if (checkSale) {
             $(`.goods__list-item.item-${i} .goods__list-persent`).addClass("dispFlex");
@@ -930,12 +953,14 @@ function goodsCardAdd(good) {
         miniMarketGame.gameMode == 1 ? oldPrice = good.price.toFixed(0) : oldPrice = good.price.toFixed(2);
         $(".good-card__grid-price span.old").html(`${oldPrice} UAH`);
         $(".good-card__grid-price span.new").html(`${price} UAH ${val}`);
-        $(".good-card__grid-main-photo-discount").html(`- ${checkSale.discount} %`)
+        $(".good-card__grid-main-photo-discount").css("display", "flex");
+        $(".good-card__grid-main-photo-discount").html(`- ${checkSale.discount} %`);
     } else {
         miniMarketGame.gameMode == 1 ? price = good.price.toFixed(0) : price = good.price.toFixed(2);
         $(".good-card__grid-price span.old").html("");
         $(".good-card__grid-price span.new").html(`${price} UAH ${val}`);
-        $(".good-card__grid-main-photo-discount").html("")
+        $(".good-card__grid-main-photo-discount").css("display", "none");
+        // $(".good-card__grid-main-photo-discount").html("")
     };
 
     
