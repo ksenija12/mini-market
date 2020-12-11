@@ -117,6 +117,7 @@ function screenW () {
 };
 
 
+
 //---------------подсказки---------------//
 
 function levelHint() {
@@ -138,32 +139,6 @@ function levelHint() {
 
 
 
-$(".description_level-2").on("click", function () {
-    $(this).parent().siblings(".description_level-1").toggleClass("dispFlex");
-    $(this).siblings(".description_level-1").toggleClass("dispFlex");
-    
-    // const audio = document.querySelector("#audio");
-    const audio = ($(this).parent()).next('.audio')[0];
-
-    ($(this).siblings(".music")).on("click", function () {
-        if (audio.paused) {
-            audio.play();
-        } else {
-            audio.pause();
-        };
-        $(this).toggleClass("fa-volume-up").toggleClass("fa-volume-mute")
-        // return audio.paused ? audio.play() : audio.pause();
-        return
-    });
-
-})
-
-
-
-
- 
-
-
 $(".modal_button").on("click", function () {
     $.fancybox.close();
     $(".modal-block").css("display", "none");
@@ -179,6 +154,20 @@ $(".alert").on("click", function () {
 
 
 
+/////////////////////////////about/////////////////////////////
+
+
+
+$(".about__cat").on("click", function() {
+    $(".about-descr").css("display", "flex");
+    $(".about-descr").toggleClass("about-descr_animation");
+
+    if (!($(".about-descr").hasClass("about-descr_animation"))) {
+        $(".about-descr").delay(1000).fadeOut(1000)
+    };
+});
+
+// TODO game description
 
 
 /////////////////////////////entranse/////////////////////////////
@@ -536,6 +525,36 @@ $(".button_level").on("click", function() {
 
     levelHint();
             
+    ////////////////////////////Озвучка////////////////////////////
+
+    
+    ($(".music")).on("click", function () {
+    
+        const audio = ($(this).parent()).next('.audio')[0];
+    
+        if (audio.paused) {
+            audio.play();
+        } else {
+            audio.pause();
+        };
+        $(this).toggleClass("fa-volume-up").toggleClass("fa-volume-mute");
+
+        return
+    });
+
+    if (miniMarketGame.gameMode == "2") {
+        
+        $(".description_level-2").on("click", function () {
+
+            $(this).parent().siblings(".description_level-1").toggleClass("dispFlex");
+            // $(this).siblings(".description_level-1").toggleClass("dispFlex");
+          
+        });
+    
+    };
+
+    $(".task__cat").toggleClass("dispFlex");
+    $(".about__cat").toggleClass("dispFlex");
 });     
         
 

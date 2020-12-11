@@ -17,6 +17,18 @@
     
 </head>
 <body>
+
+    <img src="./img/pusheen/001.gif" alt="cat_about" class="about__cat dispFlex">
+    <img src="./img/pusheen/001.gif" alt="cat_task" class="task__cat">
+
+    <div class="about-descr">
+        <div class="container container_about-descr">
+            <div class="about-descr__form">
+                <p></p>
+            </div>
+        </div>
+    </div>
+
     <div class="entranse dispFlex" id="anchor8">
         <div class="container container_entranse">
             <div class="entranse__form">
@@ -264,7 +276,17 @@
         </header>
         <main class="main">
             <div class="main-block  market-page_container">
-                <div class="container main-block__descr">* Добро пожаловать в MINI-маркет - детский игровой интернет-магазин. Это главная страница. Она разделена на несколько разделов. Вперед же! Приятной игры)</div>
+                <div class="container main-block__descr">
+                    <h2 class="entranse__title-text sale__title main-block__descr-title"><i class="far fa-question-circle description_level-2"></i>
+                        <i class="fas fa-volume-up music description_level-1"></i>
+                    </h2>
+                    <audio class="audio" id="audio" src="./audio/hello.mp3" ></audio>
+                    <div class="market-page__descr description_level-1">
+                        <div class="market-page__descr-star">*</div>
+                        <div class="market-page__descript">Добро пожаловать в MINI-маркет - детский игровой интернет-магазин. Это главная страница. Она разделена на несколько разделов. Вперед же! Приятной игры)</div>
+                    </div>
+                </div>                
+                <!-- <div class="container ">* Добро пожаловать в MINI-маркет - детский игровой интернет-магазин. Это главная страница. Она разделена на несколько разделов. Вперед же! Приятной игры)</div> -->
                 <div class="container main-block__grid">
                     <div class="main-block__grid-col">
                         <img src="./img/logo-big.png" class="logo-big" alt="logo">
@@ -303,7 +325,7 @@
                     <h2 class="entranse__title-text sale__title">Акции <i class="far fa-question-circle description_level-2"></i>
                         <i class="fas fa-volume-up music description_level-1"></i>
                     </h2>
-                    <audio class="audio" src="/audio/" ></audio>
+                    <audio class="audio" id="audio" src="./audio/action.mp3" ></audio>
                     <div class="market-page__descr description_level-1">
                         <div class="market-page__descr-star">*</div>
                         <div class="market-page__descript">В этом разделе расположены товары со скидкой. Нажав на любую карту, можно сразу перейти к акционному товару.</div>
@@ -317,7 +339,7 @@
                     <h2 class="entranse__title-text goods__title">Товары <i class="far fa-question-circle description_level-2"></i>
                         <i class="fas fa-volume-up music description_level-1"></i>
                     </h2>
-                    <audio class="audio" src="/audio/" ></audio>
+                    <audio class="audio" src="./audio/goods.mp3" ></audio>
                     <div class="market-page__descr description_level-1">
                         <div class="market-page__descr-star">*</div>
                         <div class="market-page__descript">В этом разделе расположены категории всех товаров магазина. Выбрав любую категорию, можно перейти к товарам, которые относятся к ней. Товары, отмеченные <i class="far fa-heart"></i>, находяться в избранном. Товары, отмеченные <i class="fas fa-percent"></i>, - акционные. Можно выбрать количество товаров на странице, а также задать порядок, в котором они будут расположены.</div>
@@ -408,7 +430,7 @@
             <h2 class="entranse__title-text goods__title">Товары <i class="far fa-question-circle description_level-2"></i>
                 <i class="fas fa-volume-up music description_level-1"></i>
             </h2>
-            <audio class="audio" src="/audio/" ></audio>
+            <audio class="audio" src="./audio/find.mp3" ></audio>
             <div class="market-page__descr description_level-1">
                 <div class="market-page__descr-star">*</div>
                 <div class="market-page__descript">В этом окне расположены товары, соответствующие поиску. Товары, отмеченные <i class="far fa-heart"></i>, находяться в избранном. Товары, отмеченные <i class="fas fa-percent"></i>, - акционные. Можно перейти к товару, нажав на него.</div>
@@ -534,7 +556,7 @@
                 <h2 class="entranse__title-text goods__title"><i class="far fa-question-circle description_level-2"></i>
                     <i class="fas fa-volume-up music description_level-1"></i>
                 </h2>
-                <audio class="audio" src="/audio/" ></audio>
+                <audio class="audio" src="./audio/good-card.mp3" ></audio>
                 <div class="market-page__descr description_level-1">
                     <div class="market-page__descr-star">*</div>
                     <div class="market-page__descript">Вы видите товар и его описание. Чтобы купить (добавить в корзину) товар, необходимо нажать на соответствующую кнопку и решить малюсенький пример. Если ответ верный - товар попадет в корзину.</div>
@@ -704,7 +726,7 @@
                     <h2 class="entranse__title-text goods__title">Избранное<i class="far fa-question-circle description_level-2"></i>
                         <i class="fas fa-volume-up music description_level-1"></i>
                     </h2>
-                    <audio class="audio" src="/audio/" ></audio>
+                    <audio class="audio" src="./audio/favourite.mp3" ></audio>
                     <div class="market-page__descr description_level-1">
                         <div class="market-page__descr-star">*</div>
                         <div class="market-page__descript">На этой страничке находятся или будут находиться твары, которые Вам понравились. Для удобства можно изменить вид отображения товаров - сеткой или списком. Товары в избранном можно по одному удалить либо отправить в корзину. Также можно очистить сразу весь список.</div>
@@ -784,7 +806,7 @@
                     <h2 class="entranse__title-text goods__title">Корзина<i class="far fa-question-circle description_level-2"></i>
                     <i class="fas fa-volume-up music description_level-1"></i>
                     </h2>
-                    <audio class="audio" src="/audio/" ></audio>
+                    <audio class="audio" src="./audio/basket.mp3" ></audio>
                     <div class="market-page__descr description_level-1">
                         <div class="market-page__descr-star">*</div>
                         <div class="market-page__descript">Это - корзина. Здесь находятся все товары, готовые к покупке. Список товаров можно изменить, удалив не нужный товар либо изменив его количество. Также можно очистить всю корзину. Это предпоследний шаг до совершения покупки. Чтоб его преодолеть нужно решить несколько примерчиков. Нужно указать сумму к оплате по каждому товару, общую итоговую сумму покупки и достаточно ли средств на счету для оплаты заказа. И далее - на финишную прямую.</div>
@@ -849,7 +871,7 @@
                 <h2 class="entranse__title-text goods__title"><i class="far fa-question-circle description_level-2"></i>
                     <i class="fas fa-volume-up music description_level-1"></i>
                     </h2>
-                    <audio class="audio" src="/audio/" ></audio>
+                    <audio class="audio" src="./audio/last-step.mp3" ></audio>
                     <div class="market-page__descr description_level-1">
                         <div class="market-page__descr-star">*</div>
                         <div class="market-page__descript">Ввести необходимую информацию - это последнее, что нужно сделать для завершения покупки. Нужно ввести имя и фамилию покупателя, выбрать почтовую службу, которая доставит товар и выбрать способ оплаты - наличными средствами (деньгами) или безналичными средствами (для этого есть счет в нашем магазине). Также нужно заполнить поле "Комментарии" и указать там почтовый адрес либо номер отделения почтовой службы. Также в комментариях можно указать какие-либо замечания по заказу. Это последний шаг. Вперед!</div>
@@ -929,6 +951,9 @@
                 <div class="button modal-block_lastStep-buy hint--top" aria-label="Вернуться в магазин">Совершить еще покупку</div>
                 <div class="button modal-block_lastStep-play hint--top" aria-label="Поиграть">Перейти к играм</div>
             </div>
+        </div>
+        <div class="modal-block_lastStep-cat">
+            <img src="./img/pusheen/024.gif" alt="cat_basket" class="basket__cat">
         </div>
     </div>
 

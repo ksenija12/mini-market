@@ -35,6 +35,8 @@ $(".backform").on("click", function() {
     $(".level__difficulty-descript").removeClass('dispFlex');
     $(`.level__difficulty-descript[data-count="${$("#level__difficulty-radio-btn-01").attr("data-count")}"]`).addClass('dispFlex');
 
+    $(".task__cat").toggleClass("dispFlex");
+    $(".about__cat").toggleClass("dispFlex");
 });
 
 
@@ -58,9 +60,9 @@ $('.nav-toggle').on('click', function(){
         $body.css("overflow", "hidden");
     } else {
         $body.css("overflow-y", "visible");
-    }
+    };
 
-
+    $(".task__cat").toggleClass("hidden");
 
 })
 
@@ -101,6 +103,9 @@ $('[data-text="#anchor7"]').on("click", function() {
 
     $(".level__difficulty-descript").removeClass('dispFlex');
     $(`.level__difficulty-descript[data-count="${$("#level__difficulty-radio-btn-01").attr("data-count")}"]`).addClass('dispFlex');
+
+    $(".task__cat").toggleClass("dispFlex");
+    $(".about__cat").toggleClass("dispFlex");
 });
 
 //---------------слик-меню---------------//
@@ -1519,6 +1524,9 @@ $(".prise__block-level").on('click', function () {
     $(".sale__grid-col").remove();
     $(".goods__grid").remove();
     $(".slick-dots").remove();
+
+    $(".task__cat").toggleClass("dispFlex");
+    $(".about__cat").toggleClass("dispFlex");
 });
 
 

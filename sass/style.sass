@@ -18,6 +18,16 @@ body
     overflow-x: hidden
     overflow-y: hidden
 
+.about__cat, .task__cat
+    z-index: 500
+    height: 70px
+    position: fixed
+    bottom: 10px
+    left: 10px
+    display: none
+    &:hover
+        cursor: pointer
+
 .main
     width: 100%
 
@@ -26,7 +36,7 @@ body
     display: flex
     justify-content: center
     margin: 0 auto
-    &_entranse, &_forgot, &_registration, &_level
+    &_entranse, &_forgot, &_registration, &_level, &_about-descr
         height: 100vh
         align-items: center
     &_entranse
@@ -38,8 +48,39 @@ body
 
 .entranse, .registration, .forgot, .level,
 .market-page, .good-card, .favourite,
-.basket, .last-step, .prise, .modal-block
+.basket, .last-step, .prise, .modal-block,
+.about-descr
     display: none
+
+.about-descr
+    &__form
+        width: 40%
+        height: 65vh
+        background-color: #ffffff
+        border: 2px solid $mainColor
+        border-radius: 10px
+        position: fixed
+        top: 50%
+        left: 50%
+        transform: translate(-50%, -50%)
+    &_animation  
+        animation-name: showing
+        animation-duration: 1s
+        animation-timing-function: cubic-bezier(1,1,1,1)
+        // animation-iteration-count: 1
+        animation-direction: normal
+
+@keyframes showing
+    0%
+        transform: scale(0, 0) rotate(0deg)
+    25%
+        transform: scale(0, 0) rotate(90deg)
+    50%
+        transform: scale(.4, .4) rotate(180deg)
+    75%
+        transform: scale(.75, .75) rotate(270deg)
+    100%
+        transform: scale(1, 1) rotate(360deg)
 
 .entranse, .forgot, .level, .favourite
     &__hint
@@ -507,6 +548,10 @@ body
         margin-top: 100px
         line-height: 1.5
         text-align: justify
+        &-title
+            display: flex
+            width: min-content
+            align-items: center
     &__grid
         display: flex
         justify-content: space-around
@@ -737,6 +782,13 @@ body
             position: relative
         & h2
             display: flex
+        &_lastStep-cat
+            margin-top: 20px
+            display: flex
+            width: 100%
+            justify-content: center
+            & img
+                height: 120px
 
 .fancybox-content
     padding: 30px
