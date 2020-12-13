@@ -1,3 +1,9 @@
+let level1part1 = 0,  level1part2 = 0,  level1part3 = 0,  level1part4 = 0,  level1part5 = 0,  level1part6 = 0;
+let level2part1 = 0,  level2part2 = 0,  level2part3task1 = 0, level2part3task2 = 0,  level2part3 = 0,  level2part4task1 = 0,  level2part4task2 = 0,  level2part4 = 0,  level2part5 = 0,  level2part6 = 0;
+let level3part1 = 0,  level3part2 = 0,  level3part3task1 = 0, level3part3task2 = 0,  level3part3 = 0,  level3part4 = 0,  level3part5 = 0,  level3part6 = 0;
+
+
+
 
 const ident = [
     {
@@ -82,30 +88,36 @@ function detectiveCat() {
     })
 };
 
-function potterCat() {
-    
-    let time = document.documentElement.clientWidth / 300 * 1000;
-    // $('.level__cat1').css("left", "calc( 100% - 160px )");
-    $('.level__cat1').addClass("scale");
-    $('.level__cat1').delay(1000).animate({
-        left: '0',
-    }, time, function () {
-        $('.level__cat1').removeClass("scale");
-        $('.level__cat1').addClass("scale0");
-        
-        $('.level__cat2').css("right", "calc( 100% - 180px )");
-        $('.level__cat2').removeClass("scale0");
-        $('.level__cat2').addClass("scale");
-        $('.level__cat2').delay(1000).animate({
-            right: "0"
-        }, time, function(){
-            $('.level__cat2').removeClass("scale");
-            $('.level__cat2').addClass("scale0");
-            $('.level__cat1').css("left", "calc( 100% - 180px )");
-            $('.level__cat1').removeClass("scale0");
-            potterCat();
+let time = document.documentElement.clientWidth / 300 * 1000;
+
+function potterCat(text) {
+    let bool = text;
+    if ( bool == true) {
+        // $('.level__cat1').css("left", "calc( 100% - 160px )");
+        $('.level__cat1').addClass("scale");
+        $('.level__cat1').delay(1000).animate({
+            left: '0',
+        }, time, function () {
+            $('.level__cat1').removeClass("scale");
+            $('.level__cat1').addClass("scale0");
+            
+            $('.level__cat2').css("right", "calc( 100% - 180px )");
+            $('.level__cat2').removeClass("scale0");
+            $('.level__cat2').addClass("scale");
+            $('.level__cat2').delay(1000).animate({
+                right: "0"
+            }, time, function(){
+                $('.level__cat2').removeClass("scale");
+                $('.level__cat2').addClass("scale0");
+                $('.level__cat1').css("left", "calc( 100% - 180px )");
+                $('.level__cat1').removeClass("scale0");
+                potterCat(true);
+            });
         });
-    });
+    };
+    if (bool == false) {
+        return false
+    };
 };
 
 
@@ -115,27 +127,6 @@ function screenW () {
     return count;
     return count;
 };
-
-
-
-//---------------подсказки---------------//
-
-function levelHint() {
-    $(".description_level-1").removeClass("dispFlex");
-    $(".description_level-2").removeClass("dispFlex");
-    $(".main-block__descr").css("visibility", "hidden");
-    
-    
-    if (miniMarketGame.gameMode == "1") {
-        $(".description_level-1").addClass("dispFlex");
-        $(".main-block__descr").css("visibility", "visible");
-    } else if (miniMarketGame.gameMode == "2") {
-        $(".description_level-2").addClass("dispFlex");
-        $(".main-block__descr").css("visibility", "visible");
-    };
-};
-
-
 
 
 
@@ -159,15 +150,116 @@ $(".alert").on("click", function () {
 
 
 $(".about__cat").on("click", function() {
-    $(".about-descr").css("display", "flex");
+
+    let timerText, intervalText, timerWave;
+
+    // $(".about-descr").css("display", "flex");
     $(".about-descr").toggleClass("about-descr_animation");
 
+    clearTimeout(timerText);
+    clearTimeout(timerWave);
+    clearInterval(intervalText);
+
+    if ($(".about-descr").find("span")) {$(".about-descr").find("span").remove()};
+
+    $(".wave").css("animation", "none");
+    
     if (!($(".about-descr").hasClass("about-descr_animation"))) {
-        $(".about-descr").delay(1000).fadeOut(1000)
+        $(".about-descr").fadeOut(600);
+    } else {
+        $(".about-descr").show(1000);
+
+        //---------------text---------------//
+        
+        let wrapper = document.querySelector(".wrapper");
+        let wrapperDiv = document.querySelectorAll(".wrapper div");
+        let text = document.querySelectorAll(".text");
+        
+        let length = 0;
+        $(".text").css("display", "none")
+        for (let j = 0; j < text.length; j++) {
+            let textCont = text[j].textContent;
+
+            let time;
+
+            if (j == 0) {
+                length += (text[j].textContent).length;
+            } else {
+                length += (text[j-1].textContent).length;
+            };
+
+            time =  1000 + (length * 10);
+        
+            for (let i = 0; i < textCont.length; i++) {
+                
+                
+                (function(i) {
+                    timerText = setTimeout(function() {
+                        
+                        let texts = document.createTextNode(textCont[i])
+                        let span = document.createElement('span');
+                        span.appendChild(texts);
+                        
+                        span.classList.add("wave");
+                        wrapperDiv[j].appendChild(span);
+                        
+                    }, time + 10 * i);
+                    
+                    
+                }(i));
+                
+            };
+            intervalText = setInterval(function() {
+                $(".wave").addClass("noWave").removeClass("wave");
+                for (let i = 0; i < $(".noWave").length-1; i++) {
+                    timerWave = setTimeout(function() {
+                        document.querySelectorAll(".noWave")[i].classList.add("wave");
+                        document.querySelector(".wave").classList.remove("noWave");
+
+                    }, 1000 + 10*i);
+                };
+            }, 10000);     
+        };
+    };
+
+});
+
+
+
+/////////////////////////////task/////////////////////////////
+
+
+
+$(".task__cat").on("click", function() {
+    $(".game-task").toggleClass("game-task_animation");
+
+    if ($(".game-task").hasClass("game-task_animation")) {
+        window.scrollTo(0, 0);
+        $(".game-task").show(1000);
+        $("body").css("overflowY", "hidden");
+    } else {
+        $(".game-task").fadeOut(600);
+        $("body").css("overflowY", "visible");
     };
 });
 
-// TODO game description
+$(".backform, .nav-list__link").on("click", function() {
+    if ($(".game-task").hasClass("game-task_animation")) {
+        $(".game-task").css("display", "none");
+        $(".game-task").toggleClass("game-task_animation");
+
+        if ($(this).hasClass("backform")) {
+            $("body").css("overflowY", "hidden");
+        } else if ($(this).attr("data-text")) {
+            $("body").css("overflowY", "hidden");
+        } else {
+            $("body").css("overflowY", "visible");
+        };
+    };
+});
+
+
+
 
 
 /////////////////////////////entranse/////////////////////////////
@@ -215,7 +307,7 @@ $('.button_entranse').on('click', function() {
     const login = $('.entranse__login-name').val();
     const password = $('.entranse__password-pass').val();
    
-    
+
     if (!login) {
         catHint('Введите логин', '.entranse__hint');        
     } else if (!ident.find(el => el.log === login)) {
@@ -228,7 +320,7 @@ $('.button_entranse').on('click', function() {
         $("#level__difficulty-radio-btn-01").prop("checked", true);
         
         buyCat(".level");
-        potterCat();
+        potterCat(true);
     };
 
     
@@ -277,7 +369,7 @@ $('.button_forgot-enter').on('click', function() {
         $("#level__difficulty-radio-btn-01").prop("checked", true);
         buyBaloonCat();
 
-        potterCat();
+        potterCat(true);
 
     };
     $("body").css("overflowY", "visible");
@@ -334,6 +426,7 @@ $('.button_registration').on('click', function() {
         helloCat();
         $('.registration__cat1').stop();
         $('.registration__cat2').stop();
+
     };
 });
 
@@ -380,7 +473,7 @@ let symbol = [];
 let level;
 let taskArr;
 
-$(".button_level").on("click", function() {  
+$(".button_level").on("click", function() {
     window.scrollTo(0, 0);
     
     if (!$(".level__operation-check-btn-input:checked").length) {
@@ -403,15 +496,17 @@ $(".button_level").on("click", function() {
 
         level = $(".level__difficulty-radio-btn-input:checked").attr('data-count');
         
-        $('.level__cat1').stop();
-        $('.level__cat2').stop();
+        $('.level__cat1').stop(true, true);
+        $('.level__cat2').stop(true, true);
+
+        potterCat(false);
 
         $('.level').toggleClass('dispFlex');
         $('.market-page').toggleClass('dispFlex');
         $('body').css('overflow-y', "visible");
 
         $(".market-page__title-img").css("height", "");
-        $(".backform").css("top","20px");
+        // $(".backform").css("top","20px");
 
         $(".main-block__findarea-input").val("");      
 
@@ -450,6 +545,15 @@ $(".button_level").on("click", function() {
 
         
         $(".sale__grid-col").on("click", function() {
+            if (miniMarketGame.gameMode == 1) {
+                $(".game-task__task-quest.task_level1:nth-child(3)").find(".game-task__task-quest-text").css("textDecoration", "line-through");
+                level1part3 = 1;
+            };
+
+            if (miniMarketGame.gameMode == 2) {
+                level2part4task1 = 1;
+            };
+
             const good = miniMarketGame.selectedGood(($(this).find(".sale__grid-item_back")).attr("data-item"));
                                        
             goToGood(good);
@@ -521,40 +625,36 @@ $(".button_level").on("click", function() {
         $("#goods-count").val(`${count}`);
         // $("#goods-count").val("5");
                         
-    };
+        //---------------подсказки---------------//
 
-    levelHint();
-            
-    ////////////////////////////Озвучка////////////////////////////
 
-    
-    ($(".music")).on("click", function () {
-    
-        const audio = ($(this).parent()).next('.audio')[0];
-    
-        if (audio.paused) {
-            audio.play();
-        } else {
-            audio.pause();
-        };
-        $(this).toggleClass("fa-volume-up").toggleClass("fa-volume-mute");
-
-        return
-    });
-
-    if (miniMarketGame.gameMode == "2") {
+        $(".description_level-1").removeClass("dispFlex");
+        $(".description_level-2").removeClass("dispFlex");
+        $(".main-block__descr").css("visibility", "hidden");
+        $(".game-task__task-quest").removeClass("dispFlex");
         
-        $(".description_level-2").on("click", function () {
+        if (miniMarketGame.gameMode == "1") {
+            $(".description_level-1").addClass("dispFlex");
+            $(".main-block__descr").css("visibility", "visible");
+            $(".game-task__task-quest.task_level1").addClass("dispFlex");
 
-            $(this).parent().siblings(".description_level-1").toggleClass("dispFlex");
-            // $(this).siblings(".description_level-1").toggleClass("dispFlex");
-          
-        });
-    
+        } else if (miniMarketGame.gameMode == "2") {
+            $(".description_level-2").addClass("dispFlex");
+            $(".main-block__descr").css("visibility", "visible");
+            $(".game-task__task-quest.task_level2").addClass("dispFlex");
+
+
+        } else if (miniMarketGame.gameMode == "3") {
+            $(".game-task__task-quest.task_level3").addClass("dispFlex");
+
+        };
     };
 
+    
     $(".task__cat").toggleClass("dispFlex");
     $(".about__cat").toggleClass("dispFlex");
+
+
 });     
         
 
@@ -572,6 +672,54 @@ $(".button_level-back").on("click", function() {
 
     $(".level__operation-check-btn-input:checked").prop("checked", false);      
     $(".level__difficulty-radio-btn-input:checked").prop("checked", false);
+
+    $('.level__cat1').stop(true, true);
+    $('.level__cat2').stop(true, true);
+
+    potterCat(false)
     
     helloCat();
+});
+
+
+ ////////////////////////////Озвучка////////////////////////////
+
+let synth = window.speechSynthesis,
+    message = new SpeechSynthesisUtterance();
+ 
+ ($(".music")).on("click", function () {
+    synth.cancel();
+    $(".music").removeClass("fa-volume-mute").addClass("fa-volume-up");
+
+    // const audio = ($(this).parent()).next('.audio')[0];
+     
+    // if (audio.paused) {
+    //     audio.play();
+    // } else {
+    //     audio.pause();
+    //  };
+    //  $(this).toggleClass("fa-volume-up").toggleClass("fa-volume-mute");
+             
+    // return
+            
+    $(this).toggleClass("fa-volume-up").toggleClass("fa-volume-mute");
+
+    message.lang = 'ru-RU';
+    message.rate = 1.6;
+    message.text = `${$(this).parent().siblings(".description_level-1").find(".market-page__descript").text()}`;
+
+    if ($(this).hasClass("fa-volume-mute")) {
+        synth.speak(message);
+    } else if ($(this).hasClass("fa-volume-up")) {
+        synth.cancel();
+    }
+    
+});
+
+
+
+$(".description_level-2").on("click", function () {
+
+    $(this).parent().siblings(".description_level-1").toggleClass("dispFlex");
+  
 });

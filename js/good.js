@@ -1,5 +1,9 @@
 $(".nav-list__market-page").on("click", function () {
-    $(".market-page").toggleClass("dispFlex")
+    $(".market-page").toggleClass("dispFlex");
+
+    synth.cancel();
+    $(".music").removeClass("fa-volume-mute").addClass("fa-volume-up");
+
     if ($(".favourite").hasClass("dispFlex")) {
         $(".favourite").toggleClass("dispFlex")
     } else if ($(".good-card").hasClass("dispFlex")) {
@@ -15,6 +19,9 @@ $(".nav-list__market-page").on("click", function () {
 $(".good-card__grid-back, .good-card__buying-back").on('click', function () {
     $(".market-page").toggleClass("dispFlex");
     $(".good-card").toggleClass("dispFlex");
+
+    synth.cancel();
+    $(".music").removeClass("fa-volume-mute").addClass("fa-volume-up");
 
     $(".good-card__grid-main-photo-pic").remove();
     $(".good-card__grid-change-li").remove();
@@ -44,10 +51,24 @@ $(".good-card__grid-back, .good-card__buying-back").on('click', function () {
     $(".basketbtn_task-answer-alt").val("");
 
     window.scrollTo(0, 0);
-    levelHint();
+    // levelHint();
 });
 
 $(".favourite-heart").on('click', function () {
+    if (miniMarketGame.gameMode == 2) {
+        $(".game-task__task-quest:nth-child(8)").find(".game-task__task-quest-text").css("textDecoration", "line-through");
+        level2part2 = 1;
+    };
+
+    if (miniMarketGame.gameMode == 3) {
+        if (($(".good-card__grid-category span").text()).toLowerCase() == "мебель") {
+            $(".game-task__task-quest:nth-child(14)").find(".game-task__task-quest-text").css("textDecoration", "line-through");
+            level3part2 = 1;
+        } else {
+            if ( miniMarketGame.gameMode == 3) {level3part3task1 = 1};
+        };
+    };
+
     $(this).find("i").toggleClass("far");
     $(this).find("i").toggleClass("fas");
 
@@ -83,6 +104,25 @@ $(".basketbtn_task-check").on("click", function () {
 
     if (answerCheck || answerCheckAlt) {
         miniMarketGame.cartAdd($(".good-card__grid-code span").html());
+
+        if (miniMarketGame.gameMode == 1) {
+            $(".game-task__task-quest.task_level1:nth-child(4)").find(".game-task__task-quest-text").css("textDecoration", "line-through");
+            level1part4 = 1;
+        };
+
+        if (miniMarketGame.gameMode == 2) {
+            let checkSale = miniMarketGame.saleGoods.find(function (el) {
+                return  el.good.id == $(".good-card__grid-code").text()
+            });
+
+            if (checkSale) {
+                level2part4task2 = 1;
+                if ((level2part4task1 + level2part4task2) == 2) {
+                    $(".game-task__task-quest:nth-child(10)").find(".game-task__task-quest-text").css("textDecoration", "line-through");
+                    level2part4 = 1;
+                };
+            };
+        };
     
         // модалка
         fancyRight();

@@ -81,6 +81,10 @@
 
 
         @if nth($mediaBp, $i) == 1200px
+            .about-descr
+                &__form
+                    width: 50%
+
             .entranse
                 &__form
                     width: 40%
@@ -150,6 +154,10 @@
 
 
         @if nth($mediaBp, $i) == 980px
+            .about-descr
+                &__form
+                    width: 60%
+
             .entranse
                 &__form
                     width: 50%
@@ -302,12 +310,21 @@
                 background-color: transparent
                 border-color: transparent
                 box-shadow: none
+            
+            .game-task
+                &__task
+                    &-quest
+                        font-size: 18px
 
 
 
 
                 
         @if nth($mediaBp, $i) == 767px
+            .about-descr
+                &__form
+                    width: 75%
+
             .logo-big
                 height: 150px
 
@@ -576,12 +593,22 @@
                 &-heart, &-basket
                     height: 60px
                     bottom: -60px
+            
+            .header, .good-card__header, .nav-list__link_main ul li
+                backdrop-filter: none
 
 
 
 
                 
         @if nth($mediaBp, $i) == 640px
+            .about-descr
+                &__form
+                    width: 85%
+
+            .wrapper
+                font-size: 18px
+
             .entranse
                 &__form
                     width: 80%
@@ -634,7 +661,6 @@
 
             .main-block
                 &__grid
-                    // margin-top: 100px
                     display: flex
                     flex-wrap: wrap
                     &-col:nth-child(1)
@@ -787,11 +813,19 @@
                 &__block
                     width: 90%
 
+            .game-task
+                &__task
+                    &-quest
+                        font-size: 17px
+
 
 
 
                 
         @if nth($mediaBp, $i) == 480px
+            .wrapper
+                font-size: 16px
+
             .entranse
                 &__form
                     width: 90%
@@ -1024,12 +1058,22 @@
                                 left: 115px
                                 right: auto
             
+            .game-task
+                &__task
+                    &-quest
+                        font-size: 15px
+                        padding: 15px
+            
 
 
 
 
                 
         @if nth($mediaBp, $i) == 380px
+            .about-descr
+                &__form
+                    width: 95%
+
             .entranse
                 &__form
                     width: 100%
@@ -1179,6 +1223,9 @@
 
 
         @if nth($mediaBp, $i) == 330px
+            .wrapper
+                font-size: 14px
+            
             .forgot
                 &__hint
                     width: 90px
@@ -1325,3 +1372,10 @@
                         margin-left: 10px
                     &-firstName-input, &-lastName-input, &-payForm-list, &-postService-list
                         margin-left: 25px
+            
+            .game-task
+                &__task
+                    &-quest
+                        &-text
+                            margin-left: 10px
+                            font-size: 12px

@@ -117,6 +117,70 @@ body {
   overflow-y: hidden;
 }
 
+.wrapper {
+  position: absolute;
+  top: 0;
+  width: 90%;
+  left: 5%;
+  margin-top: 60px;
+  font-size: 20px;
+  line-height: 1.5;
+  text-indent: 20px;
+  text-align: justify;
+}
+
+.wrapper div {
+  margin-top: 20px;
+}
+
+.wrapper__title {
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.wrapper__title span {
+  width: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.wave {
+  color: #268329;
+  -webkit-animation: color 2s;
+          animation: color 2s;
+}
+
+.noWave {
+  color: #268329;
+}
+
+@-webkit-keyframes color {
+  10% {
+    color: yellow;
+  }
+  20% {
+    color: #268329;
+  }
+}
+
+@keyframes color {
+  10% {
+    color: yellow;
+  }
+  20% {
+    color: #268329;
+  }
+}
+
 .about__cat, .task__cat {
   z-index: 500;
   height: 70px;
@@ -170,13 +234,14 @@ body {
 .entranse, .registration, .forgot, .level,
 .market-page, .good-card, .favourite,
 .basket, .last-step, .prise, .modal-block,
-.about-descr {
+.about-descr, .game-task {
   display: none;
 }
 
 .about-descr__form {
+  position: relative;
   width: 40%;
-  height: 65vh;
+  height: 80vh;
   background-color: #ffffff;
   border: 2px solid #268329;
   border-radius: 10px;
@@ -185,63 +250,51 @@ body {
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
+  padding: 20px;
 }
 
-.about-descr_animation {
-  -webkit-animation-name: showing;
-          animation-name: showing;
-  -webkit-animation-duration: 1s;
-          animation-duration: 1s;
-  -webkit-animation-timing-function: cubic-bezier(1, 1, 1, 1);
-          animation-timing-function: cubic-bezier(1, 1, 1, 1);
-  -webkit-animation-direction: normal;
-          animation-direction: normal;
+.about-descr-img {
+  margin-top: 0;
 }
 
-@-webkit-keyframes showing {
-  0% {
-    -webkit-transform: scale(0, 0) rotate(0deg);
-            transform: scale(0, 0) rotate(0deg);
-  }
-  25% {
-    -webkit-transform: scale(0, 0) rotate(90deg);
-            transform: scale(0, 0) rotate(90deg);
-  }
-  50% {
-    -webkit-transform: scale(0.4, 0.4) rotate(180deg);
-            transform: scale(0.4, 0.4) rotate(180deg);
-  }
-  75% {
-    -webkit-transform: scale(0.75, 0.75) rotate(270deg);
-            transform: scale(0.75, 0.75) rotate(270deg);
-  }
-  100% {
-    -webkit-transform: scale(1, 1) rotate(360deg);
-            transform: scale(1, 1) rotate(360deg);
-  }
+.about-descr__cat {
+  position: absolute;
+  right: 20px;
+  bottom: 10px;
+  height: 80px;
 }
 
-@keyframes showing {
-  0% {
-    -webkit-transform: scale(0, 0) rotate(0deg);
-            transform: scale(0, 0) rotate(0deg);
-  }
-  25% {
-    -webkit-transform: scale(0, 0) rotate(90deg);
-            transform: scale(0, 0) rotate(90deg);
-  }
-  50% {
-    -webkit-transform: scale(0.4, 0.4) rotate(180deg);
-            transform: scale(0.4, 0.4) rotate(180deg);
-  }
-  75% {
-    -webkit-transform: scale(0.75, 0.75) rotate(270deg);
-            transform: scale(0.75, 0.75) rotate(270deg);
-  }
-  100% {
-    -webkit-transform: scale(1, 1) rotate(360deg);
-            transform: scale(1, 1) rotate(360deg);
-  }
+.game-task__form {
+  padding: 0;
+  height: 60vh;
+}
+
+.game-task__task {
+  height: 100%;
+}
+
+.game-task__task-quest {
+  height: calc( 100% / 6);
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: none;
+  padding: 30px;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.game-task__task-quest:hover {
+  -webkit-box-shadow: inset 0 0 10px 0 #588326;
+          box-shadow: inset 0 0 10px 0 #588326;
+}
+
+.game-task__task-quest-text {
+  margin-left: 20px;
+}
+
+.game-task__task-quest + .game-task__task-quest {
+  border-top: 1px solid #268329;
 }
 
 .entranse__hint, .forgot__hint, .level__hint, .favourite__hint {
@@ -881,12 +934,14 @@ body {
 .header, .good-card__header {
   z-index: 95;
   background-color: #16531896;
-  padding: 10px 0;
+  padding: 7px 0;
   color: #ffffff;
-  position: absolute;
   top: 0;
   left: 0;
   width: 100vw;
+  -webkit-backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px);
+  position: fixed;
 }
 
 .header-grid, .good-card__header-grid {
@@ -900,12 +955,6 @@ body {
       -ms-flex-align: center;
           align-items: center;
   width: 100%;
-}
-
-.header_sticky, .good-card__header_sticky {
-  position: fixed;
-  top: 0;
-  left: 0;
 }
 
 .good-card__header {
@@ -974,6 +1023,8 @@ body {
   border: 1px solid #268329;
   margin-left: 0;
   background-color: #16531896;
+  -webkit-backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px);
 }
 
 .nav-list__link_main ul li * {
@@ -982,6 +1033,7 @@ body {
 
 .nav-list__link_main ul li:hover {
   background-color: #268329;
+  text-decoration: none;
 }
 
 .nav-list__link_main:hover ul {
@@ -1001,7 +1053,7 @@ body {
 }
 
 .market-page__cat {
-  height: 60px;
+  height: 45px;
 }
 
 .market-page__descr {
@@ -1015,6 +1067,10 @@ body {
 
 .market-page__descript {
   margin-left: 5px;
+}
+
+.market-page__title-img {
+  height: 30px;
 }
 
 .nav-toggle {
@@ -2620,6 +2676,10 @@ body {
           align-items: center;
 }
 
+.favourite__grid-item-remove:hover, .favourite__grid-item-cart:hover {
+  cursor: pointer;
+}
+
 .favourite__grid-item-remove-list, .favourite__grid-item-cart-list {
   position: absolute;
   top: 50%;
@@ -3309,7 +3369,6 @@ body {
   color: #268329;
   border-radius: 50%;
   position: fixed;
-  top: 100%;
   left: 100vw;
   -webkit-transform: translate(-65px, -65px);
           transform: translate(-65px, -65px);
@@ -3332,6 +3391,10 @@ body {
 .backtostart:hover, .backform:hover {
   cursor: pointer;
   font-size: 20px;
+}
+
+.backtostart {
+  top: 100%;
 }
 
 .modal_button {
@@ -3421,7 +3484,7 @@ body {
 }
 
 .backform {
-  top: 20px;
+  top: 11px;
   left: 0;
   -webkit-transform: translateX(30px);
           transform: translateX(30px);
@@ -3530,6 +3593,9 @@ body {
   .container {
     max-width: 980px;
   }
+  .about-descr__form {
+    width: 50%;
+  }
   .entranse__form {
     width: 40%;
   }
@@ -3602,6 +3668,9 @@ body {
 @media (max-width: 980px) {
   .container {
     max-width: 767px;
+  }
+  .about-descr__form {
+    width: 60%;
   }
   .entranse__form {
     width: 50%;
@@ -3795,11 +3864,17 @@ body {
     -webkit-box-shadow: none;
             box-shadow: none;
   }
+  .game-task__task-quest {
+    font-size: 18px;
+  }
 }
 
 @media (max-width: 767px) {
   .container {
     max-width: 640px;
+  }
+  .about-descr__form {
+    width: 75%;
   }
   .logo-big {
     height: 150px;
@@ -4137,11 +4212,21 @@ body {
     height: 60px;
     bottom: -60px;
   }
+  .header, .good-card__header, .nav-list__link_main ul li {
+    -webkit-backdrop-filter: none;
+            backdrop-filter: none;
+  }
 }
 
 @media (max-width: 640px) {
   .container {
     max-width: 480px;
+  }
+  .about-descr__form {
+    width: 85%;
+  }
+  .wrapper {
+    font-size: 18px;
   }
   .entranse__form {
     width: 80%;
@@ -4401,11 +4486,17 @@ body {
   .prise__block {
     width: 90%;
   }
+  .game-task__task-quest {
+    font-size: 17px;
+  }
 }
 
 @media (max-width: 480px) {
   .container {
     max-width: 380px;
+  }
+  .wrapper {
+    font-size: 16px;
   }
   .entranse__form {
     width: 90%;
@@ -4670,11 +4761,18 @@ body {
     left: 115px;
     right: auto;
   }
+  .game-task__task-quest {
+    font-size: 15px;
+    padding: 15px;
+  }
 }
 
 @media (max-width: 380px) {
   .container {
     max-width: 330px;
+  }
+  .about-descr__form {
+    width: 95%;
   }
   .entranse__form {
     width: 100%;
@@ -4887,6 +4985,9 @@ body {
   .container {
     max-width: 300px;
   }
+  .wrapper {
+    font-size: 14px;
+  }
   .forgot__hint {
     width: 90px;
   }
@@ -5057,6 +5158,10 @@ body {
   }
   .last-step__form-firstName-input, .last-step__form-lastName-input, .last-step__form-payForm-list, .last-step__form-postService-list {
     margin-left: 25px;
+  }
+  .game-task__task-quest-text {
+    margin-left: 10px;
+    font-size: 12px;
   }
 }
 /*# sourceMappingURL=style.css.map */

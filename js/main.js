@@ -1,17 +1,48 @@
 /////////////////////////////market-page/////////////////////////////
 
+$("[data-text='#anchor1']").on('click', function () {
+    if (miniMarketGame.gameMode == 1) {
+        level1part1 = 1;
+        $(".game-task__task-quest.task_level1:nth-child(1)").find(".game-task__task-quest-text").css("textDecoration", "line-through");
+    };
+});
+
+
+$(".goods__list-choose-sort_select select").on("input", function () {
+    if (miniMarketGame.gameMode == 3) {
+        if ($(this).val() == 2) {
+            $(".game-task__task-quest:nth-child(16)").find(".game-task__task-quest-text").css("textDecoration", "line-through");
+            level3part4 = 1;
+        };
+    };
+});
+
+$(".good-card__about-garant-paying .good-card__about-title:nth-child(2)").on('click', function () {
+    if (miniMarketGame.gameMode == 3) {
+        $(".game-task__task-quest:nth-child(17)").find(".game-task__task-quest-text").css("textDecoration", "line-through");
+        level3part5 = 1;
+    };
+});
+
+
 $(".nav-list__favourite, .nav-list__basket").on("click", function () {
     
     $('.nav').removeClass('nav_active');
     $("body").css("overflowY", "visible");
-})
+    $(".favourite h3").remove();
+    $(".basket h3").remove();
 
+
+})
 
 
 //---------------назад к уровню---------------//
 
 $(".backform").on("click", function() {
+    synth.cancel();
+    $(".music").removeClass("fa-volume-mute").addClass("fa-volume-up");
     symbol = [];
+    miniMarketGame.operations = [];
     $(".market-page").toggleClass('dispFlex');
     $(".level").toggleClass('dispFlex');
     
@@ -24,13 +55,14 @@ $(".backform").on("click", function() {
         if (check.hasClass("dispFlex")) {check.removeClass("dispFlex")}
     };
     
-    potterCat();
+    potterCat(true);
 
     $(".sale__grid-col").remove();
+    $(".basket__grid-col").remove();
     $(".goods__grid").remove();
     $(".slick-dots").remove();
     $('.nav').removeClass('nav_active');
-    $("body").css("overflowY", "visible");
+    // $("body").css("overflowY", "visible");
 
     $(".level__difficulty-descript").removeClass('dispFlex');
     $(`.level__difficulty-descript[data-count="${$("#level__difficulty-radio-btn-01").attr("data-count")}"]`).addClass('dispFlex');
@@ -43,6 +75,7 @@ $(".backform").on("click", function() {
 //---------------navigation---------------//
 
 $('.nav-toggle').on('click', function(){
+
     const $nav = $(this).siblings('.nav');
     const height = $('.header').outerHeight();
     const height2 = $('.good-card__header').outerHeight();
@@ -51,6 +84,7 @@ $('.nav-toggle').on('click', function(){
     const $body = $('body');
 
     if ($nav.hasClass('nav_active')) {
+        if ($(".game-task").hasClass("game-task_animation")) {$(".game-task").removeClass("game-task_animation").toggle(600)};
         
         if ($(".market-page").hasClass("dispFlex")) {
             $nav.css("top", height);
@@ -81,6 +115,9 @@ $('[data-text="#anchor7"]').on("click", function() {
         $(".favourite").toggleClass("dispFlex")
     };
 
+    synth.cancel();
+    $(".music").removeClass("fa-volume-mute").addClass("fa-volume-up");
+
     $(".entranse__password-pass").val("");
     $(".entranse__login-name").val("");
     
@@ -95,11 +132,12 @@ $('[data-text="#anchor7"]').on("click", function() {
     helloCat();
 
     $(".sale__grid-col").remove();
+    $(".basket__grid-col").remove();
     $(".goods__grid").remove();
     $(".slick-dots").remove();
 
     $('.nav').removeClass('nav_active');
-    $("body").css("overflowY", "visible");
+    $("body").css("overflowY", "hidden");
 
     $(".level__difficulty-descript").removeClass('dispFlex');
     $(`.level__difficulty-descript[data-count="${$("#level__difficulty-radio-btn-01").attr("data-count")}"]`).addClass('dispFlex');
@@ -110,43 +148,43 @@ $('[data-text="#anchor7"]').on("click", function() {
 
 //---------------слик-меню---------------//
 
-const $header = $('.header');
+// const $header = $('.header');
 
-$(window).on('scroll', function() {
-    const scrollTop = $('body, html').scrollTop();
-    const offset = $('.sale').offset().top;
+// $(window).on('scroll', function() {
+//     const scrollTop = $('body, html').scrollTop();
+//     const offset = $('.sale').offset().top;
 
-    if (scrollTop >= offset) {
-        $header.addClass('header_sticky');
+//     if (scrollTop >= offset) {
+//         $header.addClass('header_sticky');
 
-        $(".market-page__cat").css("display", "none");
-        $(".market-page__title-img").css("height", "30px");
-        $(".nav-toggle").css("height", "30px");
-        $(".nav-toggle").css("width", "30px");
+//         $(".market-page__cat").css("display", "none");
+//         $(".market-page__title-img").css("height", "30px");
+//         $(".nav-toggle").css("height", "30px");
+//         $(".nav-toggle").css("width", "30px");
         
-        const height = $header.outerHeight();
-        $header.css('top', -height);
-        $header.animate({top:0}, 300);
+//         const height = $header.outerHeight();
+//         $header.css('top', -height);
+//         $header.animate({top:0}, 300);
 
-        $(".backtostart").css("visibility","visible");
-        $(".backform").css("top","5px");
-        // if (document.documentElement.clientWidth > 767) {$(".nav-list__link_sec").css("paddingTop","2px")};
-        if (window.matchMedia("(min-width: 768px)").matches) {$(".header .nav-list__link_sec").css("paddingTop","2px")};
+//         $(".backtostart").css("visibility","visible");
+//         $(".backform").css("top","5px");
+//         // if (document.documentElement.clientWidth > 767) {$(".nav-list__link_sec").css("paddingTop","2px")};
+//         if (window.matchMedia("(min-width: 768px)").matches) {$(".header .nav-list__link_sec").css("paddingTop","2px")};
         
 
-    } else if (scrollTop < 30) {
-        $header.removeClass('header_sticky');
-        $(".backtostart").css("visibility","hidden");
-        $(".market-page__cat").css("display", "block");
-        $(".market-page__title-img").css("height", "");
-        $(".nav-toggle").css("height", "25px");
-        $(".nav-toggle").css("width", "25px");
-        $(".backform").css("top","20px");
-        // if (document.documentElement.clientWidth > 767) {$(".nav-list__link_sec").css("paddingTop","7px")};
-        if (window.matchMedia("(min-width: 768px)").matches) {$(".header .nav-list__link_sec").css("paddingTop","7px")};
+//     } else if (scrollTop < 30) {
+//         $header.removeClass('header_sticky');
+//         $(".backtostart").css("visibility","hidden");
+//         $(".market-page__cat").css("display", "block");
+//         $(".market-page__title-img").css("height", "");
+//         $(".nav-toggle").css("height", "25px");
+//         $(".nav-toggle").css("width", "25px");
+//         $(".backform").css("top","20px");
+//         // if (document.documentElement.clientWidth > 767) {$(".nav-list__link_sec").css("paddingTop","7px")};
+//         if (window.matchMedia("(min-width: 768px)").matches) {$(".header .nav-list__link_sec").css("paddingTop","7px")};
         
-    };
-});
+//     };
+// });
 
 
 //---------------прокрутка---------------//
@@ -253,6 +291,9 @@ $('.main-block__findarea-input').on('input', function () {clearTimeout(timer);
 $(".main-block__findarea-icon").on('click', function () {
 
     $(".modal-block").toggleClass("dispFlex");
+
+    synth.cancel();
+    $(".music").removeClass("fa-volume-mute").addClass("fa-volume-up");
 
     $('.modal__grid-col').remove();
 
@@ -641,6 +682,11 @@ $("#goods-count").on("input", function () {
 
 
 $(".nav-list__favourite, .nav-list__link_heart, .footer__buyer-favourite").on("click", function() {
+    $(".favourite__grid-col").remove();
+
+    synth.cancel();
+    $(".music").removeClass("fa-volume-mute").addClass("fa-volume-up");
+
     $(".favourite").toggleClass("dispFlex");
     if ($(".market-page").hasClass("dispFlex")) {
         $(".market-page").toggleClass("dispFlex")
@@ -652,7 +698,7 @@ $(".nav-list__favourite, .nav-list__link_heart, .footer__buyer-favourite").on("c
 
     if (($(".favourite__choose-ico").find("i")).hasClass("fa-grip-lines")) {($(".favourite__choose-ico").find("i")).toggleClass("fa-grip-horizontal").toggleClass("fa-grip-lines");}
 
-    $(".favourite .h3").remove();
+    $(".favourite h3").remove();
 
     window.scrollTo(0, 0);
 
@@ -705,6 +751,11 @@ $(".nav-list__favourite, .nav-list__link_heart, .footer__buyer-favourite").on("c
         });
 
         $(".favourite__grid-item-cart").on("click", function () {
+            
+            if (miniMarketGame.gameMode == 2) {
+                level2part3task1 = 1;
+            };
+
             miniMarketGame.cartAdd($(this).attr("data-item"));
 
             const that = this;
@@ -728,6 +779,14 @@ $(".nav-list__favourite, .nav-list__link_heart, .footer__buyer-favourite").on("c
 
 
 $(".favourite__choose-ico").on("click", function() {
+    if (miniMarketGame.gameMode == 3) {
+        level3part3task2 = 1;
+        if ((level3part3task1 + level3part3task2) == 2) {
+            $(".game-task__task-quest:nth-child(15)").find(".game-task__task-quest-text").css("textDecoration", "line-through");
+            level3part3 = 1;
+        };
+    };
+
     $(".favourite__grid-col").remove();
     $(this).find("i").toggleClass("fa-grip-horizontal").toggleClass("fa-grip-lines");
 
@@ -870,10 +929,15 @@ $(".favourite__choose-ico").on("click", function() {
 $(".favourite__back").on("click", function() {
     $(".favourite").toggleClass("dispFlex");
     $(".market-page").toggleClass("dispFlex");
+
+    synth.cancel();
+    $(".music").removeClass("fa-volume-mute").addClass("fa-volume-up");
+
     $(".favourite__grid-col").remove();
 });
 
 $(".favourite__remove").on("click", function () {
+    
     
     if (miniMarketGame.favouriteGood.length > 0) {
         $("[data-text='clearFavourite']").fancybox({
@@ -889,6 +953,16 @@ $(".favourite__remove").on("click", function () {
 
 
         $(".modal-block_clearFavourite-yes").on("click", function() {
+            if (miniMarketGame.gameMode == 2) {
+                level2part3task2 = 1;
+
+                if ((level2part3task1 + level2part3task2) == 2) {  
+
+                    $(".game-task__task-quest:nth-child(9)").find(".game-task__task-quest-text").css("textDecoration", "line-through");
+                    level2part3 = 1;
+                };
+            };
+            
 
             catHint("Список избанного очищен", ".favourite__hint");
             $(".favourite__grid-col").remove();
@@ -1002,6 +1076,9 @@ function goodsCardAdd(good) {
 
 //---------------переход к товару---------------//
 function goToGood(good) {
+    synth.cancel();
+    $(".music").removeClass("fa-volume-mute").addClass("fa-volume-up");
+
     $(".market-page").toggleClass("dispFlex");
     $(".good-card").toggleClass("dispFlex");
 
@@ -1014,6 +1091,9 @@ function goToGood(good) {
 };
 
 function goToFavouriteGood(good) {
+    synth.cancel();
+    $(".music").removeClass("fa-volume-mute").addClass("fa-volume-up");
+
     $(".favourite").toggleClass("dispFlex");
     $(".good-card").toggleClass("dispFlex");
 
@@ -1026,6 +1106,9 @@ function goToFavouriteGood(good) {
 
 
 $('.good-card__about-garant-paying .good-card__about-title').each(function() {
+    synth.cancel();
+    $(".music").removeClass("fa-volume-mute").addClass("fa-volume-up");
+
     const $target = $(this);
 
     $target.on("click", function() {
@@ -1047,6 +1130,14 @@ $('.good-card__about-garant-paying .good-card__about-title').each(function() {
 ////////////////////////////Корзина////////////////////////////
 
 $(".nav-list__basket, .nav-list__link_basket, .footer__buyer-basket").on("click", function() {
+    if (miniMarketGame.gameMode == 1) {
+        $(".game-task__task-quest.task_level1:nth-child(5)").find(".game-task__task-quest-text").css("textDecoration", "line-through");
+        level1part5 = 1;
+    };
+
+    synth.cancel();
+    $(".music").removeClass("fa-volume-mute").addClass("fa-volume-up");
+
     $(".basket").toggleClass("dispFlex");
     if ($(".market-page").hasClass("dispFlex")) {
         $(".market-page").toggleClass("dispFlex")
@@ -1061,7 +1152,7 @@ $(".nav-list__basket, .nav-list__link_basket, .footer__buyer-basket").on("click"
     $(".basket__result-summa-input").val("");
     $("#basket__enough-choose-list").val("");
 
-    $(".basket .h3").remove();
+    $(".basket h3").remove();
 
     window.scrollTo(0, 0);
 
@@ -1070,6 +1161,8 @@ $(".nav-list__basket, .nav-list__link_basket, .footer__buyer-basket").on("click"
         $(".basket__result, .basket__enough, .basket__buttons").removeClass("dispFlex");
     } else {
         buildCartGrid ();
+
+
         $(".basket__result, .basket__enough, .basket__buttons").addClass("dispFlex");
         $(".basket__block h3").remove();
         
@@ -1079,6 +1172,14 @@ $(".nav-list__basket, .nav-list__link_basket, .footer__buyer-basket").on("click"
 
 
 $(".modal-block_toCart-cartBtn").on("click", function() {
+    if (miniMarketGame.gameMode == 1) {
+        $(".game-task__task-quest.task_level1:nth-child(5)").find(".game-task__task-quest-text").css("textDecoration", "line-through");
+        level1part5 = 1;
+    };
+
+    synth.cancel();
+    $(".music").removeClass("fa-volume-mute").addClass("fa-volume-up");
+    
     $(".basket").toggleClass("dispFlex");
     $(".good-card").toggleClass("dispFlex");
     $(".basket__onAccount-summa").html(`${miniMarketGame.onAccount.toFixed(2)} UAH`);
@@ -1091,6 +1192,8 @@ $(".modal-block_toCart-cartBtn").on("click", function() {
         $(".basket__block").append("<h3>Здесь будут находиться товары, которые Вы сможете приобрести. Не пора ли добавить несколько?</h3>");
     } else {
         buildCartGrid ();
+
+
         $(".basket__result, .basket__enough, .basket__buttons").addClass("dispFlex");
         $(".basket__block h3").remove();
         
@@ -1100,6 +1203,9 @@ $(".modal-block_toCart-cartBtn").on("click", function() {
 
 
 $(".basket__back, .basket__buttons-return").on("click", function() {
+    synth.cancel();
+    $(".music").removeClass("fa-volume-mute").addClass("fa-volume-up");
+
     $(".basket").toggleClass("dispFlex");
     $(".market-page").toggleClass("dispFlex");
     $(".basket__grid-col").remove();
@@ -1114,6 +1220,7 @@ $(".basket__back, .basket__buttons-return").on("click", function() {
 function buildCartGrid () {
     $(".basket__grid-col").remove();
     $(".basket__hint-total").remove();
+    $(".basket h3").remove();
     let totalSumm = 0;
     for (let i = 0; i < miniMarketGame.cart.length; i++) {
         $(".basket__grid").append(`<div class="basket__grid-col col-${i}"></div>`);
@@ -1174,6 +1281,7 @@ function buildCartGrid () {
 
                 $(`.basket__grid-col.col-${i} .basket__count-summ`).append(`<div class="basket__hint basket__hint-${i} hint--top" aria-label="Ответ: ${Number(price * ($(`.basket__count-num-${i}`).val()))}"><i class="far fa-question-circle"></i></div>`);
                 $(".fas.fa-plus").on("click", function() {
+                    
                     $(`.basket__hint-${i}`).attr("aria-label", `Ответ: ${(Number(price * ($(`.basket__count-num-${i}`).val()))) + Number(price)}`);  
                 });
                 $(".fas.fa-minus").on("click", function() {
@@ -1187,6 +1295,7 @@ function buildCartGrid () {
                     $(`.basket__count-input-${i}`).attr("placeholder", `${Number(price * ($(`.basket__count-num-${i}`).val()))}`);
 
                     $(".fas.fa-plus").on("click", function() {
+                        
                         $(`.basket__count-input-${i}`).attr("placeholder", `${(Number(price * ($(`.basket__count-num-${i}`).val()))) + Number(price)}`);
                     });
                     $(".fas.fa-minus").on("click", function() {
@@ -1204,12 +1313,373 @@ function buildCartGrid () {
     };
     if (miniMarketGame.gameMode == 1) {$(".basket__result").append(`<div class="basket__hint-total hint--top" aria-label=""><i class="far fa-question-circle"></i></div>`)};
 
+    
+    if (miniMarketGame.gameMode == 2) {
+        $(".fas.fa-plus").on("click", function() {
+            if ((($(this).parent().siblings("input")).val() + 1) > 1) {
+                $(".game-task__task-quest:nth-child(11)").find(".game-task__task-quest-text").css("textDecoration", "line-through");
+                level2part5 = 1;
+            } else {
+                $(".game-task__task-quest:nth-child(11)").find(".game-task__task-quest-text").css("textDecoration", "none");
+                level2part5 = 0;
+            };
+        });
+
+        $(".fas.fa-minus").on("click", function() {
+            if ((($(this).parent().siblings("input")).val() - 1) > 1) {
+                $(".game-task__task-quest:nth-child(11)").find(".game-task__task-quest-text").css("textDecoration", "line-through");
+                level2part5 = 1;
+            } else {
+                $(".game-task__task-quest:nth-child(11)").find(".game-task__task-quest-text").css("textDecoration", "none");
+                level2part5 = 0;
+            };
+        });
+    };
 
 };
+
+
+
+$(".basket__remove").on("click", function () {
+    
+    if (miniMarketGame.cart.length > 0) {
+        $("[data-text='clearCart']").fancybox({
+            "padding": 20,
+            "width": 600,
+            "overlayOpacity": 0.9,
+            "overlayColor": '#f7f8fa',
+            showCloseButton: true,
+            modal: true,
+            "height": "auto"
+            
+        });
+
+
+        $(".modal-block_clearCart-yes").on("click", function() {
+            $(".basket__grid-col").remove();
+            $(".basket__hint-total").remove();
+            $(".basket__block h3").remove();
+            miniMarketGame.cart = [];
+            $(".basket__result, .basket__enough, .basket__buttons").removeClass("dispFlex");
+            $(".basket__block").append("<h3>Здесь будут находиться товары, которые Вы сможете приобрести. Не пора ли добавить несколько?</h3>");
+            $.fancybox.close();
+        });
+
+
+        $(".modal-block_clearCart-no").on("click", function() {
+            $.fancybox.close();
+        });
+    };
+});
+
+
+function delCartItem() {
+    $(".basket__grid-item-remove").on("click", function () {
+        miniMarketGame.cartRemove($(this).attr("data-item"));
+        $(this).parent().parent().remove();
+
+        if (miniMarketGame.cart.length == 0) {
+            $(".basket__block").append("<h3>Здесь будут находиться товары, которые Вы сможете приобрести. Не пора ли добавить несколько?</h3>");
+        };
+    });
+};
+
+
+$(".last-step__buttons-return").on('click', function () {
+    synth.cancel();
+    $(".music").removeClass("fa-volume-mute").addClass("fa-volume-up");
+
+    $(".market-page").toggleClass("dispFlex");
+    $(".last-step").toggleClass("dispFlex");
+    window.scrollTo(0, 0);
+});
+
+
+$(".last-step__form-payForm-list").on("input",function () {
+    if (($(".last-step__form-payForm-list").val() == "1") && (differance < 0)) {
+        catHint("На счету не достаточно средств", ".basket__catHint");
+        $(".last-step__form-payForm-list").val("0");
+    };
+    $(".last-step__form-payForm-list").css("color", "#000000");
+});
+
+
+$(".last-step__form-postService-list").on("input",function () {
+    $(".last-step__form-postService-list").css("color", "#000000");
+});
+
+
+$(".last-step__buttons-continue").on('click', function () {
+    
+    if ($(".last-step__form-firstName-input").val() == "") {
+        catHint("Введите имя", ".basket__catHint");
+    } else if ($(".last-step__form-lastName-input").val() == "") {
+        catHint("Введите фамилию", ".basket__catHint");
+    } else if ($(".last-step__form-payForm-list").val() == "") {
+        catHint("Выберите форму оплаты", ".basket__catHint");
+    } else if ($(".last-step__form-postService-list").val() == "") {
+        catHint("Выберите службу доставки", ".basket__catHint");
+    } else if ($(".last-step__form-commit-area").val() == "") {
+        catHint("Введите комментарии", ".basket__catHint");
+    } else {
+        if (miniMarketGame.gameMode == 1) {
+            $(".game-task__task-quest.task_level1:nth-child(6)").find(".game-task__task-quest-text").css("textDecoration", "line-through");
+            level1part6 = 1;
+        };
+
+        if (miniMarketGame.gameMode == 2) {
+            $(".game-task__task-quest:nth-child(12)").find(".game-task__task-quest-text").css("textDecoration", "line-through");
+            level2part6 = 1;
+        };
+
+        if (miniMarketGame.gameMode == 3) {
+            if ($(".last-step__form-payForm-list").val() == 1) {
+                $(".game-task__task-quest:nth-child(18)").find(".game-task__task-quest-text").css("textDecoration", "line-through");
+                level3part6 = 1;
+            };
+        };
+
+        miniMarketGame.scoreLevel1 = level1part1 + level1part2 + level1part3 + level1part4 + level1part5 + level1part6;
+        miniMarketGame.scoreLevel2 = level2part1 + level2part2 + level2part3 + level2part4 + level2part5 + level2part6;
+        miniMarketGame.scoreLevel3 = level3part1 + level3part2 + level3part3 + level3part4 + level3part5 + level3part6;
+        
+
+        if ($(".last-step__form-payForm-list").val() == "1") {
+            miniMarketGame.onAccount = differance;
+        };
+        $(".last-step").toggleClass("dispFlex");
+        synth.cancel();
+        $(".music").removeClass("fa-volume-mute").addClass("fa-volume-up");
+
+        let cash = '';
+        if ($(".last-step__form-payForm-list").val() == 0) {
+            cash = "наличные";
+        } else if ($(".last-step__form-payForm-list").val() == 1) {
+            cash = "безналичные";
+        }
+        
+        $(".modal_container-lastStep-congrats").html(`Поздравляем!! Вы совершили покупку за ${cash} средства. На Вашем счету: ${miniMarketGame.onAccount.toFixed(2)} UAH`);
+
+        $("[data-text='lastStep']").fancybox({
+            "padding": 20,
+            "width": 600,
+            "overlayOpacity": 0.9,
+            "overlayColor": '#f7f8fa',
+            showCloseButton: true,
+            modal: true,
+            "height": "auto"
+            
+        });
+    };
+});
+
+
+$(".modal-block_lastStep-buy").on('click', function () {
+    $.fancybox.close();
+    $(".level").toggleClass("dispFlex");
+    synth.cancel();
+    $(".music").removeClass("fa-volume-mute").addClass("fa-volume-up");
+    miniMarketGame.operations = [];
+    miniMarketGame.cart = [];
+    // $(".level__difficulty-radio-btn-input").prop("checked", false);
+    $(".level__operation-check-btn-input").prop("checked", false);
+    $("#level__difficulty-radio-btn-01").prop("checked", true);
+
+    for (let i = 2; i < 5; i++) {
+        let check = $(`#level__operation-check-btn-0${i}`).parent('.level__operation-check-btn');
+        if (check.hasClass("dispFlex")) {check.removeClass("dispFlex")}
+    };
+    
+    potterCat(true);
+
+    $(".sale__grid-col").remove();
+    $(".basket__grid-col").remove();
+    $(".goods__grid").remove();
+    $(".slick-dots").remove();
+    
+
+    $(".last-step__form-firstName-input").val("");
+    $(".last-step__form-lastName-input").val("");
+    $(".last-step__form-payForm-list").val("");
+    $(".last-step__form-postService-list").val("");
+    $(".last-step__form-commit-area").val("");
+    $(".basket__result-summa-input").css('backgroundColor', "#ffffff");
+
+    $(".task__cat").toggleClass("dispFlex");
+    $(".about__cat").toggleClass("dispFlex");
+
+});
+
+
+$(".modal-block_lastStep-play, .modal-lastStep-button").on('click', function () {
+    $.fancybox.close();
+    $(".prise").toggleClass("dispFlex");
+    synth.cancel();
+    $(".music").removeClass("fa-volume-mute").addClass("fa-volume-up");
+    
+    let colCount;
+    if (window.matchMedia("(min-width: 981px)").matches) {
+        // if (document.documentElement.clientWidth > 980) {
+        colCount = 6;
+    // } else if ((document.documentElement.clientWidth <= 980) && (document.documentElement.clientWidth > 767)) {
+    } else if ((window.matchMedia("(max-width: 980px)").matches) && (window.matchMedia("(min-width: 768px)").matches)) {
+        colCount = 5;
+    // }  else if ((document.documentElement.clientWidth <= 767) && (document.documentElement.clientWidth > 640)) {
+    }  else if ((window.matchMedia("(max-width: 980px)").matches) && (window.matchMedia("(min-width: 641px)").matches)) {
+        colCount = 3;
+    } else {
+        colCount = 2;
+    }
+
+
+    if (miniMarketGame.gameMode == 1) {
+        $(".col__level-1").addClass("dispFlex");
+    } else if (miniMarketGame.gameMode == 2) {
+        $(".col__level-1").addClass("dispFlex");
+        $(".col__level-2").addClass("dispFlex");
+        
+    } else if (miniMarketGame.gameMode == 3) {
+        $(".col__level-1").addClass("dispFlex");
+        $(".col__level-2").addClass("dispFlex");
+        $(".col__level-3").addClass("dispFlex");
+    };
+    // console.log($(".prise__grid-col.dispFlex"))
+    if ($(".prise__grid-col.dispFlex").length < colCount) {
+        $(".prise__grid-col.dispFlex").css("width", `calc(100% / ${$(".prise__grid-col.dispFlex").length})`);
+        $(".prise__grid-col.dispFlex").css("height", `calc(100% / ${$(".prise__grid-col.dispFlex").length})`);
+    } else {
+        $(".prise__grid-col.dispFlex").css("width", `calc(100% / ${colCount})`);
+        $(".prise__grid-col.dispFlex").css("height", `calc(100% / ${colCount})`);
+    };
+});
+
+
+$(".prise__block-entranse").on('click', function () {
+    synth.cancel();
+    $(".music").removeClass("fa-volume-mute").addClass("fa-volume-up");
+
+    $(".prise").toggleClass('dispFlex');
+    $(".entranse").toggleClass('dispFlex');
+    $(".entranse__password-pass").val("");
+    $(".entranse__login-name").val("");
+    
+    $(".level__operation-check-btn-input").prop("checked", false);
+    $("#level__difficulty-radio-btn-01").prop("checked", true);
+
+    miniMarketGame.operations = [];
+    miniMarketGame.cart = [];
+    miniMarketGame.favouriteGood = [];
+    miniMarketGame.onAccount = 5000;
+
+    helloCat();
+
+    $(".sale__grid-col").remove();
+    $(".basket__grid-col").remove();
+    $(".goods__grid").remove();
+    $(".slick-dots").remove();
+    $(".task__cat").toggleClass("dispFlex");
+    $(".about__cat").toggleClass("dispFlex");
+});
+
+$(".prise__block-level").on('click', function () {
+    synth.cancel();
+    $(".music").removeClass("fa-volume-mute").addClass("fa-volume-up");
+
+    $(".prise").toggleClass('dispFlex');
+    $(".level").toggleClass("dispFlex");
+    miniMarketGame.operations = [];
+    miniMarketGame.cart = [];
+    
+    $(".level__operation-check-btn-input").prop("checked", false);
+    $("#level__difficulty-radio-btn-01").prop("checked", true);
+
+    for (let i = 2; i < 5; i++) {
+        let check = $(`#level__operation-check-btn-0${i}`).parent('.level__operation-check-btn');
+        if (check.hasClass("dispFlex")) {check.removeClass("dispFlex")}
+    };
+
+    $(".level__difficulty-descript").removeClass('dispFlex');
+    $(`.level__difficulty-descript[data-count="${$("#level__difficulty-radio-btn-01").attr("data-count")}"]`).addClass('dispFlex');
+    
+    potterCat(true);
+
+    $(".sale__grid-col").remove();
+    $(".goods__grid").remove();
+    $(".slick-dots").remove();
+
+    $(".task__cat").toggleClass("dispFlex");
+    $(".about__cat").toggleClass("dispFlex");
+});
+
+
+$(".footer__info-pay").on("click", function () {
+    if (miniMarketGame.gameMode == 1) {
+        $(".game-task__task-quest.task_level1:nth-child(2)").find(".game-task__task-quest-text").css("textDecoration", "line-through");
+        level1part2 = 1;
+    };
+    
+    $(".music").removeClass("fa-volume-mute").addClass("fa-volume-up");
+    synth.cancel();
+    $("[data-text='payAndDelivery']").fancybox({
+        "padding": 20,
+        "width": 600,
+        "overlayOpacity": 0.9,
+        "overlayColor": '#f7f8fa',
+        showCloseButton: true,
+        modal: true,
+        "height": "auto"
+        
+    });
+});
+
+$(".footer__info-garant").on("click", function () {
+    if (miniMarketGame.gameMode == 2) {
+        $(".game-task__task-quest:nth-child(7)").find(".game-task__task-quest-text").css("textDecoration", "line-through");
+        level2part1 = 1;
+    };
+
+    $(".music").removeClass("fa-volume-mute").addClass("fa-volume-up");
+    synth.cancel();
+    
+    $("[data-text='garanty']").fancybox({
+        "padding": 20,
+        "width": 600,
+        "overlayOpacity": 0.9,
+        "overlayColor": '#f7f8fa',
+        showCloseButton: true,
+        modal: true,
+        "height": "auto"
+        
+    });
+});
+
+$(".footer__info-contact").on("click", function () {
+    if (miniMarketGame.gameMode == 3) {
+        $(".game-task__task-quest:nth-child(13)").find(".game-task__task-quest-text").css("textDecoration", "line-through");
+        level3part1 = 1;
+    };
+
+    $(".music").removeClass("fa-volume-mute").addClass("fa-volume-up");
+    synth.cancel();
+    $("[data-text='contact']").fancybox({
+        "padding": 20,
+        "width": 600,
+        "overlayOpacity": 0.9,
+        "overlayColor": '#f7f8fa',
+        showCloseButton: true,
+        modal: true,
+        "height": "auto"
+    });
+});
+
+
 
 let differance = 0;
 
 $(".basket__buttons-continue").on("click", function() {
+    synth.cancel();
+    $(".music").removeClass("fa-volume-mute").addClass("fa-volume-up");
+
     $(".last-step__form-firstName-input").val("");
     $(".last-step__form-lastName-input").val("");
     $(".last-step__form-payForm-list").val("");
@@ -1298,273 +1768,11 @@ $(".basket__buttons-continue").on("click", function() {
         $(".basket").toggleClass("dispFlex");
         $(".last-step").toggleClass("dispFlex");
         window.scrollTo(0, 0);
+  
     };
 
     differance = parseFloat($(".basket__onAccount-summa").html()) - totalSumm;
-        
-});    
-
-
-$(".basket__remove").on("click", function () {
+   
     
-    if (miniMarketGame.cart.length > 0) {
-        $("[data-text='clearCart']").fancybox({
-            "padding": 20,
-            "width": 600,
-            "overlayOpacity": 0.9,
-            "overlayColor": '#f7f8fa',
-            showCloseButton: true,
-            modal: true,
-            "height": "auto"
-            
-        });
-
-
-        $(".modal-block_clearCart-yes").on("click", function() {
-            $(".basket__grid-col").remove();
-            $(".basket__hint-total").remove();
-            $(".basket__block h3").remove();
-            miniMarketGame.cart = [];
-            $(".basket__result, .basket__enough, .basket__buttons").removeClass("dispFlex");
-            $(".basket__block").append("<h3>Здесь будут находиться товары, которые Вы сможете приобрести. Не пора ли добавить несколько?</h3>");
-            $.fancybox.close();
-        });
-
-
-        $(".modal-block_clearCart-no").on("click", function() {
-            $.fancybox.close();
-        });
-    };
-});
-
-
-function delCartItem() {
-    $(".basket__grid-item-remove").on("click", function () {
-        miniMarketGame.cartRemove($(this).attr("data-item"));
-        $(this).parent().parent().remove();
-
-        if (miniMarketGame.cart.length == 0) {
-            $(".basket__block").append("<h3>Здесь будут находиться товары, которые Вы сможете приобрести. Не пора ли добавить несколько?</h3>");
-        };
-    });
-};
-
-
-$(".last-step__buttons-return").on('click', function () {
-    $(".market-page").toggleClass("dispFlex");
-    $(".last-step").toggleClass("dispFlex");
-    window.scrollTo(0, 0);
-});
-
-
-$(".last-step__form-payForm-list").on("input",function () {
-    if (($(".last-step__form-payForm-list").val() == "1") && (differance < 0)) {
-        catHint("На счету не достаточно средств", ".basket__catHint");
-        $(".last-step__form-payForm-list").val("0");
-    };
-    $(".last-step__form-payForm-list").css("color", "#000000");
-});
-
-$(".last-step__form-postService-list").on("input",function () {
-    $(".last-step__form-postService-list").css("color", "#000000");
-});
-
-$(".last-step__buttons-continue").on('click', function () {
-
-    if ($(".last-step__form-firstName-input").val() == "") {
-        catHint("Введите имя", ".basket__catHint");
-    } else if ($(".last-step__form-lastName-input").val() == "") {
-        catHint("Введите фамилию", ".basket__catHint");
-    } else if ($(".last-step__form-payForm-list").val() == "") {
-        catHint("Выберите форму оплаты", ".basket__catHint");
-    } else if ($(".last-step__form-postService-list").val() == "") {
-        catHint("Выберите службу доставки", ".basket__catHint");
-    } else if ($(".last-step__form-commit-area").val() == "") {
-        catHint("Введите комментарии", ".basket__catHint");
-    } else {
-        if ($(".last-step__form-payForm-list").val() == "1") {
-            miniMarketGame.onAccount = differance;
-        };
-        $(".last-step").toggleClass("dispFlex");
-
-        let cash = '';
-        if ($(".last-step__form-payForm-list").val() == 0) {
-            cash = "наличные";
-        } else if ($(".last-step__form-payForm-list").val() == 1) {
-            cash = "безналичные";
-        }
-        
-        $(".modal_container-lastStep-congrats").html(`Поздравляем!! Вы совершили покупку за ${cash} средства. На Вашем счету: ${miniMarketGame.onAccount.toFixed(2)} UAH`);
-
-        $("[data-text='lastStep']").fancybox({
-            "padding": 20,
-            "width": 600,
-            "overlayOpacity": 0.9,
-            "overlayColor": '#f7f8fa',
-            showCloseButton: true,
-            modal: true,
-            "height": "auto"
-            
-        });
-    };
-});
-
-
-$(".modal-block_lastStep-buy").on('click', function () {
-    $.fancybox.close();
-    $(".level").toggleClass("dispFlex");
-    miniMarketGame.operations = [];
-    miniMarketGame.cart = [];
-    // $(".level__difficulty-radio-btn-input").prop("checked", false);
-    $(".level__operation-check-btn-input").prop("checked", false);
-    $("#level__difficulty-radio-btn-01").prop("checked", true);
-
-    for (let i = 2; i < 5; i++) {
-        let check = $(`#level__operation-check-btn-0${i}`).parent('.level__operation-check-btn');
-        if (check.hasClass("dispFlex")) {check.removeClass("dispFlex")}
-    };
-    
-    potterCat();
-
-    $(".sale__grid-col").remove();
-    $(".goods__grid").remove();
-    $(".slick-dots").remove();
-
-    $(".last-step__form-firstName-input").val("");
-    $(".last-step__form-lastName-input").val("");
-    $(".last-step__form-payForm-list").val("");
-    $(".last-step__form-postService-list").val("");
-    $(".last-step__form-commit-area").val("");
-    $(".basket__result-summa-input").css('backgroundColor', "#ffffff");
 
 });
-
-
-$(".modal-block_lastStep-play, .modal-lastStep-button").on('click', function () {
-    $.fancybox.close();
-    $(".prise").toggleClass("dispFlex");
-    
-    let colCount;
-    if (window.matchMedia("(min-width: 981px)").matches) {
-        // if (document.documentElement.clientWidth > 980) {
-        colCount = 6;
-    // } else if ((document.documentElement.clientWidth <= 980) && (document.documentElement.clientWidth > 767)) {
-    } else if ((window.matchMedia("(max-width: 980px)").matches) && (window.matchMedia("(min-width: 768px)").matches)) {
-        colCount = 5;
-    // }  else if ((document.documentElement.clientWidth <= 767) && (document.documentElement.clientWidth > 640)) {
-    }  else if ((window.matchMedia("(max-width: 980px)").matches) && (window.matchMedia("(min-width: 641px)").matches)) {
-        colCount = 3;
-    } else {
-        colCount = 2;
-    }
-
-
-    if (miniMarketGame.gameMode == 1) {
-        $(".col__level-1").addClass("dispFlex");
-    } else if (miniMarketGame.gameMode == 2) {
-        $(".col__level-1").addClass("dispFlex");
-        $(".col__level-2").addClass("dispFlex");
-        
-    } else if (miniMarketGame.gameMode == 3) {
-        $(".col__level-1").addClass("dispFlex");
-        $(".col__level-2").addClass("dispFlex");
-        $(".col__level-3").addClass("dispFlex");
-    };
-    // console.log($(".prise__grid-col.dispFlex"))
-    if ($(".prise__grid-col.dispFlex").length < colCount) {
-        $(".prise__grid-col.dispFlex").css("width", `calc(100% / ${$(".prise__grid-col.dispFlex").length})`);
-        $(".prise__grid-col.dispFlex").css("height", `calc(100% / ${$(".prise__grid-col.dispFlex").length})`);
-    } else {
-        $(".prise__grid-col.dispFlex").css("width", `calc(100% / ${colCount})`);
-        $(".prise__grid-col.dispFlex").css("height", `calc(100% / ${colCount})`);
-    };
-});
-
-
-$(".prise__block-entranse").on('click', function () {
-    $(".prise").toggleClass('dispFlex');
-    $(".entranse").toggleClass('dispFlex');
-    $(".entranse__password-pass").val("");
-    $(".entranse__login-name").val("");
-    
-    $(".level__operation-check-btn-input").prop("checked", false);
-    $("#level__difficulty-radio-btn-01").prop("checked", true);
-
-    miniMarketGame.operations = [];
-    miniMarketGame.cart = [];
-    miniMarketGame.favouriteGood = [];
-    miniMarketGame.onAccount = 5000;
-
-    helloCat();
-
-    $(".sale__grid-col").remove();
-    $(".goods__grid").remove();
-    $(".slick-dots").remove();
-});
-
-$(".prise__block-level").on('click', function () {
-    $(".prise").toggleClass('dispFlex');
-    $(".level").toggleClass("dispFlex");
-    miniMarketGame.operations = [];
-    miniMarketGame.cart = [];
-    
-    $(".level__operation-check-btn-input").prop("checked", false);
-    $("#level__difficulty-radio-btn-01").prop("checked", true);
-
-    for (let i = 2; i < 5; i++) {
-        let check = $(`#level__operation-check-btn-0${i}`).parent('.level__operation-check-btn');
-        if (check.hasClass("dispFlex")) {check.removeClass("dispFlex")}
-    };
-
-    $(".level__difficulty-descript").removeClass('dispFlex');
-    $(`.level__difficulty-descript[data-count="${$("#level__difficulty-radio-btn-01").attr("data-count")}"]`).addClass('dispFlex');
-    
-    potterCat();
-
-    $(".sale__grid-col").remove();
-    $(".goods__grid").remove();
-    $(".slick-dots").remove();
-
-    $(".task__cat").toggleClass("dispFlex");
-    $(".about__cat").toggleClass("dispFlex");
-});
-
-
-$(".footer__info-pay").on("click", function () {
-    $("[data-text='payAndDelivery']").fancybox({
-        "padding": 20,
-        "width": 600,
-        "overlayOpacity": 0.9,
-        "overlayColor": '#f7f8fa',
-        showCloseButton: true,
-        modal: true,
-        "height": "auto"
-        
-    });
-});
-
-$(".footer__info-garant").on("click", function () {
-    $("[data-text='garanty']").fancybox({
-        "padding": 20,
-        "width": 600,
-        "overlayOpacity": 0.9,
-        "overlayColor": '#f7f8fa',
-        showCloseButton: true,
-        modal: true,
-        "height": "auto"
-        
-    });
-});
-
-$(".footer__info-contact").on("click", function () {
-    $("[data-text='contact']").fancybox({
-        "padding": 20,
-        "width": 600,
-        "overlayOpacity": 0.9,
-        "overlayColor": '#f7f8fa',
-        showCloseButton: true,
-        modal: true,
-        "height": "auto"
-    });
-});
-

@@ -15,6 +15,9 @@ let miniMarketGame = {
     cart: [],
     operations: [],
     gameMode: "",
+    scoreLevel1: 0,
+    scoreLevel2: 0,
+    scoreLevel3: 0,
     start: function () {
         this.rndDiscount = this.randomDiscount();
         this.saleGoods = this.mainSale();
