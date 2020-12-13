@@ -17,6 +17,7 @@ body
     background-repeat: no-repeat
     overflow-x: hidden
     overflow-y: hidden
+    position: relative
 
 .wrapper
     position: absolute
@@ -84,7 +85,7 @@ body
 .entranse, .registration, .forgot, .level,
 .market-page, .good-card, .favourite,
 .basket, .last-step, .prise, .modal-block,
-.about-descr, .game-task
+.about-descr, .game-task, .change-game
     display: none
 
 .about-descr
@@ -136,6 +137,95 @@ body
 .main-block__cat-heart, .main-block__cat-basket, .witch-cat,
 .favourite__cat, .basket__cat
         pointer-events: none
+
+.change-game
+    &__form
+        padding: 10px 20px
+        position: absolute
+        top: 65px
+        left: 50%
+        transform: translateX(-50%)
+        height: 50px
+        width: 80%
+        // padding: 40px
+        display: flex
+        justify-content: space-around
+        align-items: center
+        border: 2px solid $mainColor
+        border-radius: 10px
+        background-color: #ffffff
+        color: $mainColor
+    &__voice, &__color, &__good, &__cash
+        display: flex
+        align-items: center
+        justify-content: center
+    &__voice, &__color   
+        width: 20%
+    &__good, &__cash 
+        width: 25%
+    &__voice
+        &-select
+            margin-left: 10px
+    &__cash
+        &-input
+            margin-left: 10px
+            width: 90px
+    &__good
+        flex-direction: column
+        position: relative
+        &-title
+            &:hover
+                cursor: pointer
+        &-form
+            position: absolute
+            background-color: white
+            top: 120%
+            left: 50%
+            transform: translateX(-50%)
+            padding: 5px 10px
+            width: min-content
+            border: 1px solid $mainColor
+            display: none
+            flex-direction: column
+            & input, & textarea
+                padding: 2px 5px
+            &-title, &-code, &-category, &-good-name, &-price, &-count, &-val, &-descr
+                padding-top: 5px
+                padding-bottom: 5px
+                &-title + *
+                    margin-top: 5px
+            & .change-game__color, & .change-game__voice, & .change-game__good, & .change-game__cash
+                width: 100%
+                justify-content: flex-start
+            &-pic
+                display: flex
+                align-items: center
+                &-first, &-second, &-third
+                    display: flex
+                    align-items: center
+                    & img
+                        margin-left: 15px
+            &-categ-pic
+                display: flex
+                align-items: center
+                & img
+                    margin-left: 15px
+            &-descr
+                &-area
+                    resize: none
+                    width: 100%
+    &__color
+        &-select
+            margin-left: 10px
+
+.change-game__good-form-pic-first-title + img, .change-game__good-form-pic-second-title + img,
+.change-game__good-form-pic-third-title + img, .change-game__good-form-categ-pic-title + img
+    height: 30px
+
+.addGoodToMarket  
+    width: 100%
+    height: 20px
+    
 
 .entranse
     &__cat
@@ -1644,6 +1734,8 @@ body
 @include grid(last-step, 0, 30, wrap, 3, 10)
 
 .last-step
+    &__cat
+        height: 80px
     & h2
         display: flex
         align-items: center

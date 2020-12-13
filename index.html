@@ -990,6 +990,7 @@
         <div class="container modal_container modal_container-lastStep">
             <div  class="modal_button modal-lastStep-button" data-fancybox-close>Сlose <i class="far fa-times-circle"></i></div>
             <h4 class="modal_container-lastStep-congrats"></h4>
+            <h4 class="modal_container-lastStep-score"></h4>
             <h4>Вы можете совершить еще покупку или перейти к играм. Что выберите?</h4>
             <div class="modal_buttons">
                 <div class="button modal-block_lastStep-buy hint--top" aria-label="Вернуться в магазин">Совершить еще покупку</div>
@@ -997,7 +998,7 @@
             </div>
         </div>
         <div class="modal-block_lastStep-cat">
-            <img src="./img/pusheen/024.gif" alt="cat_basket" class="basket__cat">
+            <img src="./img/pusheen/024.gif" alt="cat_last-step" class="last-step__cat">
         </div>
     </div>
 
@@ -1053,6 +1054,97 @@
         </div>
     </div>
 
+    <div class="change-game">
+        <div class="container change-game_container">
+            <div class="change-game__form">
+                <div class="change-game__voice">
+                    <div class="change-game__voice-title">Голос</div>
+                    <select name="change-game__voice-select" id="change-game__voice-select" class="change-game__voice-select">
+                        <option value="1">живой</option>
+                        <option value="2">машинный</option>
+                    </select>
+                </div>
+                <div class="change-game__color">
+                    <div class="change-game__color-title">Цветовая схема</div>
+                    <select name="change-game__color-select" id="change-game__color-select" class="change-game__color-select">
+                        <option value="1">светлая</option>
+                        <option value="2">темная</option>
+                    </select>
+                </div>
+                <div class="change-game__cash">
+                    <div class="change-game__cash-title">Денежные средства</div>
+                    <input type="number" value="" min="0" class="change-game__cash-input">
+                </div>
+                <div class="change-game__good">
+                    <div class="change-game__good-title">Добавить товар</div>
+                    <div class="change-game__good-form">
+                        <div class="change-game__good-form-title">
+                            <div class="change-game__good-form-title-title">Название товара</div>
+                            <input type="text" class="change-game__good-form-title-input"placeholder="введите" >
+                        </div>
+                        <div class="change-game__good-form-code">
+                            <div class="change-game__good-form-code-title">Код товара</div>
+                            <input type="text" class="change-game__good-form-code-input" placeholder="введите">
+                        </div>
+                        <div class="change-game__good-form-category">
+                            <div class="change-game__good-form-category-title">Категория товара</div>
+                            <input type="text" class="change-game__good-form-category-input" placeholder="введите">
+                        </div>
+                        <div class="change-game__good-form-categ-pic">
+                            <div class="change-game__good-form-categ-pic-title">Изобр.категории</div>
+                            <img>
+                        </div>
+                        <div class="change-game__good-form-pic">
+                            <div class="change-game__good-form-pic-first">
+                                <div class="change-game__good-form-pic-first-title">Изобр.1 товара</div>
+                                <img>
+                            </div>
+                        </div>
+                        <div class="change-game__good-form-pic">
+                            <div class="change-game__good-form-pic-second">
+                                <div class="change-game__good-form-pic-second-title">Изобр.2 товара</div>
+                                <img>
+                            </div>
+                        </div>
+                        <div class="change-game__good-form-pic">
+                            <div class="change-game__good-form-pic-third">
+                                <div class="change-game__good-form-pic-third-title">Изобр.3 товара</div>
+                                <img>
+                            </div>
+                        </div>
+                        <div class="change-game__good-form-price">
+                            <div class="change-game__good-form-price-title">Цена товара</div>
+                            <input type="number" value="" min="0" class="change-game__good-form-price-input" placeholder="введите">
+                        </div>
+                        <div class="change-game__good-form-count">
+                            <div class="change-game__good-form-count-title">Единица кол-ва</div>
+                            <select name="change-game__good-form-count-select" id="change-game__good-form-count-select" class="change-game__good-form-count-select">
+                                <option value="1">1</option>
+                                <option value="0.1">0.1</option>
+                                <option value="100">100</option>
+                            </select>
+                        </div>
+                        <div class="change-game__good-form-val">
+                            <div class="change-game__good-form-val-title">Единицы измерения</div>
+                            <select name="change-game__good-form-val-select" id="change-game__good-form-val-select" class="change-game__good-form-val-select">
+                                <option value="шт">шт</option>
+                                <option value="пар(а/ы)">пар(а/ы)</option>
+                                <option value="кг">кг</option>
+                                <option value="л">л</option>
+                                <option value="дес">дес</option>
+                            </select>
+                        </div>
+                        <div class="change-game__good-form-descr">
+                            <div class="change-game__good-form-descr-title">Описание товара</div>
+                            <textarea class="change-game__good-form-descr-area" placeholder="описание товара"></textarea>
+                        </div>
+                        <button class="addGoodToMarket">Сохранить товар</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <div class="alert">Переверните экран</div>
     
@@ -1062,7 +1154,6 @@
     <script src="./js/minimarket.js"></script>
     <script src="./js/market.js"></script>
     <script src="./js/begin.js"></script>
-    <script src="./js/task.js"></script>
     <script src="./js/good.js"></script>
     <script src="./js/main.js"></script>
 </body>

@@ -115,6 +115,7 @@ body {
   background-repeat: no-repeat;
   overflow-x: hidden;
   overflow-y: hidden;
+  position: relative;
 }
 
 .wrapper {
@@ -234,7 +235,7 @@ body {
 .entranse, .registration, .forgot, .level,
 .market-page, .good-card, .favourite,
 .basket, .last-step, .prise, .modal-block,
-.about-descr, .game-task {
+.about-descr, .game-task, .change-game {
   display: none;
 }
 
@@ -305,6 +306,163 @@ body {
 .main-block__cat-heart, .main-block__cat-basket, .witch-cat,
 .favourite__cat, .basket__cat {
   pointer-events: none;
+}
+
+.change-game__form {
+  padding: 10px 20px;
+  position: absolute;
+  top: 65px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  height: 50px;
+  width: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 2px solid #268329;
+  border-radius: 10px;
+  background-color: #ffffff;
+  color: #268329;
+}
+
+.change-game__voice, .change-game__color, .change-game__good, .change-game__cash {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.change-game__voice, .change-game__color {
+  width: 20%;
+}
+
+.change-game__good, .change-game__cash {
+  width: 25%;
+}
+
+.change-game__voice-select {
+  margin-left: 10px;
+}
+
+.change-game__cash-input {
+  margin-left: 10px;
+  width: 90px;
+}
+
+.change-game__good {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: relative;
+}
+
+.change-game__good-title:hover {
+  cursor: pointer;
+}
+
+.change-game__good-form {
+  position: absolute;
+  background-color: white;
+  top: 120%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  padding: 5px 10px;
+  width: -webkit-min-content;
+  width: -moz-min-content;
+  width: min-content;
+  border: 1px solid #268329;
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.change-game__good-form input, .change-game__good-form textarea {
+  padding: 2px 5px;
+}
+
+.change-game__good-form-title, .change-game__good-form-code, .change-game__good-form-category, .change-game__good-form-good-name, .change-game__good-form-price, .change-game__good-form-count, .change-game__good-form-val, .change-game__good-form-descr {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.change-game__good-form-title-title + *, .change-game__good-form-code-title + *, .change-game__good-form-category-title + *, .change-game__good-form-good-name-title + *, .change-game__good-form-price-title + *, .change-game__good-form-count-title + *, .change-game__good-form-val-title + *, .change-game__good-form-descr-title + * {
+  margin-top: 5px;
+}
+
+.change-game__good-form .change-game__color, .change-game__good-form .change-game__voice, .change-game__good-form .change-game__good, .change-game__good-form .change-game__cash {
+  width: 100%;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.change-game__good-form-pic {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.change-game__good-form-pic-first, .change-game__good-form-pic-second, .change-game__good-form-pic-third {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.change-game__good-form-pic-first img, .change-game__good-form-pic-second img, .change-game__good-form-pic-third img {
+  margin-left: 15px;
+}
+
+.change-game__good-form-categ-pic {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.change-game__good-form-categ-pic img {
+  margin-left: 15px;
+}
+
+.change-game__good-form-descr-area {
+  resize: none;
+  width: 100%;
+}
+
+.change-game__color-select {
+  margin-left: 10px;
+}
+
+.change-game__good-form-pic-first-title + img, .change-game__good-form-pic-second-title + img,
+.change-game__good-form-pic-third-title + img, .change-game__good-form-categ-pic-title + img {
+  height: 30px;
+}
+
+.addGoodToMarket {
+  width: 100%;
+  height: 20px;
 }
 
 .entranse__cat {
@@ -3083,6 +3241,10 @@ body {
   padding: 10px;
 }
 
+.last-step__cat {
+  height: 80px;
+}
+
 .last-step h2 {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -4220,7 +4382,7 @@ body {
 
 @media (max-width: 640px) {
   .container {
-    max-width: 480px;
+    max-width: 540px;
   }
   .about-descr__form {
     width: 85%;
@@ -4437,7 +4599,7 @@ body {
     margin-top: 15px;
   }
   .modal_container-toCart .modal_buttons .button, .modal_container-lastStep .modal_buttons .button {
-    width: 155px;
+    width: 210px;
     text-transform: none;
     margin-top: 20px;
   }
@@ -4491,12 +4653,28 @@ body {
   }
 }
 
+@media (max-width: 540px) {
+  .container {
+    max-width: 480px;
+  }
+  .wrapper {
+    font-size: 16px;
+  }
+}
+
 @media (max-width: 480px) {
   .container {
     max-width: 380px;
   }
   .wrapper {
-    font-size: 16px;
+    line-height: 1.2;
+    margin-top: 40px;
+  }
+  .about-descr-img {
+    height: 40px;
+  }
+  .about-descr__cat {
+    display: none;
   }
   .entranse__form {
     width: 90%;
@@ -4647,6 +4825,21 @@ body {
   .modal-block_toCart-cartBtn {
     width: 135px;
   }
+  .modal-block_lastStep .modal_buttons {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .modal-block_lastStep .modal_buttons .button {
+    width: 175px;
+  }
   .favourite__block {
     width: 100%;
   }
@@ -4739,6 +4932,12 @@ body {
   .last-step__buttons .button {
     margin-top: 80px;
   }
+  .last-step__cat {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 40px;
+  }
   .prise__block {
     width: 100%;
   }
@@ -4770,6 +4969,9 @@ body {
 @media (max-width: 380px) {
   .container {
     max-width: 330px;
+  }
+  .wrapper {
+    font-size: 15px;
   }
   .about-descr__form {
     width: 95%;
@@ -4873,6 +5075,21 @@ body {
   .modal-block_clearFavourite-no {
     width: 100px;
   }
+  .modal-block_toCart .modal_buttons {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .modal-block_toCart .modal_buttons .button {
+    width: 175px;
+  }
   .basket__catHint {
     -webkit-transform: translate(50%, -80%);
             transform: translate(50%, -80%);
@@ -4903,21 +5120,6 @@ body {
   }
   .last-step .main-block__findarea-icon-link .button {
     margin-top: 20px;
-  }
-  .modal-block_lastStep .modal_buttons, .modal-block_toCart .modal_buttons {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-  }
-  .modal-block_lastStep .modal_buttons .button, .modal-block_toCart .modal_buttons .button {
-    width: 175px;
   }
   .prise__block-btn {
     display: -webkit-box;

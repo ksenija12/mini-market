@@ -654,7 +654,7 @@ $(".button_level").on("click", function() {
     $(".task__cat").toggleClass("dispFlex");
     $(".about__cat").toggleClass("dispFlex");
 
-
+    $(".music").removeClass("fa-volume-mute").addClass("fa-volume-up");
 });     
         
 
@@ -689,31 +689,32 @@ let synth = window.speechSynthesis,
  
  ($(".music")).on("click", function () {
     synth.cancel();
-    $(".music").removeClass("fa-volume-mute").addClass("fa-volume-up");
-
-    // const audio = ($(this).parent()).next('.audio')[0];
-     
-    // if (audio.paused) {
-    //     audio.play();
-    // } else {
-    //     audio.pause();
-    //  };
-    //  $(this).toggleClass("fa-volume-up").toggleClass("fa-volume-mute");
-             
-    // return
-            
-    $(this).toggleClass("fa-volume-up").toggleClass("fa-volume-mute");
-
-    message.lang = 'ru-RU';
-    message.rate = 1.6;
-    message.text = `${$(this).parent().siblings(".description_level-1").find(".market-page__descript").text()}`;
-
-    if ($(this).hasClass("fa-volume-mute")) {
-        synth.speak(message);
-    } else if ($(this).hasClass("fa-volume-up")) {
-        synth.cancel();
-    }
     
+    if ($('.change-game__voice-select').val() == 1) {
+        const audio = ($(this).parent()).next('.audio')[0];
+     
+        if (audio.paused) {
+            audio.play();
+        } else {
+            audio.pause();
+        };
+        $(this).toggleClass("fa-volume-up").toggleClass("fa-volume-mute");
+                
+        return 
+    } else if (($('.change-game__voice-select').val() == 2)) {
+
+        $(this).toggleClass("fa-volume-up").toggleClass("fa-volume-mute");
+
+        message.lang = 'ru-RU';
+        message.rate = 1.6;
+        message.text = `${$(this).parent().siblings(".description_level-1").find(".market-page__descript").text()}`;
+
+        if ($(this).hasClass("fa-volume-mute")) {
+            synth.speak(message);
+        } else if ($(this).hasClass("fa-volume-up")) {
+            synth.cancel();
+        }
+    }
 });
 
 

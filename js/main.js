@@ -1456,9 +1456,13 @@ $(".last-step__buttons-continue").on('click', function () {
             cash = "наличные";
         } else if ($(".last-step__form-payForm-list").val() == 1) {
             cash = "безналичные";
-        }
+        };
+
+        let score = miniMarketGame.gameMode == 1 ? miniMarketGame.scoreLevel1 * 2 :  miniMarketGame.gameMode == 2 ? miniMarketGame.scoreLevel2 * 2 : miniMarketGame.scoreLevel3 * 2;
+
         
         $(".modal_container-lastStep-congrats").html(`Поздравляем!! Вы совершили покупку за ${cash} средства. На Вашем счету: ${miniMarketGame.onAccount.toFixed(2)} UAH`);
+        $(".modal_container-lastStep-score").html(`За прохождение игры Вы заработали: ${score} очков из 12 возможных.`);
 
         $("[data-text='lastStep']").fancybox({
             "padding": 20,
@@ -1507,6 +1511,8 @@ $(".modal-block_lastStep-buy").on('click', function () {
 
     $(".task__cat").toggleClass("dispFlex");
     $(".about__cat").toggleClass("dispFlex");
+
+    $("body").css("overflowY", "hidden");
 
 });
 
@@ -1579,6 +1585,7 @@ $(".prise__block-entranse").on('click', function () {
     $(".slick-dots").remove();
     $(".task__cat").toggleClass("dispFlex");
     $(".about__cat").toggleClass("dispFlex");
+    $("body").css("overflowY", "hidden");
 });
 
 $(".prise__block-level").on('click', function () {
@@ -1609,6 +1616,7 @@ $(".prise__block-level").on('click', function () {
 
     $(".task__cat").toggleClass("dispFlex");
     $(".about__cat").toggleClass("dispFlex");
+    $("body").css("overflowY", "hidden");
 });
 
 
@@ -1772,7 +1780,149 @@ $(".basket__buttons-continue").on("click", function() {
     };
 
     differance = parseFloat($(".basket__onAccount-summa").html()) - totalSumm;
-   
-    
-
+       
 });
+
+$('[data-text="#anchor6"]').on('click', function () {
+    $(".change-game").toggleClass("dispFlex");
+});
+
+$(".change-game__cash-input").on("input", function () {
+    miniMarketGame.onAccount = Number($(this).val());
+    $(".basket__onAccount-summa").html(`${miniMarketGame.onAccount.toFixed(2)} UAH`);
+});
+
+
+
+
+
+let firstPic, secondPic, thirdPic, categoryPic;
+
+$(".change-game__good-form-pic-first-title").on('click', function () {
+
+    let input = document.createElement('input');
+    input.type = 'file';
+    
+    input.onchange = e => { 
+    
+        let file = e.target.files[0]; 
+        
+        let reader = new FileReader();
+        reader.readAsDataURL(file); 
+    
+        reader.onload = readerEvent => {
+            firstPic = readerEvent.target.result; 
+            $(this).next("img").attr("src", `${firstPic}`)
+        
+            
+        };
+    };
+    
+    input.click();
+});
+
+$(".change-game__good-form-pic-second-title").on('click', function () {
+
+    let input = document.createElement('input');
+    input.type = 'file';
+    
+    input.onchange = e => { 
+    
+        let file = e.target.files[0]; 
+        
+        let reader = new FileReader();
+        reader.readAsDataURL(file); 
+    
+        reader.onload = readerEvent => {
+            secondPic = readerEvent.target.result; 
+            $(this).next("img").attr("src", `${secondPic}`)
+        
+            
+        };
+    };
+    
+    input.click();
+});
+
+$(".change-game__good-form-pic-third-title").on('click', function () {
+
+    let input = document.createElement('input');
+    input.type = 'file';
+    
+    input.onchange = e => { 
+    
+        let file = e.target.files[0]; 
+        
+        let reader = new FileReader();
+        reader.readAsDataURL(file); 
+    
+        reader.onload = readerEvent => {
+            thirdPic = readerEvent.target.result; 
+            $(this).next("img").attr("src", `${thirdPic}`)
+        
+            
+        };
+    };
+    
+    input.click();
+});
+
+$(".change-game__good-form-categ-pic-title").on('click', function () {
+
+    let input = document.createElement('input');
+    input.type = 'file';
+    
+    input.onchange = e => { 
+    
+        let file = e.target.files[0]; 
+        
+        let reader = new FileReader();
+        reader.readAsDataURL(file); 
+    
+        reader.onload = readerEvent => {
+            categoryPic = readerEvent.target.result; 
+            $(this).next("img").attr("src", `${categoryPic}`)
+        
+            
+        };
+    };
+    
+    input.click();
+});
+
+
+$(".addGoodToMarket").on('click', function () {
+    // TODO условия пустых полей
+    miniMarketGame.miniMarket.push(
+        {
+            title: `${$(".change-game__good-form-title-input").val()}`,
+            id: `${$(".change-game__good-form-code-input").val()}`,
+            category: `${$(".change-game__good-form-category-input").val()}`,
+            categpic: `${categoryPic}`,
+            pic: [`${firstPic}`, `${secondPic}`, `${thirdPic}`],
+            price: Number($(".change-game__good-form-price-input").val()),
+            count: Number($(".change-game__good-form-count-select").val()),
+            val: `${$(".change-game__good-form-val-select").val()}`,
+            descr: `${$(".change-game__good-form-descr-area").val()}`
+        }
+    );
+
+    $(".change-game__good-form-title-input").val('');
+    $(".change-game__good-form-code-input").val('');
+    $(".change-game__good-form-category-input").val('');
+    $(".change-game__good-form-price-input").val('');
+    $(".change-game__good-form-count-select").val('');
+    $(".change-game__good-form-val-select").val('');
+    $(".change-game__good-form-descr-area").val('');
+});
+
+$(".change-game__good-title").on('click', function () {
+    $(".change-game__good-form").toggleClass("dispFlex");
+});
+
+
+// TODO пароль для денег и пароля + адаптив
+
+// TODO enter для входов
+
+// TODO темный режим ?

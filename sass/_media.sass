@@ -773,7 +773,7 @@
                     &-toCart, &-lastStep 
                         & .modal_buttons
                             & .button
-                                width: 155px
+                                width: 210px
                                 text-transform: none
                                 margin-top: 20px      
                 &__grid
@@ -822,9 +822,24 @@
 
 
                 
+        @if nth($mediaBp, $i) == 540px
+                .wrapper
+                    font-size: 16px
+
+
+
+
+
         @if nth($mediaBp, $i) == 480px
             .wrapper
-                font-size: 16px
+                line-height: 1.2
+                margin-top: 40px
+            
+            .about-descr-img
+                height: 40px
+                
+            .about-descr__cat
+                display: none
 
             .entranse
                 &__form
@@ -954,6 +969,14 @@
                             justify-content: space-between 
                         &-cartBtn
                             width: 135px
+
+            .modal-block_lastStep
+                .modal_buttons
+                    display: flex
+                    flex-direction: column
+                    align-items: center
+                    & .button
+                        width: 175px
             
             .favourite
                 &__block
@@ -1035,6 +1058,11 @@
                 &__buttons
                     & .button
                         margin-top: 80px
+                &__cat
+                    position: absolute
+                    left: 0
+                    bottom: 0
+                    height: 40px
             
             .prise
                 &__block
@@ -1070,6 +1098,10 @@
 
                 
         @if nth($mediaBp, $i) == 380px
+            .wrapper
+                // line-height: 1
+                font-size: 15px
+
             .about-descr
                 &__form
                     width: 95%
@@ -1149,6 +1181,14 @@
             .modal-block_clearFavourite-no
                 width: 100px
 
+            .modal-block_toCart
+                .modal_buttons
+                    display: flex
+                    flex-direction: column
+                    align-items: center
+                    & .button
+                        width: 175px
+
             .basket
                 &__catHint
                     transform: translate(50%, -80%)
@@ -1170,14 +1210,6 @@
                     width: 100%
                     & .button
                         margin-top: 20px
-            
-            .modal-block_lastStep, .modal-block_toCart
-                .modal_buttons
-                    display: flex
-                    flex-direction: column
-                    align-items: center
-                    & .button
-                        width: 175px
             
             .prise__block
                 &-btn
