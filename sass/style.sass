@@ -138,6 +138,17 @@ body
 .favourite__cat, .basket__cat
         pointer-events: none
 
+.change-game__form_clicked
+    &::before
+        position: absolute
+        content: ""
+        height: 100vh
+        width: 100vw
+        top: 0
+        left: 50%
+        transform: translateX(-50%)
+        background-color: rgba(255, 255, 255, .8)
+
 .change-game
     &__form
         padding: 10px 20px
@@ -155,6 +166,21 @@ body
         border-radius: 10px
         background-color: #ffffff
         color: $mainColor
+    &__change-form
+        display: none
+        width: 100%
+        justify-content: space-between
+    &__password
+        width: 100%
+        display: none
+        justify-content: center
+        align-items: center
+        & input
+            padding: 2px 5px
+            margin-left: 25px
+        & .button
+            margin: 0 0 0 20px
+            padding: 2px 5px
     &__voice, &__color, &__good, &__cash
         display: flex
         align-items: center
@@ -218,9 +244,12 @@ body
         &-select
             margin-left: 10px
 
-.change-game__good-form-pic-first-title + img, .change-game__good-form-pic-second-title + img,
-.change-game__good-form-pic-third-title + img, .change-game__good-form-categ-pic-title + img
-    height: 30px
+.change-game__good-form-pic-first-title, .change-game__good-form-pic-second-title,
+.change-game__good-form-pic-third-title, .change-game__good-form-categ-pic-title
+    &:hover
+        cursor: pointer
+    & + img
+        height: 30px
 
 .addGoodToMarket  
     width: 100%
@@ -523,18 +552,12 @@ body
             &-btn-input + label
                 margin-left: 10px
 
-.scale
-    transition: transform 1.5s
-    transform: scale(.8, .8)
-
-.scale0
-    transition: transform 1.5s
-    transform: scale(0, 0)
-
 .level__difficulty-radio-btn-input, .level__operation-check-btn-input
     display: none
     & + label
         text-align: left
+        &:hover
+            cursor: pointer
         padding-left: 35px
     & + label:before
         content: ""
@@ -1868,6 +1891,14 @@ body
 .music
     display: none
 
+.scale
+    transition: transform 1.5s
+    transform: scale(.8, .8)
+
+.scale0
+    transition: transform 1.5s
+    transform: scale(0, 0)
+
 .visible
     visibility: visible
 
@@ -1876,6 +1907,10 @@ body
 
 .dispFlex
     display: flex
+
+.forgotToInput
+    &::placeholder
+        color: $mainRed
 
 .inputRed
     background-color: $mainRed

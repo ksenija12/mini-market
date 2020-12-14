@@ -308,6 +308,18 @@ body {
   pointer-events: none;
 }
 
+.change-game__form_clicked::before {
+  position: absolute;
+  content: "";
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
 .change-game__form {
   padding: 10px 20px;
   position: absolute;
@@ -329,6 +341,35 @@ body {
   border-radius: 10px;
   background-color: #ffffff;
   color: #268329;
+}
+
+.change-game__change-form {
+  display: none;
+  width: 100%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.change-game__password {
+  width: 100%;
+  display: none;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.change-game__password input {
+  padding: 2px 5px;
+  margin-left: 25px;
+}
+
+.change-game__password .button {
+  margin: 0 0 0 20px;
+  padding: 2px 5px;
 }
 
 .change-game__voice, .change-game__color, .change-game__good, .change-game__cash {
@@ -453,6 +494,11 @@ body {
 
 .change-game__color-select {
   margin-left: 10px;
+}
+
+.change-game__good-form-pic-first-title:hover, .change-game__good-form-pic-second-title:hover,
+.change-game__good-form-pic-third-title:hover, .change-game__good-form-categ-pic-title:hover {
+  cursor: pointer;
 }
 
 .change-game__good-form-pic-first-title + img, .change-game__good-form-pic-second-title + img,
@@ -1001,24 +1047,6 @@ body {
   margin-left: 10px;
 }
 
-.scale {
-  -webkit-transition: -webkit-transform 1.5s;
-  transition: -webkit-transform 1.5s;
-  transition: transform 1.5s;
-  transition: transform 1.5s, -webkit-transform 1.5s;
-  -webkit-transform: scale(0.8, 0.8);
-          transform: scale(0.8, 0.8);
-}
-
-.scale0 {
-  -webkit-transition: -webkit-transform 1.5s;
-  transition: -webkit-transform 1.5s;
-  transition: transform 1.5s;
-  transition: transform 1.5s, -webkit-transform 1.5s;
-  -webkit-transform: scale(0, 0);
-          transform: scale(0, 0);
-}
-
 .level__difficulty-radio-btn-input, .level__operation-check-btn-input {
   display: none;
 }
@@ -1026,6 +1054,10 @@ body {
 .level__difficulty-radio-btn-input + label, .level__operation-check-btn-input + label {
   text-align: left;
   padding-left: 35px;
+}
+
+.level__difficulty-radio-btn-input + label:hover, .level__operation-check-btn-input + label:hover {
+  cursor: pointer;
 }
 
 .level__difficulty-radio-btn-input + label:before, .level__operation-check-btn-input + label:before {
@@ -3505,6 +3537,24 @@ body {
   display: none;
 }
 
+.scale {
+  -webkit-transition: -webkit-transform 1.5s;
+  transition: -webkit-transform 1.5s;
+  transition: transform 1.5s;
+  transition: transform 1.5s, -webkit-transform 1.5s;
+  -webkit-transform: scale(0.8, 0.8);
+          transform: scale(0.8, 0.8);
+}
+
+.scale0 {
+  -webkit-transition: -webkit-transform 1.5s;
+  transition: -webkit-transform 1.5s;
+  transition: transform 1.5s;
+  transition: transform 1.5s, -webkit-transform 1.5s;
+  -webkit-transform: scale(0, 0);
+          transform: scale(0, 0);
+}
+
 .visible {
   visibility: visible;
 }
@@ -3517,6 +3567,22 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+
+.forgotToInput::-webkit-input-placeholder {
+  color: rgba(255, 0, 0, 0.5);
+}
+
+.forgotToInput:-ms-input-placeholder {
+  color: rgba(255, 0, 0, 0.5);
+}
+
+.forgotToInput::-ms-input-placeholder {
+  color: rgba(255, 0, 0, 0.5);
+}
+
+.forgotToInput::placeholder {
+  color: rgba(255, 0, 0, 0.5);
 }
 
 .inputRed {

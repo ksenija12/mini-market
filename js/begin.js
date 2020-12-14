@@ -256,6 +256,16 @@ $(".backform, .nav-list__link").on("click", function() {
             $("body").css("overflowY", "visible");
         };
     };
+
+    if ($(this) != $('[data-text="#anchor6"]')) {
+        if ($(".change-game").hasClass("dispFlex")) {
+            $(".change-game").removeClass("dispFlex");
+            if ($(".change-game__good-form").hasClass("dispFlex")) {
+                $(".change-game__good-form").removeClass("dispFlex");
+                $(".change-game__form").removeClass("change-game__form_clicked");                 
+            };            
+        };
+    };
 });
 
 
@@ -302,21 +312,22 @@ $('.registration__passw-show-hide2').on('click', function(event) {
     }
 });
 
+let passwordForChange = "";
 
 $('.button_entranse').on('click', function() {
     const login = $('.entranse__login-name').val();
     const password = $('.entranse__password-pass').val();
-   
 
     if (!login) {
-        catHint('Введите логин', '.entranse__hint');        
+        catHint('Введите логин', '.entranse__hint1');        
     } else if (!ident.find(el => el.log === login)) {
-        catHint('Логин не найден', '.entranse__hint');
+        catHint('Логин не найден', '.entranse__hint2');
     } else if (!password) {
-        catHint('Введите пароль', '.entranse__hint');
+        catHint('Введите пароль', '.entranse__hint3');
     } else if (String(ident.find(el => el.log === login).pass) !== password) {
-        catHint('Пароль не верный', '.entranse__hint');
+        catHint('Пароль не верный', '.entranse__hint4');
     } else {
+        passwordForChange = password;
         $("#level__difficulty-radio-btn-01").prop("checked", true);
         
         buyCat(".level");
@@ -689,6 +700,11 @@ let synth = window.speechSynthesis,
  
  ($(".music")).on("click", function () {
     synth.cancel();
+    $(".audio").each(function (i, el) {
+        if (!el.paused) {
+            el.pause();
+        };
+    });
     
     if ($('.change-game__voice-select').val() == 1) {
         const audio = ($(this).parent()).next('.audio')[0];

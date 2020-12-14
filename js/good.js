@@ -2,6 +2,11 @@ $(".nav-list__market-page").on("click", function () {
     $(".market-page").toggleClass("dispFlex");
 
     synth.cancel();
+    $(".audio").each(function (i, el) {
+        if (!el.paused) {
+            el.pause();
+        };
+    });;
     $(".music").removeClass("fa-volume-mute").addClass("fa-volume-up");
 
     if ($(".favourite").hasClass("dispFlex")) {
@@ -21,6 +26,11 @@ $(".good-card__grid-back, .good-card__buying-back").on('click', function () {
     $(".good-card").toggleClass("dispFlex");
 
     synth.cancel();
+    $(".audio").each(function (i, el) {
+        if (!el.paused) {
+            el.pause();
+        };
+    });;
     $(".music").removeClass("fa-volume-mute").addClass("fa-volume-up");
 
     $(".good-card__grid-main-photo-pic").remove();

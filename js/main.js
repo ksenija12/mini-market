@@ -40,6 +40,11 @@ $(".nav-list__favourite, .nav-list__basket").on("click", function () {
 
 $(".backform").on("click", function() {
     synth.cancel();
+    $(".audio").each(function (i, el) {
+        if (!el.paused) {
+            el.pause();
+        };
+    });
     $(".music").removeClass("fa-volume-mute").addClass("fa-volume-up");
     symbol = [];
     miniMarketGame.operations = [];
@@ -116,6 +121,11 @@ $('[data-text="#anchor7"]').on("click", function() {
     };
 
     synth.cancel();
+    $(".audio").each(function (i, el) {
+        if (!el.paused) {
+            el.pause();
+        };
+    });
     $(".music").removeClass("fa-volume-mute").addClass("fa-volume-up");
 
     $(".entranse__password-pass").val("");
@@ -293,6 +303,11 @@ $(".main-block__findarea-icon").on('click', function () {
     $(".modal-block").toggleClass("dispFlex");
 
     synth.cancel();
+    $(".audio").each(function (i, el) {
+        if (!el.paused) {
+            el.pause();
+        };
+    });
     $(".music").removeClass("fa-volume-mute").addClass("fa-volume-up");
 
     $('.modal__grid-col').remove();
@@ -685,6 +700,11 @@ $(".nav-list__favourite, .nav-list__link_heart, .footer__buyer-favourite").on("c
     $(".favourite__grid-col").remove();
 
     synth.cancel();
+    $(".audio").each(function (i, el) {
+        if (!el.paused) {
+            el.pause();
+        };
+    });
     $(".music").removeClass("fa-volume-mute").addClass("fa-volume-up");
 
     $(".favourite").toggleClass("dispFlex");
@@ -931,6 +951,11 @@ $(".favourite__back").on("click", function() {
     $(".market-page").toggleClass("dispFlex");
 
     synth.cancel();
+    $(".audio").each(function (i, el) {
+        if (!el.paused) {
+            el.pause();
+        };
+    });;
     $(".music").removeClass("fa-volume-mute").addClass("fa-volume-up");
 
     $(".favourite__grid-col").remove();
@@ -1077,6 +1102,11 @@ function goodsCardAdd(good) {
 //---------------переход к товару---------------//
 function goToGood(good) {
     synth.cancel();
+    $(".audio").each(function (i, el) {
+        if (!el.paused) {
+            el.pause();
+        };
+    });;
     $(".music").removeClass("fa-volume-mute").addClass("fa-volume-up");
 
     $(".market-page").toggleClass("dispFlex");
@@ -1092,6 +1122,11 @@ function goToGood(good) {
 
 function goToFavouriteGood(good) {
     synth.cancel();
+    $(".audio").each(function (i, el) {
+        if (!el.paused) {
+            el.pause();
+        };
+    });;
     $(".music").removeClass("fa-volume-mute").addClass("fa-volume-up");
 
     $(".favourite").toggleClass("dispFlex");
@@ -1107,6 +1142,11 @@ function goToFavouriteGood(good) {
 
 $('.good-card__about-garant-paying .good-card__about-title').each(function() {
     synth.cancel();
+    $(".audio").each(function (i, el) {
+        if (!el.paused) {
+            el.pause();
+        };
+    });;
     $(".music").removeClass("fa-volume-mute").addClass("fa-volume-up");
 
     const $target = $(this);
@@ -1136,6 +1176,11 @@ $(".nav-list__basket, .nav-list__link_basket, .footer__buyer-basket").on("click"
     };
 
     synth.cancel();
+    $(".audio").each(function (i, el) {
+        if (!el.paused) {
+            el.pause();
+        };
+    });;
     $(".music").removeClass("fa-volume-mute").addClass("fa-volume-up");
 
     $(".basket").toggleClass("dispFlex");
@@ -1178,6 +1223,11 @@ $(".modal-block_toCart-cartBtn").on("click", function() {
     };
 
     synth.cancel();
+    $(".audio").each(function (i, el) {
+        if (!el.paused) {
+            el.pause();
+        };
+    });;
     $(".music").removeClass("fa-volume-mute").addClass("fa-volume-up");
     
     $(".basket").toggleClass("dispFlex");
@@ -1204,6 +1254,11 @@ $(".modal-block_toCart-cartBtn").on("click", function() {
 
 $(".basket__back, .basket__buttons-return").on("click", function() {
     synth.cancel();
+    $(".audio").each(function (i, el) {
+        if (!el.paused) {
+            el.pause();
+        };
+    });;
     $(".music").removeClass("fa-volume-mute").addClass("fa-volume-up");
 
     $(".basket").toggleClass("dispFlex");
@@ -1387,6 +1442,11 @@ function delCartItem() {
 
 $(".last-step__buttons-return").on('click', function () {
     synth.cancel();
+    $(".audio").each(function (i, el) {
+        if (!el.paused) {
+            el.pause();
+        };
+    });;
     $(".music").removeClass("fa-volume-mute").addClass("fa-volume-up");
 
     $(".market-page").toggleClass("dispFlex");
@@ -1449,6 +1509,11 @@ $(".last-step__buttons-continue").on('click', function () {
         };
         $(".last-step").toggleClass("dispFlex");
         synth.cancel();
+        $(".audio").each(function (i, el) {
+            if (!el.paused) {
+                el.pause();
+            };
+        });;
         $(".music").removeClass("fa-volume-mute").addClass("fa-volume-up");
 
         let cash = '';
@@ -1482,6 +1547,11 @@ $(".modal-block_lastStep-buy").on('click', function () {
     $.fancybox.close();
     $(".level").toggleClass("dispFlex");
     synth.cancel();
+    $(".audio").each(function (i, el) {
+        if (!el.paused) {
+            el.pause();
+        };
+    });;
     $(".music").removeClass("fa-volume-mute").addClass("fa-volume-up");
     miniMarketGame.operations = [];
     miniMarketGame.cart = [];
@@ -1521,6 +1591,11 @@ $(".modal-block_lastStep-play, .modal-lastStep-button").on('click', function () 
     $.fancybox.close();
     $(".prise").toggleClass("dispFlex");
     synth.cancel();
+    $(".audio").each(function (i, el) {
+        if (!el.paused) {
+            el.pause();
+        };
+    });;
     $(".music").removeClass("fa-volume-mute").addClass("fa-volume-up");
     
     let colCount;
@@ -1562,6 +1637,11 @@ $(".modal-block_lastStep-play, .modal-lastStep-button").on('click', function () 
 
 $(".prise__block-entranse").on('click', function () {
     synth.cancel();
+    $(".audio").each(function (i, el) {
+        if (!el.paused) {
+            el.pause();
+        };
+    });;
     $(".music").removeClass("fa-volume-mute").addClass("fa-volume-up");
 
     $(".prise").toggleClass('dispFlex');
@@ -1590,6 +1670,11 @@ $(".prise__block-entranse").on('click', function () {
 
 $(".prise__block-level").on('click', function () {
     synth.cancel();
+    $(".audio").each(function (i, el) {
+        if (!el.paused) {
+            el.pause();
+        };
+    });;
     $(".music").removeClass("fa-volume-mute").addClass("fa-volume-up");
 
     $(".prise").toggleClass('dispFlex');
@@ -1628,6 +1713,11 @@ $(".footer__info-pay").on("click", function () {
     
     $(".music").removeClass("fa-volume-mute").addClass("fa-volume-up");
     synth.cancel();
+    $(".audio").each(function (i, el) {
+        if (!el.paused) {
+            el.pause();
+        };
+    });;
     $("[data-text='payAndDelivery']").fancybox({
         "padding": 20,
         "width": 600,
@@ -1648,6 +1738,11 @@ $(".footer__info-garant").on("click", function () {
 
     $(".music").removeClass("fa-volume-mute").addClass("fa-volume-up");
     synth.cancel();
+    $(".audio").each(function (i, el) {
+        if (!el.paused) {
+            el.pause();
+        };
+    });;
     
     $("[data-text='garanty']").fancybox({
         "padding": 20,
@@ -1669,6 +1764,11 @@ $(".footer__info-contact").on("click", function () {
 
     $(".music").removeClass("fa-volume-mute").addClass("fa-volume-up");
     synth.cancel();
+    $(".audio").each(function (i, el) {
+        if (!el.paused) {
+            el.pause();
+        };
+    });;
     $("[data-text='contact']").fancybox({
         "padding": 20,
         "width": 600,
@@ -1686,6 +1786,11 @@ let differance = 0;
 
 $(".basket__buttons-continue").on("click", function() {
     synth.cancel();
+    $(".audio").each(function (i, el) {
+        if (!el.paused) {
+            el.pause();
+        };
+    });;
     $(".music").removeClass("fa-volume-mute").addClass("fa-volume-up");
 
     $(".last-step__form-firstName-input").val("");
@@ -1785,7 +1890,20 @@ $(".basket__buttons-continue").on("click", function() {
 
 $('[data-text="#anchor6"]').on('click', function () {
     $(".change-game").toggleClass("dispFlex");
+    
 });
+
+
+$(".change-game__password-btn").on('click', function () {
+    if ($(".change-game__password-input").val() == passwordForChange) {
+        $(".change-game__password").toggleClass("dispFlex");
+        $(".change-game__change-form").toggleClass("dispFlex");
+    } else {
+        $(".change-game__password-input").attr("placeholder", "введите верный пароль");
+        $(".change-game__password-input").addClass("forgotToInput");
+    };
+});
+
 
 $(".change-game__cash-input").on("input", function () {
     miniMarketGame.onAccount = Number($(this).val());
@@ -1892,36 +2010,61 @@ $(".change-game__good-form-categ-pic-title").on('click', function () {
 
 
 $(".addGoodToMarket").on('click', function () {
-    // TODO условия пустых полей
-    miniMarketGame.miniMarket.push(
-        {
-            title: `${$(".change-game__good-form-title-input").val()}`,
-            id: `${$(".change-game__good-form-code-input").val()}`,
-            category: `${$(".change-game__good-form-category-input").val()}`,
-            categpic: `${categoryPic}`,
-            pic: [`${firstPic}`, `${secondPic}`, `${thirdPic}`],
-            price: Number($(".change-game__good-form-price-input").val()),
-            count: Number($(".change-game__good-form-count-select").val()),
-            val: `${$(".change-game__good-form-val-select").val()}`,
-            descr: `${$(".change-game__good-form-descr-area").val()}`
-        }
-    );
+    if ($(".change-game__good-form-title-input").val() == "") {
+        $(".change-game__good-form-title-input").addClass("forgotToInput");
+    } else if ($(".change-game__good-form-code-input").val() == "") {
+        $(".change-game__good-form-code-input").addClass("forgotToInput");
+    } else if ($(".change-game__good-form-category-input").val() == "") {
+        $(".change-game__good-form-category-input").addClass("forgotToInput");
+    } else {
 
-    $(".change-game__good-form-title-input").val('');
-    $(".change-game__good-form-code-input").val('');
-    $(".change-game__good-form-category-input").val('');
-    $(".change-game__good-form-price-input").val('');
-    $(".change-game__good-form-count-select").val('');
-    $(".change-game__good-form-val-select").val('');
-    $(".change-game__good-form-descr-area").val('');
+        miniMarketGame.miniMarket.push(
+            {
+                title: `${$(".change-game__good-form-title-input").val()}`,
+                id: `${$(".change-game__good-form-code-input").val()}`,
+                category: `${$(".change-game__good-form-category-input").val()}`,
+                categpic: `${categoryPic}`,
+                pic: [`${firstPic}`, `${secondPic}`, `${thirdPic}`],
+                price: Number($(".change-game__good-form-price-input").val()),
+                count: Number($(".change-game__good-form-count-select").val()),
+                val: `${$(".change-game__good-form-val-select").val()}`,
+                descr: `${$(".change-game__good-form-descr-area").val()}`
+            }
+        );
+    
+        $(".change-game__good-form-title-input").val('').removeClass("forgotToInput");
+        $(".change-game__good-form-code-input").val('').removeClass("forgotToInput");
+        $(".change-game__good-form-category-input").val('').removeClass("forgotToInput");
+
+        $(".change-game__good-form-title-input").val('');
+        $(".change-game__good-form-code-input").val('');
+        $(".change-game__good-form-category-input").val('');
+        $(".change-game__good-form-price-input").val('');
+        $(".change-game__good-form-count-select").val('');
+        $(".change-game__good-form-val-select").val('');
+        $(".change-game__good-form-descr-area").val('');
+    
+        $(".change-game__good-form").toggleClass("dispFlex");
+    };
+
+
 });
 
 $(".change-game__good-title").on('click', function () {
     $(".change-game__good-form").toggleClass("dispFlex");
+    if (!($(".change-game__form").hasClass("change-game__form_clicked"))) {
+        $(".change-game__form").addClass("change-game__form_clicked");
+        $("body").css("overflowY", "hidden");
+    } else {
+        $(".change-game__form").removeClass("change-game__form_clicked");
+        $("body").css("overflowY", "visible");
+    };
 });
 
 
-// TODO пароль для денег и пароля + адаптив
+// TODO пароль для денег и good + адаптив
+
+// TODO обновление категорий в маркете
 
 // TODO enter для входов
 
