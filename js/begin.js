@@ -264,6 +264,8 @@ $(".backform, .nav-list__link").on("click", function() {
     } else {
         $("body").css("overflowY", "visible");
     };
+
+    $(".good-card__grid-main-photo .dark").remove();
     
     if ($(this).attr("data-text") == "#anchor6") {
         $(".change-game").toggleClass("dispFlex");
@@ -719,31 +721,40 @@ let synth = window.speechSynthesis,
  
  ($(".music")).on("click", function () {
     synth.cancel();
+    const audio = ($(this).parent()).next('.audio')[0];
+    // const that = this;
     $(".audio").each(function (i, el) {
-        if (!el.paused) {
-            el.pause();
+        if ($(this)[0] != audio) {
+            if (!el.paused) {
+                el.pause();
+            };
         };
     });
+
     
-    if ($('.change-game__voice-select').val() == 1) {
-        const audio = ($(this).parent()).next('.audio')[0];
-     
+    if ($('.change-game__voice-select').val() == 1) {       
+        $(".music").addClass("fa-volume-up").removeClass("fa-volume-mute");
+        
         if (audio.paused) {
             audio.play();
+            $(this).addClass("fa-volume-mute").removeClass("fa-volume-up");
         } else {
             audio.pause();
+            $(this).addClass("fa-volume-up").removeClass("fa-volume-mute");
         };
-        $(this).toggleClass("fa-volume-up").toggleClass("fa-volume-mute");
-                
+        
         return 
     } else if (($('.change-game__voice-select').val() == 2)) {
+        if (!audio.paused) {
+            audio.pause();
+        }
 
         $(this).toggleClass("fa-volume-up").toggleClass("fa-volume-mute");
-
+        
         message.lang = 'ru-RU';
         message.rate = 1.6;
         message.text = `${$(this).parent().siblings(".description_level-1").find(".market-page__descript").text()}`;
-
+        
         if ($(this).hasClass("fa-volume-mute")) {
             synth.speak(message);
         } else if ($(this).hasClass("fa-volume-up")) {

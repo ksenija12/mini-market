@@ -215,6 +215,8 @@ $('[data-text="#anchor7"]').on("click", function() {
     level3part6 = 0;
 
     returnToLightTheme();
+
+
 });
 
 //---------------слик-меню---------------//
@@ -1131,6 +1133,7 @@ function goodsCardAdd(good) {
     $(".good-card__grid-main-photo-pic").remove();
     $(".good-card__grid-main-photo-discount").remove();
     $(".good-card__grid-change-li").remove();
+    $(".good-card__grid-main-photo .dark").remove();
 
     $(".good-card__grid-main-photo").append(`<div class="dark"></div><img  class="good-card__grid-main-photo-pic" src="${good.pic[0]}" alt="${good.title}"><div class="good-card__grid-main-photo-discount"></div>`);
     $(".good-card__grid-change-photo").append(`<li class="good-card__grid-change-li"><img  class="good-card__grid-change-photo-pic" src="${good.pic[0]}" alt="${good.title}"></li>`);
@@ -1381,7 +1384,7 @@ function buildCartGrid () {
     for (let i = 0; i < miniMarketGame.cart.length; i++) {
         $(".basket__grid").append(`<div class="basket__grid-col col-${i}"></div>`);
             
-        $(`.basket__grid-col.col-${i}`).append(`<div class="basket__grid-item item-${i}"><div clas="dark"></div><img src="${miniMarketGame.cart[i].el.pic[0]}" data-item="${miniMarketGame.cart[i].el.id}"></div>`);
+        $(`.basket__grid-col.col-${i}`).append(`<div class="basket__grid-item item-${i}"><div class="dark"></div><img src="${miniMarketGame.cart[i].el.pic[0]}" data-item="${miniMarketGame.cart[i].el.id}"></div>`);
         
         $(`.basket__grid-item.item-${i}`).addClass("hint--left");
         $(`.basket__grid-item.item-${i}`).attr("aria-label", `${miniMarketGame.cart[i].el.title}`);
@@ -1799,6 +1802,12 @@ $(".prise__block-entranse").on('click', function () {
     $("body").css("overflowY", "hidden");
 
     returnToLightTheme();
+
+    $(".change-game__color-select").val("1");
+    if ($(".change-game__change-form").hasClass("dispFlex")) {
+        $(".change-game__change-form").removeClass("dispFlex");
+        $(".change-game__password").addClass("dispFlex");
+    };
 });
 
 $(".prise__block-level").on('click', function () {
@@ -2018,6 +2027,9 @@ $(".basket__buttons-continue").on("click", function() {
     };
 
     differance = parseFloat($(".basket__onAccount-summa").html()) - totalSumm;
+
+    if ($(".change-game").hasClass("dispFlex")) {$(".change-game").removeClass("dispFlex")};
+    if ($(".change-game__good-form").hasClass("dispFlex")) {$(".change-game").removeClass("dispFlex")};
        
 });
 

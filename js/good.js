@@ -34,6 +34,7 @@ $(".good-card__grid-back, .good-card__buying-back").on('click', function () {
     $(".music").removeClass("fa-volume-mute").addClass("fa-volume-up");
 
     $(".good-card__grid-main-photo-pic").remove();
+    $(".good-card__grid-main-photo .dark").remove();
     $(".good-card__grid-change-li").remove();
 
     if ($(".favourite-heart").find("i").hasClass("far")) {
