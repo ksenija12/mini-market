@@ -75,12 +75,29 @@
                         margin-top: 15px
                         font-size: 16px
 
+            .payAndDeliveryGaranty
+                &_container
+                    width: 60%
+
 
 
 
 
 
         @if nth($mediaBp, $i) == 1200px
+            .change-game
+                &__voice, &__color, &__good, &__cash, &__exit
+                    flex-direction: column
+                &__voice
+                    &-select
+                        margin: 10px 0 0 0
+                &__color
+                    &-select
+                        margin: 10px 0 0 0
+                &__cash
+                    &-input
+                        margin: 10px 0 0 0
+
             .about-descr
                 &__form
                     width: 50%
@@ -149,6 +166,10 @@
                 &__grid
                     &-item
                         padding-left: 10px
+                
+            .payAndDeliveryGaranty
+                &_container
+                    width: 65%
 
 
 
@@ -315,12 +336,45 @@
                 &__task
                     &-quest
                         font-size: 18px
+            
+            .payAndDeliveryGaranty
+                &_container
+                    width: 75%
 
 
 
 
                 
         @if nth($mediaBp, $i) == 767px
+            .change-game
+                &__change
+                    &-form
+                        flex-direction: column
+                        height: auto
+                &__form
+                    height: auto
+                &__voice, &__color, &__good, &__cash, &__exit
+                    margin-top: 15px
+                    flex-direction: row
+                    align-items: center
+                &__voice
+                    &-select
+                        margin: 0 0 0 10px
+                &__color
+                    &-select
+                        margin: 0 0 0 10px
+                &__cash
+                    &-input
+                        margin: 0 0 0 10px
+                &__password
+                    flex-wrap: wrap
+                    &-title
+                        width: 100%
+                        text-align: center
+                        padding-bottom: 10px
+                    & input
+                        margin-left: 0
+
             .about-descr
                 &__form
                     width: 75%
@@ -597,6 +651,10 @@
             .header, .good-card__header, .nav-list__link_main ul li
                 backdrop-filter: none
 
+            .payAndDeliveryGaranty
+                &_container
+                    width: 90%
+
 
 
 
@@ -616,7 +674,7 @@
                     height: 70px
                     transform: translateY(10px)
                 &__hint
-                    transform: translate(70%, -75%)
+                    transform: translate(90%, -150%)
 
             .forgot
                 &__form
@@ -831,6 +889,13 @@
 
 
         @if nth($mediaBp, $i) == 480px
+            .change-game
+                &__form
+                    padding: 10px 10px
+                &__password .button
+                    margin: 0 0 0 10px
+                    width: 70px
+
             .wrapper
                 line-height: 1.2
                 margin-top: 40px
@@ -848,7 +913,7 @@
                     height: 60px
                     transform: translateY(20px)
                 &__hint
-                    transform: translate(55%, -50%)
+                    transform: translate(75%, -125%)
 
             .forgot
                 &__form
@@ -1098,6 +1163,24 @@
 
                 
         @if nth($mediaBp, $i) == 380px
+            .change-game                
+                &__voice, &__color, &__good, &__cash, &__exit
+                    margin-top: 15px
+                    flex-direction: column
+                    align-items: center
+                &__voice
+                    &-select
+                        margin: 10px 0 0 0
+                &__color
+                    &-select
+                        margin: 10px 0 0 0
+                &__cash
+                    &-input
+                        margin: 10px 0 0 0
+                &__password .button
+                    margin: 10px 0 0 0
+                    width: 105px
+
             .wrapper
                 // line-height: 1
                 font-size: 15px
@@ -1347,6 +1430,10 @@
                         width: 45%
 
             .favourite
+                &__cat
+                    left: 180px
+                &__change * + *
+                    margin-left: 0
                 &__remove
                     width: 130px
                 &__back

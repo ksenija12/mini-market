@@ -10,7 +10,7 @@ body
     font-size: 14px
     width: 100vw
     height: auto
-    background-image: url('../img/back.jpg')
+    background-image: url('../img/back.jpg')  
     background-position: center
     background-size: cover
     background-attachment: fixed
@@ -138,27 +138,27 @@ body
 .favourite__cat, .basket__cat
         pointer-events: none
 
+.hideBody
+    display: none
+
 .change-game__form_clicked
-    &::before
-        position: absolute
-        content: ""
-        height: 100vh
-        width: 100vw
-        top: 0
-        left: 50%
-        transform: translateX(-50%)
-        background-color: rgba(255, 255, 255, .8)
+    position: absolute
+    width: 100vw
+    // height: 100%
+    top: 0
+    left: 0
+    z-index: 501
+    background-color: rgba(255, 255, 255, .8)
 
 .change-game
     &__form
-        padding: 10px 20px
+        z-index: 502
         position: absolute
-        top: 65px
         left: 50%
         transform: translateX(-50%)
         height: 80px
+        padding: 10px 20px
         width: 80%
-        // padding: 40px
         display: flex
         justify-content: space-around
         align-items: center
@@ -181,27 +181,32 @@ body
         & .button
             margin: 0 0 0 20px
             padding: 2px 5px
-    &__voice, &__color, &__good, &__cash
+    &__voice, &__color, &__good, &__cash, &__exit
         display: flex
         align-items: center
         justify-content: center
-    &__voice, &__color   
-        width: 20%
-    &__good, &__cash 
-        width: 25%
     &__voice
+        &-select
+            margin-left: 10px
+    &__color
         &-select
             margin-left: 10px
     &__cash
         &-input
             margin-left: 10px
             width: 90px
+    &__exit
+        &-title
+            &:hover
+                cursor: pointer
+                text-decoration: underline
     &__good
         flex-direction: column
         position: relative
         &-title
             &:hover
                 cursor: pointer
+                text-decoration: underline
         &-form
             position: absolute
             background-color: white
@@ -240,9 +245,6 @@ body
                 &-area
                     resize: none
                     width: 100%
-    &__color
-        &-select
-            margin-left: 10px
 
 .change-game__good-form-pic-first-title, .change-game__good-form-pic-second-title,
 .change-game__good-form-pic-third-title, .change-game__good-form-categ-pic-title
@@ -300,7 +302,7 @@ body
         flex-direction: column
         border: 2px solid $mainColor
         border-radius: 10px
-        background-color: #ffffff
+        // background-color: #ffffff
         &-item
             background-color: #ffffff
             z-index: 1
@@ -685,6 +687,7 @@ body
         display: flex
         padding-left: 10px
         margin-top: 10px
+        text-align: center
     &__descript
         margin-left: 5px
     &__title-img
@@ -930,7 +933,7 @@ body
                 width: 100%
                 text-align: center
                 color: #ffffff
-                background-color: $MainColorTransp
+                // background-color: $MainColorTransp
         &-col
             display: flex
             justify-content: center
@@ -1952,7 +1955,9 @@ body
 .payAndDeliveryGaranty
     &_container
         flex-direction: column
-        width: 90%
+        width: 50%
+        &_cont
+            width: 90vw
         & h3
             margin-top: 20px
             & + *
@@ -2011,6 +2016,7 @@ body
     bottom: 80%
 
 .alert
+    z-index: 1000
     display: none
     justify-content: center
     align-items: center
@@ -2021,5 +2027,75 @@ body
     left: 0
     background-color: rgba(255, 255, 255, .8)
     font-size: 24px
+
+.main
+    &-descr
+        width: auto
+
+.darkTheme    
+    background-color: rgba(0, 0, 0, .5)
+    color: #b1afaf
+    border-color: $mainColorGreen2
+
+.darkThemeModal
+    background-color: rgba(0, 0, 0, .8)
+    color: #b1afaf
+    border-color: $mainColorGreen2
+    backdrop-filter: blur(5px)
+
+.darkThemeMainColor
+    color: $mainColor
+
+.darkThemeMainColorRed
+    color: $mainRed
+
+.darkThemeHover
+    &:hover
+        background-color: $mainColorGreen2
+
+.darkThemeText
+    color: $mainColorGreen2
+
+.darkThemeHint
+    color: #000000
+
+.darkThemeBefore
+    &::before
+        border-top-color: $mainColorGreen2
+        position: absolute
+        content: ""
+    &::after
+        border-top-color: $MainColorTransp2
+        position: absolute
+        content: ""
+
+.darkThemeAfter
+    position: relative
+    &::before
+        background-color: rgba(0, 0, 0, .3)
+        position: absolute
+        content: ""
+        top: 0
+        left: 0
+        height: 100%
+        width: 100%
+        pointer-events: none
+
+.dark
+    display: none
+
+.darkThemeImg
+    display: flex
+    position: absolute
+    top: 0
+    left: 0
+    height: 100%
+    width: 100%
+    background-color: rgba(0, 0, 0, .3)
+
+.darkThemePlHolder
+    &::placeholder
+        color: #ffffffb0
+
 
 @import '_media'

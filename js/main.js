@@ -74,6 +74,32 @@ $(".backform").on("click", function() {
 
     $(".task__cat").toggleClass("dispFlex");
     $(".about__cat").toggleClass("dispFlex");
+
+    $(".game-task__task-quest").find(".game-task__task-quest-text").css("textDecoration", "none");
+    level1part1 = 0;
+    level1part2 = 0;
+    level1part3 = 0;
+    level1part4 = 0;
+    level1part5 = 0;
+    level1part6 = 0;
+    level2part1 = 0;
+    level2part2 = 0;
+    level2part3task1 = 0;
+    level2part3task2 = 0;
+    level2part3 = 0;
+    level2part4task1 = 0;
+    level2part4task2 = 0;
+    level2part4 = 0;
+    level2part5 = 0;
+    level2part6 = 0;
+    level3part1 = 0;
+    level3part2 = 0;
+    level3part3task1 = 0;
+    level3part3task2 = 0;
+    level3part3 = 0;
+    level3part4 = 0;
+    level3part5 = 0;
+    level3part6 = 0;
 });
 
 
@@ -102,6 +128,13 @@ $('.nav-toggle').on('click', function(){
     };
 
     $(".task__cat").toggleClass("hidden");
+    
+    if (window.matchMedia("(max-width: 767px)").matches) {
+        if ($(".change-game").hasClass("dispFlex")) {
+            $('.nav-list').css("paddingTop", `calc( 20px + ${$(".change-game__form").find(".dispFlex").outerHeight()}px )`);
+        };
+    }
+
 
 })
 
@@ -154,6 +187,34 @@ $('[data-text="#anchor7"]').on("click", function() {
 
     $(".task__cat").toggleClass("dispFlex");
     $(".about__cat").toggleClass("dispFlex");
+
+    $(".game-task__task-quest").find(".game-task__task-quest-text").css("textDecoration", "none");
+    level1part1 = 0;
+    level1part2 = 0;
+    level1part3 = 0;
+    level1part4 = 0;
+    level1part5 = 0;
+    level1part6 = 0;
+    level2part1 = 0;
+    level2part2 = 0;
+    level2part3task1 = 0;
+    level2part3task2 = 0;
+    level2part3 = 0;
+    level2part4task1 = 0;
+    level2part4task2 = 0;
+    level2part4 = 0;
+    level2part5 = 0;
+    level2part6 = 0;
+    level3part1 = 0;
+    level3part2 = 0;
+    level3part3task1 = 0;
+    level3part3task2 = 0;
+    level3part3 = 0;
+    level3part4 = 0;
+    level3part5 = 0;
+    level3part6 = 0;
+
+    returnToLightTheme();
 });
 
 //---------------слик-меню---------------//
@@ -320,8 +381,10 @@ $(".main-block__findarea-icon").on('click', function () {
     if (miniMarketGame.findGood.length) {
         for (let i = 0; i < miniMarketGame.findGood.length; i++) {
             $(".modal__grid").append(`<div class='modal__grid-col col-${i}'></div>`);
-            $(`.modal__grid-col.col-${i}`).append(`<div class='modal__grid-item item-${i}'><img src="${miniMarketGame.findGood[i].pic[0]}" alt="" data-item='${miniMarketGame.findGood[i].id}'><p class="goods__list-symbol"><i class="far fa-heart goods__list-star"></i><i class="fas fa-percent goods__list-persent"></i></p></div>`);
+            $(`.modal__grid-col.col-${i}`).append(`<div class='modal__grid-item item-${i}'><div class="dark"></div><img src="${miniMarketGame.findGood[i].pic[0]}" alt="" data-item='${miniMarketGame.findGood[i].id}'><p class="goods__list-symbol"><i class="far fa-heart goods__list-star"></i><i class="fas fa-percent goods__list-persent"></i></p></div>`);
             
+            if ($(".change-game__color-select").val() == 2) {$(".dark").addClass("darkThemeImg")};
+
             if (window.matchMedia("(min-width: 981px)").matches) {
                 $(`.modal__grid-col.col-${i} .modal__grid-item.item-${i}`).addClass("hint--left");
                 $(`.modal__grid-col.col-${i} .modal__grid-item.item-${i}`).attr("aria-label", `${miniMarketGame.findGood[i].title}`);
@@ -406,8 +469,10 @@ function showGood(begin, end) {
         };        
         
         // miniMarketGame.gameMode == 1 ? price = miniMarketGame.clickedCategory[i].price.toFixed(0) : price = miniMarketGame.clickedCategory[i].price.toFixed(2);
-        $(`.goods__list-item.item-${i}`).append(`<img src="${miniMarketGame.clickedCategory[i].pic[0]}" alt="" data-item='${miniMarketGame.clickedCategory[i].id}'><div class="item_back-discount goods__list-price">${price} UAH</div><div class="goods__list-symbol"><i class="far fa-heart goods__list-star"></i><i class="fas fa-percent goods__list-persent"></i></div>`)
+        $(`.goods__list-item.item-${i}`).append(`<div class="dark"></div><img src="${miniMarketGame.clickedCategory[i].pic[0]}" alt="" data-item='${miniMarketGame.clickedCategory[i].id}'><div class="item_back-discount goods__list-price">${price} UAH</div><div class="goods__list-symbol"><i class="far fa-heart goods__list-star"></i><i class="fas fa-percent goods__list-persent"></i></div>`)
         
+        if ($(".change-game__color-select").val() == 2) {$(".dark").addClass("darkThemeImg")};
+
         if (checkSale) {
             $(`.goods__list-item.item-${i} .goods__list-persent`).addClass("dispFlex");
         } else {
@@ -464,8 +529,12 @@ $(".goods__grid-block").on('click', function(event) {
         let count = screenW();
 
         $("#goods-count").append(`<option class="option-change" value="${count}">${count}</option>`);
-        
-        showGood(1, count);
+        if (miniMarketGame.clickedCategory.length > 1) {
+            showGood(1, count);
+        } else {
+            showGood(1, 1);
+        };
+
 
         //---------------Номера страниц---------------//        
         let goodsCountList;
@@ -529,8 +598,10 @@ $(".goods__grid-block").on('click', function(event) {
             for (let i = (count * numPage - count); i < maxItem; i++) {
                 $(".goods__list-grid").append(`<div class="goods__list-col col-${i}"></div>`);
                 
-                $(`.goods__list-col.col-${i}`).append(`<div class="goods__list-item item-${i}"><img src="${sorted[i].pic[0]}" data-item="${sorted[i].id}"></div>`)
-                
+                $(`.goods__list-col.col-${i}`).append(`<div class="goods__list-item item-${i}"><div class="dark"></div><img src="${sorted[i].pic[0]}" data-item="${sorted[i].id}"></div>`);
+
+                if ($(".change-game__color-select").val() == 2) {$(".dark").addClass("darkThemeImg")};
+
                 $(`.goods__list-item.item-${i}`).addClass("hint--left");
                 $(`.goods__list-item.item-${i}`).attr("aria-label", `${sorted[i].title}`);
 
@@ -587,7 +658,7 @@ $(".goods__list-category").on("click", function () {
 
 $("#goods-count").on("input", function () {
     
-    const $goodsHeight = $(".goods").outerHeight();
+    // const $goodsHeight = $(".goods").outerHeight();
 
     $(".goods__list-pages-num").remove();
     $(".goods__list-grid").remove();
@@ -669,8 +740,9 @@ $("#goods-count").on("input", function () {
         for (let i = (5 * numPage - 5); i < maxItem; i++) {
             $(".goods__list-grid").append(`<div class="goods__list-col col-${i}"></div>`);
                 
-            $(`.goods__list-col.col-${i}`).append(`<div class="goods__list-item item-${i}"><img src="${sorted[i].pic[0]}" data-item="${sorted[i].id}"></div>`)
+            $(`.goods__list-col.col-${i}`).append(`<div class="goods__list-item item-${i}"><div class="dark"></div><img src="${sorted[i].pic[0]}" data-item="${sorted[i].id}"></div>`)
                 
+            if ($(".change-game__color-select").val() == 2) {$(".dark").addClass("darkThemeImg")};
 
             $(`.goods__list-item.item-${i}`).addClass("hint--left");
             $(`.goods__list-item.item-${i}`).attr("aria-label", `${sorted[i].title}`);
@@ -728,10 +800,12 @@ $(".nav-list__favourite, .nav-list__link_heart, .footer__buyer-favourite").on("c
         for (let i = 0; i < miniMarketGame.favouriteGood.length; i++) {
             $(".favourite__grid").append(`<div class="favourite__grid-col col-${i}"></div>`);
                 
-            $(`.favourite__grid-col.col-${i}`).append(`<div class="favourite__grid-item item-${i}"><img src="${miniMarketGame.favouriteGood[i].pic[0]}" data-item="${miniMarketGame.favouriteGood[i].id}"></div>
+            $(`.favourite__grid-col.col-${i}`).append(`<div class="favourite__grid-item item-${i}"><div class="dark"></div><img src="${miniMarketGame.favouriteGood[i].pic[0]}" data-item="${miniMarketGame.favouriteGood[i].id}"></div>
             <div class="favourite__grid-item-remove hint--top" aria-label="Удалить из избранного" data-item="${miniMarketGame.favouriteGood[i].id}"><i class="far fa-trash-alt"></i></div>
             <div class="favourite__grid-item-cart hint--bottom" aria-label="Добавить в корзину" data-item="${miniMarketGame.favouriteGood[i].id}"><i class="fas fa-shopping-basket"></i></div>`);
             
+            if ($(".change-game__color-select").val() == 2) {$(".dark").addClass("darkThemeImg")};
+
             // if (document.documentElement.clientWidth <= 980) {
             if (window.matchMedia("(max-width: 980px)").matches) {
                 $(`.favourite__grid-col.col-${i}`).append(`<div class="favourite__grid-item-title">${miniMarketGame.favouriteGood[i].title}</div>`)
@@ -785,6 +859,7 @@ $(".nav-list__favourite, .nav-list__link_heart, .footer__buyer-favourite").on("c
 
             const good = elem.title;
             catHint(`В корзину добавлено: ${good}`, ".favourite__hint");
+
         });
 
 
@@ -816,10 +891,12 @@ $(".favourite__choose-ico").on("click", function() {
         for (let i = 0; i < miniMarketGame.favouriteGood.length; i++) {
             $(".favourite__grid").append(`<div class="favourite__grid-col col-${i}"></div>`);
                 
-            $(`.favourite__grid-col.col-${i}`).append(`<div class="favourite__grid-item item-${i}"><img src="${miniMarketGame.favouriteGood[i].pic[0]}" data-item="${miniMarketGame.favouriteGood[i].id}"></div>
+            $(`.favourite__grid-col.col-${i}`).append(`<div class="favourite__grid-item item-${i}"><div class="dark"></div><img src="${miniMarketGame.favouriteGood[i].pic[0]}" data-item="${miniMarketGame.favouriteGood[i].id}"></div>
             <div class="favourite__grid-item-remove hint--top" aria-label="Удалить из избранного" data-item="${miniMarketGame.favouriteGood[i].id}"><i class="far fa-trash-alt"></i></div>
             <div class="favourite__grid-item-cart hint--bottom" aria-label="Добавить в корзину" data-item="${miniMarketGame.favouriteGood[i].id}"><i class="fas fa-shopping-basket"></i></div>`);
             
+            if ($(".change-game__color-select").val() == 2) {$(".dark").addClass("darkThemeImg")};
+
             // if (document.documentElement.clientWidth <= 980) {
             if (window.matchMedia("(max-width: 980px)").matches) {
                 $(`.favourite__grid-col.col-${i}`).append(`<div class="favourite__grid-item-title">${miniMarketGame.favouriteGood[i].title}</div>`)
@@ -841,6 +918,15 @@ $(".favourite__choose-ico").on("click", function() {
             miniMarketGame.favouriteGoodRemove($(this).attr("data-item"));
             $(this).parent().remove();
 
+            const that = this;
+            const elem = miniMarketGame.miniMarket.find(function (el) {
+                return el.id == String($(that).attr("data-item"));
+            });
+
+            const good = elem.title;
+            catHint(`Удалено из избранного: ${good}`, ".favourite__hint");
+            
+
             if (miniMarketGame.favouriteGood.length == 0) {
                 $(".favourite__list").append("<h3>Здесь будут находиться избранные Вами товары. Не пора ли добавить несколько?</h3>");
             };
@@ -848,6 +934,17 @@ $(".favourite__choose-ico").on("click", function() {
 
         $(".favourite__grid-item-cart").on("click", function () {
             miniMarketGame.cartAdd($(this).attr("data-item"));
+
+
+            const that = this;
+            const elem = miniMarketGame.miniMarket.find(function (el) {
+                return el.id == String($(that).attr("data-item"));
+            });
+
+            const good = elem.title;
+            catHint(`В корзину добавлено: ${good}`, ".favourite__hint");
+
+
             // console.log(miniMarketGame.cart);
         });
 
@@ -862,12 +959,14 @@ $(".favourite__choose-ico").on("click", function() {
         for (let i = 0; i < miniMarketGame.favouriteGood.length; i++) {
             $(".favourite__grid").append(`<div class="favourite__grid-col col-${i}"></div>`);
                 
-            $(`.favourite__grid-col.col-${i}`).append(`<div class="favourite__grid-item item-${i}"><img src="${miniMarketGame.favouriteGood[i].pic[0]}" data-item="${miniMarketGame.favouriteGood[i].id}"></div>
+            $(`.favourite__grid-col.col-${i}`).append(`<div class="favourite__grid-item item-${i}"><div class="dark"></div><img src="${miniMarketGame.favouriteGood[i].pic[0]}" data-item="${miniMarketGame.favouriteGood[i].id}"></div>
             <div class="button favourite__grid-item-remove-list hint--top" aria-label="Удалить из избранного" data-item="${miniMarketGame.favouriteGood[i].id}"><i class="far fa-trash-alt"></i></div>
             <div class="button favourite__grid-item-cart-list hint--top" aria-label="Добавить в корзину" data-item="${miniMarketGame.favouriteGood[i].id}"><i class="fas fa-shopping-basket"></i></div>`);
             
             $(`.favourite__grid-item.item-${i}`).addClass("hint--left");
             $(`.favourite__grid-item.item-${i}`).attr("aria-label", `${miniMarketGame.favouriteGood[i].title}`);
+
+            if ($(".change-game__color-select").val() == 2) {$(".dark").addClass("darkThemeImg")};
 
             let val = (miniMarketGame.favouriteGood[i].count == 1) ? "" : "/ " + miniMarketGame.favouriteGood[i].count + " " + miniMarketGame.favouriteGood[i].val;
             let price;
@@ -1033,11 +1132,13 @@ function goodsCardAdd(good) {
     $(".good-card__grid-main-photo-discount").remove();
     $(".good-card__grid-change-li").remove();
 
-    $(".good-card__grid-main-photo").append(`<img  class="good-card__grid-main-photo-pic" src="${good.pic[0]}" alt="${good.title}"><div class="good-card__grid-main-photo-discount"></div>`);
+    $(".good-card__grid-main-photo").append(`<div class="dark"></div><img  class="good-card__grid-main-photo-pic" src="${good.pic[0]}" alt="${good.title}"><div class="good-card__grid-main-photo-discount"></div>`);
     $(".good-card__grid-change-photo").append(`<li class="good-card__grid-change-li"><img  class="good-card__grid-change-photo-pic" src="${good.pic[0]}" alt="${good.title}"></li>`);
-    $(".good-card__grid-change-photo img").css("borderColor", "rgba(255, 0, 0, .5)");
     $(".good-card__grid-change-photo").append(`<li class="good-card__grid-change-li"><img  class="good-card__grid-change-photo-pic" src="${good.pic[1]}" alt="${good.title}"></li>`);
     $(".good-card__grid-change-photo").append(`<li class="good-card__grid-change-li"><img  class="good-card__grid-change-photo-pic" src="${good.pic[2]}" alt="${good.title}"></li>`);
+    $(".good-card__grid-change-photo img").css("borderColor", "rgba(255, 0, 0, .5)");
+
+    if ($(".change-game__color-select").val() == 2) {$(".dark").addClass("darkThemeImg")};
 
     $(".good-card__grid-title span").html(`${good.title}`);
     $(".good-card__grid-category span").html(`${good.category}`);
@@ -1280,11 +1381,13 @@ function buildCartGrid () {
     for (let i = 0; i < miniMarketGame.cart.length; i++) {
         $(".basket__grid").append(`<div class="basket__grid-col col-${i}"></div>`);
             
-        $(`.basket__grid-col.col-${i}`).append(`<div class="basket__grid-item item-${i}"><img src="${miniMarketGame.cart[i].el.pic[0]}" data-item="${miniMarketGame.cart[i].el.id}"></div>`);
+        $(`.basket__grid-col.col-${i}`).append(`<div class="basket__grid-item item-${i}"><div clas="dark"></div><img src="${miniMarketGame.cart[i].el.pic[0]}" data-item="${miniMarketGame.cart[i].el.id}"></div>`);
         
         $(`.basket__grid-item.item-${i}`).addClass("hint--left");
         $(`.basket__grid-item.item-${i}`).attr("aria-label", `${miniMarketGame.cart[i].el.title}`);
         
+        if ($(".change-game__color-select").val() == 2) {$(".dark").addClass("darkThemeImg")};
+
         let val = (miniMarketGame.cart[i].el.count == 1) ? "" : "/ " + miniMarketGame.cart[i].el.count + " " + miniMarketGame.cart[i].el.val;
         
         let price;
@@ -1434,6 +1537,7 @@ function delCartItem() {
         $(this).parent().parent().remove();
 
         if (miniMarketGame.cart.length == 0) {
+            $(".basket__result, .basket__enough, .basket__buttons").removeClass("dispFlex");
             $(".basket__block").append("<h3>Здесь будут находиться товары, которые Вы сможете приобрести. Не пора ли добавить несколько?</h3>");
         };
     });
@@ -1539,6 +1643,32 @@ $(".last-step__buttons-continue").on('click', function () {
             "height": "auto"
             
         });
+
+        $(".game-task__task-quest").find(".game-task__task-quest-text").css("textDecoration", "none");
+        level1part1 = 0;
+        level1part2 = 0;
+        level1part3 = 0;
+        level1part4 = 0;
+        level1part5 = 0;
+        level1part6 = 0;
+        level2part1 = 0;
+        level2part2 = 0;
+        level2part3task1 = 0;
+        level2part3task2 = 0;
+        level2part3 = 0;
+        level2part4task1 = 0;
+        level2part4task2 = 0;
+        level2part4 = 0;
+        level2part5 = 0;
+        level2part6 = 0;
+        level3part1 = 0;
+        level3part2 = 0;
+        level3part3task1 = 0;
+        level3part3task2 = 0;
+        level3part3 = 0;
+        level3part4 = 0;
+        level3part5 = 0;
+        level3part6 = 0;
     };
 });
 
@@ -1583,6 +1713,7 @@ $(".modal-block_lastStep-buy").on('click', function () {
     $(".about__cat").toggleClass("dispFlex");
 
     $("body").css("overflowY", "hidden");
+
 
 });
 
@@ -1666,6 +1797,8 @@ $(".prise__block-entranse").on('click', function () {
     $(".task__cat").toggleClass("dispFlex");
     $(".about__cat").toggleClass("dispFlex");
     $("body").css("overflowY", "hidden");
+
+    returnToLightTheme();
 });
 
 $(".prise__block-level").on('click', function () {
@@ -1888,16 +2021,14 @@ $(".basket__buttons-continue").on("click", function() {
        
 });
 
-$('[data-text="#anchor6"]').on('click', function () {
-    $(".change-game").toggleClass("dispFlex");
-    
-});
-
 
 $(".change-game__password-btn").on('click', function () {
     if ($(".change-game__password-input").val() == passwordForChange) {
         $(".change-game__password").toggleClass("dispFlex");
         $(".change-game__change-form").toggleClass("dispFlex");
+        if (window.matchMedia("(max-width: 767px)").matches) {
+            $('.nav-list').css("paddingTop", "20px");
+        };
     } else {
         $(".change-game__password-input").attr("placeholder", "введите верный пароль");
         $(".change-game__password-input").addClass("forgotToInput");
@@ -2044,28 +2175,202 @@ $(".addGoodToMarket").on('click', function () {
         $(".change-game__good-form-val-select").val('');
         $(".change-game__good-form-descr-area").val('');
     
-        $(".change-game__good-form").toggleClass("dispFlex");
+        if ($(".change-game__good-form").hasClass("dispFlex")) {
+            $(".change-game__good-form").removeClass("dispFlex");
+            $(".change-game__form").removeClass("change-game__form_clicked");                 
+            // $(".change-game").removeClass("dispFlex");  
+            $("body").css("overflowY", "visible");               
+        };
+
+        $(".goods__grid").remove();
+        $(".slick-dots").remove();
+        
+
+        miniMarketGame.numCategory();
+
+        $(".goods__grid-block").append('<div class="goods__grid"></div>');
+
+        for (let i = 0; i < miniMarketGame.category.length; i++) {
+
+            $(".goods__grid").append(`<div class='goods__grid-col col-${i}'></div>`);
+            $(`.goods__grid-col.col-${i}`).append(`<div class='goods__grid-item item-${i}'></div>`);
+            $(`.goods__grid-item.item-${i}`).append(`<div class='goods__grid-item-title'></div><div class='goods__grid-item-pict'><img src="${miniMarketGame.category[i].pic}" alt=""></div>`);
+
+
+            ($(`.goods__grid-item.item-${i} .goods__grid-item-pict`).find("img")).css("objectFit", "fill");
+            ($(`.goods__grid-item.item-${i} .goods__grid-item-pict`).find("img")).css("width", "100%");
+            ($(`.goods__grid-item.item-${i} .goods__grid-item-pict`).find("img")).css("height", "100%");
+            ($(`.goods__grid-item.item-${i} .goods__grid-item-pict`).find("img")).attr("data-text", `${miniMarketGame.category[i].cat}`);
+            $(`.goods__grid-item.item-${i} .goods__grid-item-title`).text(`${miniMarketGame.category[i].cat}`);
+            $(`.goods__grid-item.item-${i} .goods__grid-item-title`).attr("data-text", `${miniMarketGame.category[i].cat}`);
+
+        };
+
+        // ////////////////////////////Товары слайдер////////////////////////////
+
+        $('.goods__grid').slick(
+            {
+                slidesToShow: 4,
+                slidesToScroll: 1,
+                arrows: true,
+                prevArrow: '<button type="button" class="slick-prev"><i class="fas fa-angle-left"></i></button>',
+                nextArrow: '<button type="button" class="slick-next"><i class="fas fa-angle-right"></i></button>',
+                dots: true,
+                autoplay: true,
+                autoplaySpeed: 1000,
+                appendDots: $(".goods__dots"),
+                responsive: [
+                    {
+                      breakpoint: 768,
+                      settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 1
+                      }
+                    },
+                    {
+                        breakpoint: 641,
+                        settings: {
+                          slidesToShow: 2,
+                          slidesToScroll: 1
+                        }
+                    },
+                    {
+                        breakpoint: 481,
+                        settings: {
+                          slidesToShow: 1,
+                          slidesToScroll: 1
+                        }
+                    }
+                  ]
+            }
+        );
+
+        let count = screenW();
+
+        $("#goods-count").val(`${count}`);
+
+
     };
 
+
+});
+
+$(".change-game__exit-title").on('click', function () {
+    $(".change-game__password").toggleClass("dispFlex");
+    $(".change-game__change-form").toggleClass("dispFlex");
+    
+    $(".change-game__password-input").val("");
+    $(".change-game__password-input").attr("placeholder", "введите пароль");
+    $(".change-game__password-input").removeClass("forgotToInput");
+
+    $(".change-game__good-form").toggleClass("dispFlex");
+    if (window.matchMedia("(max-width: 767px)").matches) {
+        $('.nav-list').css("paddingTop", "20px");
+    };
 
 });
 
 $(".change-game__good-title").on('click', function () {
     $(".change-game__good-form").toggleClass("dispFlex");
     if (!($(".change-game__form").hasClass("change-game__form_clicked"))) {
-        $(".change-game__form").addClass("change-game__form_clicked");
-        $("body").css("overflowY", "hidden");
-    } else {
-        $(".change-game__form").removeClass("change-game__form_clicked");
-        $("body").css("overflowY", "visible");
+        $(".hideBody").toggleClass("dispFlex");
+        $(".hideBody").toggleClass("change-game__form_clicked");
+        let sel = $("body").children("div.dispFlex").outerHeight();
+        $(".change-game__form_clicked").css("height", `${sel}px`);
+
     };
 });
 
+$(".change-game__color-select").on('input', function () {
+    if ($(this).val() == 2) {
+        // $("body").css("backgroundImage", "url('../img/back_dark.jpg'");
+        $("body").css("backgroundImage", "url('../img/back-dark.jpeg'");
 
-// TODO пароль для денег и good + адаптив
+        $(".button").addClass("darkThemeHover");
+        
+        $(".level__form").addClass("darkTheme");
+        $(".level__form-item").addClass("darkTheme");
+        
+        $(".market-page").addClass("darkTheme");
+        $(".goods__grid-item-title").addClass("darkTheme");
+        $(".goods__grid-item-title").addClass("darkThemeBefore");
+        $(".dark").addClass("darkThemeImg");
+        $(".sale__grid-item, .good-card__grid-main-photo, .good-card__grid-change-li").css("position", 'relative');
+        $(".goods__grid-item-pict").addClass("darkThemeAfter");
+        $(".modal-block").addClass("darkThemeModal");
+        $(".change-game__form").addClass("darkThemeModal");
+        $(".change-game__form").addClass("darkThemeMainColor");
+        $(".change-game__good-form").addClass("darkThemeModal");
+        $(".change-game__good-form").addClass("darkThemeMainColor");
+        $(".hideBody").addClass("darkThemeModal");
+        $(".contact__text p + p").addClass("darkThemeMainColorRed");
+        
+        $(".good-card_container").addClass("darkTheme");
 
-// TODO обновление категорий в маркете
+        $(".favourite__block").addClass("darkTheme");
+
+        $(".basket__block").addClass("darkTheme");
+        $(".good-card__grid-change-li").addClass("darkThemeAfter");
+        
+        $(".last-step__block").addClass("darkTheme");
+
+        $(".prise__block").addClass("darkTheme");
+
+        $("[class$='__hint']").addClass("darkThemeHint");
+
+    } else if ($(this).val() == 1) {
+        
+        returnToLightTheme();
+    }
+});
+
+function returnToLightTheme() {
+    $("body").css("backgroundImage", "url('../img/back.jpg'");
+
+        // if ($(".button").hasClass("darkThemeHover")) {$(".button").removeClass("darkThemeHover")};
+        
+        // if ($(".level__form").hasClass("darkTheme")) {$(".level__form").removeClass("darkTheme")};
+        // if ($(".level__form-item").hasClass("darkTheme")) {$(".level__form-item").removeClass("darkTheme")};
+        
+        // if ($(".market-page").hasClass("darkTheme")) {$(".market-page").removeClass("darkTheme")};
+        // if ($(".goods__grid-item-title").hasClass("darkTheme")) {$(".goods__grid-item-title").removeClass("darkTheme")};
+        // if ($(".goods__grid-item-title").hasClass("darkThemeBefore")) {$(".goods__grid-item-title").removeClass("darkThemeBefore")};
+        // if ($(".dark").hasClass("darkThemeImg")) {$(".dark").removeClass("darkThemeImg")};
+        // if ($(".goods__grid-item-pict").hasClass("darkThemeAfter")) {$(".goods__grid-item-pict").removeClass("darkThemeAfter")};
+        // if ($(".modal-block").hasClass("darkThemeModal")) {$(".modal-block").removeClass("darkThemeModal")};
+        // if ($(".change-game__form").hasClass("darkThemeModal")) {$(".change-game__form").removeClass("darkThemeModal")};
+        // if ($(".change-game__form").hasClass("darkThemeMainColor")) {$(".change-game__form").removeClass("darkThemeMainColor")};
+        // if ($(".change-game__good-form").hasClass("darkThemeModal")) {$(".change-game__good-form").removeClass("darkThemeModal")};
+        // if ($(".change-game__good-form").hasClass("darkThemeMainColor")) {$(".change-game__good-form").removeClass("darkThemeMainColor")};
+        // if ($(".hideBody").hasClass("darkThemeModal")) {$(".hideBody").removeClass("darkThemeModal")};
+        // if ($(".contact__text p + p").hasClass("darkThemeMainColorRed")) {$(".contact__text p + p").removeClass("darkThemeMainColorRed")};
+        
+        // if ($(".good-card_container").hasClass("darkTheme")) {$(".good-card_container").removeClass("darkTheme")};
+
+        // if ($(".favourite__block").hasClass("darkTheme")) {$(".favourite__block").removeClass("darkTheme")};
+
+        // if ($(".basket__block").hasClass("darkTheme")) {$(".basket__block").removeClass("darkTheme")};
+        // if ($(".good-card__grid-change-li").hasClass("darkThemeAfter")) {$(".good-card__grid-change-li").removeClass("darkThemeAfter")};
+        
+        // if ($(".last-step__block").hasClass("darkTheme")) {$(".last-step__block").removeClass("darkTheme")};
+
+        // if ($(".prise__block").hasClass("darkTheme")) {$(".prise__block").removeClass("darkTheme")};
+
+        // if ($("[class$='__hint']").hasClass("darkThemeHint")) {$("[class$='__hint']").removeClass("darkThemeHint")};
+
+    $(".darkTheme").removeClass('darkTheme');
+    $(".darkThemeModal").removeClass('darkThemeModal');
+    $(".darkThemeMainColor").removeClass('darkThemeMainColor');
+    $(".darkThemeMainColorRed").removeClass('darkThemeMainColorRed');
+    $(".darkThemeHover").removeClass('darkThemeHover');
+    $(".darkThemeText").removeClass('darkThemeText');
+    $(".darkThemeHint").removeClass('darkThemeHint');
+    $(".darkThemeBefore").removeClass('darkThemeBefore');
+    $(".darkThemeAfter").removeClass('darkThemeAfter');
+    $(".darkThemeImg").removeClass('darkThemeImg');
+    $(".darkThemePlHolder").removeClass('darkThemePlHolder');
+    $(".change-game__color-select").val("1");
+};
+
 
 // TODO enter для входов
-
-// TODO темный режим ?

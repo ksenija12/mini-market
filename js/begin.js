@@ -125,7 +125,6 @@ function screenW () {
     // let count = document.documentElement.clientWidth > 980 ? 5 : document.documentElement.clientWidth > 640 ? 4 : document.documentElement.clientWidth > 480 ? 3 : 2
     let count = window.matchMedia("(min-width: 981px)").matches ? 5 : window.matchMedia("(min-width: 641px)").matches ? 4 : window.matchMedia("(min-width: 481px)").matches ? 3 : window.matchMedia("(min-width: 331px)").matches ? 2 : 1
     return count;
-    return count;
 };
 
 
@@ -150,6 +149,14 @@ $(".alert").on("click", function () {
 
 
 $(".about__cat").on("click", function() {
+
+    if (($(".change-game__color-select").val() == 2) && $(".level").hasClass('dispFlex')) {
+        // $(".about-descr__form").css("backgrounColor", "rgba(0, 0, 0, .5)");
+        $(".about-descr__form").addClass("darkTheme");
+    } else {
+        if ($(".about-descr__form").hasClass("darkTheme")) {$(".about-descr__form").removeClass("darkTheme")};
+        // $(".about-descr__form").css("backgrounColor", "#ffffff");
+    };
 
     let timerText, intervalText, timerWave;
 
@@ -248,23 +255,34 @@ $(".backform, .nav-list__link").on("click", function() {
         $(".game-task").css("display", "none");
         $(".game-task").toggleClass("game-task_animation");
 
-        if ($(this).hasClass("backform")) {
-            $("body").css("overflowY", "hidden");
-        } else if ($(this).attr("data-text")) {
-            $("body").css("overflowY", "hidden");
-        } else {
-            $("body").css("overflowY", "visible");
-        };
     };
+    
+    if ($(this).hasClass("backform")) {
+        $("body").css("overflowY", "hidden");
+    // } else if ($(this).attr("data-text")) {
+        // $("body").css("overflowY", "hidden");
+    } else {
+        $("body").css("overflowY", "visible");
+    };
+    
+    if ($(this).attr("data-text") == "#anchor6") {
+        $(".change-game").toggleClass("dispFlex");
+        $(".change-game__form").css("top", `calc( ${$(this).closest('.container').outerHeight(true)}px + 14px )`);
+        window.scrollTo(0, 0);
 
-    if ($(this) != $('[data-text="#anchor6"]')) {
+        if (window.matchMedia("(max-width: 767px)").matches) {
+            $('.nav').removeClass('nav_active');
+        }
+
+    } else {
         if ($(".change-game").hasClass("dispFlex")) {
             $(".change-game").removeClass("dispFlex");
+            $("body").css("overflowY", "visible");
             if ($(".change-game__good-form").hasClass("dispFlex")) {
                 $(".change-game__good-form").removeClass("dispFlex");
                 $(".change-game__form").removeClass("change-game__form_clicked");                 
             };            
-        };
+        };6
     };
 });
 
@@ -499,7 +517,6 @@ $(".button_level").on("click", function() {
         $("#level__operation-check-btn-02").val("-");
         $("#level__operation-check-btn-03").val("*");
         $("#level__operation-check-btn-04").val("/");
-        $(".level__operation .level__title").css("color", "rgb(0, 0, 0)")
         
         $(".level__operation-check-btn-input:checked").each(function(i, el) {
             symbol.push($(el).val());
@@ -540,10 +557,10 @@ $(".button_level").on("click", function() {
 
             $(`.sale__grid-col.col-${i}`).append('<div class="sale__grid-item-container"><div class="sale__grid-item"></div></div>');
 
-            $(`.sale__grid-col.col-${i} .sale__grid-item`).append(`<div class="sale__grid-item_back" data-item="${gameMainSale[i].good.id}">
+            $(`.sale__grid-col.col-${i} .sale__grid-item`).append(`<div class="sale__grid-item_back" data-item="${gameMainSale[i].good.id}"><div class="dark"></div>
             <img src="${gameMainSale[i].good.pic[0]}" alt="">
             <div class="item_back-discount">- ${gameMainSale[i].discount} %</div>
-            <div class="item_back-good">${gameMainSale[i].good.title}</div></div><div class="sale__grid-item_face">
+            <div class="item_back-good">${gameMainSale[i].good.title}</div></div><div class="sale__grid-item_face"><div class="dark"></div>
             <img src="${gameMainSale[i].good.categpic}" alt="">
             <div class="item_back-discount">- ${gameMainSale[i].discount} %</div>
             <div class="item_face-category">${gameMainSale[i].good.category}</div></div>`);
@@ -590,9 +607,9 @@ $(".button_level").on("click", function() {
             $(`.goods__grid-item.item-${i} .goods__grid-item-title`).text(`${miniMarketGame.category[i].cat}`);
             $(`.goods__grid-item.item-${i} .goods__grid-item-title`).attr("data-text", `${miniMarketGame.category[i].cat}`);
 
-        }
+        };
 
-        ////////////////////////////Товары слайдер////////////////////////////
+        // ////////////////////////////Товары слайдер////////////////////////////
 
         $('.goods__grid').slick(
             {
@@ -690,6 +707,8 @@ $(".button_level-back").on("click", function() {
     potterCat(false)
     
     helloCat();
+
+    $("body").css("backgroundImage", "url('../img/back.jpg'");
 });
 
 

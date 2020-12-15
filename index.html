@@ -328,7 +328,7 @@
                         <i class="fas fa-volume-up music description_level-1"></i>
                     </h2>
                     <audio class="audio" id="audio" src="./audio/hello.mp3" ></audio>
-                    <div class="market-page__descr description_level-1">
+                    <div class="market-page__descr description_level-1 main-descr">
                         <div class="market-page__descr-star">*</div>
                         <div class="market-page__descript">Добро пожаловать в MINI-маркет - детский игровой интернет-магазин. Это главная страница. Она разделена на несколько разделов. Вперед же! Приятной игры)</div>
                     </div>
@@ -465,6 +465,7 @@
                 <div data-index="3" class="backtostart" data-text="#anchor8"><i class="fas fa-arrow-up"></i></div>
             </div>
         </footer>
+        
     </div>
 
 
@@ -550,12 +551,14 @@
 
 
     <div class="modal-block" id="modal-contact">
-        <div class="container payAndDeliveryGaranty_container">
-            <div  class="modal_button" data-fancybox-close>Сlose <i class="far fa-times-circle"></i></div>
-            <h2>Контакты</h2>
-            <div class="contact__text">
-                <p>Написать разработчику:</p>
-                <p><a href="mailto:filkaksenija@gmail.com">filkaksenija@gmail.com</a></p>
+        <div class="container payAndDeliveryGaranty_container_cont">
+            <div class="payAndDeliveryGaranty_container">
+                <div  class="modal_button" data-fancybox-close>Сlose <i class="far fa-times-circle"></i></div>
+                <h2>Контакты</h2>
+                <div class="contact__text">
+                    <p>Написать разработчику:</p>
+                    <p><a href="mailto:filkaksenija@gmail.com">filkaksenija@gmail.com</a></p>
+                </div>
             </div>
         </div>
     </div>
@@ -776,7 +779,7 @@
                     <audio class="audio" src="./audio/favourite.mp3" ></audio>
                     <div class="market-page__descr description_level-1">
                         <div class="market-page__descr-star">*</div>
-                        <div class="market-page__descript">На этой страничке находятся или будут находиться твары, которые Вам понравились. Для удобства можно изменить вид отображения товаров - сеткой или списком. Товары в избранном можно по одному удалить либо отправить в корзину. Также можно очистить сразу весь список.</div>
+                        <div class="market-page__descript">На этой страничке находятся или будут находиться товары, которые Вам понравились. Для удобства можно изменить вид отображения товаров - сеткой или списком. Товары в избранном можно по одному удалить либо отправить в корзину. Также можно очистить сразу весь список.</div>
                     </div>  
                     <img src="./img/pusheen/007.gif" class="favourite__cat" alt="favourite_cat">
                     <div class="favourite__hint"></div>
@@ -1150,11 +1153,17 @@
                             <button class="addGoodToMarket">Сохранить товар</button>
                         </div>
                     </div>
+                    <div class="change-game__exit">
+                        <div class="change-game__exit-title">Выход</div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
+
+
+    <div class="hideBody"></div>
 
     <div class="alert">Переверните экран</div>
     
