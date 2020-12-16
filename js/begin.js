@@ -4,23 +4,6 @@ let level3part1 = 0,  level3part2 = 0,  level3part3task1 = 0, level3part3task2 =
 
 
 
-
-const ident = [
-    {
-        log: "admin",
-        pass: 123,
-        qwest: "Имя первого домашнего животного",
-        answ: "бармалей"
-    },
-    {
-        log: "mama",
-        pass: 321,
-        qwest: "Сколько улиток в аквариуме?",
-        answ: "48"
-    }
-];
-
-
 function catHint(text, sel) {
     $(sel).html(text);
     
@@ -139,7 +122,7 @@ $(".modal_button").on("click", function () {
 //---------------отменяем клики---------------//
 $(".alert").on("click", function () {
     e.stopPropagation();
-    e.preventDefault();
+    // e.preventDefault();
 });
 
 

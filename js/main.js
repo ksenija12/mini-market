@@ -221,13 +221,13 @@ $('[data-text="#anchor7"]').on("click", function() {
 
 //---------------слик-меню---------------//
 
-// const $header = $('.header');
+const $header = $('.header');
 
-// $(window).on('scroll', function() {
-//     const scrollTop = $('body, html').scrollTop();
-//     const offset = $('.sale').offset().top;
+$(window).on('scroll', function() {
+    const scrollTop = $('body, html').scrollTop();
+    const offset = $('.sale').offset().top;
 
-//     if (scrollTop >= offset) {
+    if (scrollTop >= offset) {
 //         $header.addClass('header_sticky');
 
 //         $(".market-page__cat").css("display", "none");
@@ -239,15 +239,15 @@ $('[data-text="#anchor7"]').on("click", function() {
 //         $header.css('top', -height);
 //         $header.animate({top:0}, 300);
 
-//         $(".backtostart").css("visibility","visible");
+        $(".backtostart").css("visibility","visible");
 //         $(".backform").css("top","5px");
 //         // if (document.documentElement.clientWidth > 767) {$(".nav-list__link_sec").css("paddingTop","2px")};
 //         if (window.matchMedia("(min-width: 768px)").matches) {$(".header .nav-list__link_sec").css("paddingTop","2px")};
         
 
-//     } else if (scrollTop < 30) {
+    } else if (scrollTop < 30) {
 //         $header.removeClass('header_sticky');
-//         $(".backtostart").css("visibility","hidden");
+        $(".backtostart").css("visibility","hidden");
 //         $(".market-page__cat").css("display", "block");
 //         $(".market-page__title-img").css("height", "");
 //         $(".nav-toggle").css("height", "25px");
@@ -256,8 +256,8 @@ $('[data-text="#anchor7"]').on("click", function() {
 //         // if (document.documentElement.clientWidth > 767) {$(".nav-list__link_sec").css("paddingTop","7px")};
 //         if (window.matchMedia("(min-width: 768px)").matches) {$(".header .nav-list__link_sec").css("paddingTop","7px")};
         
-//     };
-// });
+    };
+});
 
 
 //---------------прокрутка---------------//
@@ -269,7 +269,7 @@ $('[data-index]').on("click", function(event) {
     const selector = $link.attr('data-text');
 
     const $target = $(selector);
-    const height = $('header').outerHeight() - 40;
+    const height = $('header').outerHeight();
 
     const offset = $target.offset().top - height;
 
@@ -1137,9 +1137,9 @@ function goodsCardAdd(good) {
 
     $(".good-card__grid-main-photo").append(`<div class="dark"></div><img  class="good-card__grid-main-photo-pic" src="${good.pic[0]}" alt="${good.title}"><div class="good-card__grid-main-photo-discount"></div>`);
     $(".good-card__grid-change-photo").append(`<li class="good-card__grid-change-li"><img  class="good-card__grid-change-photo-pic" src="${good.pic[0]}" alt="${good.title}"></li>`);
+    $(".good-card__grid-change-photo img").css("borderColor", "rgba(255, 0, 0, .5)");
     $(".good-card__grid-change-photo").append(`<li class="good-card__grid-change-li"><img  class="good-card__grid-change-photo-pic" src="${good.pic[1]}" alt="${good.title}"></li>`);
     $(".good-card__grid-change-photo").append(`<li class="good-card__grid-change-li"><img  class="good-card__grid-change-photo-pic" src="${good.pic[2]}" alt="${good.title}"></li>`);
-    $(".good-card__grid-change-photo img").css("borderColor", "rgba(255, 0, 0, .5)");
 
     if ($(".change-game__color-select").val() == 2) {$(".dark").addClass("darkThemeImg")};
 
@@ -1942,27 +1942,29 @@ $(".basket__buttons-continue").on("click", function() {
     $(".last-step__form-commit-area").val("");
     $(".last-step__form-payForm-list").css("color", "#16531896");
     $(".last-step__form-postService-list").css("color", "#16531896");
-
+    
+    $(".basket__grid-col").each(function (i, el) {            
+            $(el).addClass(`check-${i}`)
+    });
 
     let count = 0;
     let result = 0;
     let totalSumm = 0;
-        
-    for (let i = 0; i < miniMarketGame.cart.length; i++) {
-        let price;
-
-        let checkSale = miniMarketGame.saleGoods.find(function (el) {
-            return  el.good.id == String(miniMarketGame.cart[i].el.id)
-        });
-
-        if (checkSale) {
-            miniMarketGame.gameMode == 1 ? price = ((100 - checkSale.discount) * miniMarketGame.cart[i].el.price / 100).toFixed(0) : price = ((100 - checkSale.discount) * miniMarketGame.cart[i].el.price / 100).toFixed(2);
-        } else {
-            miniMarketGame.gameMode == 1 ? price = miniMarketGame.cart[i].el.price.toFixed(0) : price = miniMarketGame.cart[i].el.price.toFixed(2);
-        };
-
-        let fullPrice = (price * ($(`.basket__count-num-${i}`).val())) == Number($(`.basket__count-input-${i}`).val())
+        // console.log($(".basket__grid-col").length)
+    for (let i = 0; i < $(".basket__grid-col").length; i++) {
+        let price, fullPrice;
             
+            const priceCol = Number($(`.basket__grid-col.check-${i}`).find(".basket__grid-price").text().slice(6, $(`.basket__grid-col.check-${i}`).find(".basket__grid-price").text().indexOf("UAH")));
+            // console.log(priceCol)
+            
+            miniMarketGame.gameMode == 1 ? price = priceCol.toFixed(0) : price = priceCol.toFixed(2);
+            
+            // console.log(price)
+
+            fullPrice = (price * ($(`.basket__count-num-${i}`).val())) == Number($(`.basket__count-input-${i}`).val())
+            totalSumm = Number(totalSumm) + (Number(price * ($(`.basket__count-num-${i}`).val())));
+                
+
         if ($(`.basket__count-input-${i}`).val() == "") {
             $(`.basket__count-input-${i}`).addClass("inputRed");
             $(`.basket__count-input-${i}`).removeClass("inputRedLight");
@@ -1976,10 +1978,11 @@ $(".basket__buttons-continue").on("click", function() {
                 $(`.basket__count-input-${i}`).removeClass("inputRed");
             };
         }
-
-        totalSumm = Number(totalSumm) + (Number(price * ($(`.basket__count-num-${i}`).val())));
+        console.log(totalSumm)
+        console.log($(`.basket__grid-col.check-${i}`))
+        $(`.basket__grid-col.check-${i}`).removeClass(`check-${i}`);
     };
-    
+
     if (window.matchMedia("(min-width: 981px)").matches) {
         // if (document.documentElement.clientWidth > 980) {
         $(".basket__hint-total").attr("aria-label", `Ответ: ${Number(totalSumm)}`);
@@ -2195,7 +2198,7 @@ $(".addGoodToMarket").on('click', function () {
         };
 
         $(".goods__grid").remove();
-        $(".slick-dots").remove();
+        
         
 
         miniMarketGame.numCategory();
@@ -2219,7 +2222,8 @@ $(".addGoodToMarket").on('click', function () {
         };
 
         // ////////////////////////////Товары слайдер////////////////////////////
-
+        $(".slick-dots").remove();
+        
         $('.goods__grid').slick(
             {
                 slidesToShow: 4,
@@ -2260,7 +2264,9 @@ $(".addGoodToMarket").on('click', function () {
         let count = screenW();
 
         $("#goods-count").val(`${count}`);
+        $(".hideBody").removeClass("dispFlex");
 
+        
 
     };
 
@@ -2297,6 +2303,8 @@ $(".change-game__color-select").on('input', function () {
     if ($(this).val() == 2) {
         // $("body").css("backgroundImage", "url('../img/back_dark.jpg'");
         $("body").css("backgroundImage", "url('../img/back-dark.jpeg'");
+        $(".logo-big").attr("src", './img/logo-big-dark.png');
+        $(".market-page__title-img").attr("src", './img/logo-mini-dark.png');
 
         $(".button").addClass("darkThemeHover");
         
@@ -2338,6 +2346,8 @@ $(".change-game__color-select").on('input', function () {
 
 function returnToLightTheme() {
     $("body").css("backgroundImage", "url('../img/back.jpg'");
+    $(".logo-big").attr("src", './img/logo-big.png');
+    $(".logo-mini").attr("src", './img/logo-mini.png');
 
         // if ($(".button").hasClass("darkThemeHover")) {$(".button").removeClass("darkThemeHover")};
         

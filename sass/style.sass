@@ -195,6 +195,7 @@ body
         &-input
             margin-left: 10px
             width: 90px
+            padding: 2px 5px
     &__exit
         &-title
             &:hover
@@ -857,14 +858,14 @@ body
             transform-style: preserve-3d
             transform-origin: 50% 50%
             height: 100%
-            width: 18vw
+            width: 15vw
             &-container:hover .sale__grid-item
                 transform: perspective(1000px) rotateY(180deg)
             &_face, &_back
                 backface-visibility: hidden
                 position: absolute
-                height: 18vw
-                width: 18vw
+                height: 15vw
+                width: 15vw
                 border: 2px solid $mainColor
                 border-radius: 5px
                 background-size: cover
@@ -1293,10 +1294,10 @@ body
                 border-radius: 5px
                 width: 95%
                 cursor: pointer
-                // &:hover
-                    // border-color: $mainRed
+                &:hover
+                    border-color: $mainRed
         &-title
-            font-size: 2.7vw
+            font-size: 2.3vw
             font-weight: 600
             margin-top: 2.1vw
         &-category
@@ -1366,10 +1367,13 @@ body
                 transform: translateY(100%)
             &_task
                 display: none
+                font-size: 1.3em
                 & * + *
                     margin-left: 1.5vw
-        &-price, &-favourite, &-count, &-basketbtn, &-basketbtn_action
+        &-price, &-favourite, &-count, &-basketbtn
             margin-top: 25px
+        &-basketbtn_action
+            margin-top: 55px
         &-favourite
             margin-bottom: 25px
     &__buying
