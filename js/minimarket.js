@@ -1099,15 +1099,15 @@ const MOCK = [
         val: "пар(а/ы)",
         descr: "Сапоги – это высокая обувь, охватывающая голени. Сапоги широко распространены в женском, мужском и детском гардеробах."
     },
-    // {
-    //     title: "",
-    //     id: "",
-    //     category: "",
-    //     categpic: "./img/category/",
-    //     pic: ["./img/clothes/", "./img/clothes/", "./img/clothes/"],
-    //     price: ,
-    //     count: ,
-    //     val: "шт",
-    //     descr: ""
-    // }
+    {
+        title: "Кукла",
+        id: "doll01",
+        category: "Игрушки",
+        categpic: "./img/category/dolls.jpg",
+        pic: ["./img/dolls/doll_001.jpg", "./img/dolls/doll_002.jpg", "./img/dolls/doll_003.jpg"],
+        price: 450,
+        count: 1,
+        val: "шт",
+        descr: "Ку́кла — предмет (фигура) в виде человека или животного, сделанный из ткани, бумаги, дерева, фарфора, пластика и других материалов."
+    }
 ]

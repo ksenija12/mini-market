@@ -385,6 +385,8 @@ $('.button_forgot-enter').on('click', function() {
 
         potterCat(true);
 
+        if (passwordForChange == "") {passwordForChange = String(ident.find(el => el.log === login).pass)}
+
     };
     $("body").css("overflowY", "visible");
 });
