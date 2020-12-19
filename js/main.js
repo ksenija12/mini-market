@@ -1179,9 +1179,11 @@ function goodsCardAdd(good) {
     });
     
     if (checkFavourite) {
+        $(".favourite-heart").find("i").removeClass("far");
         $(".favourite-heart").find("i").addClass("fas");
         $(".favourite-heart").attr("aria-label", "Убрать из избранного");
     } else {
+        $(".favourite-heart").find("i").removeClass("fas");
         $(".favourite-heart").find("i").addClass("far");
         $(".favourite-heart").attr("aria-label", "Добавить в избранное");
     };    
