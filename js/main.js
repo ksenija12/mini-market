@@ -2304,7 +2304,7 @@ $(".change-game__good-title").on('click', function () {
 $(".change-game__color-select").on('input', function () {
     if ($(this).val() == 2) {
         // $("body").css("backgroundImage", "url('../img/back_dark.jpg'");
-        $("body").css("backgroundImage", "url('../img/back-dark.jpeg'");
+        $("body").css("backgroundImage", "url('./img/back-dark.jpeg'");
         $(".logo-big").attr("src", './img/logo-big-dark.png');
         $(".market-page__title-img").attr("src", './img/logo-mini-dark.png');
 
@@ -2347,9 +2347,9 @@ $(".change-game__color-select").on('input', function () {
 });
 
 function returnToLightTheme() {
-    $("body").css("backgroundImage", "url('../img/back.jpg'");
+    $("body").css("backgroundImage", "url('./img/back.jpg'");
     $(".logo-big").attr("src", './img/logo-big.png');
-    $(".logo-mini").attr("src", './img/logo-mini.png');
+    $(".market-page__title-img").attr("src", './img/logo-mini.png');
 
         // if ($(".button").hasClass("darkThemeHover")) {$(".button").removeClass("darkThemeHover")};
         
